@@ -1,5 +1,6 @@
 # Jekyll config file
-source: ""
+title: "Developer Cheat Sheets"
+source: "" # The root folder of the website
 
 highlighter: rouge
 markdown: kramdown
