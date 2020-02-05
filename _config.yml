@@ -1,10 +1,12 @@
-theme: jekyll-theme-cayman
+# Jekyll config file
+source: ""
 
+highlighter: rouge
 markdown: kramdown
-
 kramdown:
-  math_engine: mathjax
   syntax_highlighter: rouge
+
+theme: jekyll-theme-cayman
 
 defaults:
   - scope:
