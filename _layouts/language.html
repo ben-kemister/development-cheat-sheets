@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1>{{ page.name }}</h1>
+<!--<h2>{{ page.position }}</h2>-->
+
+{{ content }}
+
+<h2>Topics</h2>
+<ul>
+  {% assign filtered_posts = site.javascript | where: 'language', page.language %}
+  {% for topic in filtered_posts %}
+    <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
+  {% endfor %}
+</ul>

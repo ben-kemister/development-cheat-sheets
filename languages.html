@@ -1,0 +1,15 @@
+---
+layout: default
+title: Programming Languages
+---
+<h1>Programming Languages</h1>
+
+<ul>
+  {% for language in site.languages %}
+    <li>
+      <h2>{{ language.name }}</h2>
+      <!-- <h3>{{ author.position }}</h3> -->
+      <p>{{ language.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>

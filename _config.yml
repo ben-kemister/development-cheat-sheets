@@ -9,12 +9,25 @@ kramdown:
 
 theme: jekyll-theme-cayman
 
+collections:
+  languages:
+    output: true
+  javascript:
+    output: true
+
 defaults:
+  - scope:
+      path: ""
+      type: languages
+    values:
+      layout: language
+  - scope:
+      path: ""
+      type: javascript
+    values:
+      language: javascript
   - scope:
       path: ""
     values:
       layout: "default"
-
-collections:
-  javascript:
-    output: true
+  
