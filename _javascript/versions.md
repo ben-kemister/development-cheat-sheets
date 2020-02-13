@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Javascript Versions and Transpilers
 ---
 

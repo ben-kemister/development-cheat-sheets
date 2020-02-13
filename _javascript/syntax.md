@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Javascript Syntax
 ---
 
@@ -52,6 +51,14 @@ String methods are accessed similar to **Java** using the format *string.method(
     myString.toUpperCase() //returns "THIS IS MY STRING."
 {% endhighlight %}
 
+## String concatenation
+
+To concatenate Strings use the plus ( `+` ) symbol.
+
+{% highlight javascript %}
+    "Cat " + "Dog"; //returns "Cat Dog"
+{% endhighlight %}
+
 # Numbers
 
 Unlike other programming languages, all numbers in Javascript are of the same type called **number**.
@@ -60,7 +67,17 @@ Javascript can also represent the number infinity, by using the keyword `Infinit
 
 Javascript also as the concept of 'Not a Number', which is represented by the keyword `NaN`.
 
-## The Math Object
+## The `Number` Object
+
+There is a built in `Number` object in Javascript which has some handy methods.
+
+The `Number.isNaN(number)` method is handy for checking if the number is a valid number.
+
+{% highlight javascript %}
+    Number.isNaN(NaN); // returns true
+{% endhighlight %}
+
+## The `Math` Object
 
 There is a global object called `Math` which contains a heap of properties and methods for dealing with number types.
 
@@ -274,9 +291,11 @@ To define a regular expression you use forward slashes ( `/` ) around the regula
 
 # Simple Comparisons
 
-## Strict Equality
+## Strict Equality ( `===` )
 
-Strict 
+Strict equality compares two values for equality. If the values have the same type, are not numbers, and have the same value, they're considered equal. Finally, if both values are numbers, they're considered equal if they're both not NaN and are the same value, or if one is +0 and one is -0.
+
+For more information see the [Mozilla Developer Equality page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 The **Strict Equality** operator ( `===` ) test whether the thing on the left is identical to the thing on the right. 
 
@@ -291,5 +310,380 @@ There is also a **Strict Inequality** operator ( `!==` ) which test whether the 
     one !== one; // Returns false
 
     one !== two; // Returns true
+
+{% endhighlight %}
+
+## Loose Equality ( `==` )
+
+Loose equality compares two values for equality, **after converting** both values to a common type. After conversions (one or both sides may undergo conversions), the final equality comparison is performed exactly as `===` performs it.
+
+For more information see the [Mozilla Developer Equality page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+
+{% highlight javascript %}
+    
+    var one = 1, two = 2;
+
+    one == one; // Returns true
+
+    one == "1"; // Returns true
+
+    one != "1"; // Returns false
+
+{% endhighlight %}
+
+# Arithmetic Operators
+
+In general Javascript arithmetic operators use the same syntax as **Java**.
+
+## Modulus Operator ( `%` )
+
+The modulus operator ( `%` ) return the remainder after the division.
+
+{% highlight javascript %}
+    
+    20 % 2; // Returns 0
+
+    21 % 2; // Returns 1
+
+    //Using modules to test if a number is even or odd
+     10 % 2 === 0; // Returns true
+
+{% endhighlight %}
+
+## Incrementing and Decrementing
+
+{% highlight javascript %}
+    
+    var counter = 1;
+
+    counter += 1; // Returns 2
+
+    counter++; //Returns 2, but counter is now 3
+
+    counter *= 2; // Returns 6  
+
+{% endhighlight %}
+
+# Logical Operators
+
+* Logical AND ( `&&` )
+* Logical OR ( `||` )
+* Logical NOT ( `!` )
+
+# Conditionals
+
+## If Statement
+
+Javascript *if* statements use the same syntax as **Java** if and if-else statements.
+
+{% highlight javascript %}
+    var answer = window.confirm("Click OK, get true. Click CANCEL, get false.");
+    
+    if(answer === true){
+        console.log("You said true!");
+    } else {
+        console.log("You said something else");
+    }
+
+{% endhighlight %}
+
+# Switch Statement
+
+Javascript *switch* statements use the same syntax as **Java** switch statements.
+
+Remember that if you do not have a `break` the execution will 'fall through' each case until a `break` statement is encountered.
+
+{% highlight javascript %}
+    
+    switch (answer){
+        case "YES":
+            console.log("You said YES!");
+            break;
+        case "MAYBE":
+            console.log("You said MAYBE...");
+            break;
+        case "NO":
+            console.log("You said NO. :(");
+            break;
+        default:
+            console.log("Not sure how to deal with that");
+            break;
+    }
+{% endhighlight %}
+
+# Terse ifs
+
+## Single line ifs
+
+You can leave off the curly braces of an *if* statement and it will execute the next line. Note it only executes a single line.
+
+{% highlight javascript %}
+    var cherub = "Cupid";
+
+    if( cherub === "Cupid" ) console.log("Ouch, an arrow!");
+    else console.log("I feel nothing");
+{% endhighlight %}
+
+## if (variable) 'Truthy'
+
+In JavaScript, a *truthy* value is a value that is considered true when encountered in a Boolean context. All values are truthy unless they are defined as falsy (i.e., except for false, 0, 0n, "", null, undefined, and NaN).
+
+For more information see the [Truthy page on the Mozilla Developer network](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
+
+{% highlight javascript %}
+    if("variable"){
+        console.log("The value is truthy!")
+    }
+{% endhighlight %}
+
+## Ternary Operator
+
+The Javascript ternary operator follows the same syntax as **Java**, it allows for a short form of an if statement.
+
+{% highlight javascript %}
+    var animal = "cat";
+
+    animal === "cat"
+        ? console.log("You'll need a cat herder!") // Executed if true
+        : console.log("Call the dog catcher."); // Executed if false
+{% endhighlight %}
+
+# Type Checking
+
+Because Javascript is a **loosely typed** language you may need to check the type of an object before you perform operations on it.
+
+Type checking is done using the `typeof` keyword. The `typeof` function returns a String which is the name of the data type all in lowercase.
+
+{% highlight javascript %}
+    var thing = 12;
+
+    typeof thing; // Returns "number"
+
+    thing = "twelve";
+
+    typeof thing; // Returns "string"
+
+    thing = {};
+
+    typeof thing; // Returns "object"
+
+    thing = [];
+
+    typeof thing; // Returns "object"
+
+    typeof NaN; // Returns "number"
+
+    typeof null; // Returns "object"
+{% endhighlight %}
+
+## `hasOwnProperty()` method
+
+Every object in Javascript has the method `hasOwnProperty("propertyName")`, this method allows you to check that an object has a particular property prior to accessing it.
+
+{% highlight javascript %}
+    var thing = [];
+
+    typeof thing; // Returns "object"
+
+    typeof thing === "object" && thing.hasOwnProperty("length") // Returns true
+{% endhighlight %}
+
+# Loops
+
+Remember you can `break` (short circuit) a `for` loop, just the same as you can in **Java**.
+
+## (Sequential) For Loops
+
+The Javascript `for` loop syntax is the same as **Java**.
+
+{% highlight javascript %}
+    for (var i = 0; i < 10; i++) {
+        console.log(i); // Prints 0...9
+    }
+{% endhighlight %}
+
+## Enumerative (for each) Loops
+
+Allows you to iterate over an object or array.
+Note that the order of the iteration is **not** guaranteed, if you need a guaranteed order use the Sequential For Loop.
+
+{% highlight javascript %}
+    //Iterating over an array
+    var pageNames = [
+        "Home",
+        "About Us",
+        "Contact",
+        "News",
+        "Posts"
+    ];
+
+    for ( var p in pageNames) {
+        console.log(p, pageNames[p]); // p is the index of element
+    }
+
+    //Iterating over the properties of an Object
+    var pages = {
+        first: "Home",
+        second: "About Us",
+        third: "Contact",
+        fourth: "News",
+        fifth: "Posts"
+    };
+
+    for (var p in pages) {
+        if(pages.hasOwnProperty(p)) {
+            console.log( p, pages[p] );  // p is the name of the property
+        }
+    }
+
+{% endhighlight %}
+
+## While Loops
+
+While loops are handy if you don't know how many times you will be iterating over an array or object.
+
+Be careful that if the terminating condition always equates to `true` then the while loop will continue indefinately.
+
+{% highlight javascript %}
+    var i = 0;
+
+    while (i < 10 ) { // This is the terminating condition
+        console.log(i + "... This will go until we hit 10");
+        i += 1;
+    }
+
+{% endhighlight %}
+
+## Do While loop
+
+The Do While loop is handy if you want the loop to execute at least once.
+
+{% highlight javascript %}
+    var myArray = [true, true, true, false, true, true];
+
+    var myItem = false;
+
+    do {
+        console.log("myArray has" +
+                      myArray.length +
+                        " items now. This loop will go until we pop a false."  
+        );
+        myItem = myArray.pop();
+    }while (myItem !== false);
+
+{% endhighlight %}
+
+# Functions
+
+Functions are one of the fundamental building blocks in JavaScript. A function is a JavaScript procedure—a set of statements that performs a task or calculates a value. 
+
+A function definition (also called a function declaration, or function statement) consists of the `function` keyword, followed by:
+
+* The name of the function.
+* A list of parameters to the function, enclosed in parentheses and separated by commas.
+* The JavaScript statements that define the function, enclosed in curly brackets, {...}.
+
+For more information see the [Functions Page on Mozilla Developer network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
+
+{% highlight javascript %}
+    //Declare the function
+    function speak() {
+        console.log('Woof');
+        console.log('Meow');
+        console.log('Quack');
+        console.log('Mooooo');
+    }
+
+    // Invoke the function
+    speak();
+{% endhighlight %}
+
+## Return statement
+
+A function can return a value by using the `return` keyword.
+The `return` keyword can also be used to terminate execution of the function, in this case the value returned is `undefined`.
+
+{% highlight javascript %}
+    
+    function myFunction(test) {
+        if (test) {
+            return;
+        } else {
+            return 0;
+        }
+    }
+
+    myFunction(false); //Returns 0
+    myFunction(true); //Returns undefined
+{% endhighlight %}
+
+## Function Arguments
+
+Primitive parameters (such as a `number`) are passed to functions by value; the value is passed to the function, but if the function changes the value of the parameter, this change is not reflected globally or in the calling function.
+
+If you pass an object (i.e. a non-primitive value, such as Array or a user-defined object) as a parameter and the function changes the object's properties, that change is visible outside the function.
+
+{% highlight javascript %}
+    
+    function isEven(num) {
+        return num % 2 === 0;
+    }
+
+    // Invoke the function
+    isEven(44); //Returns true
+{% endhighlight %}
+
+### The `arguments` object and variable numbers of arguments
+
+Every `function` in Javascript has an `arguments` object. The `arguments` object is an array like object which can be used to access the functions arguments.
+
+By using the `arguments` object you can make functions that can accept a variable amount of arguments.
+
+{% highlight javascript %}
+    
+    function total() {
+        var total = 0;
+
+        for (var i = 0; i < arguments.length; i += 1) {
+
+            var number = arguments[i];
+
+            if (typeof number === 'number') {
+                total += number;
+            }
+        }
+        return total;
+    }
+
+    // Invoke the function
+    total(); // Returns 0
+    total(1,2,3,4); // Returns 10
+{% endhighlight %}
+
+## Default Arguments
+
+In ECMAScript 2015 (ES6) you can define default values for the function parameters when they are declared.
+
+Be careful using defaults as the first argument provided to the function will always be considered to be the first, regardless of type and any defaults.
+
+{% highlight javascript %}
+    
+    // Default values in ES6
+    function speakNew(what = "Default speech", times) {
+
+        for (var i = 0; i < times, i += 1) {
+            console.log(what + " (" + i + ")" );
+        }
+    }
+
+    // Default values in < ES6
+    function speakOld(what, times) {
+        // Check if the argument is defined.
+        var what = (typeof what !== "undefined") ? what : "Default speech";
+
+        for (var i = 0; i < times, i += 1) {
+            console.log(what + " (" + i + ")" );
+        }
+    }
 
 {% endhighlight %}
