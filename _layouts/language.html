@@ -13,11 +13,11 @@ layout: default
     <!-- javascript -->
     {% assign filtered_topics = site.javascript | where: 'language', page.language %}
     {% for topic in filtered_topics %}
-      <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
+      <li><a href="{{ topic.url | relative_url }}">{{ topic.title }}</a></li>
     {% endfor %}
     <!-- typescript -->
     {% assign filtered_topics = site.typescript | where: 'language', page.language %}
     {% for topic in filtered_topics %}
-      <li><a href="{{ topic.url }}">{{ topic.title }}</a></li>
+      <li><a href="{{ topic.url | relative_url }}">{{ topic.title }}</a></li>
     {% endfor %}
   </ul>

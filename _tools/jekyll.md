@@ -23,10 +23,10 @@ For more info see [Clearing Up Confusion Around baseurl -- Again](https://bypark
 
 # Links (to site pages)
 
-Links to other pages in Jekyll follow the basic [markdown]({% link _languages/markdown.md %}) format, but with a little liquid (I think) difference to insert the url details.
+Links to other pages in Jekyll follow the basic [markdown]({% link /languages/markdown.md %}) format, but with a little liquid (I think) difference to insert the url details.
 
 {% highlight markdown %}
 
-   [Link to a document]({% link _javascript/tools.md %})
+   [Link to a document]({% link _tools/jekyll.md %})
 
 {% endhighlight %}
