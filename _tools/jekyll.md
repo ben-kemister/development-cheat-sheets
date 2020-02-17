@@ -1,5 +1,5 @@
 ---
-tool: 
+tool: jekyll
 name: Jekyll
 --- 
 
@@ -7,7 +7,7 @@ Jekyll is a Ruby tool which can generate static websites and blogs using plain t
 
 # Running (Locally)
 
-You can run Jekyll locally by using the follinwg command `bundle exec jekyll serve`
+You can run Jekyll locally by using the following command `bundle exec jekyll serve`
 
 # Configuration ( `_config.yml`)
 

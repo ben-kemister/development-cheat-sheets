@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% include navigation.html %}
+
 {% capture foo %}
 
 {% if page.showTOC %}
@@ -16,3 +18,4 @@ layout: default
 {% endcapture %}
 
 {{ foo | markdownify }}
+

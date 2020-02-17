@@ -4,13 +4,14 @@ title: Tools
 ---
 <h1>Tools</h1>
 
-This page contains links to the various tools that 
+This page contains links to the tools that I have discovered as a part of my development journey.
 
 <ul>
   {% for tool in site.tools %}
     <li>
-        <h2><a href="{{ tool.url }}">{{ tool.name }}</a></h2>
-      <p>{{ tool.content | markdownify }}</p>
-    </li>
+      <h2><a href="{{ tool.url | relative_url }}">{{ tool.name }}</a></h2>
+      <!-- Just show the first paragraph of the page -->
+      <p>{{ tool.excerpt | markdownify }}</p>
+  </li>
   {% endfor %}
 </ul>

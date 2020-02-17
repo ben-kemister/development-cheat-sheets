@@ -8,11 +8,8 @@ showTOC: false
   {% for language in site.languages %}
     <li>
         <h2><a href="{{ language.url | relative_url }}">{{ language.name }}</a></h2>
-      <!--<h2>{{ language.name }}</h2>-->
-      <!-- <h3>{{ author.position }}</h3> -->
-      <!-- <p>{{ language.content | markdownify }}</p>-->
       <!-- Just show the first paragraph of the page -->
-      {{ language.excerpt | markdownify }}
+      <p>{{ tool.excerpt | markdownify }}</p>
     </li>
   {% endfor %}
 </ul>
