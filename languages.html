@@ -12,7 +12,7 @@ showTOC: false
       <!-- <h3>{{ author.position }}</h3> -->
       <!-- <p>{{ language.content | markdownify }}</p>-->
       <!-- Just show the first paragraph of the page -->
-      {{ language.excerpt }}
+      {{ language.excerpt | markdownify }}
     </li>
   {% endfor %}
 </ul>
