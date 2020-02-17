@@ -1,5 +1,5 @@
 ---
-title: Javascript Syntax
+title: Javascript (Basic) Syntax
 ---
 
 This page contains handy information on the basics of the Javascript Syntax.
@@ -13,6 +13,40 @@ Can be named anything that starts with a letter, underscore ( `_` ), or dollar s
 **camelCase** is a common naming convention used for Javascript variables.
 
 You cannot use reserved words (such as `var`) for variable names.
+
+## Variable Scopes
+
+Variables can either be **global** or **local**.
+ 
+The use of global variables is generally harmful. Global variables are shared amongst all of the scripts that are running, and as a result you might get unexpected behavior if another script is using a variable with the same name.
+
+### Global Variables
+
+If you assign a variable without using a keyword (such as `var`) it will be created as a global variable.
+
+{% highlight javascript %}
+
+    // Global Variable
+    myPet = "cat";
+
+{% endhighlight %}
+
+If you have enabled **strict mode** (by adding `"use strict";` at the top of your file) you will get a warning if you using any global variables.
+
+### Local Variables
+
+To define a local variable use the keyword `var`.
+
+{% highlight javascript %}
+
+    // Local variable
+    var myState = "ACT";
+
+{% endhighlight %}
+
+Functions are the main delimiter of variable scope when using the `var` keyword.
+
+In ECMAScript 2015 or above you can also use `let` and/or `const`, these have *block* scope.
 
 # Strings
 String literals are Strings which are contained within quotation marks, for example:
@@ -28,6 +62,7 @@ The backslash ( `\` ) is the Javascript escape character.
 The backslash ( `\` ) can also be used for strings that run over multiple lines.
 
 {% highlight javascript %}
+    
     This is \
     Joe'/s favorite \
     string EVER
@@ -38,6 +73,7 @@ The backslash ( `\` ) can also be used for strings that run over multiple lines.
 String properties are accessed using the dot ( `.` ) notation to access the desired property.
 
 {% highlight javascript %}
+    
     var myString = "This is my string.";
     myString.length //returns 18
 {% endhighlight %}
@@ -47,6 +83,7 @@ String properties are accessed using the dot ( `.` ) notation to access the desi
 String methods are accessed similar to **Java** using the format *string.method()*, for example:
 
 {% highlight javascript %}
+    
     var myString = "This is my string.";
     myString.toUpperCase() //returns "THIS IS MY STRING."
 {% endhighlight %}
@@ -56,6 +93,7 @@ String methods are accessed similar to **Java** using the format *string.method(
 To concatenate Strings use the plus ( `+` ) symbol.
 
 {% highlight javascript %}
+    
     "Cat " + "Dog"; //returns "Cat Dog"
 {% endhighlight %}
 
@@ -74,6 +112,7 @@ There is a built in `Number` object in Javascript which has some handy methods.
 The `Number.isNaN(number)` method is handy for checking if the number is a valid number.
 
 {% highlight javascript %}
+    
     Number.isNaN(NaN); // returns true
 {% endhighlight %}
 
@@ -82,6 +121,7 @@ The `Number.isNaN(number)` method is handy for checking if the number is a valid
 There is a global object called `Math` which contains a heap of properties and methods for dealing with number types.
 
 {% highlight javascript %}
+    
     Math.round(12.522141415254) // returns 13
 {% endhighlight %}
 
@@ -96,6 +136,7 @@ Javascript uses objects to represent and structure data beyond simple types such
 You can define object literals by using the curly braces ( `{}` ), for example:
 
 {% highlight javascript %}
+    
     var myEmptyObject = {}; //Empty object
     var notEmptyObject = {
         'label': 'value',
@@ -107,6 +148,7 @@ You can define object literals by using the curly braces ( `{}` ), for example:
 You can also defined the labels in an object without using quotation marks like this:
 
 {% highlight javascript %}
+    
     var bird = {
         commonName: 'raven',
         callType: "squawky",
@@ -121,6 +163,7 @@ You can also defined the labels in an object without using quotation marks like 
 To retrieve a property from an object you can use either dot notation or square braces. Square braces is useful if you have spaces or special characters in the property name.
 
 {% highlight javascript %}
+    
     // Dot notation
     bird.quote  // returns "Nevermore"
 
@@ -133,6 +176,7 @@ To retrieve a property from an object you can use either dot notation or square 
 You can add new properties to an object by just using assignment.
 
 {% highlight javascript %}
+    
     // Dot notation
     bird.whereItLives = "in a tree" 
 {% endhighlight %}
@@ -140,6 +184,7 @@ You can add new properties to an object by just using assignment.
 You remove properties from an object by using the `delete` keyword. Deleting works with either Dot or Square braces notation.
 
 {% highlight javascript %}
+    
     //Removes the whereItLives property from the object
     delete bird.whereItLives;
 {% endhighlight %}
@@ -150,11 +195,14 @@ Be aware that variables are really references to the object (similar to the Java
 
 This means that if you assign one variable to equal another, they both refer to the same object.
 
+Objects (and Arrays) are **passed by reference** to functions. Take this into consideration if you have a case where you do not want to modify the original object. In this case you may want to create and return a new object.
+
 ## Copying objects
 
 A common quick way to make an exact copy of an object is by using the JSON object as follows:
 
 {% highlight javascript %}
+    
     //Makes a copy of the animal object safely.
     animal2 = JSON.parse(JSON.stringify(animal));
 {% endhighlight %}
@@ -253,6 +301,30 @@ To remove an item and reduce the arrays length use the `splice(index, items)` me
 
     chips.length // returns 3.
 {% endhighlight %}
+
+## `map` method
+
+The `map` method accepts a callback function which operates on each item in the array and returns a new array.
+
+{% highlight javascript %}
+    
+    function doubleIt(number) {
+        return (number *= 2);
+    }
+
+    var myNumbers = [1, 2, 3, 4, 5];
+
+    var myDoubles = myNumbers.map(doubleIt);
+
+    myDoubles; // Returns [2, 4, 6, 8, 10]
+
+{% endhighlight %}
+
+## 'forEach' method
+
+Operates on each element in an array, but does not return anything.
+
+Note that the `break` keyword will not work inside the `foreach()` method.
 
 # Comments
 
@@ -586,12 +658,34 @@ A function definition (also called a function declaration, or function statement
 For more information see the [Functions Page on Mozilla Developer network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
 {% highlight javascript %}
-    //Declare the function
+
+    // Function Definition
     function speak() {
         console.log('Woof');
         console.log('Meow');
         console.log('Quack');
         console.log('Mooooo');
+    }
+
+    // Invoke the function
+    speak();
+{% endhighlight %}
+
+Functions are ***first class citizens*** in Javascript, they are objects that have the power to be invoked. 
+
+All `functions` in Javascript inherit from the global `Function` object, which means that they are objects.
+
+This also means that functions can be assigned to (and passed around using) variables.  An example of this can be seen when dealing with anonymous functions.
+
+{% highlight javascript %}
+
+    // Anonymous function assigned to a variable
+    var say = function(what) {
+        what = what || "Speaking!";
+
+        for (var i = 0; i < 10; 1 += 1) {
+            console.log(what);
+        }
     }
 
     // Invoke the function
@@ -687,3 +781,105 @@ Be careful using defaults as the first argument provided to the function will al
     }
 
 {% endhighlight %}
+
+## Member Functions (a.k.a methods)
+
+You can defined a function so that it is a top level member function, also called a method. In this way the function can be invoked by calling the property name assigned to that function.
+
+{% highlight javascript %}
+    
+    var obj = {
+        // The function is assigned to the property 'sayHello'
+        sayHello: function() {
+            console.log("Hello");
+        }
+    };
+
+    // Invoking the function
+    obj.sayHello();
+
+{% endhighlight %}
+
+## Callback Functions
+
+A callback is jargon for a function that is passed into another function as an argument, and executed in that function.
+
+## Arrow Functions
+
+In ECMAScript 2015 (ES6) there is a function called an **arrow function**. This is a very concise way of writing a function that reduces the amount of boiler-plate code that needs to be written.
+
+{% highlight javascript %}
+    
+    // Typical Function Definition
+    function doubleIt(number) {
+        return (number *= 2);
+    }
+
+    // In arrow function format
+    doubleIt = number => (number *= 2);
+
+{% endhighlight %}
+
+Arrow functions follow the form:
+
+`function name` = `arguments` => `return statement`;
+
+# `Promises`
+
+`Promises` are objects that captures the result of an asynchronous action with a particular programming interface (API) for handling the data when it finally came through, or failed.
+
+`Promises` have a method called `then()` which accepts a callback/function which will be invoked when the asynchronous action has completed.
+
+# `async` and `await`
+
+`async` and `await` are a part of the ECMAScript 2017 specification.
+
+These keywords make working with `promises` much easier, and mean that you can reduce the code clutter.
+
+{% highlight javascript %}
+    
+    // One request
+    aysnc function getOneThing() {
+
+        // await makes the return of a promise
+        var response = await axios.get("https:httpbin.org/get");
+
+        // Now I have the response
+    }
+
+{% endhighlight %}
+
+Many browsers (and Node.js) support `async` and `await`.
+
+# Prototypes and Classes
+
+Object-oriented Javascript uses Prototypical Inheritance, where child objects have a link ( `__proto__` ) to their parent object.
+
+You can use prototypes to assign functions and properties to a prototype so that it is available to all objects that use that prototype.
+
+{% highlight javascript %}
+    
+    Cake.prototype.bake = function(temp, minutes) {
+        // function details...
+    }
+
+{% endhighlight %}
+
+The `class` keyword was introduced to help developers migrating from other languages. It is *Syntactic Sugar* and doesn't really change the way that the programming language works.
+
+Ultimately classes get turned into prototypes eventually.
+
+# `import`
+
+Dynamic Imports is the specification which describes how to load related scripts or library files in JavaScript.
+
+The static `import` statement is used to import bindings which are exported by another module. [More Information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+
+{% highlight javascript %}
+    
+    // One of the many versions of the import statement. 
+    import { export1 as alias1 } from "module-name";
+
+{% endhighlight %}
+
+Browser support for Dynamic Imports is still a bit flakey so tools (such as [webpack](https://webpack.js.org) and [rollup.js](https://rollupjs.org)) have been written to help with this.

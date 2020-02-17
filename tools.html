@@ -1,0 +1,16 @@
+---
+layout: default
+title: Tools
+---
+<h1>Tools</h1>
+
+This page contains links to the various tools that 
+
+<ul>
+  {% for tool in site.tools %}
+    <li>
+        <h2><a href="{{ tool.url }}">{{ tool.name }}</a></h2>
+      <p>{{ tool.content | markdownify }}</p>
+    </li>
+  {% endfor %}
+</ul>

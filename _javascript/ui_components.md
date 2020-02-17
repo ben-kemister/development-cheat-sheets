@@ -4,7 +4,11 @@ title: Javascript UI Components
 
 This page contains some information about common, or handy, UI (browser) components in Javascript.
 
-# Confirmation Window
+# The `window` Object
+
+There is a global `window` object available when working in a browser, all global variables are properties of the `window` object.
+
+## Confirmation Window
 
 The confirmation window is available in every browser and will create a simple popup dialog requesting the user to select a button.
 
@@ -13,7 +17,7 @@ The confirmation window is available in every browser and will create a simple p
 
 {% endhighlight %}
 
-# Prompt Window
+## Prompt Window
 
 The prompt window allows shows a popup dialog which can capture a string input from the user.
 

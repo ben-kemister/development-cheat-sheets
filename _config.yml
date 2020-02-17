@@ -1,6 +1,11 @@
 # Jekyll config file
+
 title: "Developer Cheat Sheets"
-source: "" # The root folder of the website
+# The root folder of the website
+source: ""
+# baseurl for a site that doesn’t sit at the root of the domain
+# See: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
+baseurl: /development-cheat-sheets
 
 highlighter: rouge
 markdown: kramdown
@@ -14,6 +19,10 @@ collections:
     output: true
   javascript:
     output: true
+  typescript:
+    output: true
+  tools:
+    output: true
 
 defaults:
   - scope:
@@ -26,6 +35,11 @@ defaults:
       type: javascript
     values:
       language: javascript
+  - scope:
+    path: ""
+    type: typescript
+    values:
+      language: typescript
   - scope:
       path: ""
     values:

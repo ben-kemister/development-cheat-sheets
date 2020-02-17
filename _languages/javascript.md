@@ -1,5 +1,5 @@
 ---
-name: Javascript
+name: JavaScript
 language: javascript
 ---
 
