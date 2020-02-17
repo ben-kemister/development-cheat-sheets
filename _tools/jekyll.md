@@ -5,6 +5,10 @@ name: Jekyll
 
 Jekyll is a Ruby tool which can generate static websites and blogs using plain text files.
 
+# Running (Locally)
+
+You can run Jekyll locally by using the follinwg command `bundle exec jekyll serve`
+
 # Configuration ( `_config.yml`)
 
 ## baseurl
@@ -17,6 +21,12 @@ In this case you would need to set `baseurl: /example` in the `_config.yml` file
 
 For more info see [Clearing Up Confusion Around baseurl -- Again](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/)
 
-# Links
+# Links (to site pages)
 
-`[Link to a document]({% link _javascript/tools.md %})`
+Links to other pages in Jekyll follow the basic [markdown]({% link _languages/markdown.md %}) format, but with a little liquid (I think) difference to insert the url details.
+
+{% highlight markdown %}
+
+   [Link to a document]({% link _javascript/tools.md %})
+
+{% endhighlight %}

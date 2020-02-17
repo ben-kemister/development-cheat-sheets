@@ -36,12 +36,14 @@ defaults:
     values:
       language: javascript
   - scope:
-    path: ""
-    type: typescript
+      path: ""
+      type: typescript
     values:
       language: typescript
   - scope:
       path: ""
     values:
-      layout: "default"
+      # layout: "default"
+      layout: "myDefault"
+      showTOC: true
   
