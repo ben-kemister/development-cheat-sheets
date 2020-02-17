@@ -9,7 +9,8 @@ showTOC: false
     <li>
         <h2><a href="{{ language.url | relative_url }}">{{ language.name }}</a></h2>
       <!-- Just show the first paragraph of the page -->
-      <p>{{ tool.excerpt | markdownify }}</p>
+      <!-- <p>{{ language.excerpt | markdownify }}</p> -->
+      <p>{{ language.excerpt }}</p>
     </li>
   {% endfor %}
 </ul>

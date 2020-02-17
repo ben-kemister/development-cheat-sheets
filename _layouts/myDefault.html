@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+  </head>
+
+  <body>
+    {% include navigation.html %}
+
+    {% capture foo %}
+    
+    {% if page.showTOC %}
+      <details>
+        <summary>Table of Contents</summary>
+        
+        {% include toc.html html=content %}
+      </details>
+    {% endif %}
+    
+    {{ content }}
+    {% endcapture %}
+    
+    {{ foo | markdownify }}
+  </body>
+
+

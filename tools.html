@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Tools
 ---
 <h1>Tools</h1>
@@ -11,7 +10,7 @@ This page contains links to the tools that I have discovered as a part of my dev
     <li>
       <h2><a href="{{ tool.url | relative_url }}">{{ tool.name }}</a></h2>
       <!-- Just show the first paragraph of the page -->
-      <p>{{ tool.excerpt | markdownify }}</p>
+      <p>{{ tool.excerpt }}</p>
   </li>
   {% endfor %}
 </ul>
