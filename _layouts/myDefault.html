@@ -2,14 +2,10 @@
 layout: default
 ---
 
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
-  </head>
+  <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
 
-  <body>
-    {% include navigation.html %}
-
+  {% include navigation.html %}
+  <div>
     {% capture foo %}
     
     {% if page.showTOC %}
@@ -24,6 +20,6 @@ layout: default
     {% endcapture %}
     
     {{ foo | markdownify }}
-  </body>
+  </div>
 
 
