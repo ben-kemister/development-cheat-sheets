@@ -5,7 +5,7 @@ layout: default
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 
   {% include navigation.html %}
-  <div>
+  <div class="page-content">
     {% if page.showTOC %}
       <details>
         <summary>Table of Contents</summary>
@@ -14,7 +14,7 @@ layout: default
       </details>
     {% endif %}
     
-    {{ content | markdownify }}
+    {{ content }}
   </div>
 
 
