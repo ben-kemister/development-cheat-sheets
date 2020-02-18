@@ -2,12 +2,10 @@
 layout: default
 ---
 
-  <link rel="stylesheet" href="{{ "/assets/css/styles.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 
   {% include navigation.html %}
   <div>
-    {% capture foo %}
-    
     {% if page.showTOC %}
       <details>
         <summary>Table of Contents</summary>
@@ -16,10 +14,7 @@ layout: default
       </details>
     {% endif %}
     
-    {{ content }}
-    {% endcapture %}
-    
-    {{ foo | markdownify }}
+    {{ content | markdownify }}
   </div>
 
 
