@@ -97,6 +97,29 @@ To concatenate Strings use the plus ( `+` ) symbol.
     "Cat " + "Dog"; //returns "Cat Dog"
 {% endhighlight %}
 
+## Template Strings
+
+Template strings allow you to use the contents of variables inside a String;
+
+Note the use of **backticks** ( \` ) NOT the use of single quotes ( `'` ) around the statement.
+
+{% highlight javascript %}
+    
+    var myName = 'Bob';
+
+    // myGreeting is "Hello, my name is Bob!"
+    var myGreeting = `Hello, my name is ${myName}!`;
+
+    
+    function hello(name){
+        console.log(`Hello, my name is ${name}!`);
+    } 
+
+    // Prints 'Hello, my name is Fred!'
+    hello('Fred')
+
+{% endhighlight %}
+
 # Numbers
 
 Unlike other programming languages, all numbers in Javascript are of the same type called **number**.
@@ -213,6 +236,8 @@ Arrays allow you to store an ordered list of data of any type.
 The order of the elements are preserved and the keys are automatically assigned.
 An array can also store mixed data types (e.g. booleans, Strings, and objects can all exist in the same array).
 
+The sections below show some of the basics of creating and using arrays, more detailed information can be found on the 
+
 ## Defining an Array
 
 {% highlight javascript %}
@@ -281,50 +306,6 @@ To remove (and return) the last item from an array use the `pop()` method.
     // Removes and returns the last item in the array
     chips.pop() // returns 'Thins' 
 {% endhighlight %}
-
-## Removing items from the middle of an Array
-
-If you simply `delete` a particular index in an array (e.g. `delete chips[2]`) it will not change the size of the array, it will just replace the value of that index with `empty`.
-
-To remove an item and reduce the arrays length use the `splice(index, items)` method.
-
-{% highlight javascript %}
-    var chips = [
-        'Smiths',
-        'Doritos',
-        'Twisties',
-        'Thins'
-    ];
-
-    // Starting at index 2 removes 1 item from the array
-    chips.splice(2, 1); // returns 'Twisties'
-
-    chips.length // returns 3.
-{% endhighlight %}
-
-## `map` method
-
-The `map` method accepts a callback function which operates on each item in the array and returns a new array.
-
-{% highlight javascript %}
-    
-    function doubleIt(number) {
-        return (number *= 2);
-    }
-
-    var myNumbers = [1, 2, 3, 4, 5];
-
-    var myDoubles = myNumbers.map(doubleIt);
-
-    myDoubles; // Returns [2, 4, 6, 8, 10]
-
-{% endhighlight %}
-
-## 'forEach' method
-
-Operates on each element in an array, but does not return anything.
-
-Note that the `break` keyword will not work inside the `foreach()` method.
 
 # Comments
 
@@ -503,6 +484,7 @@ In JavaScript, a *truthy* value is a value that is considered true when encounte
 For more information see the [Truthy page on the Mozilla Developer network](https://developer.mozilla.org/en-US/docs/Glossary/Truthy).
 
 {% highlight javascript %}
+
     if("variable"){
         console.log("The value is truthy!")
     }
@@ -548,7 +530,7 @@ Type checking is done using the `typeof` keyword. The `typeof` function returns 
     typeof null; // Returns "object"
 {% endhighlight %}
 
-## `hasOwnProperty()` method
+## *hasOwnProperty()* method
 
 Every object in Javascript has the method `hasOwnProperty("propertyName")`, this method allows you to check that an object has a particular property prior to accessing it.
 
@@ -558,6 +540,48 @@ Every object in Javascript has the method `hasOwnProperty("propertyName")`, this
     typeof thing; // Returns "object"
 
     typeof thing === "object" && thing.hasOwnProperty("length") // Returns true
+{% endhighlight %}
+
+## *instanceof* Operator
+
+The `instanceof` operator checks that the instance of the class has a constructor which matches the given class.
+
+{% highlight javascript %}
+    
+    class MyClass {
+        someProperty: number;
+    }
+
+    let obj = new MyClass(1);
+
+    console.log( obj instanceof MyClass); // Returns true.
+
+{% endhighlight %}
+
+### Use on Custom Errors
+
+Note if you are using this on custom Error objects (i.e. Objects that extends `Error`) you will need to be using ES6 or greater, otherwise it will not work as expected.
+
+{% highlight javascript %}
+            
+    test('Test \'instanceof\' on Custom Errors', () => {
+
+        class MyError extends Error {
+            someProperty: number;
+        }
+
+        let obj = new MyError('an error');
+
+        let result = obj instanceof Error;
+        expect(result).toBe(true);
+
+        /**
+         * If you are using < ES6 then the use of 'instanceof'
+         * on a Custom Error will not work as expected.
+         */
+        result = obj instanceof MyError;
+        expect(result).toBe(true); // This will fail on < ES6
+    });
 {% endhighlight %}
 
 # Loops
@@ -824,13 +848,54 @@ Arrow functions follow the form:
 
 `function name` = `arguments` => `return statement`;
 
-# `Promises`
+# *Promise*s
 
 `Promises` are objects that captures the result of an asynchronous action with a particular programming interface (API) for handling the data when it finally came through, or failed.
 
-`Promises` have a method called `then()` which accepts a callback/function which will be invoked when the asynchronous action has completed.
+## Defining a *Promise*
 
-# `async` and `await`
+`Promises` need to define a `resolve` argument, we call `resolve(...)` when what we were doing asynchronously was successful, and `reject(...)` when it failed.
+
+{% highlight javascript %}
+
+    let myFirstPromise = new Promise((resolve, reject) => {
+        // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
+        // In this example, we use setTimeout(...) to simulate async code. 
+        // In reality, you will probably be using something like XHR or an HTML5 API.
+        setTimeout( function() {
+            resolve("Success!")  // Yay! Everything went well!
+        }, 250)
+    });
+
+{% endhighlight %}
+
+## Using *Promise*s
+
+`Promises` have a method named `then()` which accepts a callback/function which will be invoked after the asynchronous action has completed.
+
+The `then()` method can be used to chain functions together that will be invoked in order,
+
+For more information see the [Promise page on the Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+
+{% highlight javascript %}
+    
+    // Function which returns a promise.
+    const delay = seconds => {
+        return new Promise(resolve => {
+            // The 'resolve' function is called after seconds * 1000 seconds.
+            setTimeout(resolve, seconds * 1000);
+        });
+    }
+
+    console.log('Zero Seconds');
+    // The anonymous function console.log() is called after 1 second.
+    delay(1).then(() => console.log('One Second'));
+    // The anonymous function console.log() is called after 3 second.
+    delay(3).then(() => console.log('Three Second'));
+
+{% endhighlight %}
+
+# *async* and *await* keywords
 
 `async` and `await` are a part of the ECMAScript 2017 specification.
 
@@ -842,7 +907,7 @@ These keywords make working with `promises` much easier, and mean that you can r
     aysnc function getOneThing() {
 
         // await makes the return of a promise
-        var response = await axios.get("https:httpbin.org/get");
+        var response = await axios.get("https://httpbin.org/get");
 
         // Now I have the response
     }

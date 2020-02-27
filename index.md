@@ -1,5 +1,6 @@
 ---
 title: Home
+showTOC: false
 ---
 
 # Heading Level 1

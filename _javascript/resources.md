@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Helpful Javascript resources
 ---
 
