@@ -1,6 +1,6 @@
 # Jekyll config file
 
-title: "Developer Cheat Sheets"
+title: "Development Cheat Sheets"
 # The root folder of the website
 source: ""
 # baseurl for a site that doesn’t sit at the root of the domain
