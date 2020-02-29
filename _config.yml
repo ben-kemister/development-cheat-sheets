@@ -30,6 +30,7 @@ defaults:
       type: languages
     values:
       layout: language
+      excerpt_separator: <!--more-->
   - scope:
       path: ""
       type: javascript
@@ -40,6 +41,12 @@ defaults:
       type: typescript
     values:
       language: typescript
+  - scope:
+      path: ""
+      type: tools
+    values:
+      excerpt_separator: <!--more-->
+  # Defaults
   - scope:
       path: ""
     values:
