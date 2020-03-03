@@ -1,6 +1,7 @@
 ---
 name: MarkDown
 language: markdown
+excerpt_separator: <!--more-->
 ---
 
 Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be converted to many output formats.

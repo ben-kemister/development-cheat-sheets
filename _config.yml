@@ -30,7 +30,6 @@ defaults:
       type: languages
     values:
       layout: language
-      excerpt_separator: <!--more-->
   - scope:
       path: ""
       type: javascript
@@ -44,8 +43,6 @@ defaults:
   - scope:
       path: ""
       type: tools
-    values:
-      excerpt_separator: <!--more-->
   # Defaults
   - scope:
       path: ""
@@ -53,4 +50,3 @@ defaults:
       # layout: "default"
       layout: "myDefault"
       showTOC: true
-  
