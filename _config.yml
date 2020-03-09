@@ -42,6 +42,16 @@ defaults:
       language: typescript
   - scope:
       path: ""
+      type: java
+    values:
+      language: java
+  - scope:
+      path: ""
+      type: sql
+    values:
+      language: sql
+  - scope:
+      path: ""
       type: tools
   # Defaults
   - scope:
