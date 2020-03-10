@@ -4,6 +4,17 @@ title: Javascript (Basic) Syntax
 
 This page contains handy information on the basics of the Javascript Syntax.
 
+# Basic JavaScript types/primatives
+
+The basic JavaScript Types/primatives are:
+* String
+* Boolean
+* Number
+* BigInt
+* Null
+* Undefined
+* Symbol (starting in ES6)
+* Object
 
 # Variables
 Can be named anything that starts with a letter, underscore ( `_` ), or dollar sign ( `$` ).
@@ -848,6 +859,46 @@ Arrow functions follow the form:
 
 `function name` = `arguments` => `return statement`;
 
+## getter function (`get` keyword)
+
+The `get` keyword binds an object property to a function that will be called when that property is looked up.
+
+{% highlight javascript %}
+
+    const obj = {
+        log: ['a', 'b', 'c'],
+        get latest() {
+            if (this.log.length == 0) {
+            return undefined;
+            }
+            return this.log[this.log.length - 1];
+        }
+    }
+    console.log(obj.latest);
+    // expected output: "c"
+{% endhighlight %}
+
+
+## setter function (`set` keyword)
+
+The `set` keyword binds an object property to a function to be called when there is an attempt to **set** that property.
+
+{% highlight javascript %}
+
+    const language = {
+        set current(name) {
+            this.log.push(name);
+        },
+        log: []
+    }
+
+    language.current = 'EN';
+    language.current = 'FA';
+
+    console.log(language.log);
+    // expected output: Array ["EN", "FA"]
+{% endhighlight %}
+
 # *Promise*s
 
 `Promises` are objects that captures the result of an asynchronous action with a particular programming interface (API) for handling the data when it finally came through, or failed.
@@ -933,6 +984,8 @@ You can use prototypes to assign functions and properties to a prototype so that
 The `class` keyword was introduced to help developers migrating from other languages. It is *Syntactic Sugar* and doesn't really change the way that the programming language works.
 
 Ultimately classes get turned into prototypes eventually.
+
+For more information on classes see [Classes in JavaScript]().
 
 # `import`
 

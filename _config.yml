@@ -35,24 +35,31 @@ defaults:
       type: javascript
     values:
       language: javascript
+      layout: language_subpage
   - scope:
       path: ""
       type: typescript
     values:
       language: typescript
+      layout: language_subpage
   - scope:
       path: ""
       type: java
     values:
       language: java
+      layout: language_subpage
   - scope:
       path: ""
       type: sql
     values:
       language: sql
+      layout: language_subpage
   - scope:
       path: ""
       type: tools
+    values:
+      # Use the language_subpage for the moment so that we get a page header
+      layout: language_subpage
   # Defaults
   - scope:
       path: ""
