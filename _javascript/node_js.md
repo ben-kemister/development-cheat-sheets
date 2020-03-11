@@ -14,6 +14,20 @@ According to [node.green](https://node.green/) version 10, or higher, covers 99%
 
 # NPM (Node Package Manager)
 
+## Project Dependencies
+
+### Dev Dependencies
+
+To install a library as a Dev dependency use the `--save-dev` at the end:
+
+{% highlight powershell %}
+
+    PS> npm i ts-jest --save-dev
+    // Installs as a devDependencies in the package.json
+    PS> npm i jest --save-dev
+   
+{% endhighlight %}
+
 ## Global Libraries
 
 In global mode (ie, with `-g` or `--global` appended to the command), it installs the current package context (ie, the current working directory) as a global package. For more information see [npm-install](https://docs.npmjs.com/cli/install).

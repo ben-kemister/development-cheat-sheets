@@ -16,7 +16,6 @@ Simply add a semicolon after the variable name and then the type.
 
     let trackingNumber: string = 'FD1234567';
     let createDate: Date = new Date();
-
 {% endhighlight %}
 
 ## Functions and parameters
@@ -33,7 +32,6 @@ Simply add a semicolon after the variable name and then the type.
         // Do stuff in here...
         return null;
     }   
-
 {% endhighlight %}
 
 You can also define the structure of the return object **in line** as follows:
