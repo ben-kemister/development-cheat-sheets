@@ -30,9 +30,9 @@ To print a particular environment variable:
    
 {% endhighlight %}
 
-## How do you set a variable?
+## *Temporary* variables
 
-You can set environmental variables using the following command:
+You can set a *temporary* environmental variables using the following command:
 
 {% highlight powershell %}
 
@@ -42,12 +42,24 @@ You can set environmental variables using the following command:
    
 {% endhighlight %}
 
-## Remove/Clear a variable
+YOu can Remove/Clear a *temporary* variable
 
  {% highlight powershell %}
 
     PS > $env:SLS_DEBUG = ""
     PS > $Env:SLS_DEBUG
     PS >
+
+{% endhighlight %}
+
+## *User* variables
+
+You can set user environmental variables using the following command:
+
+{% highlight powershell %}
+
+    PS > setx GLOBAL_AGENT_HTTP_PROXY 'http://userId:password@proxy:8080'
+    PS > $Env:GLOBAL_AGENT_HTTP_PROXY
+    http://userId:password@proxy:8080
    
 {% endhighlight %}
