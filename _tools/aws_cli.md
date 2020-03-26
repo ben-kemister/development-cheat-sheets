@@ -6,6 +6,21 @@ excerpt_separator: <!--more-->
 
 The [AWS Command Line Interface (CLI)](https://aws.amazon.com/cli/) is a unified tool to manage AWS services. Using the tool you can control multiple AWS services from the command line and automate them through scripts.
 <!--more-->
+# Configuration
+
+## Quickly Configuring the AWS CLI
+If you just want to use some simple commands, maybe with something like [localstack](https://github.com/localstack/localstack), then you can use the `aws configure` command:
+
+{% highlight powershell %}
+
+    PS> aws configure
+    AWS Access Key ID [None]: accessKeyId
+    AWS Secret Access Key [None]: secretAccessKey
+    Default region name [None]: ap-southeast-2
+    Default output format [None]:
+    PS>
+{% endhighlight %}
+
 # DynamoDB
 
 ## List tables
@@ -17,3 +32,6 @@ The command below will return a list of the tables in the DB at the end of the u
     aws dynamodb list-tables --endpoint-url http://localhost:4569   
 {% endhighlight %}
 
+# SQS (Simple Queue Service)
+
+CLI commands for the SQS can be found at the [cli reference](https://docs.aws.amazon.com/cli/latest/reference/sqs/).
