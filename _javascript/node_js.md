@@ -16,7 +16,27 @@ According to [node.green](https://node.green/) version 10, or higher, covers 99%
 
 ## Project Dependencies
 
-### Dev Dependencies
+Project dependencies are installed by using the cli command `npm install <dependency>` or `npm i <dependency>`.
+
+Dependencies can be removed by using the cli command `npm remove <dependency>`. To also update the `package.json` file add the `--save` flag:
+
+{% highlight powershell %}
+
+    // Removes the dependency and updates the package.json
+    PS> npm remove jest --save
+{% endhighlight %}
+
+### Install a specific version
+
+By default npm will install the latest version of a dependency, you can override this behavior if you need to install a specific version by using the following cli syntax `npm i <dependency>@<version>`. If you want that exact version specified in your `package.json` dependencies add the `--save --save-exact` flags. for example:
+
+{% highlight powershell %}
+
+    // Removes the dependency and updates the package.json
+    PS> npm i serverless-offline@5.12.1 --save-dev --save-exact
+{% endhighlight %}
+
+### Install Dev Dependencies
 
 To install a library as a Dev dependency use the `--save-dev` at the end:
 
@@ -49,6 +69,5 @@ In global mode (ie, with `-g` or `--global` appended to the command), it install
 
     // To see just the path run
     PS> npm list -g | head -1
-   
 {% endhighlight %}
 
