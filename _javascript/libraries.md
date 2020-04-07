@@ -8,6 +8,19 @@ This page contains some information about some handy or popular JavaScript libra
 
 [Lodash](https://lodash.com) is a popular library with methods which can help with type checking.
 
+## Importing Lodash
+
+The recommended way to import lodash is on a per function basis:
+
+{% highlight javascript %}
+    
+    import isArray from 'lodash/isArray';
+{% endhighlight %}
+
+Because lodash holds all it's functions in a single file, so rather than import the whole 'lodash' library at 100k, it's better to just import lodash's has function which is maybe 2k.
+
+For more information see [this stackoverflow post](https://stackoverflow.com/questions/35250500/correct-way-to-import-lodash).
+
 # Jest
 
 Jest is a JavaScript testing framework.

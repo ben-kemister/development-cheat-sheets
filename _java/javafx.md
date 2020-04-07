@@ -21,3 +21,21 @@ OpenJFX is a collaborative effort by many individuals and companies with the goa
 For more information see the [Key Event JavaDoc](https://docs.oracle.com/javase/8/javafx/api/javafx/scene/input/KeyEvent.html).
 
 
+# TableView
+
+## (Re)Applying Sorting after an update
+
+If you change the underlying ```ObservableList```, then you can reapply the (column) sorting that the user may have done by calling ```tableView.sort()```.
+
+A more complete example can be seen below:
+
+{% highlight java %}
+
+    fxBeans.clear();
+    fxBeans.addAll(beans.stream()
+        .map( bean -> new TableRowFxBean(bean)).collect(Collectors.toList()));
+    
+    // Restore Sorting, if applied
+    tableView.sort();
+{% endhighlight %}
+
