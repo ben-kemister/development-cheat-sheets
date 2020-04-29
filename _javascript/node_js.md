@@ -14,31 +14,15 @@ According to [node.green](https://node.green/) version 10, or higher, covers 99%
 
 # NPM (Node Package Manager)
 
-## Project Dependencies
+>Note: Most of the commands below can be run in **Global** mode by appending `-g` or `--global` to the command.
 
-Project dependencies are installed by using the cli command `npm install <dependency>` or `npm i <dependency>`.
+## `install` a package
 
-Dependencies can be removed by using the cli command `npm remove <dependency>`. To also update the `package.json` file add the `--save` flag:
-
-{% highlight powershell %}
-
-    // Removes the dependency and updates the package.json
-    PS> npm remove jest --save
-{% endhighlight %}
-
-### Install a specific version
-
-By default npm will install the latest version of a dependency, you can override this behavior if you need to install a specific version by using the following cli syntax `npm i <dependency>@<version>`. If you want that exact version specified in your `package.json` dependencies add the `--save --save-exact` flags. for example:
-
-{% highlight powershell %}
-
-    // Removes the dependency and updates the package.json
-    PS> npm i serverless-offline@5.12.1 --save-dev --save-exact
-{% endhighlight %}
+Project dependencies (packages) are installed by using the cli command `npm install <package>` or `npm i <package>`.
 
 ### Install Dev Dependencies
 
-To install a library as a Dev dependency use the `--save-dev` at the end:
+To install a library as a Dev package use the `--save-dev` at the end:
 
 {% highlight powershell %}
 
@@ -48,21 +32,37 @@ To install a library as a Dev dependency use the `--save-dev` at the end:
    
 {% endhighlight %}
 
-## Global Libraries
+### Install a specific version
 
-In global mode (ie, with `-g` or `--global` appended to the command), it installs the current package context (ie, the current working directory) as a global package. For more information see [npm-install](https://docs.npmjs.com/cli/install).
-
-### Install a Global Library
+By default npm will install the latest version of a package, you can override this behavior if you need to install a specific version by using the following cli syntax `npm i <package>@<version>`. If you want that exact version specified in your `package.json` dependencies add the `--save --save-exact` flags. for example:
 
 {% highlight powershell %}
 
-    PS> npm install -g serverless
-   
+    // Removes the package and updates the package.json
+    PS> npm i serverless-offline@5.12.1 --save-dev --save-exact
 {% endhighlight %}
 
-### List Global Libraries (and locations)
+## `remove` a package
+
+Packages can be removed by using the cli command `npm remove <package>`. To also update the `package.json` file add the `--save` flag:
 
 {% highlight powershell %}
+
+    // Removes the package and updates the package.json
+    PS> npm remove jest --save
+{% endhighlight %}
+
+## [list](https://docs.npmjs.com/cli/ls.html) packages installed
+
+The `npm list` command will print to stdout all the versions of packages that are installed, as well as their dependencies, in a tree-structure.
+
+{% highlight powershell %}
+
+    // Prints out all packages for the project
+    PS> npm list
+
+    // Prints out the version of the `tuyapi` package
+    PS> npm list tuyapi
 
     // To see which global libraries are installed and where they're located
     PS> npm list -g
@@ -70,4 +70,33 @@ In global mode (ie, with `-g` or `--global` appended to the command), it install
     // To see just the path run
     PS> npm list -g | head -1
 {% endhighlight %}
+
+## [outdated](https://docs.npmjs.com/cli/outdated) packages
+
+The `npm outdated [<package> ...]` command  will check the registry to see if any (or, specific) installed packages are currently outdated.
+
+{% highlight shell %}
+
+    /etc/openhab2/scripts/tuya-mqtt$ npm outdated
+    Package        Current  Wanted  Latest  Location
+    color-convert    1.9.3   1.9.3   2.0.1  tuya-mqtt
+    mqtt             3.0.0   3.0.0   4.0.0  tuya-mqtt
+    tuyapi           5.1.3   5.2.1   5.2.1  tuya-mqtt
+    /etc/openhab2/scripts/tuya-mqtt$
+
+{% endhighlight %}
+
+## [update](https://docs.npmjs.com/cli/update) packages
+
+The `npm update [-g] [<pkg>...]` command will update all the packages listed to the latest version.
+
+{% highlight shell %}
+
+    /etc/openhab2/scripts/tuya-mqtt$ npm update tuyapi
+    + tuyapi@5.2.1
+    updated 3 packages and audited 357 packages in 10.155s
+    /etc/openhab2/scripts/tuya-mqtt$
+
+{% endhighlight %}
+
 
