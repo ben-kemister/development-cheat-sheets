@@ -1,6 +1,7 @@
 ---
 tool: jest
 name: Jest
+category: javascript
 tags: 
  - javascript
  - testing

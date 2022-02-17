@@ -1,0 +1,19 @@
+---
+title: Posts
+layout: mainPage
+showTOC: false
+---
+<h1>Blog Posts</h1>
+
+This page contains a list of all of my blog posts on this site.
+
+<ul>
+  {% comment %}
+  comments go here!
+  {% endcomment %}
+  {% for post in site.posts %}
+  <li>
+    <a href="{{ post.url | relative_url}}">{{post.date | date_to_string}} - {{ post.title }} </a>
+  </li>
+  {% endfor %}
+</ul>

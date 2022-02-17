@@ -24,6 +24,8 @@ development: false
 collections:
   languages:
     output: true
+  frameworks:
+    output: true
   tools:
     output: true
   operating_systems:
@@ -79,5 +81,11 @@ defaults:
       type: tools
     values:
       # We want to make sure that we get a header on these pages
+      layout: page_with_tags
+  # Framework pages
+  - scope:
+      path: ""
+      type: frameworks
+    values:
       layout: page_with_tags
 

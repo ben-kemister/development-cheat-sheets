@@ -3,9 +3,13 @@
   link: /
 - name: Languages
   link: /languages/languages.html
+- name: Frameworks
+  link: /frameworks/frameworks.html
 - name: Tools
   link: /tools/tools.html
 - name: Operating Systems
-  link: /operating_systems/os.html
+  link: /operating_systems/operating_systems.html
+- name: Blog Posts
+  link: /posts.html
 - name: About
   link: /about.html
