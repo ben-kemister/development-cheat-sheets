@@ -1,16 +1,37 @@
 ---
 name: (Windows) PowerShell
 language: powershell
+tags:
+ - scripting
+ - windows
+ - powershell
 ---
 
 PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and associated scripting language.
 <!--more-->
 
-# Environmental Variables
+## Select-String (i.e. Grep for Powershell)
+
+The `Select-String` command is the PowerShell equivalent to grep in linux.
+See [here](https://adamtheautomator.com/powershell-grep/) for more information and examples.
+
+### File input
+
+``` cmd
+Select-String -Path "Users\*.csv" -Pattern "Joe"
+```
+
+### Stream input (piped from another command)
+
+``` cmd
+git config -l | Select-String -Pattern 'email'
+```
+
+## Environmental Variables
 
 Environment variables are global settings for your Linux, Mac, or Windows computer, stored for the system shell to use when executing commands. For more information see [HowTo: Set an Environment Variable in Windows - Command Line and Registry](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/).
 
-## Print Environmental Variables
+### Print Environmental Variables
 
 To list all environment variables.
 
@@ -29,7 +50,7 @@ To print a particular environment variable:
    
 {% endhighlight %}
 
-## *Temporary* variables
+### *Temporary* variables
 
 You can set a *temporary* environmental variables using the following command:
 
@@ -51,7 +72,7 @@ YOu can Remove/Clear a *temporary* variable
 
 {% endhighlight %}
 
-## *User* variables
+### *User* variables
 
 You can set user environmental variables using the following command:
 

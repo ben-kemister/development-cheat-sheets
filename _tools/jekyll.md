@@ -1,6 +1,8 @@
 ---
 tool: jekyll
 name: Jekyll
+tags:
+ - jekyll
 --- 
 
 [Jekyll](https://jekyllrb.com/) is a Ruby tool which can generate static websites and blogs using plain text files.
