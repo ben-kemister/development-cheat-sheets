@@ -1,7 +1,6 @@
 ---
 tool: serverless
 name: Serverless
-excerpt_separator: <!--more-->
 --- 
 
 [Serverless](https://serverless.com) is a framework which assist with building and running serverless functions (i.e. lambda).

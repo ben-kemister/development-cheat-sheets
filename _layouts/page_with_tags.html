@@ -2,11 +2,10 @@
 layout: default
 ---
 
+<h1>{{page.title}}</h1>
 
-<!-- Note there is no heading at the top of this page -->
-<link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+{% include page-tags.html %}
 
-{% include navigation.html %}
 <div class="page-content">
   {% if page.showTOC %}
   <details>
@@ -18,3 +17,5 @@ layout: default
 
   {{ content }}
 </div>
+
+<!--TODO add tags cloud here -->

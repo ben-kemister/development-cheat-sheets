@@ -1,0 +1,6 @@
+<!--TODO tags links -->
+<p>Tags:[
+    {% assign filtered_tags = page.tags %}
+    {% for tag in filtered_tags %}
+    {{tag}}
+    {% endfor %}]</p>

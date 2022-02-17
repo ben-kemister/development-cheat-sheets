@@ -1,6 +1,9 @@
 ---
 title: Home
 showTOC: false
+# layout: default
+# layout: basicPage
+layout: mainPage
 ---
 
 # Welcome and What is this...?

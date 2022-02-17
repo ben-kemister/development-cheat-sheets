@@ -14,59 +14,70 @@ kramdown:
 
 theme: jekyll-theme-cayman
 
+# https://goharsha.com/blog/jekyll-trick-implementing-devmode-and-livereload/
+development: false
+
+# Note: Most/All plugins will not work on GitHub pages
 # plugins:
 #   - jekyll-seo-tag
 
 collections:
   languages:
     output: true
-  javascript:
-    output: true
-  typescript:
-    output: true
   tools:
+    output: true
+  operating_systems:
     output: true
 
 defaults:
+  # Site Defaults
   - scope:
       path: ""
-      type: languages
+    values:
+      layout: "default"
+      excerpt_separator: "<!--more-->"
+      showTOC: false
+  # (Programming) Languages
+  - scope:
+      path: "_languages/*"
     values:
       layout: language
+      pageLevel: 1
   - scope:
-      path: ""
-      type: javascript
+      path: "_languages/*/*"
     values:
-      language: javascript
-      layout: language_subpage
+      layout: page_with_tags
+      showTOC: true
+      pageLevel: 2
   - scope:
-      path: ""
-      type: typescript
-    values:
-      language: typescript
-      layout: language_subpage
-  - scope:
-      path: ""
-      type: java
+      path: "_languages/java/*"
     values:
       language: java
-      layout: language_subpage
+      category: java
+      tags: java
   - scope:
-      path: ""
-      type: sql
+      path: "_languages/javascript/*"
+    values:
+      language: javascript
+      category: javascript
+      tags: javascript
+  - scope:
+      path: "_languages/sql/*"
     values:
       language: sql
-      layout: language_subpage
+      category: sql
+      tags: sql
+  - scope:
+      path: "_languages/typescript/*"
+    values:
+      language: typescript
+      category: typescript
+      tags: typescript
+  # Tools pages
   - scope:
       path: ""
       type: tools
     values:
-      # Use the language_subpage for the moment so that we get a page header
-      layout: language_subpage
-  # Defaults
-  - scope:
-      path: ""
-    values:
-      # layout: "default"
-      layout: "myDefault"
-      showTOC: true
+      # We want to make sure that we get a header on these pages
+      layout: page_with_tags
+

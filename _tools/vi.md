@@ -1,7 +1,9 @@
 ---
 tool: vi
 name: Unix VI text editor
-excerpt_separator: <!--more-->
+tags:
+ - unix
+ - linux
 --- 
 
 `vi` is a screen-oriented text editor originally created for the Unix operating system.

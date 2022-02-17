@@ -1,6 +1,9 @@
 <nav>
-    <!-- TODO Auto generate the navigation as a part of the site build -->
-    {% for item in site.data.navigation %}
-      <a href="{{ item.link | relative_url }}" {% if page.url == item.link %}class="active"{% endif %}>{{ item.name }}</a>
-    {% endfor %}
+  <!-- TODO Auto generate the navigation as a part of the site build -->
+  <!-- Uses the YAML file  /_data/navigation.yml -->
+  {% for item in site.data.navigation %}
+
+  <a href="{{ item.link | relative_url }}" {% if page.url==item.link %}class="active" {% endif %}>{{ item.name }}</a>
+  {% endfor %}
+
 </nav>

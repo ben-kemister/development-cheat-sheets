@@ -1,7 +1,10 @@
 ---
 tool: jest
 name: Jest
-excerpt_separator: <!--more-->
+tags: 
+ - javascript
+ - testing
+ - frameworks
 --- 
 
 [Jest](https://jestjs.io/en/) is a JavaScript Testing Framework with a focus on simplicity. It is compatible with many frameworks (including node) and TypeScript.

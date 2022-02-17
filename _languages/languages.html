@@ -1,0 +1,23 @@
+---
+title: Programming Languages
+layout: mainPage
+showTOC: false
+---
+<h1>Programming Languages</h1>
+
+<ul>
+  {% for language in site.languages %}
+  {% comment %}
+  We only want to show the first level of pages here (i.e. the parent pages)
+  and NOT the content from the current page
+  {% endcomment %}
+  {% if language.pageLevel == 1 and language.url != page.url %}
+  <li>
+    <h2><a href="{{ language.url | relative_url }}">{{ language.name }}</a></h2>
+    <!-- Just show the first paragraph of the page -->
+    <!-- <p>{{ language.excerpt | markdownify }}</p> -->
+    <p>{{ language.excerpt }}</p>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
