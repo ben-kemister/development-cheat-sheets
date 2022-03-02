@@ -11,5 +11,9 @@ You can host this site on your computer by using Jekyll, and using the command:
 
 ### Developer mode
 
-To get the browser to automatically reload when the content changes, use the command:
-`bundle exec jekyll serve --watch --config _config.yml,_development.yml`
+To get the browser to:
+* automatically reload when the content changes, 
+* show the draft pages in `_drafts`
+use the command:
+
+`bundle exec jekyll serve --watch --drafts --config _config.yml,_development.yml`

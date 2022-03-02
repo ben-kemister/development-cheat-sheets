@@ -11,5 +11,7 @@
   link: /operating_systems/operating_systems.html
 - name: Blog Posts
   link: /posts.html
+- name: Tags
+  link: /tag_cloud.html
 - name: About
   link: /about.html

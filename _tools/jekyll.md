@@ -7,13 +7,13 @@ tags:
 
 [Jekyll](https://jekyllrb.com/) is a Ruby tool which can generate static websites and blogs using plain text files.
 <!--more-->
-# Running (Locally)
+## Running (Locally)
 
 You can run Jekyll locally by using the following command `bundle exec jekyll serve`
 
-# Configuration ( `_config.yml`)
+## Configuration ( `_config.yml`)
 
-## baseurl
+### baseurl
 
 Use `baseurl` when you are building a site that doesn’t sit at the root of the domain. For example:
 
@@ -23,7 +23,7 @@ In this case you would need to set `baseurl: /example` in the `_config.yml` file
 
 For more info see [Clearing Up Confusion Around baseurl -- Again](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/)
 
-# Links (to site pages)
+## Links (to site pages)
 
 Links to other pages in Jekyll follow the basic [markdown]({% link _languages/markdown.md %}) format, but with a little liquid (I think) difference to insert the url details.
 
@@ -32,3 +32,7 @@ Links to other pages in Jekyll follow the basic [markdown]({% link _languages/ma
    [Link to a document]({% link _tools/jekyll.md %})
 
 {% endhighlight %}
+
+## Site Tag pages
+
+See [here](http://longqian.me/2017/02/09/github-jekyll-tag/).

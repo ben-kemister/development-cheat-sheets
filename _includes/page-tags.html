@@ -1,6 +1,13 @@
-<!--TODO tags links -->
-<p>Tags:[
-    {% assign filtered_tags = page.tags %}
-    {% for tag in filtered_tags %}
-    {{tag}}
-    {% endfor %}]</p>
+<!-- Page Tag links 
+    FIXME don't output the square brackets when there are no tags
+-->
+{% if page.tag != "" or page.tags != "" %}
+<span>
+    [
+    {% for tag in page.tags %}
+    {% capture tag_name %}{{ tag }}{% endcapture %}
+    <a href="{{site.baseurl}}/tag/{{ tag_name }}">{{ tag_name }}&nbsp;</a>
+    {% endfor %}
+    ]
+</span>
+{% endif %}

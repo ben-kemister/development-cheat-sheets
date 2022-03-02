@@ -1,8 +1,8 @@
 ---
-layout: mainPage
+layout: page_with_tags
 title:  "Welcome to Jekyll!"
 tags:
- - jekyll
+    - jekyll
 ---
 
 # Welcome

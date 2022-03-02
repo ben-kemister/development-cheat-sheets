@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<div class="post">
+    <h1>Tag: {{ page.tag }}</h1>
+    <h2>Posts</h2>
+    <ul>
+        {% for post in site.tags[page.tag] %}
+        <li><a href="{{ post.url | relative_url}}">{{ post.title }}</a> ({{ post.date | date_to_string }})<br>
+            {{ post.excerpt }}
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Other Pages</h2>
+    <ul>
+        {% for p in site.documents %}
+        {% if p.tags contains page.tag %}
+        <li><a href="{{ p.url | relative_url}}">{{ p.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<hr>
+
+{% include tag-cloud.html %}

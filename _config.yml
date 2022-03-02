@@ -22,6 +22,8 @@ development: false
 #   - jekyll-seo-tag
 
 collections:
+  tag:
+    output: true
   languages:
     output: true
   frameworks:
@@ -86,6 +88,18 @@ defaults:
   - scope:
       path: ""
       type: frameworks
+    values:
+      layout: page_with_tags
+  # Tag pages
+  - scope:
+      path: ""
+      type: tag
+    values:
+      layout: tagpage
+  # Operating System pages
+  - scope:
+      path: ""
+      type: operating_systems
     values:
       layout: page_with_tags
 

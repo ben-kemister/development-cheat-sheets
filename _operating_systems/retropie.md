@@ -3,6 +3,7 @@ title: RetroPie
 tags:
     - raspberry_pi
     - operating_system
+    - linux
     - games
     - wii
 ---
