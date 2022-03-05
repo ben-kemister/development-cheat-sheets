@@ -77,18 +77,18 @@ defaults:
       language: typescript
       category: typescript
       tags: typescript
+  - scope:
+      path: "_languages/html/*"
+    values:
+      language: html
+      category: html
+      tags: html
   # Tools pages
   - scope:
       path: ""
       type: tools
     values:
       # We want to make sure that we get a header on these pages
-      layout: page_with_tags
-  # Framework pages
-  - scope:
-      path: ""
-      type: frameworks
-    values:
       layout: page_with_tags
   # Tag pages
   - scope:

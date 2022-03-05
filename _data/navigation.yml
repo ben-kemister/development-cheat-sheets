@@ -3,8 +3,6 @@
   link: /
 - name: Languages
   link: /languages/languages.html
-- name: Frameworks
-  link: /frameworks/frameworks.html
 - name: Tools
   link: /tools/tools.html
 - name: Operating Systems
@@ -12,6 +10,6 @@
 - name: Blog Posts
   link: /posts.html
 - name: Tags
-  link: /tag_cloud.html
+  link: /tags.html
 - name: About
   link: /about.html

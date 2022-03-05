@@ -23,16 +23,16 @@ In this case you would need to set `baseurl: /example` in the `_config.yml` file
 
 For more info see [Clearing Up Confusion Around baseurl -- Again](https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/)
 
-## Links (to site pages)
+## Links (to other site pages)
 
-Links to other pages in Jekyll follow the basic [markdown]({% link _languages/markdown.md %}) format, but with a little liquid (I think) difference to insert the url details.
+Links to other pages in Jekyll follow the basic [markdown]({{site.baseurl}}{% link _languages/markdown.md %}) format, but with the use of a little liquid to insert the url details.
 
-{% highlight markdown %}
-
+If you do not use the `baseurl` configuration mentioned above, then use:
+``` markdown
    [Link to a document]({% link _tools/jekyll.md %})
+```
 
-{% endhighlight %}
-
-## Site Tag pages
-
-See [here](http://longqian.me/2017/02/09/github-jekyll-tag/).
+If your site makes use of the `baseurl` configuration you need to prepend this to your link like this:
+``` md
+   [JavaScript]({{site.baseurl}}{% link _languages/javascript.md %})
+```
