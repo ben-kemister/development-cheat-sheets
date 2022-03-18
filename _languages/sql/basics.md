@@ -3,6 +3,7 @@ title: SQL Basics
 tags:
  - database
  - sql
+ - oracle
 ---
 
 This page contains information and simple code examples about some common simple SQL statements.
