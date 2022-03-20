@@ -6,6 +6,7 @@ tags:
     - linux
     - k3s
     - project
+    - docker
 status: incomplete
 ---
 
@@ -21,7 +22,7 @@ There are two main drivers for this project:
 1. Enable me to host resilient services/containers (using the hardware I have lying around)
 2. Learn more about Kubernetes
 
-## Why not Docker (Swarm)
+## Why not Docker (or Docker Swarm)
 
 It appears that some of more *advanced* features (such as self healing containers, security, network storage) is a little beyond the capabilities of Docker (swarm).
 

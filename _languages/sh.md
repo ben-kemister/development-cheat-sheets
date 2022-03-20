@@ -6,7 +6,7 @@ tags:
   - bash
 ---
 
-sh (or the Shell Command Language) is a programming language described by the POSIX standard. 
+**sh** (or the Shell Command Language) is a programming language described by the POSIX standard. 
 It has many implementations (ksh88, dash, ...). bash can also be considered an implementation of sh.
 <!--more-->
 
@@ -45,3 +45,33 @@ Find all of the xml files in that have a modification time newer than 2022-03-08
 find -type f -name *.xml -newermt 2022-03-08
 ```
 
+## `mount` an NFS share
+
+The information below came from [here](https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/#mounting-nfs).
+
+Firstly make sure that you have installed `nfs-utils` for your OS, for debian:
+`sudo apt install nfs-common`
+
+Create the directory on the local machine where the remote file system will be mounted
+`sudo mkdir /media/nfs`
+
+For a temporary mount you can just run the mount command:
+```sh
+sudo mount <hostname_or_ip_address>:/volume1/Virtual_Machines/docker/volumes /mnt/docker-volumes
+```
+
+To remove the mount run: `sudo umount /mnt/docker-volumes`.
+
+### Mount at startup
+
+To mount the remote file system at startup you need to add a line to the `/etc/fstab` file
+``` sh
+sudo nano /etc/fstab
+```
+Add the following line to the file, replacing remote.server:/dir with the NFS server IP address or hostname and the exported directory:
+``` txt
+# <file system>    <dir>       <type>   <options>   <dump> <pass>
+
+remote.server:/dir /media/nfs  nfs      defaults    0       0
+```
+Mount the NFS share by running the following command: `sudo mount /media/nfs`
