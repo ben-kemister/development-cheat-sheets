@@ -2,7 +2,7 @@
 title: "Project: K3s on Raspberry Pi"
 tags:
     - raspberry_pi
-    - kubernates
+    - kubernetes
     - linux
     - k3s
     - project

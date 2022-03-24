@@ -13,11 +13,31 @@ It has many implementations (ksh88, dash, ...). bash can also be considered an i
 Because sh is a specification, not an implementation, `/bin/sh` is a symlink (or a hard link) to an actual implementation on most POSIX systems.
 
 # What is *bash*
-bash started as an sh-compatible implementation (although it predates the POSIX standard by a few years), but as time passed it has acquired many extensions. 
+bash started as an sh-compatible implementation (although it predates the POSIX standard by a few years), but as time passed it has acquired many extensions.
 Many of these extensions may change the behavior of valid POSIX shell scripts, so by itself bash is not a valid POSIX shell. 
 Rather, it is a dialect of the POSIX shell language.
 
+# Command line Shortcuts (and helpers)
+
+## Jump to a word
+
+`Ctrl + E` - go to the end of the line  
+`Ctrl + A` - go to the start of the line  
+`Alt + left` - go back one word  
+`Alt + right` - go right one word  
+`Ctrl + W` - delete the last word  
+
+## Search command history (reverse-i-search)
+
+You can search the command line history by using `Ctrl + R` then entering the search term.
+
+From this prompt `Ctrl + R` will cycle **backwards** and `Ctrl + S` (if supported) will cycle **forwards**.
+
 # Handy Commands
+
+## `history`
+
+`history` will display the command line history.
 
 ## `find`
 
