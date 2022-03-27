@@ -51,7 +51,9 @@ logfile=expdpDB11G.log
 Export data from your 11.2 XE database to the dump folder.
 
 ``` cmd
-expdp system/system_password expdp system/password parfile=params.par 
+expdp system/system_password 
+# for example
+expdp system/password parfile=export_params.par 
 ```
 
 ## Uninstall and Install new Version
@@ -116,3 +118,11 @@ this will need to be updated to:
 
 You can check the listener services that are running to identify the Service name you should be using with the command:
 `lsnrctl services`
+
+## Listener service failing to start (Windows)
+
+I encountered an issue on an older Windows PC which prevented the `OracleOraDB18Home1TNSListener` service to start automatically when the system was rebooted/restarted.
+
+I believe this was due a default timeout that windows has for services, if this is exceeded (like when there are a lot of processes starting on an older PC) it prevents the service from starting correctly.
+
+To fix this I changed the **Startup type** to **Automatic (Delayed Start)** which delays the start of the service, when there is less load on the PC.
