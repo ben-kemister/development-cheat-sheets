@@ -40,3 +40,9 @@ Use the docker `diff` command to examine the differences in the container betwee
 ``` sh
 sudo docker container diff official-nginx
 ```
+
+## Errors
+
+### `standard_init_linux.go:228: exec user process caused: exec format error`
+
+That error usually means you're trying to run a **amd64** image on a **non-amd64** host (such as 32-bit or ARM).

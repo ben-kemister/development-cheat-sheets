@@ -32,7 +32,7 @@ A ssh key can be generated using the command `ssh-keygen`
 
 Typically passwordless logins are based around having your public key listed in the `~/.ssh/authorized_keys` file on the host.
 
-## Passwordless logins using Putty
+## Passwordless logins using PuTTY
 
 You can configure Putty to use passwordless logins.
 
@@ -60,4 +60,3 @@ The script below will copy your public key to a remote linux host, this will all
 type $env:USERPROFILE\.ssh\id_rsa.pub | ssh {IP-ADDRESS-OR-FQDN} "cat >> .ssh/authorized_keys"
 ```
 See [this link](https://www.chrisjhart.com/Windows-10-ssh-copy-id/) for more information on this PowerShell command/script.
-

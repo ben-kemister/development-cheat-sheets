@@ -14,6 +14,22 @@ TBC
 
 The control pane components are started with the container runtime (i.e. Docker, CRI-O )
 
+## Interactive shell into container
+
+```sh
+sudo k3s kubectl exec -it task-pv-pod -- /bin/bash
+```
+
+## Top (resource usage)
+
+```sh
+# for the cluster nodes
+kubectl top node
+
+# for the pods
+kubectl top pod
+```
+
 ## Namespaces
 
 Kuber
@@ -38,4 +54,4 @@ kube-public       Available publicly, for use for things like container reposito
 
 # Config maps
 
-Best practice is to inject your config map as a **volume**.
+Best practice is to inject your config map as a volume.
