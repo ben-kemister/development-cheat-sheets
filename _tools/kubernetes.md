@@ -30,9 +30,16 @@ kubectl top node
 kubectl top pod
 ```
 
-## Namespaces
+## logs
 
-Kuber
+```sh
+kubectl logs <pod_name>
+
+# For example
+kubectl logs traefik-ingress-7f4f6cd549-jkdjl -n kube-system
+```
+
+## Namespaces
 
 default           
 kube-system       Used for the Kubernetes systems

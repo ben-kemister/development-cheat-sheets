@@ -121,7 +121,8 @@ sudo k3s kubectl delete pod my-httpd
 
 ## Enable the use of persistent volumes/data on my NAS
 
-Install the nfs client on all the k3s nodes.
+First install the nfs client on all the k3s nodes.
+
 ```sh
 sudo apt-get update && sudo apt-get install -y nfs-common
 ```
@@ -135,3 +136,21 @@ sudo apt-get update && sudo apt-get install -y nfs-common
 | `sudo k3s kubectl get pods -o wide` | show the pods, and which nodes they are running on |
 | `sudo k3s kubectl top nodes` | shows a *top* of the nodes in the cluster |
 | `sudo k3s kubectl top pods` | shows a *top* of the pods in the cluster |
+
+## K3s bash aliases
+
+My experience is the there is a lot of use of the command line so setting up some bash aliases will make your life a lot easier and save on keystrokes for common commands.
+
+```sh
+ssh <user>@<server>
+
+# Create edit the .bash_aliases file
+nano ~/.bash_aliases
+
+# add the following line 
+alias k='sudo k3s kubectl'
+# Write out the file (Ctrl + O), and exit (Ctrl + X)
+
+# Load the aliases file, so that you don't need to log out of the ssh session.
+. ~/.bash_aliases
+```
