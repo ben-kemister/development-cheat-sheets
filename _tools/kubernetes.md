@@ -62,3 +62,9 @@ kube-public       Available publicly, for use for things like container reposito
 # Config maps
 
 Best practice is to inject your config map as a volume.
+
+## Handy Commands
+
+| Command | Description |
+| --- | --- |
+| `k scale deployment gogs --replicas=0` | Scale the pods to 0 |
