@@ -44,7 +44,7 @@ Additional you need to have a desktop environment to run Electron (the display c
 
 My RetroPie setup did not have a desktop installed, but it was easily installed using the RetroPie Setup Script (`~/RetroPie-Setup/retropie_setup.sh`).  
 In Configuration / Tools >> Raspbiantools >> Install Pixel Desktop Environment.  
-See [my RetroPie for more details on this]({{site.baseurl}}{% link _operating_system/retropie.md %})
+See [my RetroPie for more details on this]({{site.baseurl}}{% link _operating_systems/retropie.md %})
 
 ### Raspberry Pi 3A+ to slow for MagicMirror?
 
