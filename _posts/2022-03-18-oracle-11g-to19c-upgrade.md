@@ -125,4 +125,4 @@ I encountered an issue on an older Windows PC which prevented the `OracleOraDB18
 
 I believe this was due a default timeout that windows has for services, if this is exceeded (like when there are a lot of processes starting on an older PC) it prevents the service from starting correctly.
 
-To fix this I changed the **Startup type** to **Automatic (Delayed Start)** which delays the start of the service, when there is less load on the PC.
+To fix this I changed the **Startup type** to **Automatic (Delayed Start)** which delays the start of the service (defaults to 120 seconds), to when there is less load on the PC.
