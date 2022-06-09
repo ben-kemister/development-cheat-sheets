@@ -83,6 +83,12 @@ defaults:
       language: html
       category: html
       tags: html
+  - scope:
+      path: "_languages/python/*"
+    values:
+      language: python
+      category: python
+      tags: python
   # Tools pages
   - scope:
       path: ""
