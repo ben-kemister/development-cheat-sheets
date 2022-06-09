@@ -1,8 +1,5 @@
 ---
 title: Python file operations
-tags:
- - python
- - development
 ---
 
 This page contains information and simple code examples about using Python to interact with the file system.

@@ -1,8 +1,5 @@
 ---
 title: Python design patterns
-tags:
- - python
- - development
 ---
 
 This page contains information and simple code examples about some useful design patterns in Python
