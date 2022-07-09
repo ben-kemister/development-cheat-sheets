@@ -7,12 +7,25 @@ tags:
 
 Git  is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
 <!--more-->
+## Add a git configuration
+
+To add/alter a git configuration setting use the following command:
+
+```sh
+# git config [options] <configuration.item> <value>
+
+git config --global http.sslverify true
+```
+
+You can make the configuration change global by using the `--global` option.
+
 ## Handy Commands
 
 | Command                             | Description                                      |
 | ----------------------------------- | ------------------------------------------------ |
 | `git remote -v`                     | Prints the remotes for this git repo             |
 | `git commit --amend --reset-author` | Reset the author information on your last commit |
+| `git config http.sslverify false` | Set the current project to disable ssl certificate checks, handy for self hosted repos | 
 
 ## Troubleshooting
 

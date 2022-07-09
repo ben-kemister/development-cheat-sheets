@@ -25,3 +25,9 @@ The memory flag can also be specified in different sizes, such as kilobytes, meg
 -Xmx512m
 -Xmx8g
 ```
+
+## Handy methods
+
+### Arrays.asList(array)
+
+Converts an array of objects into a list, great one liner to use when you need to iterate over the array.
