@@ -10,6 +10,15 @@ tags:
 PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and associated scripting language.
 <!--more-->
 
+## Multi-line commands
+
+You can use the backtick character ` to run commands across multiple lines in PowerShell.
+
+```shell
+date; `
+hostname
+```
+
 ## Select-String (i.e. Grep for Powershell)
 
 The `Select-String` command is the PowerShell equivalent to grep in linux.
@@ -17,7 +26,7 @@ See [here](https://adamtheautomator.com/powershell-grep/) for more information a
 
 ### File input
 
-``` cmd
+```shell
 Select-String -Path "Users\*.csv" -Pattern "Joe"
 ```
 
