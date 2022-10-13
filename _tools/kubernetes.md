@@ -65,7 +65,7 @@ kubectl top pod
 
 ### logs
 
-To view the logs for a pod use the commmads below:
+To view the logs for a pod use the commands below:
 
 ```sh
 kubectl logs <pod_name>
@@ -92,6 +92,8 @@ kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install
 
 | Command | Description |
 | --- | --- |
-| `k scale deployment gogs --replicas=0` | Scale the pods to 0 |
-| `k scale deployment magicmirror --replicas=0 && k scale deployment magicmirror --replicas=1` | Restart a deployment. Useful if you need to reload data from a ConfigMap or similar) |
-| `k logs $(k get po | grep magicmirror | awk '{ print $1}') -c install-modules` | Show the logs for a specific (init) container |
+| `kubectl scale deployment gogs --replicas=0` | Scale the pods to 0 |
+| `kubectl scale deployment magicmirror --replicas=0 && kubectl scale deployment magicmirror --replicas=1` | Restart a deployment. Useful if you need to reload data from a ConfigMap or similar) |
+| `kubectl logs $(k get po | grep magicmirror | awk '{ print $1}') -c install-modules` | Show the logs for a specific (init) container |
+| `kubectl drain --ignore-daemonsets` <node> | Drain a node in preparation for a maintenance activity |
+| `kubectl uncordon <node>` | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |

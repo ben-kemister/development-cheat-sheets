@@ -99,4 +99,6 @@ The `npm update [-g] [<pkg>...]` command will update all the packages listed to 
 
 {% endhighlight %}
 
+## [clean-install (ci)](https://docs.npmjs.com/cli/v8/commands/npm-ci)
 
+The `npm clean-install` or `npm ci` is similar to `npm install`, except it's meant to be used in automated environments such as test platforms, continuous integration, and deployment -- or any situation where you want to make sure you're doing a clean install of your dependencies.
