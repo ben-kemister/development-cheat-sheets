@@ -8,7 +8,7 @@ tags:
 
 This page contains information and simple code examples about some common simple SQL statements.
 
-# Create Table
+## Create Table
 
 The syntax for the `CREATE TABLE` statement in Oracle/PLSQL is:
 
@@ -38,7 +38,7 @@ A basic Oracle CREATE TABLE example.
 
 For more detailed information [TechOnTheNet](https://www.techonthenet.com/oracle/tables/create_table.php) has a great reference page.
 
-# Insert
+## Insert
 
 The *INSERT* statement is used to insert a single record or multiple records into a table.
 
@@ -60,7 +60,7 @@ The syntax for the Oracle *INSERT* statement when inserting a single record usin
         (COMPANY_TYPE_SEQ.nextval, 'COMPANY', 'A corporation where the ownership is divided into shares');
 {% endhighlight %}
 
-# Alter Table
+## Alter Table
 
 The `ALTER TABLE` statement to add a column, modify a column, drop a column, rename a column, add a constraint or rename a table.
 
@@ -72,8 +72,7 @@ The syntax To ADD A COLUMN in a table, the Oracle ALTER TABLE syntax is:
     ADD column_name column_definition;
 {% endhighlight %}
 
-
-## Add foreign key constraint
+### Add foreign key constraint
 
 {% highlight sql %}
 

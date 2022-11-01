@@ -36,6 +36,59 @@ Select-String -Path "Users\*.csv" -Pattern "Joe"
 git config -l | Select-String -Pattern 'email'
 ```
 
+## String Concatenation (`+`)
+
+The `+` operator is used to concatenate strings in Powershell, for example:
+
+```shell
+$firstName = "Shell"
+$lastName = "Geek"
+
+$fullName = $firstName + $lastName
+
+Write-Host "Concatenate String:"
+$fullName
+```
+
+For more information see [shellgeek.com](https://shellgeek.com/powershell-concatenate-string/)
+
+## Join-Path
+
+If you need to combine (directory) paths in PowerShell you can use `Join-Path`:
+
+```shell
+PS C:\> Join-Path -Path "path" -ChildPath "childpath"
+
+path\childpath
+```
+
+For more information see the [PowerShell doco](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/join-path.)
+
+## Remove-Item
+
+You can use the `Remove-Item` function to delete files:
+
+```shell
+# For a single file
+Remove-Item 'D:\temp\Test Folder\test.txt'
+
+# Or a folder and sub-files/folders recursively with
+Remove-Item 'D:\temp\Test Folder' -Recurse
+```
+
+## foreach - file
+
+You can you a combination of `Get-ChildItem` and the `foreach` loop to process a set of files:
+
+```shell
+# Get all sql files...
+$files = Get-ChildItem $DataDir\*.sql
+foreach ($file in $files) {
+    Write-Output 'Processing sql script: ' $file.Fullname
+    ## Do something
+}
+```
+
 ## Environmental Variables
 
 Environment variables are global settings for your Linux, Mac, or Windows computer, stored for the system shell to use when executing commands. For more information see [HowTo: Set an Environment Variable in Windows - Command Line and Registry](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/).
