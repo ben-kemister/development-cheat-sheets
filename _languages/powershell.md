@@ -64,7 +64,7 @@ path\childpath
 
 For more information see the [PowerShell doco](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/join-path.)
 
-## Remove-Item
+## Remove-Item - Delete File(s)
 
 You can use the `Remove-Item` function to delete files:
 
@@ -89,6 +89,10 @@ foreach ($file in $files) {
 }
 ```
 
+## $PSScriptRoot – Get full path of executing script
+
+`$PSScriptRoot` is an automatic variable in PowerShell which contains the full path to the script.
+
 ## Environmental Variables
 
 Environment variables are global settings for your Linux, Mac, or Windows computer, stored for the system shell to use when executing commands. For more information see [HowTo: Set an Environment Variable in Windows - Command Line and Registry](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/).
@@ -97,51 +101,41 @@ Environment variables are global settings for your Linux, Mac, or Windows comput
 
 To list all environment variables.
 
-{% highlight powershell %}
-
-    PS > Get-ChildItem Env:
-   
-{% endhighlight %}
+```shell
+Get-ChildItem Env:
+``
 
 To print a particular environment variable:
 
-{% highlight powershell %}
-
-    PS > echo $Env:ProgramFiles
-    C:\Program Files
-   
-{% endhighlight %}
+```shell
+echo $Env:ProgramFiles
+C:\Program Files
+```
 
 ### *Temporary* variables
 
 You can set a *temporary* environmental variables using the following command:
 
-{% highlight powershell %}
-
+```shell
     PS > $Env:FOO = "hello world"
     PS > $Env:FOO
     hello world
-   
-{% endhighlight %}
+```
 
 YOu can Remove/Clear a *temporary* variable
 
- {% highlight powershell %}
-
+```shell
     PS > $env:SLS_DEBUG = ""
     PS > $Env:SLS_DEBUG
     PS >
-
-{% endhighlight %}
+```
 
 ### *User* variables
 
 You can set user environmental variables using the following command:
 
-{% highlight powershell %}
-
+```shell
     PS > setx GLOBAL_AGENT_HTTP_PROXY 'http://userId:password@proxy:8080'
     PS > $Env:GLOBAL_AGENT_HTTP_PROXY
     http://userId:password@proxy:8080
-   
-{% endhighlight %}
+```
