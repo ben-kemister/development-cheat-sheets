@@ -78,13 +78,13 @@ This happens when the build container is not able to resolve the <registry_hostn
 ERROR: failed to solve: failed to do request: Head "https://<registry_hostname>/v2/<image_name>/blobs/sha256:699020637dddc10710f773812992bbccd136879ea4680f4a3a819e95c6b65055": dial tcp: lookup <registry_hostname> on 192.168.65.5:53: no such host
 ```
 
-Even using the builder created with `docker buildx create --driver docker-container --driver-opt network=host --use` fails to resolve the IP address of the registry.
+Even using the builder created with `docker buildx create --driver docker-container --driver-opt network=host --use` fails to resolve the IP address of the registry. For more details on the creation of a buildx builder see [this page](https://docs.docker.com/engine/reference/commandline/buildx_create/#driver-opt).
 
 The workaround is to add the details of the private registry to the running build container's /etc/hosts file:
 
-# Find the id if the running build container: docker ps
-# Get a terminal in the container: docker exec -it <build_container_id> /bin/sh
-# Edit the /etc/hosts file: vi /etc/hosts
-# Add a line for the private registry: 192.168.0.X   <private_registry_hostname>
+# Find the id if the running build container: `docker ps`
+# Get a terminal in the container: `docker exec -it <build_container_id> /bin/sh`
+# Add your private regisrty to the hosts file `echo "192.168.0.xxx    <your_private_registry_hostname>" >> /etc/hosts`
+# Done!
 
 This problem looks to be related to: [Docker Buildx issue 1461](https://github.com/docker/buildx/issues/1461#issuecomment-1358979427).

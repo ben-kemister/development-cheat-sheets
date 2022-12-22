@@ -102,3 +102,18 @@ The `npm update [-g] [<pkg>...]` command will update all the packages listed to 
 ## [clean-install (ci)](https://docs.npmjs.com/cli/v8/commands/npm-ci)
 
 The `npm clean-install` or `npm ci` is similar to `npm install`, except it's meant to be used in automated environments such as test platforms, continuous integration, and deployment -- or any situation where you want to make sure you're doing a clean install of your dependencies.
+
+## [link](https://docs.npmjs.com/cli/v7/commands/npm-link/)
+
+This command is handy if you are actively working on a module and would like these changes reflected immediately within the containing project/app.
+
+Firstly, it creates a global link to the folder containing the source code for the folder.
+Then you link the parent app/project to the global link so that it uses the source code folder, rather than the real npm module.
+
+``` sh
+cd ~/projects/some-module       # go into the package directory
+npm link                        # creates global link
+cd ~/projects/node-bloggy-app   # go into some other package directory.
+npm link some-module            # link-install the package
+
+```
