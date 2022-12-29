@@ -65,6 +65,35 @@ Find all of the xml files in that have a modification time newer than 2022-03-08
 find -type f -name *.xml -newermt 2022-03-08
 ```
 
+## File permissions
+
+Every file and folder contains 8-bit data that controls the permissions. In its basic binary form, 000 means that no permissions of any form are granted.
+
+When you set a “Read” permission, it adds 4-bit to the data, making it “100” (in binary format) or a “4” in the usual decimal format. Setting a “Write” permission will add 2-bit to the data, making it “010” and “2” in decimal form. Lastly, setting an “Execute” permission adds 1-bit to the data, which will result in “001,” or “1” in decimal form. In short:
+
+* Read is equivalent to “4.”
+* Write is equivalent to “2.”
+* Execute is equivalent to “1.”*
+
+In a nutshell, setting permissions is basic math. For example, to set “Read and Write” permissions, we combine 4 and 2 to get 6. Of course, there are other permutations:
+
+* 0: No permission
+* 1: Execute
+* 2: Write
+* 3: Write and Execute
+* 4: Read
+* 5: Read and Execute
+* 6: Read and Write
+* 7: Read, Write, and Execute
+* A complete set of file permissions assigns the first digit to the Owner, the second digit to the Group, and the third to Others. Here are some of the commonly used permissions:
+
+755. This set of permissions is commonly used by web servers. The owner has all the permissions to read, write and execute. Everyone else can read and execute but cannot make changes to the file.
+644. Only the owner can read and write. Everyone else can only read. No one can execute this file.
+655. Only the owner can read and write and cannot execute the file. Everyone else can read and execute and cannot modify the file.
+As for 777, this means every user can Read, Write, and Execute. Because it grants full permissions, it should be used with care. However, in some cases, you’ll need to set the 777 permissions before you can upload any file to the server.
+
+For more [information on 0777](https://www.maketecheasier.com/file-permissions-what-does-chmod-777-means/)
+
 ## `mount` an NFS share
 
 The information below came from [here](https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/#mounting-nfs).
@@ -95,3 +124,22 @@ Add the following line to the file, replacing remote.server:/dir with the NFS se
 remote.server:/dir /media/nfs  nfs      defaults    0       0
 ```
 Mount the NFS share by running the following command: `sudo mount /media/nfs`
+
+
+## `mount` a CIFS share
+
+# Install cifs-utils: `sudo apt-get install cifs-utils`
+# Create the directory: `mkdir /mnt/cifs`
+# Create a file to contain the credenials: `nano ~/.smbcredentials`
+## Insert the details of the credientials:
+``` sh
+username=<your_username>
+password=<your_password>
+```
+# Now edit the fstab (so that it mounts on boot): `sudo nano /etc/fstab`
+## Add the details of your mount: `//<hostname>/shared/folder /mnt/cifs cifs credentials=/home/<user>/.smbcredentials,rw,file_mode=0777,dir_mode=0777,addr=<HOST_IP_ADDRESS>,nounix,noserverino,vers=2.0 0 0`
+# Mount the share: `mount -a`
+
+Note the version `vers` may be different depending on the capabilities of the cifs server.
+
+These instructions were baes on the information [here](https://marzorati.co/how-to-mount-cifs-share-permanently-on-ubuntu/).

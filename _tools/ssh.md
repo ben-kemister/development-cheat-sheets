@@ -56,6 +56,6 @@ The steps above was mostly inspired from the information [here](https://www.host
 The script below will copy your public key to a remote linux host, this will allow for password less logins.
 
 ``` ps
-type $env:USERPROFILE\.ssh\id_rsa.pub | ssh {IP-ADDRESS-OR-FQDN} "cat >> .ssh/authorized_keys"
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh [user@]<IP-ADDRESS-OR-FQDN> "cat >> .ssh/authorized_keys"
 ```
 See [this link](https://www.chrisjhart.com/Windows-10-ssh-copy-id/) for more information on this PowerShell command/script.
