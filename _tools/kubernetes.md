@@ -97,3 +97,5 @@ kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install
 | `kubectl logs $(k get po | grep magicmirror | awk '{ print $1}') -c install-modules` | Show the logs for a specific (init) container |
 | `kubectl drain --ignore-daemonsets` <node> | Drain a node in preparation for a maintenance activity |
 | `kubectl uncordon <node>` | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |
+| `kubectl cp my-pod:my-file my-file`| Copy a file from a pod to the host | 
+| `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring` | Watch a specific resource(s) based on a label |
