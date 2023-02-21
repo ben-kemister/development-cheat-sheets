@@ -6,6 +6,7 @@ tags:
  - linux
  - development
  - kubernetes
+ - kubectl
 --- 
 
 TBC
