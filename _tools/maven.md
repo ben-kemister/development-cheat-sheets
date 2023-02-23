@@ -11,6 +11,12 @@ Maven is a build automation tool used primarily for Java projects. Maven can als
 <!--more-->
 ## Handy Commands
 
+| Command | Description |
+| ----  | ---- |
+| `mvn dependency:tree` | Print Dependency Tree |
+| `mvn test-compile` | Compiles the test classes (but doesn't run them) | 
+
+
 ### (Re) Download project dependencies
 
 In Maven, you can use Apache Maven Dependency Plugin, goal `dependency:purge-local-repository` to remove the project dependencies from the local repository, and re-download it again.

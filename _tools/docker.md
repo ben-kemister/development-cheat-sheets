@@ -12,7 +12,9 @@ Docker is a set of platform as a service products that use OS-level virtualizati
 
 Note that Docker is one of many container runtimes that are available, other runtimes include [rkt](https://coreos.com/rkt), [containerd](https://containerd.io) and [podman](https://podman.io).
 
-# Overview
+## Copy files from container to host
+
+`docker cp <container_id>:/path/filename.txt ~/Desktop/filename.txt`
 
 ## Networking
 
