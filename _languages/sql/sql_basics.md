@@ -64,6 +64,8 @@ The syntax for the Oracle *INSERT* statement when inserting a single record usin
 
 The `ALTER TABLE` statement to add a column, modify a column, drop a column, rename a column, add a constraint or rename a table.
 
+### Add a Column
+
 The syntax To ADD A COLUMN in a table, the Oracle ALTER TABLE syntax is:
 
 {% highlight sql %}
@@ -71,6 +73,15 @@ The syntax To ADD A COLUMN in a table, the Oracle ALTER TABLE syntax is:
     ALTER TABLE table_name
     ADD column_name column_definition;
 {% endhighlight %}
+
+### Drop a column
+
+For one, or more columns use):
+```sql
+ALTER TABLE table_name
+    drop
+    (col_name1, col_name2);
+```
 
 ### Add foreign key constraint
 
