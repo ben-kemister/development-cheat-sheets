@@ -57,3 +57,13 @@ export const PrivateRoute = (props) => {
     )
 }
 ```
+
+## Hooks
+
+### useEffect hook
+
+The Effect Hook lets you perform side effects in React functional components. Examples of side effects include fetching data, setting up subsciptions and manually changing the DOM.
+
+By using the useEffect hook you tell React that the component needs to do something after render.
+
+The useEffect hook also takes a list of dependencies, which you can use to trigger the useEffect hook if their state changes.
