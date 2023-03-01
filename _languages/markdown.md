@@ -5,6 +5,14 @@ language: markdown
 
 Markdown is a lightweight markup language with plain-text-formatting syntax. Its design allows it to be converted to many output formats.
 <!--more-->
+
+## Italics
+
+To italises a word just wrap it in either a `_` or `*`, for example:
+
+With underscores `_italics_` => _italics_
+With asterix `*italics*` => *italics*
+
 ## New line
 
 By default Markdown will collapse lines separated but just a carriage return will be collapsed into one line.  
