@@ -46,9 +46,12 @@ Play In Editor (PIE) starts the game at the Player Start location and give you c
 
 ### Handy Nodes
 
-| Node name | Description | 
-| --- | --- |
-| Is Valid | Checks that the variable/object is empty/null |
+| Node name | Description | Link(s) |
+| --- | --- | --- |
+| Is Valid | Checks that the variable/object is empty/null ||
+| Format Text | Allows you to format text (and Strings) | [Formatting](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Localization/Formatting/)|
+
+### Flow Control
 
 
 
