@@ -41,6 +41,7 @@ Play In Editor (PIE) starts the game at the Player Start location and give you c
 | ---- | ----|
 | `Alt + P` | Starts PIE mode |
 | `Shift + F1` | Unlocks the mouse cursor from the PIE window |
+| `P` | (In Level editor) Shows collisions |
 
 ## Blueprints
 
@@ -74,6 +75,11 @@ This is likely due to the engine unable to open the default map.
 Open the `<game_dir>/Config/DefaultEngine.ini` and set `EditorStartupMap=` to nothing.
 
 See: [Stackoverflow](https://stackoverflow.com/questions/68628136/unreal-engine-5-assertion-failed-world-partition)
+
+
+### Complex collisions only return default physical material
+
+This might be [due to a bug in UE](https://forums.unrealengine.com/t/physical-material-override-w-complex-collision-doesnt-work/417801) but the work around is to set the `Phys Material Override` on the Static Mesh Component in the Map/level.
 
 
 ## Links
