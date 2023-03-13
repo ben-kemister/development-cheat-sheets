@@ -18,18 +18,20 @@ Socket - Allows you to attached weapson/items to a skeliton
 Cast - Allows you to access variables from another class
 
 Animation Notifies - Used to add sounds and effects (such as particle effects) to an animation
-Amination Montage - Allows you to call animations from a Blue Print
-    ** To play montage you need to add a Default slot to your AnimGraph
+Amimation Montage - Allows you to call animations from a Blue Print, animation montage also handles the blending of the animation with the characters current movements.
+    ** To play montage you need to add a **Default slot** to your AnimGraph
+    ** 
 Widgets - Used to add user interface on your character
 Physics Asset - A group of different capsuals around a skeletal mesh
 Physical Material/Surface - an object that can be assigned to surfaces in order to differentiate how hits/collisions effects are handled 
 
 
-## Handy Hints & Tips
+## Map Editor
 
-| Task/Action | How to |
-| ----- | ---- | 
-| Remove a node link | Alt + click on input or output point of the line |
+| Shortcut   | Description                                        |
+|------------|----------------------------------------------------| 
+| `Ctrl + D` | Duplicate the current item                         |
+| `SPACE`    | Cycle through the placement/rotation/scale widgets |
 
 ## Play In Editor (PIE)
 
@@ -45,6 +47,13 @@ Play In Editor (PIE) starts the game at the Player Start location and give you c
 
 ## Blueprints
 
+### Handy Hints & Tips
+
+| Task/Action | How to |
+| ----- | ---- | 
+| Remove a node link | Alt + click on input or output point of the line |
+| Split a node link | Double click on the node link |
+
 ### Handy Nodes
 
 | Node name | Description | Link(s) |
@@ -52,10 +61,21 @@ Play In Editor (PIE) starts the game at the Player Start location and give you c
 | Is Valid | Checks that the variable/object is empty/null ||
 | Format Text | Allows you to format text (and Strings) | [Formatting](https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/Localization/Formatting/)|
 
-### Flow Control
+## Animation Blue Prints
 
+Make sure you have a `Default Slot` before your output pose so that you can play animation montages, such as death and attack montages.
 
+## Animation Montage
 
+### Death Montage
+
+Make sure you uncheck the `Enable Auto Blend out` for death montages to prevent the animation reseting to the default pose after the death animation has been played.
+
+### Audio Attenuation
+
+If your attenuation is not working correctly you may need to set the Virtualization Mode of the audio to `Play when Silent`.
+
+Sound Wave --> Details --> Voice Management --> Virtualization Mode --> Play when Silent
 
 ## Collisions
 
@@ -86,3 +106,4 @@ This might be [due to a bug in UE](https://forums.unrealengine.com/t/physical-ma
 
 ### Tutorials
 
+* [Create a Zombie First Person Shooter Game | Unreal Engine 5 Beginner Tutorial](https://www.youtube.com/watch?v=qOam3QjGE8g)

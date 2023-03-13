@@ -42,3 +42,20 @@ kube-public       Available publicly, for use for things like container reposito
 
 Best practice is to inject your config map as a volume.
 
+## Resource Limits
+
+You can apply resource limits to prevent containers from using all available resources on a node.
+
+```yaml
+...
+      containers:
+        - name: gogs
+          image: gogs/gogs:0.12.6
+          imagePullPolicy: IfNotPresent
+          ...
+          resources:
+            limits:
+              # Limit the memory use as it can get a little wild if left unbound
+              memory: 512Mi
+              cpu: 500m
+```
