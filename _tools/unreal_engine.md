@@ -69,7 +69,7 @@ Make sure you have a `Default Slot` before your output pose so that you can play
 
 ### Death Montage
 
-Make sure you uncheck the `Enable Auto Blend out` for death montages to prevent the animation reseting to the default pose after the death animation has been played.
+Make sure you uncheck the `Enable Auto Blend out` for death montages to prevent the animation resetting to the default pose after the death animation has been played.
 
 ### Audio Attenuation
 
