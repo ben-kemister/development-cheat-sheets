@@ -8,10 +8,25 @@ tags:
  - kubectl
 --- 
 
-TBC
+Kubernetes provides a command line tool _**kubectl**_ for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
 <!--more-->
+For configuration, kubectl looks for a file named config in the `$HOME/.kube` directory. 
+You can specify other [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) 
+files by setting the `KUBECONFIG` environment variable or by setting the `--kubeconfig` flag.
 
 ## kubectl Commands
+
+There are heaps of wonderful kubectl commands which can make life a little easier. 
+See [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for an overview.
+
+### Get <Resource>
+
+| Command                                                                                  | Description                                   |
+|------------------------------------------------------------------------------------------|-----------------------------------------------|
+| `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring`                        | Watch a specific resource(s) based on a label |
+| `kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running` | Get a running pod based on a label            |
+
+kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running
 
 ### Interactive shell into container
 
@@ -57,7 +72,31 @@ kubectl logs <pod-name> -c <init-container-2>
 kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install-modules
 ```
 
-## Handy Commands
+### Custom columns
+Using the flag `-o custom-columns=<header-name>:<field>` will let you customize the output.
+
+Example with resource name, under header `NAME`
+`kubectl get pods -o custom-columns=NAME:metadata.name`
+output
+```shell
+NAME
+myapp-5b77df6c48-dbvnh
+myapp-64d5985fdb-mcgcn
+httpd-9497b648f-9vtbl
+```
+
+### Omit headers
+The proper solution to omit the header line is by using the flag `--no-headers`
+
+`kubectl get pods -o custom-columns=NAME:metadata.name --no-headers`
+Example output
+```shell
+myapp-5b77df6c48-dbvnh
+myapp-64d5985fdb-mcgcn
+httpd-9497b648f-9vtbl
+```
+
+## Other Handy Commands
 
 | Command | Description |
 | --- | --- |
@@ -67,4 +106,3 @@ kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install
 | `kubectl drain --ignore-daemonsets` <node> | Drain a node in preparation for a maintenance activity |
 | `kubectl uncordon <node>` | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |
 | `kubectl cp my-pod:my-file my-file`| Copy a file from a pod to the host | 
-| `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring` | Watch a specific resource(s) based on a label |
