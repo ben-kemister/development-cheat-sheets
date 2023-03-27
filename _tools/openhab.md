@@ -2,7 +2,7 @@
 tool: openhab 
 name: OpenHAB
 tags:
- - openhab
+ - linux
  - java
 --- 
 
