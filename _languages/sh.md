@@ -126,7 +126,7 @@ remote.server:/dir /media/nfs  nfs      defaults    0       0
 Mount the NFS share by running the following command: `sudo mount /media/nfs`
 
 
-## `mount` a CIFS share
+## **mount** a CIFS share
 
 # Install cifs-utils: `sudo apt-get install cifs-utils`
 # Create the directory: `mkdir /mnt/cifs`
@@ -143,3 +143,11 @@ password=<your_password>
 Note the version `vers` may be different depending on the capabilities of the cifs server.
 
 These instructions were baes on the information [here](https://marzorati.co/how-to-mount-cifs-share-permanently-on-ubuntu/).
+
+## **curl**
+
+### POST Request
+The general form of the curl command for making a POST request is as follows:
+`curl -X POST [options] [URL]`
+
+    The -X option specifies which HTTP request method will be used when communicating with the remote server.
