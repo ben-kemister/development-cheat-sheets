@@ -108,4 +108,19 @@ export [VARIABLE_NAME]=[variable_value]
 
 ## cgroups
 
-[cgroups](https://www.redhat.com/sysadmin/cgroups-part-one) is a Linux kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. Engineers at Google started the work on this feature in 2006 under the name "process containers"
+[cgroups](https://www.redhat.com/sysadmin/cgroups-part-one) is a Linux kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. 
+Engineers at Google started the work on this feature in 2006 under the name "process containers"
+
+## Services
+
+### systemctl
+
+Services can be controlled and viewed using `systemctl` for example:
+
+| Command                                                                                | Description                   |
+|----------------------------------------------------------------------------------------|-------------------------------|
+| `sudo systemctl status <SERVICE_NAME>` <br> `sudo systemctl status pihole-FTL.service` | Print the status of a service |
+| `sudo systemctl stop <SERVICE_NAME>`                                                   | Stop a service                |
+| `sudo systemctl start <SERVICE_NAME>`                                                  | Start a service               |
+| `sudo systemctl restart <SERVICE_NAME>`                                                | Restart a service             |
+

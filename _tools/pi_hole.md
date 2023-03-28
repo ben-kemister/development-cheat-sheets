@@ -12,9 +12,13 @@ It is designed for low-power embedded devices with network capability, such as t
 
 ## Admin API
 
-There is an admin api that can be used by script or their-party app to control Pi-hole.
+There is an [admin api](https://discourse.pi-hole.net/t/pi-hole-api/1863) that can be used by script or their-party app to control Pi-hole.
 
-See: 
+The admin api is available at: http://pi.hole/admin/api.php?<ADMIN_FUNTION>auth=<TOKEN>
 
-* https://discourse.pi-hole.net/t/pi-hole-api/1863
-* https://pi-hole.net/blog/2022/11/17/upcoming-changes-authentication-for-more-api-endpoints-required/#page-content
+The TOKEN (WEBPASSWORD) can be found here: `/etc/pihole/setupVars.conf`, as per the advice in [this blog post](https://pi-hole.net/blog/2022/11/17/upcoming-changes-authentication-for-more-api-endpoints-required/#page-content).
+
+    Note 1: An incorrect, or missing, auth parameter in the request will result in a 200 response with an empty array [] 
+    in the response payload.
+
+    Note 2: It looks like the WEBPASSWORD changes when a pihole update (pihole -up) is performed
