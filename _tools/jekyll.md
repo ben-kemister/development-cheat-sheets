@@ -3,13 +3,21 @@ tool: jekyll
 name: Jekyll
 tags:
  - jekyll
+ - ruby
 --- 
 
 [Jekyll](https://jekyllrb.com/) is a Ruby tool which can generate static websites and blogs using plain text files.
 <!--more-->
-## Running (Locally)
 
-You can run Jekyll locally by using the following command `bundle exec jekyll serve`
+## Handy Commands
+
+| Command                              | Description                            | 
+|--------------------------------------|----------------------------------------|
+| `bundle exec jekyll build`           | Build the Jekyll site                  |
+| `bundle exec jekyll build --profile` | Build the site and profile the build   |
+| `bundle exec jekyll serve`           | Run the Jekyll site                    |
+| `bundle update github-pages`         | Update a plugin (example github-pages) |
+
 
 ## Configuration ( `_config.yml`)
 

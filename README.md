@@ -5,14 +5,10 @@ A GitHub pages site which captures language syntax, tools, and ideas to help dev
 ## How it works
 This site uses Jekyll to parse the files in this GitHub repo and produce a static website which can be hosted by GitHub pages.
 
+## GitHub pages
+
+
 ## Running Locally
-
-### Docker
-Use:
-`docker run --rm --volume="%CD%:/srv/jekyll" -it jekyll/jekyll sh -c "chown -R jekyll /usr/gem/ && jekyll new development-cheat-sheets" && cd development-cheat-sheets`
-
-
-docker run --rm --volume="%CD%:/srv/jekyll" -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll sh -c "chown -R jekyll /usr/gem/ && jekyll new development-cheat-sheets"
 
 ### Requirements
 
@@ -21,6 +17,26 @@ docker run --rm --volume="%CD%:/srv/jekyll" -it nexus.dev-space.duckdns.org:5000
 
 You can host this site on your computer by using Jekyll, and using the command:
 `bundle exec jekyll serve`.
+
+### Docker
+
+When running in Docker it looks like the gems are installed here: `/usr/gem/gems/`
+
+#### Build the site (_site folder)
+
+docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
+
+For Windows:
+`docker run --rm --volume="$($PWD):/srv/jekyll" -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll:4.2.2 jekyll build`
+
+Use:
+`docker run --rm --volume="%CD%:/srv/jekyll" -it jekyll/jekyll sh -c "chown -R jekyll /usr/gem/ && jekyll new development-cheat-sheets" && cd development-cheat-sheets`
+
+
+#### Serve the site
+
+`docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll:4.2.2 jekyll serve --watch --drafts`
+
 
 ### Developer mode
 

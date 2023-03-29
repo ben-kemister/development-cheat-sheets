@@ -7,6 +7,13 @@ source: ""
 # See: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
 baseurl: /development-cheat-sheets
 
+#repository: ben-kemister.github.io/development-cheat-sheets/
+#repository: https://github.com/ben-kemister/development-cheat-sheets
+
+# This works!!!
+repository: ben-kemister/development-cheat-sheets
+# TODO need to look at warning: GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
+
 highlighter: rouge
 markdown: kramdown
 kramdown:

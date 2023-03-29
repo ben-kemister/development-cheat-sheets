@@ -93,6 +93,19 @@ foreach ($file in $files) {
 
 `$PSScriptRoot` is an automatic variable in PowerShell which contains the full path to the script.
 
+## Current Directory Path
+
+`$PWD` (print working directory) in PowerShell gets current path of the current working directory to the standard output.
+
+```shell
+PS C:\Dev_Apps\projects\GitHub\development-cheat-sheets> $pwd
+
+Path
+----
+C:\Dev_Apps\projects\GitHub\development-cheat-sheets
+
+```
+
 ## Environmental Variables
 
 Environment variables are global settings for your Linux, Mac, or Windows computer, stored for the system shell to use when executing commands. For more information see [HowTo: Set an Environment Variable in Windows - Command Line and Registry](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/).
