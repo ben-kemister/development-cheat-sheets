@@ -1,0 +1,15 @@
+# This page is used to create the (main) site navigation linkS
+- name: Home
+  link: /
+- name: Languages
+  link: /languages/languages.html
+- name: Tools
+  link: /tools/tools.html
+- name: Operating Systems
+  link: /operating_systems/operating_systems.html
+- name: Blog Posts
+  link: /posts.html
+- name: Tags
+  link: /tags.html
+- name: About
+  link: /about.html
