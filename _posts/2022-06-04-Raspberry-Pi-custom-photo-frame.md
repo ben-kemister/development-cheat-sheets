@@ -77,7 +77,7 @@ While actively configuring MagicMirror you can use `DISPLAY=:0 npm start`, which
 This is when you already have a server running remotely and want your RPi to connect as a standalone client to this instance, to show the MM from the server. Then from your RPi, you run it with: `node clientonly --address 192.168.1.5 --port 8080`. (Specify the ip address and port number of the server)
 
 Not sure if this is right...
-`DISPLAY=:0 nohup node clientonly --address magicmirror.cirrus-penthouse.duckdns.org --port 80`
+`DISPLAY=:0 nohup node clientonly --address <FQDN> --port 80`
 
 ### Configuration
 

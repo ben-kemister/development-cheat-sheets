@@ -27,7 +27,7 @@ When running in Docker it looks like the gems are installed here: `/usr/gem/gems
 docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
 
 For Windows:
-`docker run --rm --volume="$($PWD):/srv/jekyll" -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll:4.2.2 jekyll build`
+`docker run --rm --volume="$($PWD):/srv/jekyll" -it jekyll/jekyll:4.2.2 jekyll build`
 
 Use:
 `docker run --rm --volume="%CD%:/srv/jekyll" -it jekyll/jekyll sh -c "chown -R jekyll /usr/gem/ && jekyll new development-cheat-sheets" && cd development-cheat-sheets`
@@ -35,7 +35,7 @@ Use:
 
 #### Serve the site
 
-`docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll:4.2.2 jekyll serve --watch --drafts`
+`docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:4.2.2 jekyll serve --watch --drafts`
 
 
 ### Developer mode

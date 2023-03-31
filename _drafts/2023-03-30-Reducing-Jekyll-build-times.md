@@ -11,7 +11,7 @@ This post contains information about reducing the build times for my personal Je
 ## Starting build
 
 Using Docker with the command:
-``docker run --rm --volume="$($PWD):/srv/jekyll" -it nexus.dev-space.duckdns.org:5000/jekyll/jekyll:4.2.2 jekyll build --profile``
+``docker run --rm --volume="$($PWD):/srv/jekyll" -it jekyll/jekyll:4.2.2 jekyll build --profile``
 
 ```shell
 Filename                                             | Count |    Bytes |   Time
