@@ -1,3 +1,6 @@
-/_site/
 # Ignore Intellij files
 .idea
+# Jekyll generated folder
+/_site/
+# Hugo generated files
+**/.hugo_build.lock
