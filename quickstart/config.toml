@@ -1,0 +1,41 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-au'
+title = 'Development Cheat Sheets'
+
+[module]
+[[module.imports]]
+  path = 'github.com/McShelby/hugo-theme-relearn'
+
+# Change the default theme to be use when building the site with Hugo
+theme = "hugo-theme-relearn"
+
+[params]
+# This controls whether submenus will be expanded (true), or collapsed (false) in the
+# menu; if no setting is given, the first menu level is set to false, all others to true;
+# this can be overridden in the pages frontmatter
+alwaysopen = false
+
+# For search functionality
+[outputs]
+home = [ "HTML", "RSS", "SEARCH", "SEARCHPAGE"]
+
+# Search Menu
+[[menu.shortcuts]]
+name = "<i class='fas fa-search'></i> Search"
+url = "/search.html"
+weight = 10
+
+# Tags Menu
+[[menu.shortcuts]]
+name = "<i class='fas fa-tags'></i> Tags"
+url = "/tags"
+weight = 20
+
+# Tools
+#[[menu.shortcuts]]
+#name = "<i class='fas fa-hammer'></i> Tools"
+#url = "/Tools"
+#weight = 30
+
+
+
