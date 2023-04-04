@@ -11,9 +11,7 @@ tags:
 status: complete
 ---
 
-## Aim
-
-A project to setup a small scale *multi* worker Kubernetes instance at home (sometimes called a 'home lab').
+A project to set up a small scale *multi* worker Kubernetes instance at home (sometimes called a 'home lab').
 <!--more-->
 
 ## Why

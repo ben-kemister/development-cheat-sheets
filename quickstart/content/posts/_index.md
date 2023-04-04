@@ -1,7 +1,7 @@
 ---
-title: Programming Languages
+title: Posts
 ---
 
-## Pages
+## Posts
 
 {{% children sort="title" description="true" %}}

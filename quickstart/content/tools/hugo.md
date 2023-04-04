@@ -5,11 +5,19 @@ tags:
 - github_pages
 ---
 
+Hugo is a very fast Static Site Generator (SSG) built with Go
+<!--more-->
 
-On Windows
+## Commands
 
-```shell
-docker run --rm -it `
-  -v $(pwd):/src `
-  klakegg/hugo:0.101.0-ext new site quickstart `
+| Command | Description |
+| ------- | ------------ |
+| `hugo serve -D --disableFastRender` | Serves the Hugo site, watching for changes and rebuilding as required |
+
+
+## Links
+
+Within markdown files you can use links as follows:
+```markdown
+Github uses [git]({{< ref "/tools/git.md">}})
 ```

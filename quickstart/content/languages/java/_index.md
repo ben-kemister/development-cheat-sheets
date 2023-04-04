@@ -30,3 +30,7 @@ The memory flag can also be specified in different sizes, such as kilobytes, meg
 ### Arrays.asList(array)
 
 Converts an array of objects into a list, great one liner to use when you need to iterate over the array.
+
+## Sub Pages
+
+{{% children sort="title" %}}

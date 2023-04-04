@@ -8,13 +8,13 @@ tags:
 --- 
 
 [H2](http://h2database.com/html/main.html) is a lightweight Java SQL database.
+<!--more-->
 The main features of H2 are:
 
-    * Very fast, open source, JDBC API
-    * Embedded and server modes; in-memory databases
-    * Browser based Console application
-    * Small footprint: around 2.5 MB jar file size
-<!--more-->
+* Very fast, open source, JDBC API
+* Embedded and server modes; in-memory databases
+* Browser based Console application
+* Small footprint: around 2.5 MB jar file size
 
 ## Settings of the H2 Console
 

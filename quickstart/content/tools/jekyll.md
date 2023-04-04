@@ -33,7 +33,7 @@ For more info see [Clearing Up Confusion Around baseurl -- Again](https://bypark
 
 ## Links (to other site pages)
 
-Links to other pages in Jekyll follow the basic [markdown]({{site.baseurl}}{% link _languages/markdown.md %}) format, but with the use of a little liquid to insert the url details.
+Links to other pages in Jekyll follow the basic [markdown]({{<ref "/languages/markdown">}}) format, but with the use of a little liquid to insert the url details.
 
 If you do not use the `baseurl` configuration mentioned above, then use:
 ``` markdown

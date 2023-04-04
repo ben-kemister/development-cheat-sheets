@@ -45,3 +45,7 @@ To initialize a TypeScript project, simply use the `--init` flag.
 {% endhighlight %}
 
 After running tsc with the --init flag, a tsconfig.json will be added to your project folder with a few sensible defaults and an extensive list of commented-out possible configurations. 
+
+## Sub Pages
+
+{{% children sort="title" description="true" %}}
