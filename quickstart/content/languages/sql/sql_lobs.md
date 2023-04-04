@@ -14,13 +14,13 @@ This page contains information and simple code examples about dealing with LOBs 
 
 To find out the length of a LOB object you can use the `DBMS_LOB.getLength` function:
 
-{% highlight sql %}
+```sql
 Select
     up.*, DBMS_LOB.getLength(up.stage_layout) as "BLOB_LENGTH"
     from ui_properties up
     where up.stage_layout is not null
     order by "BLOB_LENGTH" desc;
-{% endhighlight %}
+```
 
 
 ## Converting BLOB to CLOB - No truncation
@@ -30,7 +30,7 @@ A workaround to this is to create a function which you can then use in your SQL 
 
 ### Function
 
-{% highlight sql %}
+```sql
 create function clobfromblob(p_blob blob) return clob is
       l_clob         clob;
       l_dest_offsset integer := 1;
@@ -59,12 +59,12 @@ create function clobfromblob(p_blob blob) return clob is
       return l_clob;
 
    end;
-{% endhighlight %}
+```
 
 ### Function use
 
-{% highlight sql %}
+```sql
 select up.*, clobfromblob(up.stage_layout), DBMS_LOB.getLength(up.stage_layout) as "BLOB_LENGTH"
     from ui_properties cup
     where up.stage_layout is not null;
-{% endhighlight %}
+```

@@ -16,17 +16,17 @@ Using the common pool normally reduces resource usage (its threads are slowly re
 
 In practice what this means is there is an easy way to submit tasks to a background thread without needing to deal with the complexities of an ExecutorService.
 
-{% highlight java %}
-    	javafx.concurrent.Task<String> longRunningTask = new Task<String>() {
+```java
+javafx.concurrent.Task<String> longRunningTask = new Task<String>() {
 
-			@Override
-			protected String call() throws Exception {
-                //The call() method is run on a background thread.
-				return longRunningStringProducer();
-			}
-		};
-		
-		ForkJoinPool.commonPool().execute(longRunningTask);
-{% endhighlight %}
+	@Override
+	protected String call() throws Exception {
+		//The call() method is run on a background thread.
+		return longRunningStringProducer();
+	}
+};
+
+ForkJoinPool.commonPool().execute(longRunningTask);
+```
 
 See the [ForkJoinPool JavaDocs](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ForkJoinPool.html) for more information.

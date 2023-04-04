@@ -15,8 +15,7 @@ JavaScript Imports come in several flavours (read syntaxes) that have been intro
 In ES6 the import syntax is a declarative import syntax, it does not execute any functions.
 So if you want to call a function you'll need two lines:
 
-{% highlight javascript %}
-
-    import debugModule from 'debug';
-    const debug = debugModule('http');
-{% endhighlight %}
+```javascript
+import debugModule from 'debug';
+const debug = debugModule('http');
+```

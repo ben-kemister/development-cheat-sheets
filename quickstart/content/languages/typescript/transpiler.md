@@ -22,7 +22,6 @@ Sets the ES version to transpile the TypeScript code to when
 
 You can start the transpiler in watch mode which will watch your files and re-compile them into JavaScript code when it detects changes.
 
-{% highlight powershell %}
-
-    PS > tsc -w
-{% endhighlight %}
+```powershell
+PS > tsc -w
+```

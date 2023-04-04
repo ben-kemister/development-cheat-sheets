@@ -14,37 +14,33 @@ There is a global `window` object available when working in a browser, all globa
 
 The confirmation window is available in every browser and will create a simple popup dialog requesting the user to select a button.
 
-{% highlight javascript %}
-    var answer = window.confirm("Click OK, get true. Click CANCEL, get false.");
-
-{% endhighlight %}
+```javascript
+var answer = window.confirm("Click OK, get true. Click CANCEL, get false.");
+```
 
 ## Prompt Window
 
 The prompt window allows shows a popup dialog which can capture a string input from the user.
 
-{% highlight javascript %}
-    var answer = window.prompt("Type YES, NO or MAYBE. Then click OK.");
-
-{% endhighlight %}
+```javascript
+var answer = window.prompt("Type YES, NO or MAYBE. Then click OK.");
+```
 
 ## *setTimeout()* method
 
 The `setTimeout()` method of the WindowOrWorkerGlobalScope mixin (and successor to `Window.setTimeout()`) sets a timer which executes a function or specified piece of code once the timer expires.
 
-{% highlight javascript %}
+```javascript
+var timeoutID;
 
-    var timeoutID;
+function delayedAlert() {
+    timeoutID = window.setTimeout(window.alert, 2*1000, 'That was really slow!');
+}
 
-    function delayedAlert() {
-        timeoutID = window.setTimeout(window.alert, 2*1000, 'That was really slow!');
-    }
-
-    function clearAlert() {
-        window.clearTimeout(timeoutID);
-    }
-
-{% endhighlight %}
+function clearAlert() {
+    window.clearTimeout(timeoutID);
+}
+```
 
 # The *document* object
 

@@ -31,13 +31,12 @@ If you change the underlying ```ObservableList```, then you can reapply the (col
 
 A more complete example can be seen below:
 
-{% highlight java %}
+```java
+fxBeans.clear();
+fxBeans.addAll(beans.stream()
+    .map( bean -> new TableRowFxBean(bean)).collect(Collectors.toList()));
 
-    fxBeans.clear();
-    fxBeans.addAll(beans.stream()
-        .map( bean -> new TableRowFxBean(bean)).collect(Collectors.toList()));
-    
-    // Restore Sorting, if applied
-    tableView.sort();
-{% endhighlight %}
+// Restore Sorting, if applied
+tableView.sort();
+```
 

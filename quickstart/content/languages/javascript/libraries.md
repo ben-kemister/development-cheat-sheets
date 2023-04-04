@@ -14,10 +14,9 @@ This page contains some information about some handy or popular JavaScript libra
 
 The recommended way to import lodash is on a per function basis:
 
-{% highlight javascript %}
-    
-    import isArray from 'lodash/isArray';
-{% endhighlight %}
+```javascript
+import isArray from 'lodash/isArray';
+```
 
 Because lodash holds all it's functions in a single file, so rather than import the whole 'lodash' library at 100k, it's better to just import lodash's has function which is maybe 2k.
 
@@ -31,15 +30,14 @@ For more information see [this stackoverflow post](https://stackoverflow.com/que
 
 ### Test Error is thrown
 
-{% highlight javascript %}
-    
-    // Function being tested
-    const throwError = (): void {
-        throw new Error('Something unexpected happened');
-    }
+```javascript
+// Function being tested
+const throwError = (): void {
+    throw new Error('Something unexpected happened');
+}
 
-    test('Test that an Error should be thrown', () => {
-        // Will fail the test if an Error is not thrown
-        expect(throwError).toThrowError();
-    });
-{% endhighlight %}
+test('Test that an Error should be thrown', () => {
+    // Will fail the test if an Error is not thrown
+    expect(throwError).toThrowError();
+});
+```

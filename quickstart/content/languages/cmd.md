@@ -16,17 +16,13 @@ Environment variables are global settings for your Linux, Mac, or Windows comput
 
 To list all environment variables.
 
-{% highlight shell %}
-
-    C:\> set
-   
-{% endhighlight %}
+```shell
+C:\> set
+```
 
 To print a particular environment variable:
 
-{% highlight shell %}
-
-    C:\> echo %JAVA_HOME%
-   
-{% endhighlight %}
+```shell
+C:\> echo %JAVA_HOME%
+```
 

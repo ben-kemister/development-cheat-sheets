@@ -14,11 +14,9 @@ If something goes wrong when you are trying to run `serverless` it will advise
 
 I found it a little hard to find out how to do this on Windows, it turns out you need to run the following command in powershell
 
-{% highlight powershell %}
-
-   $env:SLS_DEBUG="*"
-   
-{% endhighlight %}
+```powershell
+$env:SLS_DEBUG="*"
+```
 
 # Environmental Variables
 
@@ -26,27 +24,24 @@ You can set `serverless` environmental variables in the `serverless.yml` file in
 
 ## Function Environment variables
 
-{% highlight yml %}
+```yml
+service: service-name
 
-   service: service-name
+provider:
+name: aws
+stage: dev
 
-   provider:
-   name: aws
-   stage: dev
-
-   functions:
-   hello:
-      handler: handler.hello
-      environment:
-         SYSTEM_URL: http://example.com/api/v1
-
-{% endhighlight %}
+functions:
+hello:
+  handler: handler.hello
+  environment:
+     SYSTEM_URL: http://example.com/api/v1
+```
 
 ## Global Environmental variables
 
 
-{% highlight yml %}
-
+```yml
 provider:
   name: aws
   stage: dev
@@ -58,5 +53,4 @@ functions:
     handler: handler.hello
     environment:
       SYSTEM_URL: http://example.com/api/v1
-
-{% endhighlight %}
+```

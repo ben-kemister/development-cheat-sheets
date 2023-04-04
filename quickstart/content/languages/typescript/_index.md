@@ -31,18 +31,16 @@ First, you need TypeScript installed of course. You can decide to have it instal
 
 And to install locally, run:
 
-{% highlight powershell %}
-
-    PS > npm i typescript --save-dev
-{% endhighlight %}
+```powershell
+PS > npm i typescript --save-dev
+```
 
 ## Setup
 To initialize a TypeScript project, simply use the `--init` flag.
 
-{% highlight powershell %}
-
-    PS > tsc --init
-{% endhighlight %}
+```powershell
+PS > tsc --init
+```
 
 After running tsc with the --init flag, a tsconfig.json will be added to your project folder with a few sensible defaults and an extensive list of commented-out possible configurations. 
 
