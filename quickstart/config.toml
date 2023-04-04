@@ -36,11 +36,10 @@ name = "<i class='fas fa-tags'></i> Tags"
 url = "/tags"
 weight = 20
 
-# Tools
-#[[menu.shortcuts]]
-#name = "<i class='fas fa-hammer'></i> Tools"
-#url = "/Tools"
-#weight = 30
-
+# Tags Menu
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub repo"
+url = "https://github.com/ben-kemister/development-cheat-sheets"
+weight = 30
 
 
