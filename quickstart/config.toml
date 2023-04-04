@@ -14,6 +14,11 @@ theme = "hugo-theme-relearn"
 # menu; if no setting is given, the first menu level is set to false, all others to true;
 # this can be overridden in the pages frontmatter
 alwaysopen = false
+# Order sections in menu by "weight" or "title". Default to "weight";
+# this can be overridden in the pages frontmatter
+ordersectionsby = "title"
+# If set to true, the menu in the sidebar will be displayed in a collapsible tree view. Although the functionality works with old browsers (IE11), the display of the expander icons is limited to modern browsers
+collapsibleMenu = true
 
 # For search functionality
 [outputs]
