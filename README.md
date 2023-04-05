@@ -3,46 +3,49 @@
 A GitHub pages site which captures language syntax, tools, and ideas to help develop code quicker and better. 
 
 ## How it works
-This site uses Jekyll to parse the files in this GitHub repo and produce a static website which can be hosted by GitHub pages.
+
+This site uses [Hugo](https://gohugo.io/) to parse the files in this GitHub repo and produce a static website which can 
+be run locally or hosted on GitHub pages.
 
 ## GitHub pages
 
+This repo contain a github workflow in `.github/worflows/hugo.yaml`.
 
-## Running Locally
+When a commit is pushed to the branch listed in `.github/worflows/hugo.yaml` github will start the worflow.
+The results of the workflow can be seen on the [GitHub Actions page](https://github.com/ben-kemister/development-cheat-sheets/actions).
 
-### Requirements
+Note that the [github-pages environment](https://github.com/ben-kemister/development-cheat-sheets/settings/environments) 
+contains a list of the branches which are allowed to deploy to the _github-pages_ environment.
 
-* Ruby
-* Jekyll
+## Development
 
-You can host this site on your computer by using Jekyll, and using the command:
-`bundle exec jekyll serve`.
+### Natively via installed tools
 
-### Docker
+Required tools:
+* git
+* Go
+* Hugo
 
-When running in Docker it looks like the gems are installed here: `/usr/gem/gems/`
+Once all of these tools are installed you can serve the site using:
+```powershell
+hugo serve -D --disableFastRender
+```
 
-#### Build the site (_site folder)
+### via Docker
 
-docker run --rm --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:$JEKYLL_VERSION jekyll build
+A [Hugo Docker image](https://hub.docker.com/r/klakegg/hugo) is available
 
-For Windows:
-`docker run --rm --volume="$($PWD):/srv/jekyll" -it jekyll/jekyll:4.2.2 jekyll build`
+> **WARNING**: Changes to the pages will not be detected when running Hugo in Docker on a **Windows host**.
+>
+> Do to a limitation with [Docker on Windows](https://forums.docker.com/t/file-system-watch-does-not-work-with-mounted-volumes/12038/25)
+> which prevents Windows file systems changes from propagating into the linux file system within the container,
+> Hugo will be unable to detect file systems changes and rebuild the site.
 
-Use:
-`docker run --rm --volume="%CD%:/srv/jekyll" -it jekyll/jekyll sh -c "chown -R jekyll /usr/gem/ && jekyll new development-cheat-sheets" && cd development-cheat-sheets`
+To serve the site using docker run:
 
-
-#### Serve the site
-
-`docker run --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 -it jekyll/jekyll:4.2.2 jekyll serve --watch --drafts`
-
-
-### Developer mode
-
-To get the browser to:
-* automatically reload when the content changes, and
-* show the draft pages in `_drafts`
-use the command:
-
-`bundle exec jekyll serve --watch --drafts --config _config.yml,_development.yml`
+```powershell
+docker run --rm -it --name hugo `
+       -v "$($pwd)\quickstart:/src" `
+       -p 1313:1313 `
+       [$DOCKER_REG/]klakegg/hugo:<VERSION>-ext server -D
+```
