@@ -1,6 +1,6 @@
 ---
 title: 'Migrating from Jekyll to Hugo'
-date: 2023-04-06T22:12:32Z
+date: 2023-04-04T06:12:32+1100
 draft: false
 tags:
 - jekyll
