@@ -30,13 +30,16 @@ git config -l | Select-String -Pattern 'email'
 ### Select-String (i.e. Grep for Powershell)
 
 The `Select-String` command is the PowerShell equivalent to grep in linux.
-See [here](https://adamtheautomator.com/powershell-grep/) for more information and examples.
 
-### File input
-
+Examples:
 ```shell
+# Select 2 lines before and 3 after the match
+Select-String -Pattern "match" -Context 2,3
+
+# From a file input
 Select-String -Path "Users\*.csv" -Pattern "Joe"
 ```
+See [here](https://adamtheautomator.com/powershell-grep/) for more information and examples.
 
 ### Concatenation
 
