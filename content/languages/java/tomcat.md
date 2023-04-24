@@ -29,4 +29,16 @@ exit /b 0
 
 For more information see https://tomcat.apache.org/tomcat-10.0-doc/RUNNING.txt
 
+## Manager Interface
+
+The Tomcat Manager App is a web application that is packaged with the Tomcat server. 
+It provides the basic functionality needed to manage deployed web applications.
+
+There two management interface options here:
+1. A web-based (HTML) application - for humans
+2. A text-based web service - for scripting
+
+The web-based management management interface at `http[s]://<server>:<port>/manager/html/`
+
+A user account is needed to access the management interface which needs to be configured in the `<TOMCAT_HOME>/conf/tomcat-users.xml` file.
 
