@@ -9,19 +9,23 @@ tags:
 
 Kubernetes provides a command line tool _**kubectl**_ for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
 <!--more-->
+
+## Configuration
+
 For configuration, kubectl looks for a file named config in the `$HOME/.kube` directory. 
 You can specify other [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) 
 files by setting the `KUBECONFIG` environment variable or by setting the `--kubeconfig` flag.
 
 ## kubectl Commands
 
-There are heaps of wonderful kubectl commands which can make life a little easier. 
+There are _heaps_ of wonderful kubectl commands which can make life a little easier. 
 See [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) for an overview.
 
 ### Get <Resource>
 
 | Command                                                                                  | Description                                   |
 |------------------------------------------------------------------------------------------|-----------------------------------------------|
+| `kubectl get pods --show-labels`                    |  Show labels for all pods (or any other Kubernetes object that supports labelling) |
 | `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring`                        | Watch a specific resource(s) based on a label |
 | `kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running` | Get a running pod based on a label            |
 
@@ -102,6 +106,6 @@ httpd-9497b648f-9vtbl
 | `kubectl scale deployment gogs --replicas=0` | Scale the pods to 0 |
 | `kubectl scale deployment magicmirror --replicas=0 && kubectl scale deployment magicmirror --replicas=1` | Restart a deployment. Useful if you need to reload data from a ConfigMap or similar) |
 | `kubectl logs $(k get po | grep magicmirror | awk '{ print $1}') -c install-modules` | Show the logs for a specific (init) container |
-| `kubectl drain --ignore-daemonsets` <node> | Drain a node in preparation for a maintenance activity |
+| `kubectl drain --ignore-daemonsets <node>` | Drain a node in preparation for a maintenance activity |
 | `kubectl uncordon <node>` | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |
 | `kubectl cp my-pod:my-file my-file`| Copy a file from a pod to the host | 

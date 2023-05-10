@@ -5,7 +5,7 @@ tags:
 - github_pages
 ---
 
-[Hugo](https://gohugo.io/) is a very fast Static Site Generator (SSG) built with Go
+[Hugo](https://gohugo.io/) is a very fast Static Site Generator (SSG) built with Go.
 <!--more-->
 
 ## Commands
