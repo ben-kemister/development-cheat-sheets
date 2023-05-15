@@ -1,13 +1,21 @@
 ---
-title: OpenHAB
+title: openHAB
 tags:
+ - openhab
  - linux
  - java
+ - automation
 --- 
 
 Open Home Automation Bus ([openHAB](https://www.openhab.org/)) is an open source home automation software written in Java. 
 It is deployed on premises and connects to devices and services from different vendors.
 <!--more-->
+
+## Handy Links & Info
+
+* [Lost admin password](https://community.openhab.org/t/lost-admin-password/118047)
+* [openHAB console](https://www.openhab.org/docs/administration/console.html)
+
 ## Rules
 
 The openHAB rule syntax is based on [Xbase](https://www.eclipse.org/Xtext/#xbase) and as a result it is sharing many details with [Xtend](https://www.eclipse.org/xtend/), which is built on top of Xbase as well.
@@ -27,6 +35,3 @@ The openHAB rule syntax is based on [Xbase](https://www.eclipse.org/Xtext/#xbase
         }
 ```
 
-
-
-Connecting to docker engine on another pc
