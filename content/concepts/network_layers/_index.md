@@ -1,9 +1,10 @@
 ---
-title: Network Layer
+title: Network Layers
 tags:
 - network
 - osi
 - concept
+- ip_address
 ---
 
 The Open Systems Interconnection model (OSI model) is a conceptual model that 'provides a common basis for the coordination 
