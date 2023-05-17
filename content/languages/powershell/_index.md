@@ -25,57 +25,6 @@ hostname
 git config -l | Select-String -Pattern 'email'
 ```
 
-## Strings
-
-### Select-String (i.e. Grep for Powershell)
-
-The `Select-String` command is the PowerShell equivalent to grep in linux.
-
-Examples:
-```shell
-# Select 2 lines before and 3 after the match
-Select-String -Pattern "match" -Context 2,3
-
-# From a file input
-Select-String -Path "Users\*.csv" -Pattern "Joe"
-```
-See [here](https://adamtheautomator.com/powershell-grep/) for more information and examples.
-
-### Concatenation
-
-The `+` operator is used to concatenate strings in Powershell, for example:
-
-```shell
-$firstName = "Shell"
-$lastName = "Geek"
-
-$fullName = $firstName + $lastName
-
-Write-Host "Concatenate String:"
-$fullName
-```
-For more information see [shellgeek.com](https://shellgeek.com/powershell-concatenate-string/)
-
-### Replace
-
-There are a few methods of String replacement
-
-#### Using the Replace() Method
-
-```shell
-$string = 'hello, world'
-PS> $string.replace('hello','hi')
-hi, world
-```
-
-#### Using the PowerShell Replace Operator
-
-```shell
-$string = 'hello, world'
-PS> $string -replace 'hello','hi'
-hi, world
-```
-
 ## Join-Path
 
 If you need to combine (directory) paths in PowerShell you can use `Join-Path`:
@@ -98,19 +47,6 @@ Remove-Item 'D:\temp\Test Folder\test.txt'
 
 # Or a folder and sub-files/folders recursively with
 Remove-Item 'D:\temp\Test Folder' -Recurse
-```
-
-## foreach - file
-
-You can you a combination of `Get-ChildItem` and the `foreach` loop to process a set of files:
-
-```shell
-# Get all sql files...
-$files = Get-ChildItem $DataDir\*.sql
-foreach ($file in $files) {
-    Write-Output 'Processing sql script: ' $file.Fullname
-    ## Do something
-}
 ```
 
 ## Check if a path is a file or folder
