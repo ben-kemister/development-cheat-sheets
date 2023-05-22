@@ -5,7 +5,7 @@ tags:
  - development
  - kubernetes
  - kubectl
---- 
+---
 
 Kubernetes provides a command line tool _**kubectl**_ for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
 <!--more-->

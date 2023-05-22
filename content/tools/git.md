@@ -1,11 +1,13 @@
 ---
 title: git
 tags:
- - git
- - version_control
---- 
+- git
+- version_control
+---
 
-Git  is a distributed version-control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. Its goals include speed, data integrity, and support for distributed, non-linear workflows.
+Git  is a distributed version-control system for tracking changes in source code during software development. 
+It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. 
+Its goals include speed, data integrity, and support for distributed, non-linear workflows.
 <!--more-->
 ## Add a git configuration
 
@@ -34,6 +36,18 @@ To change the default upstream that a particular branch is set to:
 ```sh
 # git push -u <remote_name> <local_branch_name>
 git push -u gogs main
+```
+
+## Submodules
+
+### Populate (pull) contents of submodule
+
+If you have cloned a git repo without using the `--recurse-submodules` you will need to run some addition commands to
+pull in the contents of the submodules.
+
+```powershell
+git submodule init
+git submodule update
 ```
 
 ## Handy Commands
