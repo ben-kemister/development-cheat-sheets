@@ -21,9 +21,9 @@ docker build -f .\Dockerfile -t [PRIVATE_IMAGE_REGISTRY[:PORT]/]<IMAGE_NAME>[:<V
 
 ### buildx build --push to private registry fails with 'tcp: lookup <registry_hostname> on <container_ip_address>: no such host' error
 
-This happens when the build container is not able to resolve the <registry_hostname> to an IP address. When this happen you recieve an error something like:
-
-``` sh
+This happens when the build container is not able to resolve the <registry_hostname> to an IP address. When this happens
+you receive an error something like:
+```text
 ------
  > exporting to image:
 ------

@@ -7,7 +7,8 @@ tags:
  - terminal
 ---
 
-PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and associated scripting language.
+[PowerShell](https://learn.microsoft.com/en-au/powershell/) is a task automation and configuration management framework from Microsoft, 
+consisting of a command-line shell and associated scripting language.
 <!--more-->
 
 ## Multi-line commands
