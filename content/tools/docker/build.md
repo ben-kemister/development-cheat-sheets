@@ -17,6 +17,22 @@ This page contains examples about the use of Docker commands when _building_ con
 docker build -f .\Dockerfile -t [PRIVATE_IMAGE_REGISTRY[:PORT]/]<IMAGE_NAME>[:<VERSION_TAG>] .
 ```
 
+## Labels
+
+The [OCI Containers Specification](https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys) 
+defines several conventional labels that encapsulate common use cases for container images. These exist within the org.opencontainers.image namespace.
+
+org.opencontainers.image.created – Image creation time.
+org.opencontainers.image.url – URL to get information about the image.
+org.opencontainers.image.version – Version of the main software inside the container (not the image’s version).
+org.opencontainers.image.licenses – Container licensing information.
+org.opencontainers.image.title – A human-readable name for the container.
+
+To add these to your built image use the following syntax:
+```dockerfile
+LABEL org.opencontainers.image.authors="awesome.developer@email.com"
+```
+
 ## Errors
 
 ### buildx build --push to private registry fails with 'tcp: lookup <registry_hostname> on <container_ip_address>: no such host' error
