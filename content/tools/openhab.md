@@ -5,7 +5,7 @@ tags:
  - linux
  - java
  - automation
---- 
+---
 
 Open Home Automation Bus ([openHAB](https://www.openhab.org/)) is an open source home automation software written in Java. 
 It is deployed on premises and connects to devices and services from different vendors.

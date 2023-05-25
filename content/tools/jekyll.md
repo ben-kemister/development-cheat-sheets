@@ -4,7 +4,7 @@ tags:
  - jekyll
  - ruby
  - github_pages
---- 
+---
 
 [Jekyll](https://jekyllrb.com/) is a Ruby tool which can generate static websites and blogs using plain text files.
 <!--more-->

@@ -3,7 +3,7 @@ title: Go
 tags:
  - go
  - hugo
---- 
+---
 
 [Ruby](https://www.ruby-lang.org/en/) is an interpreted, high-level, general-purpose programming language which supports multiple programming paradigms. 
 It was designed with an emphasis on programming productivity and simplicity. 

@@ -10,8 +10,9 @@ tags:
 
 ## Commands
 
-| Command | Description |
-| ------- | ------------ |
+| Command                             | Description                                                           |
+|-------------------------------------|-----------------------------------------------------------------------|
+| `hugo`                              | Builds/compiles the website into the `./public` folder                |
 | `hugo serve -D --disableFastRender` | Serves the Hugo site, watching for changes and rebuilding as required |
 
 ## Page syntax
