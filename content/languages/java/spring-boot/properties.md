@@ -1,11 +1,12 @@
 ---
-title: Spring Boot
+title: SpringBoot Properties
 tags:
 - java
 - springboot
+- properties
 ---
 
-This page contains information, syntax, and simple code examples, about the use of Spring Boot.
+This page contains information, syntax, and simple code examples, about the use of **properties** in SpringBoot.
 <!--more-->
 
 ## Properties
