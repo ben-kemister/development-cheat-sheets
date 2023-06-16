@@ -13,7 +13,7 @@ The software was created by Igor Sysoev and publicly released in 2004. Nginx is 
 
 ### Links have wrong hostname or port
 
-While building a static site with [Hugo](./hugo.md) which I was hosting with a Nginx Docker container I found that the 
+While building a static site with [Hugo](hugo/hugo.md) which I was hosting with a Nginx Docker container I found that the 
 relative links would be resolved by the browser to the wrong hostname or port.
 
 After way too much investigation and searching I came across this [article](https://medium.com/localhost-run/fixing-nginx-links-that-have-the-wrong-hostname-or-port-a35e378a91a7)
