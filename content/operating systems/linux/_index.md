@@ -5,16 +5,10 @@ tags:
     - linux
 ---
 
-The Linux Debian operating system is used as the base for many other linux operating systems such as Ubuntu and the Raspberry Pi OS (formerly Raspbian).
+[Linux](https://en.wikipedia.org/wiki/Linux) is a family of open-source Unix-like operating systems based on the Linux kernel, 
+an operating system kernel first released on September 17, 1991, by Linus Torvalds.
 <!--more-->
-
-## What version of Linux am I running?
-
-To find out what OS version you are running use the following command:
-
-``` sh
-cat /etc/os-release
-```
+Linux is typically packaged as a Linux distribution, which includes the kernel and supporting system software and libraries, many of which are provided by the GNU Project.
 
 ## Change the hostname
 
