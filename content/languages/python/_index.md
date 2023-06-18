@@ -27,6 +27,12 @@ Python has the following data types built-in by default, in these categories:
 * Binary Types: `bytes`, `bytearray`, `memoryview`
 * None Type: `NoneType`
 
+### Boolean to String
+
+```python
+print("Something: " + str(boolean_variable))
+```
+
 ## Program flow control
 
 ### If Else statements
