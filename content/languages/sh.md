@@ -34,17 +34,15 @@ You can search the command line history by using `Ctrl + R` then entering the se
 
 From this prompt `Ctrl + R` will cycle **backwards** and `Ctrl + S` (if supported) will cycle **forwards**.
 
-## Handy Commands
-
-### History
+###History
 
 `history` will display the command line history.
 
-### Find 
+## Find 
 
 `find` search for files in a directory hierarchy
 
-#### `-newerXY <reference>`
+### `-newerXY <reference>`
           Compares the timestamp of the current file with reference.   The
           reference  argument  is  normally the name of a file (and one of
           its timestamps is used for the comparison) but it may also be  a
@@ -58,7 +56,7 @@ From this prompt `Ctrl + R` will cycle **backwards** and `Ctrl + S` (if supporte
           m   The modification time of the file reference
           t   reference is interpreted directly as a time
 
-##### Example
+#### Example
 
 Find all of the xml files in that have a modification time newer than 2022-03-08
 
@@ -66,7 +64,7 @@ Find all of the xml files in that have a modification time newer than 2022-03-08
 find -type f -name *.xml -newermt 2022-03-08
 ```
 
-### File permissions
+## File permissions
 
 To change the permissions for a file/folder use `chmod [permission] [file_name]`, for example:
 ```shell
@@ -100,7 +98,7 @@ In a nutshell, setting permissions is basic math. For example, to set “Read an
 
 For more [information on 0777](https://www.maketecheasier.com/file-permissions-what-does-chmod-777-means/)
 
-### Mount an NFS share
+## Mount an NFS share
 
 The information below came from [here](https://linuxize.com/post/how-to-mount-and-unmount-file-systems-in-linux/#mounting-nfs).
 
@@ -117,7 +115,7 @@ sudo mount <hostname_or_ip_address>:/volume1/Virtual_Machines/docker/volumes /mn
 
 To remove the mount run: `sudo umount /mnt/docker-volumes`.
 
-#### Mount at startup
+### Mount at startup
 
 To mount the remote file system at startup you need to add a line to the `/etc/fstab` file
 ``` sh
@@ -132,7 +130,7 @@ remote.server:/dir /media/nfs  nfs      defaults    0       0
 Mount the NFS share by running the following command: `sudo mount /media/nfs`
 
 
-### Mount a CIFS share
+## Mount a CIFS share
 
 * Install cifs-utils: `sudo apt-get install cifs-utils`
 * Create the directory: `mkdir /mnt/cifs`
@@ -150,7 +148,7 @@ Note the version `vers` may be different depending on the capabilities of the ci
 
 These instructions were based on the information [here](https://marzorati.co/how-to-mount-cifs-share-permanently-on-ubuntu/).
 
-### Create a new user (and add them to a group)
+## Create a new user (and add them to a group)
 
 ```shell
 # Create user
@@ -163,12 +161,12 @@ $ sudo passwd temp_user
 $ sudo usermod -a -G groupname temp_user
 ```
 
-### Delete a user
+## Delete a user
 ```shell
 sudo userdel temp_user
 ```
 
-### Change a users UID
+## Change a users UID
 
 ```shell
 # View the current UID
@@ -180,7 +178,7 @@ uid=1034(some_user) gid=100(users) ...
 sudo usermod -u 1024 some_user
 ```
 
-### Group ID
+## Group ID
 
 To find out the GID (Group ID) for a group name use:
 ```sh
@@ -191,10 +189,22 @@ getent group mysql
 # mysql:x:124:
 ```
 
+## nohup
 
-### **curl**
+The nohup command executes another program specified as its argument and ignores all SIGHUP (hangup) signals. 
+SIGHUP is a signal that is sent to a process when its controlling terminal is closed.
 
-#### POST Request
+To run a command in the background using the nohup command, type:
+```shell
+$ nohup <command> &
+
+nohup: ignoring input and appending output to 'nohup.out'
+```
+If you log out or close the terminal, the process is not terminated.
+
+## **curl**
+
+### POST Request
 The general form of the curl command for making a POST request is as follows:
 `curl -X POST [options] [URL]`
 
