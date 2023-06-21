@@ -13,12 +13,14 @@ Of particular interest to users is its use as an init system used to bootstrap u
 
 ## Handy Commands
 
-| Command                           | Description                                          |
-|-----------------------------------|------------------------------------------------------|
-| `systemctl status <SERVICE_NAME>` | Displays the status of the service                   | 
-| `systemctl start <SERVICE_NAME>`  | Starts the service                                   | 
-| `systemctl enable <SERVICE_NAME>` | Enables the service to be started on boo             |
-| `sudo systemctl daemon-reload`    | Reload the `Systemd` daemon to detect new unit files |
+| Command                            | Description                                          |
+|------------------------------------|------------------------------------------------------|
+| `systemctl status <SERVICE_NAME>`  | Displays the status of the service                   | 
+| `systemctl start <SERVICE_NAME>`   | Starts the service                                   | 
+| `systemctl stop <SERVICE_NAME>`    | Stops the service                                    | 
+| `systemctl restart <SERVICE_NAME>` | Restarts the service                                 | 
+| `systemctl enable <SERVICE_NAME>`  | Enables the service to be started on boo             |
+| `sudo systemctl daemon-reload`     | Reload the `Systemd` daemon to detect new unit files |
 
 
 ## Creating a service
