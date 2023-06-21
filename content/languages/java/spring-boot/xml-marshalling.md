@@ -48,3 +48,51 @@ public class JaxbConfiguration {
     }
 }
 ```
+
+### Manually applying to RestTemplate
+
+In typical cases the creation of a `Jaxb2Marshaller` will get automatically applied to the creation of any `RestTemplate` instances
+by SpringBoot.
+If this is not working, or you need more control you can apply it manually, then you can do this as follows:
+```java
+@Configuration
+public class ConfigUtil {
+ 
+    /**
+     * @return the RetTemplate. This method sets the Message Converter objects to the RestTemplate so that it uses the 
+     *         Jaxb2Marshaller for XML un/marshalling
+     */
+    @Bean(name = "restTemplate")
+    public RestTemplate getRestTemplate(MarshallingHttpMessageConverter converter) {
+        RestTemplate restTemplate = new RestTemplate();
+ 
+        restTemplate.setMessageConverters(
+                List.of(converter, 
+                        new FormHttpMessageConverter(), 
+                        new StringHttpMessageConverter()));
+
+        return restTemplate;
+    }
+ 
+    /**
+     * @return MarshallingHttpMessageConverter object which is responsible for XML
+     *         marshalling and unMarshalling processes using Jaxb2Marshaller
+     */
+    @Bean(name = "marshallingHttpMessageConverter")
+    public MarshallingHttpMessageConverter getMarshallingHttpMessageConverter(Jaxb2Marshaller jaxb2Marshaller) {
+ 
+        MarshallingHttpMessageConverter marshallingHttpMessageConverter = new MarshallingHttpMessageConverter();
+        marshallingHttpMessageConverter.setMarshaller(jaxb2Marshaller);
+        marshallingHttpMessageConverter.setUnmarshaller(jaxb2Marshaller);
+        return marshallingHttpMessageConverter;
+    }
+
+    @Bean(name = "jaxb2Marshaller")
+    public Jaxb2Marshaller getJaxb2Marshaller() {
+        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+        // Add all XML classes to be bound
+        jaxb2Marshaller.setClassesToBeBound(Customer.class);
+        return jaxb2Marshaller;
+    }
+}
+```

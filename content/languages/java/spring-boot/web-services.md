@@ -55,3 +55,44 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     ...
 }
 ```
+
+## Get all endpoints
+
+There are many ways to achieve this, [as discussed here](https://www.baeldung.com/spring-boot-get-all-endpoints). 
+But if you want to do this programmatically then you can use the `@EventListener` annotation to retrieve the `ApplicationContext`
+from the `ContextRefreshedEvent` as follows:
+```java
+@EventListener
+public void handleContextRefresh(ContextRefreshedEvent event) {
+    ApplicationContext applicationContext = event.getApplicationContext();
+    RequestMappingHandlerMapping requestMappingHandlerMapping = applicationContext
+                                                                    .getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping.class);
+    Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();
+    map.forEach((key, value) -> LOGGER.info("{} {}", key, value));
+}
+```
+
+## Get Servlet context path
+
+```java
+@Component
+public class SpringBean {
+
+    @Autowired
+    private ServletContext servletContext;
+
+    @PostConstruct
+    public void showIt() {
+        System.out.println(servletContext.getContextPath());
+    }
+}
+```
+or via the properties using:
+```java
+@Component
+public class SpringBean {
+
+    @Value("#{servletContext.contextPath}")
+    private String servletContextPath;
+}
+```
