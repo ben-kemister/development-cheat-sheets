@@ -58,3 +58,19 @@ You can apply resource limits to prevent containers from using all available res
               memory: 512Mi
               cpu: 500m
 ```
+
+## Liveness, Readiness and Startup Probes
+
+The kubelet uses **liveness** probes to know when to restart a container.
+
+> **Caution**: Liveness probes do not wait for readiness probes to succeed. 
+> If you want to wait before executing a liveness probe you should use initialDelaySeconds or a startupProbe.
+
+The kubelet uses **readiness** probes to know when a container is ready to start accepting traffic. 
+A Pod is considered ready when all of its containers are ready.
+
+The kubelet uses **startup** probes to know when a container application has started. 
+If such a probe is configured, it disables liveness and readiness checks until it succeeds, 
+making sure those probes don't interfere with the application startup. 
+This can be used to adopt liveness checks on slow starting containers, 
+avoiding them getting killed by the kubelet before they are up and running.
