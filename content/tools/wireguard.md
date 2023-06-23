@@ -15,7 +15,7 @@ It intends to be considerably more performant than OpenVPN.
 
 ## Concepts
 
-It helps to think of WireGuard primarly as a network interface, like any other. 
+It helps to think of WireGuard primarily as a network interface, like any other. 
 It will have the usual attributes, like IP address, CIDR, and there will be some routing associated with it. 
 But it also has WireGuard specific attributes, which handle the VPN part of things.
 
@@ -39,16 +39,16 @@ Important attributes of a WireGuard interface are:
 
 ## Handy Commands
 
-| Command                                       | Description                                               |
-|-----------------------------------------------|-----------------------------------------------------------|
-| `wg genkey > wg_private`                      | Generate new private key writing it to the file `private` |
-| `wg pubkey < wg_private`                      | Generate the public key from a private key                |
-| `ip addr`                                     | List the IP addresses                                     |
-| `wg`                                          | Show the status of the wireguard interfaces               |
-| `sudo wg set wg0 peer <PEER_PUBLIC_KEY> remove` | Remove the peer from the wireguard interface |
-| `sudo ip link delete wg0`                     | Delete the wg0 interface |  
-| `sudo wg-quick up wg0`                        | Applys the `/etc/wireguard/wg0.conf` config file |
-| `sudo wg-quick down wg0` | Removed the wg0 configuration |
+| Command                                         | Description                                               |
+|-------------------------------------------------|-----------------------------------------------------------|
+| `wg genkey > wg_private`                        | Generate new private key writing it to the file `private` |
+| `wg pubkey < wg_private`                        | Generate the public key from a private key                |
+| `ip addr`                                       | List the IP addresses                                     |
+| `wg`                                            | Show the status of the wireguard interfaces               |
+| `sudo wg set wg0 peer <PEER_PUBLIC_KEY> remove` | Remove the peer from the wireguard interface              |
+| `sudo ip link delete wg0`                       | Delete the wg0 interface                                  |  
+| `sudo wg-quick up wg0`                          | Apply the `/etc/wireguard/wg0.conf` config file           |
+| `sudo wg-quick down wg0`                        | Removed the wg0 configuration                             |
 
 ## Basic (peer to peer) connection
 
@@ -107,4 +107,92 @@ The steps below show how configure a very basic peer-to-peer connection manually
   # Generate the QR code
   qrencode -t ansiutf8 < /etc/wireguard/clients/mobile.conf
   ```
-  
+
+## Configuration
+
+By default, wireguard looks for configuration files in the `/etc/wireguard/` directory.
+The `wg-quick up <config>` looks for a configuration file within the `/etc/wireguard/` directory.
+
+For example; if you run the command `wg-quick up wg0`, wireguard will load the configuration from `/etc/wireguard/wg0.conf`
+
+A simple configuration file can look like this:
+```text
+[Interface]
+Address = 10.10.10.10/32
+ListenPort = 51000 # or whatever port you want to run wg on
+PrivateKey = <contents of this-machines-private.key>
+
+[Peer]
+# laptop
+PublicKey = <contents of laptop-public.key>
+AllowedIPs = 10.10.10.11/32 # any available IP in the VPN range
+```
+
+## Creating a Systemd service
+
+If you would like to make sure wireguard runs all the time and starts after a system restart you can create a systemd service.
+
+Create the service file `/etc/systemd/system/wireguard.service` with: `sudo nano /etc/systemd/system/wireguard.service`
+and add the following text to the file:
+
+```text
+[Unit]
+Description=Start wireguard.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=wg-quick up wg0
+RemainAfterExit=true
+ExecStop=wg-quick down wg0
+StandardOutput=journal
+StandardError=journal
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+```
+Then:
+```shell
+# Reload the systemctl daemon to detect the new file/service
+$ sudo systemctl daemon-reload
+
+# Start the service
+$ sudo systemctl start wireguard
+
+# And check its status
+$ sudo systemctl status wireguard
+● wireguard.service - Start wireguard.
+   Loaded: loaded (/etc/systemd/system/wireguard.service; disabled; vendor preset: enabled)
+   Active: active (exited) since Sat 2023-06-24 08:38:02 AEST; 2s ago
+  Process: 19584 ExecStart=/usr/bin/wg-quick up wg0 (code=exited, status=0/SUCCESS)
+ Main PID: 19584 (code=exited, status=0/SUCCESS)
+
+Jun 24 08:38:02 server wg-quick[19584]: [#] wg setconf wg0 /dev/fd/63
+Jun 24 08:38:02 server wg-quick[19584]: [#] ip -4 address add ....
+
+# You can also check wireguard directly using
+$ sudo wg
+
+# To make the service run on system start
+$ sudo systemctl enable wireguard
+
+Created symlink /etc/systemd/system/multi-user.target.wants/wireguard.service → /etc/systemd/system/wireguard.service.
+```
+
+You can test that everything is working as expected by rebooting the system `sudo reboot now` and checking that 
+the wireguard service and wireguard are working:
+```shell
+# Reboot
+$ sudo reboot now
+
+# After the system is back up...
+
+# Check the status of the service
+$ sudo systemctl status wireguard
+
+# And check wireguard
+$ sudo wg
+```
+
