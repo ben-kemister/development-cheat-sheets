@@ -14,7 +14,7 @@ It is designed for low-power embedded devices with network capability, such as t
 
 There is an [admin api](https://discourse.pi-hole.net/t/pi-hole-api/1863) that can be used by script or their-party app to control Pi-hole.
 
-The admin api is available at: http://pi.hole/admin/api.php?<ADMIN_FUNTION>auth=<TOKEN>
+The admin api is available at: http://pi.hole/admin/api.php?<ADMIN_FUNTION>&auth=<TOKEN>
 
 The TOKEN (WEBPASSWORD) can be found here: `/etc/pihole/setupVars.conf`, as per the advice in [this blog post](https://pi-hole.net/blog/2022/11/17/upcoming-changes-authentication-for-more-api-endpoints-required/#page-content).
 
@@ -22,3 +22,11 @@ The TOKEN (WEBPASSWORD) can be found here: `/etc/pihole/setupVars.conf`, as per 
     in the response payload.
 
     Note 2: It looks like the WEBPASSWORD changes when a pihole update (pihole -up) is performed
+
+## Temporary Disable
+
+Using the Admin API you can temporarily disable the ad blocking by using the command:
+http://pi.hole/admin/api.php?disable=<SECONDS>&auth=<TOKEN>
+
+To re-enable the ad blocking you can use:
+http://pi.hole/admin/api.php?enable&auth=<TOKEN>
