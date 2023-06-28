@@ -11,6 +11,22 @@ tags:
 This page provides examples about the use of PowerShell **utilities**.
 <!--more-->
 
+## Get-FileHash
+
+The [Get-FileHash](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash) can be used
+to calculate the hash value of a file (or string) using a specific hash algorithm.
+
+For example:
+```powershell
+Get-FileHash C:\Users\user1\Downloads\7z2201-x64.exe -Algorithm SHA512 | Format-List
+
+
+Algorithm : SHA512
+Hash      : 965D43F06D104BF6707513C459F18AAF8B049F4A043643D720B184ED9F1BB6C929309C51C3991D5AAFF7B9D87031A7248EE32748965
+21ABE955D0E49F901AC94
+Path      : C:\Users\user1\Downloads\7z2201-x64.exe
+```
+
 ## Invoke-WebRequest (curl)
 
 The [Invoke-WebRequest](https://learn.microsoft.com/en-au/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.3)
