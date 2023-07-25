@@ -6,10 +6,44 @@ tags:
 - powershell
 - terminal
 - utilities
+- grep
+- tail
+- head
 ---
 
 This page provides examples about the use of PowerShell **utilities**.
 <!--more-->
+
+## Get-Content
+
+You can use `Get-Content` (or the alias `gc`) to be able to view the contents of files in the console.
+
+This is particularly useful when dealing with log files.
+
+### Get-Content | Select (head & tail)
+
+By piping the results of `Get-Content` through `select` you can get the equivalent of bash's `head` and `tail` commands.
+```powershell
+# Head
+gc log.txt | select -first 10
+
+# Tail (insce PSv3) and much faster than pipe through select
+gc -Tail 10 log.txt
+
+# Tail piping through select
+gc log.txt | select -less 10
+
+# Tail with follow
+Get-Content log.txt -Tail 10 -Wait
+```
+
+### Get-Content | Select-String (grep)
+
+By piping the results of `Get-Content` through `Select-String` you can get the equivalent of bash's `grep` command.
+```powershell
+# Select 2 lines before and 3 after the match
+Get-Content log.txt | Select-String -Pattern "match" -Context 2,3
+```
 
 ## Get-FileHash
 
