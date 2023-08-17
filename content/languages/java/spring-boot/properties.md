@@ -65,10 +65,28 @@ private String[] arrayOfStrings;
 private List<String> listOfStrings;
 ```
 
+## Default Values
+
+By default if the property key is not defined Spring will throw an exception. You can change this behaviour so that a 
+default value is returned if the property is not set.
+
+```java
+// Default value of "DEFAULT_VALUE"
+@Value("${some.property:DEFAULT_VALUE}")
+private String propertyWithDefaultValue;
+
+// You can even set the value to null using SPEL
+// Defaults to null if not set by a property
+@Value("${another.property:#{null}}")
+private String defaultsToNullProperty;
+```
+
+
 ## Links
 
 For more information see:
 * [Properties with Spring and Spring Boot](https://www.baeldung.com/properties-with-spring)
 * [Inject Arrays and Lists From Spring Properties Files](https://www.baeldung.com/spring-inject-arrays-lists)
+* [Spring Expression Language (SpEL)](https://docs.spring.io/spring-framework/reference/core/expressions.html)
 
 

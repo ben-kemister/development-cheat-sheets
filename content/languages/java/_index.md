@@ -2,6 +2,8 @@
 title: Java
 tags:
 - java
+- jvm
+- properties
 ---
 
 Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers write once, run anywhere, meaning that compiled Java code can run on all platforms that support Java without the need for recompilation
@@ -9,7 +11,11 @@ Java is a general-purpose programming language that is class-based, object-orien
 
 ## Java Virtual Machine (JVM) options
 
-### Xms and Xmx
+There is a bunch of options you can add to the command line when run Java which can be very handy.
+Below is some of the more common or handy option which I have come across, or have a look at 
+[this handy cheat sheet](https://www.jrebel.com/sites/rebel/files/pdfs/cheat-sheet-rebel-jvm-options.pdf) for more.
+
+### Xms and Xmx (Memory allocation)
 
 The flag `Xmx` specifies the **maximum memory** allocation pool for a Java Virtual Machine (JVM), while `Xms` specifies the **initial memory** allocation pool.
 
@@ -25,11 +31,18 @@ The memory flag can also be specified in different sizes, such as kilobytes, meg
 -Xmx8g
 ```
 
-## Handy methods
+### -Dproperty (System properties)
 
-### Arrays.asList(array)
+You can set a Java system property by using the `-D<property>` syntax, for example:
 
-Converts an array of objects into a list, great one-liner to use when you need to iterate over the array.
+```shell
+# Sets the 'name' system property to 'HelloWorld'
+-Dname=HelloWorld
+
+# The property can be retrieved at runtime using
+System.getProperty("name")
+//HelloWorld
+```
 
 ## Sub Pages
 
