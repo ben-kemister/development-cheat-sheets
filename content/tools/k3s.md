@@ -26,6 +26,21 @@ If the certificates are expired or have fewer than 90 days remaining before they
 
 For more see [Certificate Rotation](https://docs.k3s.io/advanced#certificate-rotation).
 
+## Changing the k3s service
+
+When installed as a service, the service file is located in: `/etc/systemd/system/k3s.service`
+
+You can alter the `ExecStart=` entry if you need to change the startup arguments.
+
+Just remember to reload the systemctl daemon and restart the service so that the settings are applied:
+
+```shell
+sudo systemctl daemon-reload
+sudo systemctl restart k3s
+# Check the status
+sudo systemctl status k3s
+```
+
 ## Changing IP address of the server
 
-On teh worker nodes edit the `sudo nano /etc/systemd/system/k3s-agent.service.env` file to change the IP address of the server.
+On the worker nodes edit the `sudo nano /etc/systemd/system/k3s-agent.service.env` file to change the IP address of the server.
