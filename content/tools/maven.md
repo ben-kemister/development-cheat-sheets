@@ -63,6 +63,29 @@ mvn clean deploy -Dmaven.test.skip=true
 
 For more information [this baeldung article](https://www.baeldung.com/maven-deploy-nexus)
 
+### Overriding Parent Maven Plugins
+
+If you are inheriting from a parent or using some defaults plugins you can override the version of the maven plugin(s) that 
+are being used in the child project by adding an entry to the ``<build><pluginManagement>`` section of the `pom.xml` file.
+
+```xml
+<project>
+    ...
+    <build>
+        <pluginManagemnt>
+            <plugins>
+                <!-- Overrides the version of the plugin defined the in the parent pom.xml file -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.1.2</version>
+                </plugin>
+            </plugins>
+        </pluginManagemnt>
+    </build>
+</project>
+```
+
 ### Troubleshooting
 
 #### JUnit 5 Tests not Running Under Maven
