@@ -40,5 +40,12 @@ There two management interface options here:
 
 The web-based management management interface at `http[s]://<server>:<port>/manager/html/`
 
-A user account is needed to access the management interface which needs to be configured in the `<TOMCAT_HOME>/conf/tomcat-users.xml` file.
+A user account is needed to access the management interface (i.e. a role of `manager-gui`) which needs to be configured 
+in the `<TOMCAT_HOME>/conf/tomcat-users.xml` file.
+
+For example:
+
+```xml
+<user username="admin" password="admin" roles="manager-gui"/>
+```
 
