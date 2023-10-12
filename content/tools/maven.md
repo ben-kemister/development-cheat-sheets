@@ -13,7 +13,8 @@ Maven is a build automation tool used primarily for Java projects. Maven can als
 | Command | Description |
 | ----  | ---- |
 | `mvn dependency:tree` | Print Dependency Tree |
-| `mvn test-compile` | Compiles the test classes (but doesn't run them) | 
+| `mvn test-compile` | Compiles the test classes (but doesn't run them) |
+| `mvn archetype:generate` | Interactively generates/initialised a maven project | 
 
 
 ### (Re) Download project dependencies
@@ -22,6 +23,24 @@ In Maven, you can use Apache Maven Dependency Plugin, goal `dependency:purge-loc
 
 ``` sh
 mvn dependency:purge-local-repository
+```
+
+### Excluding a module from being published
+
+```xml
+...
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <configuration>
+                <!-- Do not deploy this artifact -->
+                <skip>true</skip>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 ```
 
 ### Publishing Artifacts
