@@ -20,6 +20,20 @@ git config --global http.sslverify true
 
 You can make the configuration change global by using the `--global` option.
 
+## Shallow clone
+
+Use `git clone --depth=1 <url>` to do a shallow clone. 
+These clones truncate the commit history to reduce the clone size. 
+This creates some unexpected behavior issues, limiting which Git commands are possible. 
+These clones also put undue stress on later fetches, so they are **strongly discouraged for developer use** however they are 
+**helpful for some build environments** where the repository will be deleted after a single build.
+
+See [this post](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clone-and-shallow-clone/) for more information.
+
+## Showing progress
+
+`git clone --progress --verbose .....`
+
 ## Add a remote
 
 To add a remote for the given git project use:
