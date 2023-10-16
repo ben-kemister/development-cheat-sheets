@@ -17,7 +17,7 @@ Maven is a build automation tool used primarily for Java projects. Maven can als
 | `mvn archetype:generate` | Interactively generates/initialised a maven project | 
 
 
-### (Re) Download project dependencies
+## (Re) Download project dependencies
 
 In Maven, you can use Apache Maven Dependency Plugin, goal `dependency:purge-local-repository` to remove the project dependencies from the local repository, and re-download it again.
 
@@ -25,7 +25,7 @@ In Maven, you can use Apache Maven Dependency Plugin, goal `dependency:purge-loc
 mvn dependency:purge-local-repository
 ```
 
-### Excluding a module from being published
+## Excluding a module from being published
 
 ```xml
 ...
@@ -43,7 +43,7 @@ mvn dependency:purge-local-repository
 </build>
 ```
 
-### Publishing Artifacts
+## Publishing Artifacts
 
 You will need a `distributionManagement` entry in your projects `pom.xml`
 
@@ -82,7 +82,44 @@ mvn clean deploy -Dmaven.test.skip=true
 
 For more information [this baeldung article](https://www.baeldung.com/maven-deploy-nexus)
 
-### Overriding Parent Maven Plugins
+## Generating sources from (SOAP) WSDL
+
+This one took me a bit to figure out so recording it here for future use/recollection.
+
+This solution is based on the [Apache cxf-codegen-plugin](https://cxf.apache.org/docs/maven-cxf-codegen-plugin-wsdl-to-java.html) which worked well for my case.
+
+```xml
+<project>
+    ...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>4.0.3</version>
+                <executions>
+                    <execution>
+                        <id>generate-hello-world-sources</id>
+                        <configuration>
+                            <sourceRoot>${project.build.dir}/generated-sources</sourceRoot>
+                            <wsdlOptions>
+                                <wsdl>${project.baseDir}/src/main/resources/wsdl/HelloWorld.wsdl</wsdl>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+```
+
+You can also generate `toString()` methods and more using xjc plugins, which need to be added as dependencies of the plugin.
+
+## Overriding Parent Maven Plugins
 
 If you are inheriting from a parent or using some defaults plugins you can override the version of the maven plugin(s) that 
 are being used in the child project by adding an entry to the ``<build><pluginManagement>`` section of the `pom.xml` file.
@@ -105,9 +142,9 @@ are being used in the child project by adding an entry to the ``<build><pluginMa
 </project>
 ```
 
-### Troubleshooting
+## Troubleshooting
 
-#### JUnit 5 Tests not Running Under Maven
+### JUnit 5 Tests not Running Under Maven
 
 If you run into an issue where your JUnit5 tests run within the IDE but don't run in maven it may be due to the version 
 of the `maven-surefire-plugin` or `maven-failsafe-plugin` that is being used.
@@ -134,11 +171,14 @@ The fix is to define a newer version (ideally the latest available) of these plu
     </build>
 </project>
 ```
+Make sure you check [Maven Central](https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin) 
+for the latest version of the plugins.
+
 
 I stumbled across [this DZone article](https://dzone.com/articles/why-your-junit-5-tests-are-not-running-under-maven) 
 which helped me solve my issue.
 
-#### JDK8 sun.* classes missing in build???
+### JDK8 sun.* classes missing in build???
 
 If you are using any of the `sun.*` classes directly (such as `sun.security.x509.CertAndKeyGen`) in your project 
 keep in mind that these fall outside the [standard Java platform](https://en.wikipedia.org/wiki/Java_Platform,_Standard_Edition).
