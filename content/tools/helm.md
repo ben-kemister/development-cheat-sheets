@@ -14,13 +14,14 @@ tags:
 
 ## Handy Commands
 
-| Command | Description |
-| --- | --- |
-| `helm version` | Print the client version information |
-| `helm ls` | List the deployed helm charts |
-| `helm create <chart_name>` | Create a helm chart |
-| `helm uninstall <deployment_name>` | Remove/uninstall the *deployment_name* from the cluster |
+| Command                                            | Description                                                                                        |
+|----------------------------------------------------|----------------------------------------------------------------------------------------------------|
+| `helm version`                                     | Print the client version information                                                               |
+| `helm ls`                                          | List the deployed helm charts                                                                      |
+| `helm create <chart_name>`                         | Create a helm chart                                                                                |
 | `helm upgrade -i my <deployment_name> .\<folder>\` | Upgrade, or install, the helm chart from *folder* into the cluster with the name *deployment_name* |
+| `helm get values <RELEASE_NAME> -a`                | Download all od the computed values for a given release                                            |
+| `helm uninstall <deployment_name>`                 | Remove/uninstall the *deployment_name* from the cluster                                            |
  
 
 ## Helm Charts 
