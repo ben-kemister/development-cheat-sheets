@@ -209,3 +209,9 @@ The general form of the curl command for making a POST request is as follows:
 `curl -X POST [options] [URL]`
 
     The -X option specifies which HTTP request method will be used when communicating with the remote server.
+
+## Flow Control
+
+### Loops
+
+You can create a simple single line using `while true; do foo; sleep 2; done`
