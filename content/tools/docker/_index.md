@@ -19,6 +19,6 @@ The service has both free and premium tiers. The software that hosts the contain
 | ---- | ----------- |
 | OCI | Open Container Initiative |
 
-## Other Pages
+## Other Docker Pages
 
 {{% children sort="title" description="true" %}}
