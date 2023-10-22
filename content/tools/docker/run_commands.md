@@ -10,16 +10,12 @@ tags:
 This page contains examples about the use of Docker commands when _running_ containers.
 <!--more-->
 
-## Copy files from container to host
+## Remove container on exit
 
-`docker cp <container_id>:/path/filename.txt ~/Desktop/filename.txt`
-
-## Networking
-
-### Mode
-The docker *host* network topologies works on linux, and tends to be flaky in Windows. In host mode the port bindings are ignored as the container's network is shared with the host.
-
-For more information see the [Docker Network doco](https://docs.docker.com/network/).
+Add the `--rm` flag to automatically remove the container when it exits.
+```shell
+docker run --rm hello-world
+```
 
 ### Exposing UDP ports
 
@@ -36,6 +32,16 @@ EXPOSE 3000 50000/udp
 
 For more information see the [Docker expose doco](https://docs.docker.com/engine/reference/builder/#expose).
 
+## Copy files from container to host
+
+`docker cp <container_id>:/path/filename.txt ~/Desktop/filename.txt`
+
+## Networking
+
+### Mode
+The docker *host* network topologies works on linux, and tends to be flaky in Windows. In host mode the port bindings are ignored as the container's network is shared with the host.
+
+For more information see the [Docker Network doco](https://docs.docker.com/network/).
 
 # Handy Commands
 

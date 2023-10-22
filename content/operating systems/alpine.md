@@ -29,6 +29,9 @@ So a line from a `Dockerfile` might look something like:
 
 ```shell
 RUN /bin/sh -c set -eux; apk update; apk add inotify-tools rsync ; rm -rf /var/cache/apk/*
+
+# Alternatively
+RUN apk add --no-cache inotify-tools rsync
 ```
 
 ## Users & Groups

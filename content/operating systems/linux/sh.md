@@ -176,6 +176,17 @@ The general form of the curl command for making a POST request is as follows:
 
     The -X option specifies which HTTP request method will be used when communicating with the remote server.
 
+## Exit Code
+
+In linux a `0` exit status means the command was successful without any errors. 
+A non-zero (1-255 values) exit status means command was a failure.
+
+To return the last exit code use the command:
+
+```shell
+echo $?
+```
+
 ## Flow Control
 
 ### Loops
