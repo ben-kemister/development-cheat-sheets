@@ -45,7 +45,7 @@ To serve the site using docker run:
 
 ```powershell
 docker run --rm -it --name hugo `
-       -v "$($pwd)\quickstart:/src" `
+       -v "$($pwd):/src" `
        -p 1313:1313 `
        [$DOCKER_REG/]klakegg/hugo:<VERSION>-ext server -D
 ```

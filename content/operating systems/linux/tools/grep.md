@@ -1,5 +1,5 @@
 ---
-title: Grep
+title: grep
 tags:
  - unix
  - linux

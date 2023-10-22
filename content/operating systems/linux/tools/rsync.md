@@ -1,5 +1,5 @@
 ---
-title: inotifywait
+title: rsync
 tags:
  - unix
  - linux
