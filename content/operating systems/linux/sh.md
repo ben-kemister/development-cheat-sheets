@@ -193,6 +193,11 @@ echo $?
 
 You can create a simple single line using `while true; do foo; sleep 2; done`
 
+```shell
+# Loop to keep printing a console output
+while true; do echo "Still alive at: $(date)"; sleep 60; done
+```
+
 ### Ignoring the exit code of a command
 
 To ignore errors, you can use the `command || true` construct. 

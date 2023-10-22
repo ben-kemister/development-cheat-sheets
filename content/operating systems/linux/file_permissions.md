@@ -1,5 +1,5 @@
 ---
-title: "Linux file permissions
+title: Linux file permissions
 tags:
  - sh
  - bash
