@@ -101,11 +101,13 @@ httpd-9497b648f-9vtbl
 
 ## Other Handy Commands
 
-| Command | Description |
-| --- | --- |
-| `kubectl scale deployment gogs --replicas=0` | Scale the pods to 0 |
-| `kubectl scale deployment magicmirror --replicas=0 && kubectl scale deployment magicmirror --replicas=1` | Restart a deployment. Useful if you need to reload data from a ConfigMap or similar) |
-| `kubectl logs $(k get po | grep magicmirror | awk '{ print $1}') -c install-modules` | Show the logs for a specific (init) container |
-| `kubectl drain --ignore-daemonsets <node>` | Drain a node in preparation for a maintenance activity |
-| `kubectl uncordon <node>` | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |
-| `kubectl cp my-pod:my-file my-file`| Copy a file from a pod to the host | 
+| Command                                                                                                  | Description                                                                             |
+|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
+| `kubectl rollout restart deployment <deployment-name>`                                                   | Restart all of the pods in a deployment                                                 |
+| `kubectl rollout restart statefulset <deployment-name>`                                                  | Restart all of the pods in a statefulset                                                |
+| `kubectl scale deployment gogs --replicas=0`                                                             | Scale the pods to 0                                                                     |
+| `kubectl scale deployment magicmirror --replicas=0 && kubectl scale deployment magicmirror --replicas=1` | Restart a deployment. Useful if you need to reload data from a ConfigMap or similar)    |
+| `kubectl logs $(k get po \| grep magicmirror \| awk '{ print $1}') -c install-modules`                   | Show the logs for a specific (init) container                                           |
+| `kubectl drain --ignore-daemonsets <node>`                                                               | Drain a node in preparation for a maintenance activity                                  |
+| `kubectl uncordon <node>`                                                                                | Tell Kubernetes that it can resume scheduling new pods onto the node (post maintenance) |
+| `kubectl cp my-pod:my-file my-file`                                                                      | Copy a file from a pod to the host                                                      | 
