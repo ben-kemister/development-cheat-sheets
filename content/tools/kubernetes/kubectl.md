@@ -99,6 +99,24 @@ myapp-64d5985fdb-mcgcn
 httpd-9497b648f-9vtbl
 ```
 
+## Forcefully delete Resources
+
+> **DANGER** - Forcefully deleting objects can leave resources in the cluster dangling.
+> Use with extreme caution!
+
+Sometimes when you want to delete a particular resource in Kubernetes, it gets stuck in a Terminating phase.
+This is typically because the object's finalizer is no longer in the cluster.
+This invalid state can come as a result of using tools like Helm which creates custom resources during installation and does not edit or remove them during an uninstall.
+
+To force delete, you take the following steps:
+
+1. Edit the Object e.g. `kubectl edit pod pod-name` or `kubectl edit customresource/name`
+2. Remove delete the custom finalizers. If the finalizer has only a "kubernetes" finalizer then you can ignore it as it will be recreated if you remove it
+3. Delete the object `kubectl delete customresource/name`
+
+For more information see:
+* https://github.com/odytrice/kubernetes/blob/master/force-delete.md
+
 ## Other Handy Commands
 
 | Command                                                                                                  | Description                                                                             |

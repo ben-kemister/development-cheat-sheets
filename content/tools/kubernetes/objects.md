@@ -1,25 +1,15 @@
 ---
-title: Kubernetes
+title: Kubernetes Objects
 tags:
  - container
- - linux
- - development
  - kubernetes
  - kubectl
+ - yaml
+ - manifest
 ---
 
-TBC
+This page contains information about Kubernetes objects.
 <!--more-->
-
-# Kubernetes overview and major components
-
-## Control Pane components
-
-The control pane components are started with the container runtime (i.e. Docker, CRI-O )
-
-## Creating/Updating API Resources - `Apply` vs `Create`
-
-`apply` is preferred as this uses a declarative approach, this means that if you run it twice you will NOT get an error.
 
 ## Namespaces
 
@@ -41,7 +31,9 @@ kube-public       Available publicly, for use for things like container reposito
 
 Best practice is to inject your config map as a volume.
 
-## Resource Limits
+## Workload Resources (Pods, Deployments, StatefulSets)
+
+### Resource Limits
 
 You can apply resource limits to prevent containers from using all available resources on a node.
 
@@ -59,7 +51,7 @@ You can apply resource limits to prevent containers from using all available res
               cpu: 500m
 ```
 
-## Liveness, Readiness and Startup Probes
+### Liveness, Readiness and Startup Probes
 
 The kubelet uses **liveness** probes to know when to restart a container.
 
@@ -75,20 +67,3 @@ making sure those probes don't interfere with the application startup.
 This can be used to adopt liveness checks on slow starting containers, 
 avoiding them getting killed by the kubelet before they are up and running.
 
-## Forcefully delete Resources
-
-> **DANGER** - Forcefully deleting objects can leave resources in the cluster dangling. 
-> Use with extreme caution!
-
-Sometimes when you want to delete a particular resource in Kubernetes, it gets stuck in a Terminating phase.
-This is typically because the object's finalizer is no longer in the cluster. 
-This invalid state can come as a result of using tools like Helm which creates custom resources during installation and does not edit or remove them during an uninstall.
-
-To force delete, you take the following steps:
-
-1. Edit the Object e.g. `kubectl edit pod pod-name` or `kubectl edit customresource/name`
-2. Remove delete the custom finalizers. If the finalizer has only a "kubernetes" finalizer then you can ignore it as it will be recreated if you remove it
-3. Delete the object `kubectl delete customresource/name`
-
-For more information see:
-* https://github.com/odytrice/kubernetes/blob/master/force-delete.md
