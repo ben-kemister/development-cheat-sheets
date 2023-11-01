@@ -26,6 +26,28 @@ If the certificates are expired or have fewer than 90 days remaining before they
 
 For more see [Certificate Rotation](https://docs.k3s.io/advanced#certificate-rotation).
 
+## Labeling Nodes
+
+```sh
+sudo k3s kubectl label node pi-server arch=arm64
+```
+
+To view the current labels for a node use the following command:
+```sh
+sudo k3s kubectl label --list node <NODE_NAME>
+
+# For example
+sudo k3s kubectl label --list node ht-pc
+```
+
+## Enable the use of NFS PV
+
+If you want to use NFS backed Persistent Volumes (PV) you will need to install `nfs-common` on the k3s agent/node.
+
+```sh
+sudo apt-get update && sudo apt-get install -y nfs-common
+```
+
 ## Changing the k3s service
 
 When installed as a service, the service file is located in: `/etc/systemd/system/k3s.service`

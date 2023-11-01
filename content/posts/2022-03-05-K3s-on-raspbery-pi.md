@@ -32,7 +32,8 @@ Lastly for some of the more advance features to work in Docker I needed to run i
 ## Containers Services to host
 
 1. Artifactory (or SonarNexus)
-2. Personal Projects:
+2. CI/CD Pipeline (Jenkins)
+3Personal Projects:
    1. DS Photo service/site
    2. Others....?
 
@@ -118,23 +119,13 @@ curl 10.42.1.5
 sudo k3s kubectl delete pod my-httpd
 ```
 
-## Enable the use of persistent volumes/data on my NAS
+## Enable the use of NFS persistent volumes (i.e. NAS shares)
 
-First install the nfs client on all the k3s nodes.
+Install ``nfs-common`` on all the k3s nodes.
 
 ```sh
 sudo apt-get update && sudo apt-get install -y nfs-common
 ```
-
-## Handy Commands
-
-| Command | Description |
-| ------- | ------ |
-| `systemctl status k3s-agent` | view the status of k3s service |
-| `sudo k3s kubectl get nodes` | show the nodes in the cluster |
-| `sudo k3s kubectl get pods -o wide` | show the pods, and which nodes they are running on |
-| `sudo k3s kubectl top nodes` | shows a *top* of the nodes in the cluster |
-| `sudo k3s kubectl top pods` | shows a *top* of the pods in the cluster |
 
 ## K3s bash aliases
 
