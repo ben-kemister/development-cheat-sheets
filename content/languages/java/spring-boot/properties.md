@@ -40,7 +40,28 @@ optional:file:./external.properties,
 classpath:additional-application-properties/
 ```
 
-## Accessing Properties
+## Supplying runtime property files
+
+You can select `*.properties` files (including files not on the classpath) to use at application runtime by adding the 
+`spring.config.location` environment property (a comma-separated list of directory locations, or file paths) to the arguments 
+when launching the application.
+
+```shell
+# For specific files on the classpath
+$ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
+# or for an external set of file
+$ java -jar app.jar --spring.config.location=config/*/
+```
+
+## Property Resolution
+
+Spring's `PropertySourcesPlaceholderConfigurer` class resolves `${…}` placeholders within bean definition property 
+values and `@Value` annotations.
+
+> If you are having issues where the `${…}` is not being substituted with the property value, make sure  
+> `PropertySourcesPlaceholderConfigurer` is in the Spring context.
+
+## Using/Injecting Properties
 
 You can get the value of the property injected in your class variables using the `@Value` annotation for example:
 
@@ -80,7 +101,6 @@ private String propertyWithDefaultValue;
 @Value("${another.property:#{null}}")
 private String defaultsToNullProperty;
 ```
-
 
 ## Links
 
