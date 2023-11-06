@@ -40,7 +40,7 @@ For more detailed information [TechOnTheNet](https://www.techonthenet.com/oracle
 
 ## Insert
 
-The *INSERT* statement is used to insert a single record or multiple records into a table.
+The `INSERT` statement is used to insert a single record or multiple records into a table.
 
 The syntax for the Oracle *INSERT* statement when inserting a single record using the VALUES keyword is:
 
@@ -57,6 +57,20 @@ INSERT INTO COMPANY_TYPE
     VALUES
     (COMPANY_TYPE_SEQ.nextval, 'COMPANY', 'A corporation where the ownership is divided into shares');
 ```
+
+## Delete
+
+To delete one or more rows from a table, you use the Oracle `DELETE` statement as follows:
+
+```sql
+DELETE
+FROM
+    table_name
+WHERE
+    condition;
+```
+
+> **WARNING**: If you omit the `WHERE` clause, the Oracle `DELETE` statement removes **all rows from the table**.
 
 ## Alter Table
 
