@@ -77,9 +77,17 @@ RawContentLength  : 1256
 
 ## View response (Content)
 
-If you want to see all the content of the response pipe it through the `Select-Object` command. For example:
+If you want to see all the content of an `Invoke-WebRequest` response pipe it through the `Select-Object` command. For example:
 
 ```powershell
 Invoke-WebRequest -Uri http://example.com -Headers @{ Host = "example.com" } `
+| Select-Object -Expand Content
+```
+
+## PORT request
+
+```powershell
+Invoke-WebRequest -Uri http://example.com -Method POST -ContentType "application/json" `
+-Body '{ "familyName": "Surname", "givenName" : "Firstname" }' `
 | Select-Object -Expand Content
 ```
