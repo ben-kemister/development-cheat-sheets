@@ -96,3 +96,25 @@ public class SpringBean {
     private String servletContextPath;
 }
 ```
+ 
+## Download a file
+
+```java
+@RestController
+@ReqestMapping("/rest")
+public class MyRestController {
+    
+    @GetMapping(value = "/download")
+    @ResponseBody
+    public ResponseEntity<ClassPathResource> downloadFile(){
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentDisposition(ContentDisposition.attachment().filename("my-file.txt").build());
+        
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTLET_STREAM)
+                .headers(headers)
+                .body(new ClassPathResource("/my-local-file.md"));
+    }
+}
+```
