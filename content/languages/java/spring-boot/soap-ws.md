@@ -119,7 +119,141 @@ public class CustomWsConfigurerAdapter extends WsConfigurerAdapter{
 }
 ```
 
+## SOAP Security
 
+SOAP security is applied in Spring by adding an `Interceptor` to the `EndpointMapping` on the server side, or the `WebServiceGatewaySupport` on the client.
+
+### Server side
+
+```java
+@Configuration
+public class SoapWsSecurityConfiguration {
+ 
+    @Bean
+    public CryptoFactoryBean severCryptoFactoryBean() throws Exception {
+        CryptoFactoryBean factoryBean = new CryptoFactoryBean();
+        
+        // Set the bean to use the servers trust store
+        factoryBean.setKeyStoreLocation(new ClassPathResource(serverTruststoreLocation));
+        factoryBean.setKeyStorePassword(serverTruststorePassword);
+        factoryBean.setKeyStoreType(serverTruststoreType);
+        
+        return factoryBean;
+    }
+    
+    @Bean("serverWsSecurityInterceptor")
+    public Wss4jSecurityInterceptor soapWsSecurityInterceptor() throws Exception {
+        Wss4jSecurityInterceptor interceptor = new SoapWsSecurityConfiguration();
+        
+        // Validate the Timestamp and Signature of the request
+        interceptor.setValidationActions("Timestamp Signature");
+        interceptor.setValidationTimeToLive(300);
+        interceptor.setValidationSignauteCrypto(severCryptoFactoryBean().getObject());
+        
+        // Add Timestamp to the SOAP security header of the response
+        interceptor.setSecurementAction("Timestamp");
+        
+        // Add a digest to the signature
+        interceptor.setSecurementSignatureDigestAlgorithm(WSS4JConstants.SHA1);
+        
+        return interceptor;
+    }
+}
+
+@Configuration
+public class CustomWsConfigurationSupport extends WsConfigurationSupport {
+    
+    @Autowired
+    @Qualifier("serverWsSecurityInterceptor")
+    private Wss4jSecurityInterceptor wss4jSecurityInterceptor;
+
+
+    /**
+     * Apply the Wss4jSecurityInterceptor to the list of interceptors used by the Endpoints in the application
+     */
+    protected void addInterceptors(List<EndpointInterceptors> interceptors){
+        interceptors.add(wss4jSecurityInterceptor);
+    }
+}
+```
+
+### Client side
+
+```java
+@Configuration
+public class ClientSoapWsSecurityConfiguration {
+
+    @Bean
+    public CryptoFactoryBean clientCryptoFactoryBean() throws Exception {
+        CryptoFactoryBean factoryBean = new CryptoFactoryBean();
+
+        // Set the bean to use the clients keystore
+        factoryBean.setKeyStoreLocation(new ClassPathResource(clientKeyStoreLocation));
+        factoryBean.setKeyStorePassword(clientKeyStorePassword);
+        factoryBean.setKeyStoreType(clientKeyStoreType);
+
+        return factoryBean;
+    }
+    
+    @Bean("clientWsSecurityInterceptor")
+    public Wss4jSecurityInterceptor soapWsSecurityInterceptor() throws Exception {
+        Wss4jSecurityInterceptor interceptor = new SoapWsSecurityConfiguration();
+        
+        /*
+            The security configuration of the outgoing request messages
+         */
+        
+        // Needs to match what the server is configured for
+        interceptor.setSecurementAction("Timestamp Signature");
+        // Set the Keystore which contains the certificate for message signing
+        interceptor.setSecurementSignatureCrypto(clientCryptoFactoryBean().getObject());
+        
+        // The alias of the client certificate to use for the signing
+        interceptor.setSecurementSignatureUser(clientCertificateAlias);
+        
+        // Potential values for the SecurementSignatureKeyIdentifier come from org.apache.wss4j.dom.handler.WSHandlerConstants.WSHandlerConstants.keyIdentifier
+        interceptor.setSecurementSignatureKeyIdentifier("DirectReference");
+        
+        interceptor.setSecurementSignatureAlgorithm(WSS4JConstants.RSA_SHA256);
+        
+        interceptor.setSecurementSignatureDigestAlgorithm(WSS4JConstants.SHA1);
+        
+        /*
+            The security configuration to validate the servers response message.    
+         */
+        
+        // Validate the Timestamp of the servers response
+        interceptor.setValidationActions("Timestamp");
+        interceptor.setValidationTimeToLive(300);
+        
+        return interceptor;
+    }
+}
+
+@Configuration
+public class ClientConfiguration {
+    
+    @Bean
+    public MyClient client(Jaxb2Marshaller jaxb2Marshaller,
+                           @Qualifier("soap12MessageFactory") SaajSoapMessageFactory messageFactory,
+                           @Qualifier("clientWsSecurityInterceptor") Wss4jSecurityInterceptor wss4jSecurityInterceptor){
+        
+        // MyClient extends Springs WebServiceGatewaySupport
+        MyClient client = new MyClient();
+        
+        client.setMessageFactory(messageFactory);
+        
+        // Add the Wss4jSecurityInterceptor to the client
+        client.setInterceptors(
+                new ClientInterceptor[]{ wss4jSecurityInterceptor } );
+        
+        client.setMarshaller(jaxb2Marshaller);
+        client.setUnmarshaller(jaxb2Marshaller);
+        
+        return client;
+    }
+}
+```
 
 ## Links
 

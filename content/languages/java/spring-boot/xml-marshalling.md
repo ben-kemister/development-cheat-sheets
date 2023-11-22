@@ -6,6 +6,8 @@ tags:
 - xml
 - serialisation
 - jaxb
+- marshalling
+- unmarshalling
 ---
 
 This page contains information, syntax, and simple code examples, about un/marshalling XML in SpringBoot.
