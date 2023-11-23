@@ -10,6 +10,7 @@ tags:
 - tail
 - head
 - file
+- directory
 ---
 
 This page provides examples about the use of PowerShell **file utilities**.

@@ -75,7 +75,7 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 1256
 ```
 
-## View response (Content)
+### View response (Content)
 
 If you want to see all the content of an `Invoke-WebRequest` response pipe it through the `Select-Object` command. For example:
 
@@ -84,10 +84,19 @@ Invoke-WebRequest -Uri http://example.com -Headers @{ Host = "example.com" } `
 | Select-Object -Expand Content
 ```
 
-## PORT request
+### POST requests
 
 ```powershell
 Invoke-WebRequest -Uri http://example.com -Method POST -ContentType "application/json" `
 -Body '{ "familyName": "Surname", "givenName" : "Firstname" }' `
 | Select-Object -Expand Content
+```
+
+### Open the downloaded file
+
+You can use the command `Invoke-Item` or the shortcut version of `ii` to open the file after it has been downloaded.
+For example:
+```powershell
+Invoke-WebRequest -Uri http://example.com -Headers @{ Host = "example.com" } `
+| Select-Object -Expand Content > index.html; ii index.html
 ```
