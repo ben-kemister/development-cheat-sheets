@@ -6,6 +6,7 @@ tags:
 - development
 - cli
 - image
+- dockerfile
 ---
 
 This page contains examples about the use of Docker commands when _building_ containers.
@@ -31,6 +32,19 @@ org.opencontainers.image.title – A human-readable name for the container.
 To add these to your built image use the following syntax:
 ```dockerfile
 LABEL org.opencontainers.image.authors="awesome.developer@email.com"
+```
+
+## Environmental Variables (ENV)
+
+You can create, set and provide default values for environmental variables in a `Dockerfile` using `ENV`.
+
+For example:
+
+```dockerfile
+ENV MY_VARIABLE="defaultValue"
+
+# You can also define multiple environmental variables on the same line like:
+ENV VAR_1="Value_1" VAR_2="Value-2"
 ```
 
 ## Errors
