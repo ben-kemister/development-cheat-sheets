@@ -15,6 +15,14 @@ Linux is typically packaged as a Linux distribution, which includes the kernel a
 [cgroups](https://www.redhat.com/sysadmin/cgroups-part-one) is a Linux kernel feature that limits, accounts for, and isolates the resource usage of a collection of processes. 
 Engineers at Google started the work on this feature in 2006 under the name "process containers"
 
+## Get a List of All Users using the `/etc/passwd` File
+
+Local user information is stored in the `/etc/passwd` file. 
+Each line in this file represents login information for one user. To open the file you can either use cat or less:
+```shell
+less /etc/passwd
+```
+
 ## Sub Pages & Topics
 
 {{% children sort="title" %}}

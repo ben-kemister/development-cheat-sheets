@@ -1,5 +1,5 @@
 ---
-title: Linux file permissions
+title: Files
 tags:
  - sh
  - bash
@@ -8,9 +8,16 @@ tags:
  - permissions
 ---
 
-File permissions are core to the security model used by Linux systems.
+File and file permissions are core to the security model used by Linux systems.
 <!--more-->
 They determine who can access files and directories on a system and how.
+
+## Renaming a file
+
+Use the ``mv`` command to rename a file, for example:
+```shell
+mv oldname.txt newname.txt
+```
 
 ## Changing file permissions
 
