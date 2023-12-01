@@ -3,31 +3,33 @@ title: Hugo
 tags:
 - go
 - github_pages
+- hugo
 ---
 
 [Hugo](https://gohugo.io/) is a **very fast** Static Site Generator (SSG) built with Go.
 <!--more-->
 
-## Commands
+## Installation (Windows)
 
-| Command                                      | Description                                                           |
-|----------------------------------------------|-----------------------------------------------------------------------|
-| `hugo`                                       | Builds/compiles the website into the `./public` folder                |
-| `hugo serve -D --disableFastRender`          | Serves the Hugo site, watching for changes and rebuilding as required |
-| `hugo new posts/2023-06-17-new-blog-post.md` | Creates a new blog post using the appropriate `archetype`             |
+Download the binaries from the [Hugo release page](https://github.com/gohugoio/hugo/releases), typically you will want
+the `hugo_extended_<VERSION>_windows-amd64.zip` file.
 
-## Page syntax
+Unzip the folder to somewhere on your computer, then add the directory to your `PATH`.
 
-### Front Matter
+You should then be able to get the version using the console command:
 
-The `date` field in the front matter is used by Hugo to determine if the post should be rendered in the output.
-If the value of `date` is in the future **it will not be rendered**.
+```powershell
+hugo version
+# Returns
+hugo v0.120.2-9c2b2414d231ec1bdaf3e3a030bf148a45c7aa17+extended windows/amd64 BuildDate=2023-10-31T16:27:18Z VendorInfo=gohugoio
+```
 
-### Links
+## Running Hugo (locally)
 
-Within markdown files you can use links as follows:
-```markdown
-Github uses [git]({{< ref "/tools/git.md">}})
+From the root directory of the project run:
+
+```powershell
+hugo serve -D --disableFastRender
 ```
 
 ## Using Hugo in Docker
@@ -53,3 +55,15 @@ docker run --rm -it --name hugo `
        -p 1313:1313 `
        [$DOCKER_REG/]klakegg/hugo:0.101.0-ext server -D
 ```
+
+## Hosting on Github pages
+
+See this [hugo page](https://gohugo.io/hosting-and-deployment/hosting-on-github/) for information.
+
+## Handy Commands
+
+| Command                                      | Description                                                           |
+|----------------------------------------------|-----------------------------------------------------------------------|
+| `hugo`                                       | Builds/compiles the website into the `./public` folder                |
+| `hugo serve -D --disableFastRender`          | Serves the Hugo site, watching for changes and rebuilding as required |
+| `hugo new posts/2023-06-17-new-blog-post.md` | Creates a new blog post using the appropriate `archetype`             |
