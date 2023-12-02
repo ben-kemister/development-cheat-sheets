@@ -41,3 +41,34 @@ my_r_pi | SUCCESS => {
 }
 ```
 
+## Host and Group variables
+
+You can use variables within the main inventory file, however storing them separately can help with organising your variables.
+
+Variable files must use YAML syntax. Valid file extensions include ‘.yml’, ‘.yaml’, ‘.json’, or no file extension.
+
+Ansible loads host and group variable files by searching paths relative to the inventory file or the playbook file.
+
+You can also create _directories_ named after your groups or hosts. Ansible will read all the files in these directories in lexicographical order.
+
+Variables are merged in the following order/ precedence is (from lowest to highest):
+
+* all group (because it is the ‘parent’ of all other groups)
+* parent group
+* child group
+* host
+
+### Vaulted variables
+
+You can combine the use of variables with [vaulted]({{< ref "/vault" >}}) variables as the example used in the 
+[Keep vaulted variables safely visible](https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html#keep-vaulted-variables-safely-visible)
+section of the ansible documentation.
+
+So the folder structure might be:
+
+* `inventory.yaml` - uses the variable `"{{ my_password }}"` 
+* `group_vars/`
+  * `all/` - applies to all groups
+    * `vars.yaml` - contains `my_password: "{{ vault_my_password }}"`
+    * `vault.yaml` - contains `vault_my_password: !vault | <ENCRYPTED_VARIABLE_DETAILS>`
+
