@@ -16,7 +16,7 @@ It can easily be installed from the RetroPie Setup Script (`~/RetroPie-Setup/ret
 
 In Configuration / Tools >> Raspbiantools >> Install Pixel Desktop Environment
 
-After installation it will be accessible from the ports menu of EmulationStation or can be called from the command line with `startx`
+After installation, it will be accessible from the ports menu of EmulationStation or can be called from the command line with `startx`
 
 For more details see [where did the desktop go](https://retropie.org.uk/docs/FAQ/#where-did-the-desktop-go)
 
