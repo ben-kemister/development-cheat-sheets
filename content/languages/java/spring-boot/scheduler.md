@@ -14,6 +14,16 @@ This page contains information, syntax, and simple code examples, about [Springs
 
 ## Basic Example
 
+First make sure to add the `@EnableScheduling` annotation to one of your configuration classes:
+
+```java
+@Configuration
+@EnableScheduling
+public class MySpringConfig{
+    ...
+}
+```
+
 ```java
 @Component
 public class ScheduledTasks {
