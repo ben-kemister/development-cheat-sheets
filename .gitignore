@@ -4,3 +4,4 @@
 /_site/
 # Hugo generated files
 **/.hugo_build.lock
+/public
