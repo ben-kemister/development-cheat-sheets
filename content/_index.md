@@ -1,4 +1,5 @@
 ---
+title: " "
 archetype: home
 showTOC: false
 ---
