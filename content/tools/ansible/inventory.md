@@ -60,7 +60,7 @@ Variables are merged in the following order/ precedence is (from lowest to highe
 
 ### Vaulted variables
 
-You can combine the use of variables with [vaulted]({{< ref "/vault" >}}) variables as the example used in the 
+You can combine the use of variables with [vaulted](../vault) variables as the example used in the 
 [Keep vaulted variables safely visible](https://docs.ansible.com/ansible/latest/tips_tricks/ansible_tips_tricks.html#keep-vaulted-variables-safely-visible)
 section of the ansible documentation.
 
