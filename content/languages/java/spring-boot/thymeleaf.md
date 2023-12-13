@@ -169,6 +169,24 @@ public class ThymeleafController {
 }
 ```
 
+### Redirecting to another view/page
+
+```java
+@Controller
+@RequestMapping("/rest/thymeleaf")
+public class ThymeleafController {
+    
+    @GetMapping( path = {"/first"})
+    public String first(){
+        
+        // Redirect to /home
+        return "redirect:/home";
+    }
+}
+```
+
+
 ## Links
 
 * [baeldung - Introduction to Using Thymeleaf in Spring](https://www.baeldung.com/thymeleaf-in-spring-mvc)
+* [Spring - Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
