@@ -1,5 +1,5 @@
 ---
-title: SpringBoot Soap WS
+title: Soap Web Service
 tags:
 - java
 - springboot
@@ -12,6 +12,7 @@ tags:
 ---
 
 This page contains information, syntax, and simple code examples, about creating (and using) SOAP ws services in SpringBoot.
+<!--more-->
 
 ## Servlet Registration
 
