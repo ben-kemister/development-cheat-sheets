@@ -9,21 +9,24 @@ tags:
 This page contains information, syntax, and simple code examples, about the use of **properties** in SpringBoot.
 <!--more-->
 
-## Adding Sources
+## Supplying runtime property files
 
-You can add property sources to SpringBoot configuration files as follows:
+You can select `*.properties` files (including files not on the classpath) to use at application runtime by adding the
+`spring.config.location` environment property (a comma-separated list of directory locations, or file paths) to the arguments
+when launching the application.
 
-```java
-@Configuration
-@PropertySource("classpath:foo.properties")
-public class PropertiesWithJavaConfig {
-    //...
-}
+```shell
+# For specific files on the classpath
+$ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
+# or for an external set of file
+$ java -jar app.jar --spring.config.location=config/*/
 ```
+
+> Note that by setting `spring.config.location` Spring will use this file as the default property source.
 
 ### Importing additional files
 
-You can also add additional configuration files using command line properties and form existing files.
+You can also add **additional configuration files** using command line properties and form existing files.
 You can use the `spring.config.import` property within the `application.properties` or `application.yml` file to easily 
 include additional files, which as the following features:
 
@@ -40,17 +43,16 @@ optional:file:./external.properties,
 classpath:additional-application-properties/
 ```
 
-## Supplying runtime property files
+## Programmatically Adding Sources
 
-You can select `*.properties` files (including files not on the classpath) to use at application runtime by adding the 
-`spring.config.location` environment property (a comma-separated list of directory locations, or file paths) to the arguments 
-when launching the application.
+You can add property sources to SpringBoot configuration files as follows:
 
-```shell
-# For specific files on the classpath
-$ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
-# or for an external set of file
-$ java -jar app.jar --spring.config.location=config/*/
+```java
+@Configuration
+@PropertySource("classpath:foo.properties")
+public class PropertiesWithJavaConfig {
+    //...
+}
 ```
 
 ## Property Resolution
@@ -88,7 +90,7 @@ private List<String> listOfStrings;
 
 ## Default Values
 
-By default if the property key is not defined Spring will throw an exception. You can change this behaviour so that a 
+By default, if the property key is not defined Spring will throw an exception. You can change this behaviour so that a 
 default value is returned if the property is not set.
 
 ```java
@@ -96,10 +98,14 @@ default value is returned if the property is not set.
 @Value("${some.property:DEFAULT_VALUE}")
 private String propertyWithDefaultValue;
 
+// Defaults to "" if not set by a property
+@Value("${property.not.set:")
+private String defaultsToEmtpyString;
+
 // You can even set the value to null using SPEL
 // Defaults to null if not set by a property
 @Value("${another.property:#{null}}")
-private String defaultsToNullProperty;
+private String defaultsToNull;
 ```
 
 ## Links
