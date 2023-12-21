@@ -62,8 +62,8 @@ See this [hugo page](https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 ## Handy Commands
 
-| Command                                      | Description                                                           |
-|----------------------------------------------|-----------------------------------------------------------------------|
-| `hugo`                                       | Builds/compiles the website into the `./public` folder                |
-| `hugo serve -D --disableFastRender`          | Serves the Hugo site, watching for changes and rebuilding as required |
-| `hugo new posts/2023-06-17-new-blog-post.md` | Creates a new blog post using the appropriate `archetype`             |
+| Command                                              | Description                                                           |
+|------------------------------------------------------|-----------------------------------------------------------------------|
+| `hugo`                                               | Builds/compiles the website into the `./public` folder                |
+| `hugo serve -D --disableFastRender`                  | Serves the Hugo site, watching for changes and rebuilding as required |
+| `hugo new content posts/2023-06-17-new-blog-post.md` | Creates a new blog post using the appropriate `archetype`             |

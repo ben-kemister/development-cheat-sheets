@@ -51,3 +51,20 @@ The rendered output looks like this:
 
 > Dorothy followed her through many of the beautiful rooms in her castle.
 
+## Footnotes
+
+You can create footnotes using following syntax:
+
+```markdown
+There is a footnote at the end of this sentence [^1]
+
+[^1]: And here is the footnote text
+```
+
+The footnote text (or link) can be anywhere in the document, but will be rendered at the bottom of the page.
+
+This will be rendered as follows:
+
+There is a footnote at the end of this sentence [^1]
+
+[^1]: And here is the footnote text
