@@ -11,7 +11,7 @@ Using an inventory file, Ansible can manage a large number of hosts with a singl
 
 > To communicate with the hosts you must also ensure that your public SSH key is added to the `authorized_keys` file on each host.  
 > Make sure you have:
-> 1. Got a ssh key (`ls -la ~/.ssh/id_rsa`) or generated one with `ssh-keygen`.
+> 1. Got an ssh key (`ls -la ~/.ssh/id_rsa`) or generated one with `ssh-keygen`.
 > 2. Added it to the host with `ssh-copy-id <USER_ID_ON_TARGET>@<HOSTNAME>`
 
 ## Inventory file
