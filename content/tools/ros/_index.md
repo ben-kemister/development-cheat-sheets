@@ -11,6 +11,16 @@ Although ROS is not an operating system (OS) but a set of software frameworks fo
 it provides services designed for a heterogeneous computer cluster such as hardware abstraction, low-level device control, 
 implementation of commonly used functionality, message-passing between processes, and package management.
 
+### Check Versions & Set up
+
+You can use the ``ros2 doctor`` commands to check on the ROS installation and version numbers of the installed packages,
+for example:
+
+```shell
+# For full report
+ros2 doctor --report
+```
+
 ## Child pages
 
 {{% children sort="title" description="true" %}}

@@ -23,6 +23,20 @@ Each line in this file represents login information for one user. To open the fi
 less /etc/passwd
 ```
 
+## Which shell am I using?
+
+Use the `ps -p $$` command, for example:
+
+```shell
+$ ps -p $$
+```
+Outputs:
+
+```text
+    PID TTY          TIME CMD
+   4133 pts/1    00:00:00 bash
+```
+
 ## Sub Pages & Topics
 
 {{% children sort="title" %}}
