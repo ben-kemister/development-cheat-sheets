@@ -2,6 +2,7 @@
 title: JPA
 tags:
 - java
+- persistence
 ---
 
 # Java Persistence API (JPA)
