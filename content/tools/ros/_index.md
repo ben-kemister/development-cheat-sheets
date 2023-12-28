@@ -21,6 +21,25 @@ for example:
 ros2 doctor --report
 ```
 
+## ROS environment
+
+To make sure that the ROS tools and packages are available on your shell you need to source the ROS setup script using 
+`source /opt/ros/humble/setup.bash`.
+
+You can add this to your `~/.bashrc` file so that it is automatically done for each terminal session:
+
+```shell
+echo -e "# Source the ROS2 setup files\nsource /opt/ros/humble/setup.bash" \
+>> ~/.bashrc 
+```
+
+Or alternatively use a text editor like `nano` to add the command to your `~/.bashrc` file:
+
+```shell
+nano ~/.bashrc
+# source /opt/ros/humble/setup.bash
+```
+
 ## Child pages
 
 {{% children sort="title" description="true" %}}

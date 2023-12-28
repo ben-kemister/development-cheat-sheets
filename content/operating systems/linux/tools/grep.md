@@ -10,6 +10,18 @@ grep is a command-line utility for searching plain-text data sets for lines that
 Its name comes from the ed command `g/re/p`, which has the same effect. 
 grep was originally developed for the Unix operating system, but later available for all Unix-like systems and some others such as OS-9.
 
+## Ignore case
+
+To make the grep search case-insensitive (i.e. ignore the case) ise the `-i` or `--ignore-case` flags.
+For example:
+
+```shell
+$ echo -e "hello\nHELLO" | grep -i hellO
+hello
+HELLO
+```
+
+
 ## OR operator
 
 There are 2 ways that you can do OR operations with grep.
