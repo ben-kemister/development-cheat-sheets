@@ -22,7 +22,7 @@ hostname
 
 ## Stream input (piped from another command)
 
-``` cmd
+```cmd
 git config -l | Select-String -Pattern 'email'
 ```
 
@@ -33,3 +33,18 @@ You can use the command `Invoke-Item` or the shortcut version of `ii` to open a 
 ii index.html
 ```
 
+## Base64 encode/decode
+
+To encode a (UTF8) string use the following:
+
+```powershell
+[System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("passw0rd"))
+# cGFzc3cwcmQ=
+```
+
+To decode use the following:
+
+```powershell
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("cGFzc3cwcmQ="))
+# passw0rd
+```

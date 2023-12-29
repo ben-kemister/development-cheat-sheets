@@ -1,5 +1,5 @@
 ---
-title: Serial
+title: Serial Port
 tags:
 - powershell
 - serial
