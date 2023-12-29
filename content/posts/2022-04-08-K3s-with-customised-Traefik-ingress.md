@@ -13,9 +13,10 @@ tags:
 This post contains some details on how to customise the k3s (default) traefik ingress controller.
 <!--more-->
 K3s comes with a pre-configured [traefik ingress controller](https://doc.traefik.io/traefik/routing/providers/kubernetes-ingress/) which is deployed as a part of the k3s installation/setup.
-By default traefik *listens* for changes in the kubernetes *services* and *ingresses* and will use the information, along with any annotations, to configure itself accordingly.
+By default, traefik *listens* for changes in the kubernetes *services* and *ingresses* and will use the information, along with any annotations, to configure itself accordingly.
 
-To add/alter this default configuration you need to use *apply* a **HelmChartConfig** Custom Resource Definition (CRD). For more information see the [Customizing Packaged Components with HelmChartConfig K3s page](https://rancher.com/docs/k3s/latest/en/helm/#customizing-packaged-components-with-helmchartconfig).
+To add/alter this default configuration you need to use *apply* a **HelmChartConfig** Custom Resource Definition (CRD). 
+For more information see the [Customizing Packaged Components with HelmChartConfig K3s page](https://rancher.com/docs/k3s/latest/en/helm/#customizing-packaged-components-with-helmchartconfig).
 
 ## Applying your HelmChartConfig
 

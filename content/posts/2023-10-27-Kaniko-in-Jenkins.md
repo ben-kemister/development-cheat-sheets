@@ -111,7 +111,7 @@ Next we need to embed these credentials into kaniko's configuraiton file which l
 ```json
 {
   "auths": {
-    "https://nexus.dev-space.duckdns.org:5001" : {
+    "https://<IMAGE_REGISTRY_HOST>:<PORT>" : {
       "auth": "<YOUR_BASE64_ENCODED_CREDENTIALS>"
     }
   }
