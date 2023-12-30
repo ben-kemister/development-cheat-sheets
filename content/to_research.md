@@ -14,6 +14,7 @@ This page captures some the interesting tech that I have heard about, but have n
 * [Tekton](https://tekton.dev/) - A Kubernetes-native open-source framework for building continuous integration and delivery (CI/CD) pipelines to build, test, and deploy software.
 * [Skaffold](https://skaffold.dev/) - a command line tool that facilitates continuous development for Kubernetes applications.
 * [Buildpacks](https://buildpacks.io/) - create application images without the need for `Dockerfile`s
+* [Telepresence](https://www.telepresence.io/) - Fast, local development for Kubernetes and OpenShift Microservices
 
 ### Repository managers
 
