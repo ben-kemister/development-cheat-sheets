@@ -1,5 +1,5 @@
 ---
-title: "2024 01 01 Foxglove ROS Connection"
+title: "Foxglove ROS Connection"
 date: 2024-01-01T08:41:48+11:00
 draft: false
 tags:

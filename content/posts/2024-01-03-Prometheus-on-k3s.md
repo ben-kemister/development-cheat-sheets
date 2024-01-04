@@ -1,7 +1,7 @@
 ---
-title: "2024 01 03 Prometheus on K3s"
+title: "Prometheus on K3s"
 date: 2024-01-03T08:13:26+11:00
-draft: true
+draft: false
 tags:
 - kubernetes
 - k3s
