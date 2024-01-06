@@ -10,7 +10,7 @@ tags:
 - argo_cd
 ---
 
-This post covers the installation and configuration of [Argo CD](../tools/argo_cd) within my [k3s](../tools/kubernetes/k3s) cluster. 
+This post covers the installation and configuration of [Argo CD](../tools/kubernetes/argo_cd.md) within my [k3s](../tools/kubernetes/k3s) cluster. 
 <!--more-->
 My intent is to use Argo CD to be able to automatically update the Kubernetes objects deployed within my k3s cluster 
 when I make changes to the source code within git.
@@ -149,7 +149,7 @@ spec:
 ```
 
 You should now be able to reach the Argo CD UI at: [https://<YOUR_ARGO_CD_DNS_NAME>]() and be able to use the Argo CD CLI
-for example: `argocd version --server argocd.dev-space.duckdns.org`
+for example: `argocd version --server argocd.my-space.duckdns.org`
 
 ### Option 2 - Kubernetes `Ingress` object
 
