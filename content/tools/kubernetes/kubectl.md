@@ -23,13 +23,28 @@ See [kubectl Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatshee
 
 ### Get <Resource>
 
-| Command                                                                                  | Description                                   |
-|------------------------------------------------------------------------------------------|-----------------------------------------------|
-| `kubectl get pods --show-labels`                    |  Show labels for all pods (or any other Kubernetes object that supports labelling) |
-| `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring`                        | Watch a specific resource(s) based on a label |
-| `kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running` | Get a running pod based on a label            |
+| Command                                                                                  | Description                                                                       |
+|------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| `kubectl get pods --show-labels`                                                         | Show labels for all pods (or any other Kubernetes object that supports labelling) |
+| `kubectl get po -w -l app.kubernetes.io/instance=test-monitoring`                        | Watch a specific resource(s) based on a label                                     |
+| `kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running` | Get a running pod based on a label                                                |
+| `kubectl get -o custom-columns=NAME:metadata.name \| Select-String '^podname'\| foreach { kubectl delete pod $_ }` | Delete all of the pods which start with `podname` |
 
-kubectl get po -l app.kubernetes.io/name=openhab --field-selector status.phase=Running
+#### Filter on partial name
+
+You can pipe the output of the kubectl get command through tools like grep or Select-String to filter on pod names, 
+for example:
+
+In Linux Bash:
+
+```shell
+kubectl get pods | grep ^j
+```
+In Windows PowerShell:
+
+```powershell
+kubectl get pods | Select-String '^j'
+```
 
 ### Interactive shell into container
 

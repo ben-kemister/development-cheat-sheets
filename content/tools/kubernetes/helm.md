@@ -49,6 +49,37 @@ _Be careful! Newlines are whitespace!_
 
 For more information see the [Helm whitespace docs](https://helm.sh/docs/chart_template_guide/control_structures/#controlling-whitespace).
 
+## Automatically Roll Deployments
+
+You can use values in the annotations of your Deployment as a trigger to restart the pods within a deployment.
+
+### Automatically Roll Deployment if the config changes
+
+This technique comes from the [Helm Tips and Tricks page](https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments).
+
+```yaml
+kind: Deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        # Automatically Roll Deployment if the config changes
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+```
+
+### Always Roll Deployment
+
+```yaml
+kind: Deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        # Add a timestamp annotation to always trigger a re-deployment when performing an upgrade
+        # Note this will cause the Argo CD app to appear 'Out Of Sync' when the timestamp changes
+        timestamp: {{ now | quote }}
+```
+
 ## Handy Commands
 
 | Command                                                                         | Description                                                                                        |
