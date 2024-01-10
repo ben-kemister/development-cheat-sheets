@@ -1,5 +1,5 @@
 ---
-title: "Nano"
+title: "nano"
 date: 2024-01-07T06:58:18+11:00
 tags:
 - unix

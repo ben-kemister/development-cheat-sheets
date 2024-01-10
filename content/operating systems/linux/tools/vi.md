@@ -1,5 +1,5 @@
 ---
-title: Unix VI text editor
+title: vi
 tags:
  - unix
  - linux
