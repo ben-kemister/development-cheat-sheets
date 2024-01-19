@@ -1,5 +1,5 @@
 ---
-title: Directory commands
+title: Environment variables
 tags:
 - scripting
 - windows

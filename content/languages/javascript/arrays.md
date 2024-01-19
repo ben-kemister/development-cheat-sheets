@@ -46,7 +46,7 @@ var chips = [
 chips[2] //returns 'Twisties'
 ```
 
-# *push()* - Adding items to an Array
+# Adding items to an Array
 
 There are two ways that you can add elements to an array, using the square braces notation or the `push()` method.
 
@@ -65,7 +65,7 @@ chips[chips.length] = "Red Rock Deli"
 chips.push("Lays"); //returns 6, the number of items in the array
 ```
 
-# *pop()* - Removing an item from the end of an Array
+# Removing an item from the end of an Array
 
 To remove (and return) the last item from an array use the `pop()` method.
 
@@ -81,7 +81,7 @@ var chips = [
 chips.pop() // returns 'Thins' 
 ```
 
-# *splice()* - Removing items from the middle of an Array
+# Removing items from the middle of an Array
 
 If you simply `delete` a particular index in an array (e.g. `delete chips[2]`) it will not change the size of the array, it will just replace the value of that index with `empty`.
 

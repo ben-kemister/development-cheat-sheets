@@ -6,9 +6,9 @@ tags:
 
 This page contains handy information on the basics of the Javascript Syntax.
 
-# Basic JavaScript types/primatives
+# Basic JavaScript types/primitives
 
-The basic JavaScript Types/primatives are:
+The basic JavaScript Types/primitives are:
 * String
 * Boolean
 * Number
@@ -223,83 +223,6 @@ A common quick way to make an exact copy of an object is by using the JSON objec
 ```javascript
 //Makes a copy of the animal object safely.
 animal2 = JSON.parse(JSON.stringify(animal));
-```
-
-# Arrays
-
-Arrays allow you to store an ordered list of data of any type.
-The order of the elements are preserved and the keys are automatically assigned.
-An array can also store mixed data types (e.g. booleans, Strings, and objects can all exist in the same array).
-
-The sections below show some of the basics of creating and using arrays, more detailed information can be found on the 
-
-## Defining an Array
-
-```javascript
-//Empty Array
-var myArray = [];
-
-var daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday'];
-
-// Array storing mixed types
-var arrayOfStuff = [
-    {'name': 'value'},
-    [1,2,3],
-    true,
-    'nifty'
-];
-```
-
-## Accessing Array Items
-
-Arrays use a 0 based index, so the index of the first element an array is 0.
-
-You access the elements in the array using the square braces notation.
-
-```javascript
-var chips = [
-    'Smiths',
-    'Doritos',
-    'Twisties',
-    'Thins'
-];
-
-chips[2] //returns 'Twisties'
-```
-
-## Adding items to an Array
-
-There are two ways that you can add elements to an array, using the square braces notation or the `push()` method.
-
-```javascript
-var chips = [
-    'Smiths',
-    'Doritos',
-    'Twisties',
-    'Thins'
-];
-
-// Adds "Red Rock Deli" to the end of the array
-chips[chips.length] = "Red Rock Deli"
-
-// Adds "Lays" to the end of the array
-chips.push("Lays"); //returns 6, the number of items in the array
-```
-
-## Removing an item from the end of an Array
-
-To remove (and return) the last item from an array use the `pop()` method.
-
-```javascript
-var chips = [
-    'Smiths',
-    'Doritos',
-    'Twisties',
-    'Thins'
-];
-
-// Removes and returns the last item in the array
-chips.pop() // returns 'Thins' 
 ```
 
 # Comments

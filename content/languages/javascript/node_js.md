@@ -2,6 +2,7 @@
 title: Node.js
 tags:
 - javascript
+- node
 ---
 
 Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a browser. 

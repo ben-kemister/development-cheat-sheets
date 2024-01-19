@@ -2,11 +2,12 @@
 title: UI Components
 tags:
 - javascript
+- user_interface
 ---
 
 This page contains some information about common, or handy, UI (browser) components in Javascript.
 
-# The *window* Object
+# The window Object
 
 There is a global `window` object available when working in a browser, all global variables are properties of the `window` object.
 
@@ -26,9 +27,25 @@ The prompt window allows shows a popup dialog which can capture a string input f
 var answer = window.prompt("Type YES, NO or MAYBE. Then click OK.");
 ```
 
-## *setTimeout()* method
+## Redirect (replace())
 
-The `setTimeout()` method of the WindowOrWorkerGlobalScope mixin (and successor to `Window.setTimeout()`) sets a timer which executes a function or specified piece of code once the timer expires.
+The `replace()` method of the Location interface replaces the current resource with the one at the provided URL. 
+The difference from the `assign()` method is that after using replace() the current page will not be saved in session History, 
+meaning the user won't be able to use the back button to navigate to it.
+
+You can use the `window.location.replace($url);` function to act like a redirect in javascript.
+
+For example:
+
+```javascript
+// similar behavior as an HTTP redirect
+window.location.replace("http://stackoverflow.com");
+```
+
+## setTimeout() method
+
+The `setTimeout()` method of the WindowOrWorkerGlobalScope mixin (and successor to `Window.setTimeout()`) sets a timer 
+which executes a function or specified piece of code once the timer expires.
 
 ```javascript
 var timeoutID;
