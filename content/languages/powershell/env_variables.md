@@ -15,6 +15,14 @@ This page provides examples about the use of environment variables in PowerShell
 
 Environment variables are global settings for your Linux, Mac, or Windows computer, stored for the system shell to use when executing commands. For more information see [HowTo: Set an Environment Variable in Windows - Command Line and Registry](http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-windows-command-line-and-registry/).
 
+### Standard Environmental Variables
+
+The table below lists some of the standard/common Windows environmental variables: 
+
+| Variable        | Description                             |
+|-----------------|-----------------------------------------|
+| `$Env:UserName` | Returns the current username in Windows |
+
 ### Print Environmental Variables
 
 To list all environment variables.
