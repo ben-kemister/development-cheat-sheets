@@ -69,5 +69,13 @@ To set up Putty you need to:
 
 The steps above was mostly inspired from the information [here](https://www.host-telecom.com/guides/error-unable-to-use-key-file-when-using-putty/)
 
+## Troubleshooting
 
+### Permissions 0xxx for 'id_rsa' are too open
+
+```shell
+chmod 400 path/to/filename
+```
+
+See [this stackoverflow post](https://stackoverflow.com/questions/29933918/ssh-key-permissions-0644-for-id-rsa-pub-are-too-open-on-mac) for more details.
 
