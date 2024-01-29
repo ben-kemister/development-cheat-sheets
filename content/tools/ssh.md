@@ -53,7 +53,7 @@ See [this link](https://www.chrisjhart.com/Windows-10-ssh-copy-id/) for more inf
 
 You can configure Putty to use passwordless logins.
 
-To setup Putty you need to:
+To set up Putty you need to:
 
 * (optional) Generate a ssh key pair, if it doesn't exist.
 * Save/convert your private ssh key into the *.ppk (PuTTY private key file format)
@@ -68,5 +68,6 @@ To setup Putty you need to:
 * Test!
 
 The steps above was mostly inspired from the information [here](https://www.host-telecom.com/guides/error-unable-to-use-key-file-when-using-putty/)
+
 
 

@@ -15,9 +15,9 @@ The service has both free and premium tiers. The software that hosts the contain
 
 # Acronyms and Terms
 
-| Term | Explanation |
-| ---- | ----------- |
-| OCI | Open Container Initiative |
+| Term | Explanation               |
+|------|---------------------------|
+| OCI  | Open Container Initiative |
 
 ## Other Docker Pages
 
