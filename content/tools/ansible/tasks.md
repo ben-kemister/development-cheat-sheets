@@ -18,6 +18,21 @@ This page contains information about common/handy ansible tasks.
         state: directory
 ```
 
+## Print contents of file
+
+You can do this using [Ansible's debug module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html), 
+for example:
+
+```yaml
+    - name: Echo token
+      command: /bin/cat /var/lib/rancher/k3s/server/node-token
+      register: token
+
+    - ansible.builtin.debug:
+        msg:
+        - "K3S_TOKEN: {{ token.stdout }}"
+```
+
 ## Using a template
 
 > Note the template (*.j2) file must be in a `template` directory adjacent to the playbook.
