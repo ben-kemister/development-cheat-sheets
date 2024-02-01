@@ -21,6 +21,12 @@ The table below shows some of the flags that can be added when running an Ansibl
 | `--diff`  | Show the difference caused from the execution of the task       |
 | `--check` | Run in ['Check Mode'](https://docs.ansible.com/ansible/2.8/user_guide/playbooks_checkmode.html) (i.e. don't make any changes to the system) |
 
+## Check which plugins are installed
+
+```shell
+ansible-galaxy collection list
+```
+
 ## Pages
 
 {{% children sort="title" description="true" %}}
