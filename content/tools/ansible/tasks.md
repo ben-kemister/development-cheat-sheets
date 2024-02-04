@@ -47,3 +47,37 @@ for example:
         group: root
         mode: 0644
 ```
+
+## When tests
+
+You can use [string tests](https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_tests.html#testing-strings) 
+in your `when` statement to preform tasks under certain conditions. For example:
+
+### hostname in array
+
+```yaml
+- hosts: k3s_nodes
+  vars:
+    k3s_registration_address: loadbalancer  # Typically a load balancer.
+  pre_tasks:
+    - name: Set each node to be a control node
+      ansible.builtin.set_fact:
+        k3s_control_node: true
+      when: inventory_hostname in ['node2', 'node3']
+  roles:
+    - role: xanmanning.k3s
+```
+
+### hostname matches string
+
+```yaml
+- name: Build a cluster with HA control plane
+  hosts: k3s_cluster
+  pre_tasks:
+    - name: Set each server host to be a control node
+      ansible.builtin.set_fact:
+        k3s_control_node: true
+      when: inventory_hostname is match ("server.*")
+  roles:
+    - role: xanmanning.k3s
+```

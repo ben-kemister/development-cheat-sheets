@@ -9,6 +9,11 @@ Git  is a distributed version-control system for tracking changes in source code
 It is designed for coordinating work among programmers, but it can be used to track changes in any set of files. 
 Its goals include speed, data integrity, and support for distributed, non-linear workflows.
 <!--more-->
+
+## Sub-Pages
+
+{{% children sort="title" description="true" %}}
+
 ## Add a git configuration
 
 To add/alter a git configuration setting use the following command:
@@ -50,39 +55,6 @@ To change the default upstream that a particular branch is set to:
 ```sh
 # git push -u <remote_name> <local_branch_name>
 git push -u gogs main
-```
-
-## Submodules
-
-[Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) allow you to keep a Git repository as a subdirectory 
-of another Git repository. This lets you clone another repository into your project and keep your commits separate.
-
-### Adding a submodule
-
-```shell
-git submodule add https://github.com/chaconinc/DbConnector
-```
-
-### Cloning a Project with Submodules
-
-When you clone a project which has submodules, by default you get the directories that contain submodules, 
-but none of the files within them yet.
-
-You can override this behaviour and use `--recurse-submodules` when cloning the project. This will clone the main project
-and all the submodules. For example:
-
-```shell
-git clone --recurse-submodules https://github.com/chaconinc/MainProject
-```
-
-#### Populate (pull) contents of submodule
-
-If you have cloned a git repo without using the `--recurse-submodules` you will need to run some addition commands to
-pull in the contents of the submodules.
-
-```shell
-git submodule init
-git submodule update
 ```
 
 ## Handy Commands
