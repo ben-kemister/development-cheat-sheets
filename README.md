@@ -49,3 +49,12 @@ docker run --rm -it --name hugo `
        -p 1313:1313 `
        [$DOCKER_REG/]klakegg/hugo:<VERSION>-ext server -D
 ```
+
+For example:
+
+```powershell
+docker run --rm -it --name hugo `
+       -v "$($pwd):/src" `
+       -p 1313:1313 `
+       klakegg/hugo:hugo:0.111.3-ext server -D
+```

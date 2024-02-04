@@ -17,5 +17,5 @@ If the value of `date` is in the future **it will not be rendered**.
 
 Within markdown files you can use links as follows:
 ```markdown
-Github uses [git]({{< ref "/tools/git.md">}})
+Github uses [git](../../tools/git)
 ```

@@ -68,3 +68,11 @@ This will be rendered as follows:
 There is a footnote at the end of this sentence [^1]
 
 [^1]: And here is the footnote text
+
+## Links with spaces
+
+You can use links with spaces in the paths by wrapping the link in arrow brackets (`<` and `>`). For example:
+
+```markdown
+[the link text](<../folder with space/file>)
+```

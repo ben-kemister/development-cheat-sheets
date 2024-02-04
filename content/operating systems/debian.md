@@ -6,7 +6,7 @@ tags:
 - debian
 ---
 
-The [Linux]({{< ref "/operating systems/linux">}}) Debian operating system is used as the base for many other linux 
+The [Linux](../linux) Debian operating system is used as the base for many other linux 
 operating systems such as Ubuntu and the Raspberry Pi OS (formerly Raspbian).
 <!--more-->
 
