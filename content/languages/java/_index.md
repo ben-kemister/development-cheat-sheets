@@ -44,6 +44,18 @@ System.getProperty("name")
 //HelloWorld
 ```
 
+## Finding a class within *.jar files
+
+You can use the `jar ef some.jar` command with some PowerShell commands to effectively `grep` through the results to 
+find a class within a folder full of jar files:
+
+```powershell
+foreach( $jar in Get-Children .\*.jar)
+{
+    jar tf $jar | Select-String 'com.example.Utils'.replace('.', "/")
+}
+```
+
 ## Sub Pages
 
 {{% children sort="title" %}}

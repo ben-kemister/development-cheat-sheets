@@ -1,5 +1,5 @@
 ---
-title: Testing in SpringBoot
+title: Testing
 tags:
 - java
 - springboot

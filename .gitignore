@@ -1,5 +1,6 @@
 # Ignore Intellij files
 .idea
+.run
 # Jekyll generated folder
 /_site/
 # Hugo generated files
