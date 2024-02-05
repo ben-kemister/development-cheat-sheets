@@ -6,8 +6,11 @@ tags:
  - development
 ---
 
-Maven is a build automation tool used primarily for Java projects. Maven can also be used to build and manage projects written in C#, Ruby, Scala, and other languages. The Maven project is hosted by the Apache Software Foundation, where it was formerly part of the Jakarta Project.
+Maven is a build automation tool used primarily for Java projects. Maven can also be used to build and manage projects 
+written in C#, Ruby, Scala, and other languages. 
 <!--more-->
+The Maven project is hosted by the Apache Software Foundation, where it was formerly part of the Jakarta Project.
+
 ## Handy Commands
 
 | Command | Description |
@@ -41,6 +44,18 @@ mvn dependency:purge-local-repository
         </plugin>
     </plugins>
 </build>
+```
+
+## Add local jars file to Maven
+
+```xml
+<dependency>
+    <groupId>com.example</groupId>
+    <artifactId>library</artifactId>
+    <version>1.0</version>
+    <scope>system</scope>
+    <systemPaht>${project.basedir}/your-file.jar</systemPaht>
+</dependency>
 ```
 
 ## Publishing Artifacts
