@@ -1,5 +1,5 @@
 ---
-title: Docker build
+title: Build
 tags:
 - container
 - linux
@@ -9,7 +9,7 @@ tags:
 - dockerfile
 ---
 
-This page contains examples about the use of Docker commands when _building_ containers.
+This page contains examples about the use of the Docker `build` commands used when creating container image(s).
 <!--more-->
 
 ## Building with `Dockerfile`
