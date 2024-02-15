@@ -68,6 +68,16 @@ git push -u gogs main
 
 ## Troubleshooting
 
+### Error: Permission denied (publickey)
+
+A "Permission denied" error means that the server rejected your connection. 
+There could be several reasons why, including the SSH client used by git not finding/using your SSH key.
+
+To debug turn on verbose SSH logging by either using:
+
+1. Git config: `git config core.sshCommand "ssh -vvv"`, or 
+2. An environmental variable: `GIT_SSH_COMMAND="ssh -vvv" git pull`
+
 ### git checkout/pull returns 'error: invalid path'
 
 This is caused by git complaining about invalid paths, typically encountered on Windows.
