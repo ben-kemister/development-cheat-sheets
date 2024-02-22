@@ -1,5 +1,5 @@
 ---
-title: Loops (PowerShell)
+title: Loops
 tags:
  - scripting
  - windows
@@ -10,6 +10,18 @@ tags:
 
 This page provides examples about the use of PowerShell **loops**.
 <!--more-->
+
+## while
+
+```powershell
+while ($True) { Get-Counter '\Processor(_Total\% Processor Time)'} 
+```
+
+```powershell
+while($val -ne 3){$val++; Write-Host $val}
+```
+
+For more information see: [about_While](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_while?view=powershell-7.4)
 
 ## foreach - file input
 
