@@ -20,6 +20,8 @@ See: https://helm.sh/docs/chart_template_guide/control_structures/
 
 #### If/Else
 
+To add entries based on the existance of a value/object.
+
 Example:
 ```yaml
       volumes:
@@ -30,6 +32,15 @@ Example:
           persistentVolumeClaim:
             claimName: {{ .Values.volumes.influxdb.claimName }}
           {{- end }}
+```
+
+To control the template based on a value match you can use:
+
+```yaml
+{{ if eq .Values.gogsConfig.database.type "sqlite3" }}
+; For "sqlite3" only, make sure to use absolute path.
+PATH = {{ .Values.gogsConfig.database.path }}
+{{ end }}
 ```
 
 ### Including (YAML) blocks
@@ -48,6 +59,17 @@ The curly brace syntax of template declarations can be modified with special cha
 _Be careful! Newlines are whitespace!_
 
 For more information see the [Helm whitespace docs](https://helm.sh/docs/chart_template_guide/control_structures/#controlling-whitespace).
+
+### Multiline Strings
+
+An easy way use multiline strings in helm templates is to use:
+
+```yaml
+coffee: |
+  Latte
+  Cappuccino
+  Espresso 
+```
 
 ## Automatically Roll Deployments
 

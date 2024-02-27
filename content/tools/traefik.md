@@ -26,7 +26,7 @@ These ways are evaluated in the order listed above.
 When deployed as the Ingress controller in a Kubernetes cluster Traefik will watch for [specific annotations](https://doc.traefik.io/traefik/routing/providers/kubernetes-ingress/#annotations) 
 on Kubernetes Ingress and Service resources and use these to configure its routes.
 
-Below is an example of the use of these annotations:
+Below is an example of the use of these annotations on an Ingress resource:
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -66,3 +66,13 @@ If certResolver is defined, Traefik will try to generate certificates based on r
 ```yaml
 traefik.ingress.kubernetes.io/router.tls.certresolver: myresolver
 ```
+
+## Custom Resource Definition (CRD)
+
+Traefik can use [Custom Resource Definitions (CRDs)](https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/) to 
+configure the routing it performs within a Kubernetes cluster.
+
+### IngressRoute
+
+IngressRoute is the CRD implementation of a [Traefik HTTP router](https://doc.traefik.io/traefik/routing/routers/#configuring-http-routers).
+
