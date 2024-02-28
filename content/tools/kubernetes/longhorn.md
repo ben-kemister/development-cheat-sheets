@@ -11,7 +11,8 @@ tags:
 
 ## Moving files into Longhorn volume
 
-You can use the following Job manifest to copy files from the old PVC to the new one:
+You can use the following [Job manifest](https://github.com/longhorn/longhorn/blob/master/examples/data_migration.yaml#L29-L31) 
+to copy files from the old PVC to the new one:
 
 ```yaml
 #

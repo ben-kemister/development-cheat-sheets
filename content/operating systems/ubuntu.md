@@ -21,6 +21,17 @@ All the editions can run on the computer alone, or in a virtual machine.
 
 Version 20.10 supports booting from SSD “out-of-the-box”.
 
+## Extending the default LVM partition
+
+1. Check free space on the filesystem using `df -h`
+2. Check free space on the Volume Group (VG) using `vgdisplay`
+3. Check free space on your Logical Volume (LV) using `lvdisplay`
+4. Extend the LV using `lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv`
+5. Extend the filesystem using `resize2fs /dev/mapper/ubuntu–vg-ubuntu–lv`
+6. Check free disk space with `df -h`
+
+Based on the information [here](https://packetpushers.net/blog/ubuntu-extend-your-default-lvm-space/).
+
 ## Troubleshooting
 
 ### DNS resolution fails
