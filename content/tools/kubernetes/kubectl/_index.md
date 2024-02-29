@@ -2,12 +2,11 @@
 title: kubeclt
 tags:
  - container
- - development
  - kubernetes
  - kubectl
 ---
 
-Kubernetes provides a command line tool _**kubectl**_ for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
+Kubernetes provides a command line tool kubectl for communicating with a Kubernetes cluster's control plane, using the Kubernetes API.
 <!--more-->
 
 ## Configuration
@@ -91,7 +90,8 @@ kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install
 ```
 
 ### Custom columns
-Using the flag `-o custom-columns=<header-name>:<field>` will let you customize the output.
+
+Using the flag `-o custom-columns=<COLUMN_NAME>:<field>` will let you customize the output.
 
 Example with resource name, under header `NAME`
 `kubectl get pods -o custom-columns=NAME:metadata.name`
@@ -101,6 +101,12 @@ NAME
 myapp-5b77df6c48-dbvnh
 myapp-64d5985fdb-mcgcn
 httpd-9497b648f-9vtbl
+```
+
+You can output multiple columns using a comma `,` as a delimiter.
+
+```shell
+kubectl get nodes -o custom-columns=NAME:metadata.name,LABELS:metadata.labels
 ```
 
 ### Omit headers
