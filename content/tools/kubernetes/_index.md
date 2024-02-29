@@ -8,7 +8,7 @@ tags:
 This page and it's children contain information about Kubernetes that I have discovered, and documented.
 <!--more-->
 
-## Kubernetes Pages
+## Kubernetes Sub-Pages
 
 {{% children sort="title" description="true" %}}
 
@@ -27,10 +27,6 @@ The control pane components are started with the container runtime (i.e. Docker,
 default
 kube-system       Used for the Kubernetes systems
 kube-public       Available publicly, for use for things like container repositories
-
-## Volumes
-
-`nfs` is the only storage type that supports accessModes of `ReadWriteMany`.
 
 ## Services (and access)
 

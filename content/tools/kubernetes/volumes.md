@@ -9,6 +9,61 @@ tags:
 This page contain information about the use of Kubernetes volumes (i.e. PVC & PV).
 <!--more-->
 
+## Simple NFS Volume
+
+> Apparently `nfs` is the only (native?) storage type that supports accessModes of `ReadWriteMany`.
+
+```yaml
+#
+# The PV for the influxdb
+#
+# kubectl apply -f .\influxdb-volume.yaml
+#
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: influxdb-nfs
+  labels:
+    database: influx
+spec:
+  capacity:
+    # Allow 1 Gi of storage on the NAS
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nas-nfs-persistent
+  nfs:
+    server: <NAS_IP_ADDRESS>
+    path: "/volume1/volumes/influxdb_data"
+  mountOptions:
+    - nfsvers=4.0
+---
+#
+# Note: as the 'nas-persistent-storage' has volumeBindingMode: WaitForFirstConsumer
+# This PVC will not bind until a container starts to use it.
+#
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-nfs
+  namespace: default
+spec:
+  # Must match the storageClassName in the PersistentVolume
+  storageClassName: nas-nfs-persistent
+  # The access modes must match those in a PersistentVolume for it to get Bound
+  accessModes:
+    - ReadWriteOnce
+  selector:
+    matchLabels:
+      database: influx
+  resources:
+    requests:
+      storage: 1Gi
+```
+
 ## Host mounted CIFS Volume
 
 You can mount a CIFS volume on a cluster node and expose it as a local (host) volume to containers running on the node.
