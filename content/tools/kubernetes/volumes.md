@@ -4,14 +4,95 @@ tags:
  - container
  - kubernetes
  - volumes
+ - storage-class
 ---
 
 This page contain information about the use of Kubernetes volumes (i.e. PVC & PV).
 <!--more-->
 
+## Local (host) volume
+
+```yaml
+# A custom StorageClass for use with local (node) persistent storage
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+   name: local-persistent-storage
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+```
+
+```yaml
+# For the persistent storage of Traefik data (certs etc.) on the local disc of the pi-server node
+#
+# Note: Due to the file permission restrictions around the acme.json (letsencrypt certs) file
+#       I was not able to get Traefik to use the NAS via an NFS PV.
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: traefik-local
+spec:
+  capacity:
+    storage: 100Mi
+  # If not set defaults to Filesystem
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-persistent-storage
+  local:
+    # Note: this directory needs to exist on the node selected from the expression below
+    path: /var/local/k3s/traefik
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - pi-server
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+   name: traefik-local
+   namespace: kube-system
+spec:
+   # Must match the storageClassName in the PersistentVolume
+   storageClassName: local-persistent-storage
+   # The access modes must match those in a PersistentVolume for it to get Bound
+   accessModes:
+      - ReadWriteOnce
+   resources:
+      requests:
+         storage: 100Mi
+```
+
 ## Simple NFS Volume
 
 > Apparently `nfs` is the only (native?) storage type that supports accessModes of `ReadWriteMany`.
+
+```yaml
+#
+# A custom StorageClass for use with NAS persistent storage
+#
+# To apply: 
+#   kubectl apply -f ./nas-nfs-persistent-sc.yaml
+#
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nas-nfs-persistent
+provisioner: kubernetes.io/no-provisioner
+reclaimPolicy: Retain
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+```
 
 ```yaml
 #

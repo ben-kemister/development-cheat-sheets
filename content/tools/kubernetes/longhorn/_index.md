@@ -5,8 +5,14 @@ tags:
 - longhorn
 ---
 
-[Longhorn](https://longhorn.io/) is a cloud native distributed block storage for Kubernetes.
+[Longhorn](https://longhorn.io/) is a cloud native distributed **block storage** for Kubernetes.
 <!--more-->
+
+## Architecture
+
+Below is an overview of longhorn borrowed from the [excellent documentation on the longhorn site](https://longhorn.io/docs/latest/).
+
+![Longhorn overview](./how-longhorn-works.svg)
 
 
 ## Moving files into Longhorn volume

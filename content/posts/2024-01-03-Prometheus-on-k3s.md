@@ -118,7 +118,7 @@ Then access via http://localhost:3000 and use the default grafana user:password 
 ## Permanent UI Access
 
 You can set up more permanent access to the various UIs by updating/patching the `NetworkPolicy` applied by the 
-`kube-prometheus` _quickstart_ manifests and then creating an `Ingress` object. 
+`kube-prometheus` _quickstart_ manifests and then creating an `Ingress` object as per the [documentation here](https://github.com/prometheus-operator/kube-prometheus/blob/release-0.13/docs/customizations/exposing-prometheus-alertmanager-grafana-ingress.md).
 
 The example below shows the process for creating access to the **grafana** UI.
 

@@ -8,7 +8,7 @@ tags:
 This page and it's children contain information about Kubernetes that I have discovered, and documented.
 <!--more-->
 
-## Kubernetes Sub-Pages
+## Kubernetes Topic specific sub-pages
 
 {{% children sort="title" description="true" %}}
 
