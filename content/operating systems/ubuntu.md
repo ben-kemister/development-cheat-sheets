@@ -23,11 +23,14 @@ Version 20.10 supports booting from SSD “out-of-the-box”.
 
 ## Extending the default LVM partition
 
-1. Check free space on the filesystem using `df -h`
-2. Check free space on the Volume Group (VG) using `vgdisplay`
-3. Check free space on your Logical Volume (LV) using `lvdisplay`
-4. Extend the LV using `lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv`
-5. Extend the filesystem using `resize2fs /dev/mapper/ubuntu–vg-ubuntu–lv`
+> Note the steps below are for a very simple configuration where the machine has a single HDD.
+> You will need to amend these steps when dealing with more complex scenarios.
+
+1. Check free space on the filesystem using `df -h /`
+2. Check free space on the Volume Group (VG) using `sudo vgdisplay`
+3. Check free space on your Logical Volume (LV) using `sudo lvdisplay`
+4. Extend the LV using `sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv`
+5. Extend the filesystem using `sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv`
 6. Check free disk space with `df -h`
 
 Based on the information [here](https://packetpushers.net/blog/ubuntu-extend-your-default-lvm-space/).
