@@ -19,6 +19,18 @@ Use the ``mv`` command to rename a file, for example:
 mv oldname.txt newname.txt
 ```
 
+## Sym(bolic) link
+
+A symbolic (or soft) link is similar to a Shortcut in the Windows operating system. It is pointer to another file on
+the system (noting that it does not reference the actual data on disc like a hard link does).
+
+To create a symlink use the syntax `ln -s <FILE_TO_POINT_TO> <LINK_PATH>`
+
+To remove a symlink use `unlink <PATH_TO_SYMLINK`
+
+> You can also remove a symlink using the `rm` command. But be careful not to delete the actual file by accident!
+
+
 ## Changing file permissions
 
 To change the permissions for a file/folder use `chmod [permission] [file_name]`, for example:
