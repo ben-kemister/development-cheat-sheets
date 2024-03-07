@@ -7,7 +7,7 @@ tags:
 
 AWK is a domain-specific language designed for text processing and typically used as a data extraction and reporting tool. 
 <!--more-->
-Like sed and grep, it is a filter, and is a standard feature of most Unix-like operating systems.
+Like `sed` and `grep`, it is a filter, and is a standard feature of most Unix-like operating systems.
 
 ## Simple output formatting
 

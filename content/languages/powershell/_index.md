@@ -26,6 +26,21 @@ hostname
 git config -l | Select-String -Pattern 'email'
 ```
 
+### Using piped input in scriptblocks
+
+Scriptblock and some commands in PowerShell do not accept a pipeline input. A workaround for this is to use 
+`ForEach-Object` or its alias `%`.
+
+For example:
+
+```powershell
+"World!" | ForEach-Object { Write-Host "Hello $_" }
+```
+or
+```powershell
+"World!" | %{ Write-Host "Hello $_" }
+```
+
 ## Open a file
 
 You can use the command `Invoke-Item` or the shortcut version of `ii` to open a file. For example:
@@ -47,4 +62,10 @@ To decode use the following:
 ```powershell
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("cGFzc3cwcmQ="))
 # passw0rd
+```
+
+You can also use `ForEach-Object` or `%` for a piped input, for example:
+
+```powershell
+"cGFzc3dvcmQ=" | %{ [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
 ```

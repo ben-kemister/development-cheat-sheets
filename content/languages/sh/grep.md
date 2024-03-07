@@ -21,7 +21,6 @@ hello
 HELLO
 ```
 
-
 ## OR operator
 
 There are 2 ways that you can do OR operations with grep.
