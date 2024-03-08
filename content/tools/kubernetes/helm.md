@@ -9,10 +9,18 @@ tags:
  - yaml
 ---
 
-[Helm](https://helm.sh/) helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade even the most complex Kubernetes application.
+[Helm](https://helm.sh/) helps you manage Kubernetes applications — _Helm Charts_ help you define, install, and upgrade even the most complex Kubernetes application.
 <!--more-->
 
-## Helm Charts 
+## Using Helm Charts
+
+### Add a Helm repository
+
+Add a helm repository with the command: `helm repo add [NAME] [URL] [flags]`, [more info](https://1helm.sh/docs/helm/helm_repo_add/).
+
+Fetch the latest charts from the repository/ies with: `helm repo update`
+
+## Creating Helm Charts
 
 ### Flow control
 
@@ -71,11 +79,11 @@ coffee: |
   Espresso 
 ```
 
-## Automatically Roll Deployments
+### Automatically Roll Deployments
 
 You can use values in the annotations of your Deployment as a trigger to restart the pods within a deployment.
 
-### Automatically Roll Deployment if the config changes
+#### Automatically Roll Deployment if the config changes
 
 This technique comes from the [Helm Tips and Tricks page](https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments).
 
@@ -89,7 +97,7 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
 ```
 
-### Always Roll Deployment
+#### Always Roll Deployment
 
 ```yaml
 kind: Deployment
