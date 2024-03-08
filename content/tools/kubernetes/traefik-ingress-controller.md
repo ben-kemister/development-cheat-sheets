@@ -133,7 +133,11 @@ spec:
           weight: 10
 ```
 
-### Middleware
+### Middlewares
+
+#### http BasicAuth
+
+[Traefik BasicAuth documentation](https://doc.traefik.io/traefik/middlewares/http/basicauth/)
 
 ```yaml
 apiVersion: traefik.containo.us/v1alpha1

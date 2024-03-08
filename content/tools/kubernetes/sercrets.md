@@ -25,7 +25,34 @@ kubectl create secret generic my-generic-credentials `
 > Note the `--from-literal` flag specify a _key_ and literal _value_ to insert in secret (i.e. mykey=somevalue)
 > It will automatically **base64 encode** the **value** input.
 
-## Creating Secrets for use for http basic-auth
+## Viewing and Decoding a secret
+
+> The data values in a secret are **base64 encoded**!
+
+```shell
+kubectl get secret my-generic-credentials -o jsonpath='{.data}'
+```
+This will show the base64 encoded data fields of the secret:
+```text
+{"password":"cGFzc3dvcmQ=","username":"YWRtaW4="}
+```
+
+You can decode these values to see the original value:
+
+In PowerShell:
+```powershell
+kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | %{ [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
+```
+```text
+password
+```
+
+Or in Linux (sh/bash) with:
+```shell
+kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | base64 --decode
+```
+
+## Creating Secrets for use with http basic-auth
 
 There are two was you can create secrets for use as http basic-auth in Ingress objects:
 1. Create a [basic-auth secret]() - which just base64 encodes the credentials, or
@@ -60,7 +87,7 @@ kubectl create secret generic my-basic-auth \
 
 #### Updating the Secret
 
-If you need to update the secret in the future you can use:
+If you need to update the secret in the future you can use this trick:
 
 ```shell
 kubectl create secret generic my-basic-auth \
