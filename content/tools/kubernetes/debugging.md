@@ -31,6 +31,10 @@ container image doesn't include debugging utilities.
 You can spin up a new pod containing your _debugging_ image of choice with:
 
 ```shell
+kubectl run tmp-shell --rm -i --tty --image redhat/ubi8
+```
+Or
+```shell
 kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
 ```
 
