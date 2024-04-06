@@ -30,3 +30,25 @@ http://pi.hole/admin/api.php?disable=<SECONDS>&auth=<TOKEN>
 
 To re-enable the ad blocking you can use:
 http://pi.hole/admin/api.php?enable&auth=<TOKEN>
+
+## Systemd
+
+When installed on a linux machine pi-hole can be managed by `systemd` (using `systemctl`), for example:
+
+```shell
+# Start pihole
+sudo systemctl start pihole-FTL
+
+# Stop pihole
+sudo systemctl stop pihole-FTL
+
+# Disable
+sudo systemctl disable pihole-FTL
+```
+
+## Handy links
+
+* [pihole - Docker Image](https://hub.docker.com/r/pihole/pihole)
+* [pihole Docker - github repo](https://github.com/pi-hole/docker-pi-hole#readme)
+* [pihole - Helm Chart](https://artifacthub.io/packages/helm/mojo2600/pihole)
+* [pihole-kubernetes - github repo](https://github.com/MoJo2600/pihole-kubernetes)
