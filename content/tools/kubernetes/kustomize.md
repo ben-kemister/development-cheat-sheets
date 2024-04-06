@@ -66,6 +66,38 @@ resources:
   - github.com/prometheus-operator/kube-prometheus?ref=v0.13.0
 ```
 
+## Images
+
+You can change the images, registries, or tags of the images by using an `images` section, for example:
+
+```yaml
+#
+# Description: This is a Kustomise file for applying changes to the default Argo CD manifests.
+#
+# To view the results use:
+#   kubectl kustomize ./argocd/ > ./argocd/test.yaml
+#
+# To apply run:
+#   kubectl apply -k ./argocd/
+#
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.6/manifests/install.yaml
+
+images:
+  # Use an image (without changing the tag) from a private image registry
+  - name: quay.io/argoproj/argocd
+    newName: my-private-registry.example.org/argoproj/argocd
+  # Use a different tag/version of an image
+  - name: redis
+    newTag: 7.0.11-alpine # originally 7.0.14-alpine
+```
+
 ## Patches
 
 ### Replace/update
