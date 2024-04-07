@@ -128,6 +128,19 @@ metadata:
 
 For more information on this see [Replace Resource Instead Of Applying Changes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes).
 
+## No Resource Deletion
+
+For certain resources you might want to retain them even after your application is deleted, for e.g. PVCs, Longhorn volumes.
+In such situations you can stop those resources from being cleaned up during app deletion by using the following annotation:
+
+```yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Delete=false
+```
+
+For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
+
 ## Managing Argo CD with Argo CD
 
 You can use [Kustomize](./kustomize) to apply any 'last mile' changes to the Argo CD manifests which will allow you to 

@@ -79,6 +79,22 @@ coffee: |
   Espresso 
 ```
 
+## Key Value pairs
+
+```yaml
+# in value.yaml
+vrIds:
+  51: 169.254.1.1
+  52: 169.254.1.2
+```
+
+```yaml
+# In template
+{{- range $key, $value := .Values.vrIds }}
+  vrrp.{{ $key }}.vip: {{ $value }}
+{{- end }}
+```
+
 ### Automatically Roll Deployments
 
 You can use values in the annotations of your Deployment as a trigger to restart the pods within a deployment.
