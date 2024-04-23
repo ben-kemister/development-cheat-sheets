@@ -44,6 +44,15 @@ Mount the NFS share by running the following command: `sudo mount /media/nfs`
 
 ## Mount a CIFS share
 
+### Temporary Mount
+
+* Install cifs-utils: `sudo apt-get install cifs-utils`
+* Create the directory: `mkdir /mnt/cifs`
+* Run mount command: `sudo mount.cifs //<hostname>/shared/folder /mnt/cifs -o username=<user_id>,file_mode=0777,dir_mode=0777`
+  * You will be asked to enter the password for the `user_id`
+
+### Mount at startup
+
 * Install cifs-utils: `sudo apt-get install cifs-utils`
 * Create the directory: `mkdir /mnt/cifs`
 * Create a file to contain the credenials: `nano ~/.smbcredentials`
