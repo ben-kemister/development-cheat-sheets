@@ -1,5 +1,5 @@
 ---
-title: "Private_registry"
+title: "Private Registry"
 date: 2024-02-04T05:38:31+11:00
 tags:
   - k3s

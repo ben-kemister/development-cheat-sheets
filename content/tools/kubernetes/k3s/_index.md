@@ -10,6 +10,10 @@ tags:
 [K3s](https://docs.k3s.io/) - Lightweight Kubernetes. Easy to install, half the memory, all in a binary of less than 100 MB.
 <!--more-->
 
+## Child Pages
+
+{{% children sort="title" description="true" %}}
+
 ## Cluster Access
 
 Accessing the Cluster from Outside with kubectl
@@ -83,6 +87,5 @@ docker.io/container-tools/inotify-rsync                          latest         
 ...
 ```
 
-## Un
 
 
