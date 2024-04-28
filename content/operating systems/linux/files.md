@@ -30,6 +30,19 @@ To remove a symlink use `unlink <PATH_TO_SYMLINK`
 
 > You can also remove a symlink using the `rm` command. But be careful not to delete the actual file by accident!
 
+## Hard link
+
+The syntax to create a hard link is `ln {source} {link}`.
+
+For example:
+
+```shell
+ln /path/to/source /path/to/link
+ln target link
+ln target directory
+```
+To verify soft or hard links on Linux, run: `ls -l source link`
+
 
 ## Changing file permissions
 
