@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Objects
+title: Resources
 tags:
  - container
  - kubernetes
@@ -8,8 +8,12 @@ tags:
  - manifest
 ---
 
-This page contains information about Kubernetes objects.
+This page contains information about Kubernetes resource (a.k.a. objects).
 <!--more-->
+
+## Kubernetes resource specific sub-pages
+
+{{% children sort="title" description="true" %}}
 
 ## Namespaces
 

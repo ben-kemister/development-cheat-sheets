@@ -152,7 +152,7 @@ You can mount a CIFS volume on a cluster node and expose it as a local (host) vo
 This can be used as a hacky workaround to containers which do commands like `chown` the mounted volumes which can cause 
 issues with NFS volumes.
 
-> Note a much better solution is to use a cloud native storage for Kubernetes like [longhorn](./longhorn).
+> Note a much better solution is to use a cloud native storage for Kubernetes like [longhorn](../longhorn).
 
 ### Host preparation
 
