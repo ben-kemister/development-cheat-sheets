@@ -7,6 +7,9 @@ tags:
   - registry
 ---
 
+This page contains information about how to configure k3s to use a [private image registry](https://docs.k3s.io/installation/private-registry).
+<!--more-->
+
 ## Using a private image registry
 
 If you want to pull the images from a private image registry (rather than their defaults) you can create a configuration

@@ -14,26 +14,33 @@ tags:
 
 {{% children sort="title" description="true" %}}
 
+## Default directories and paths
+
+## Directories and paths
+
+| Name               | Path                           | Notes                                                       |
+|--------------------|--------------------------------|-------------------------------------------------------------|
+| Binary location    | `/usr/local/bin/`              | Contains the `k3s`, `ctr`, `crictl`, and `kubectl` binaries |
+| Node configuration | `/etc/rancher/k3s/config.yaml` |                                                             |
+
 ## Cluster Access
 
 Accessing the Cluster from Outside with kubectl
 Copy `/etc/rancher/k3s/k3s.yaml` on your machine located outside the cluster as `~/.kube/config`. 
-Then replace the value of the server field with the IP or name of your K3s server. kubectl can now manage your K3s cluster.
+Then replace the value of the server field with the IP or name of your K3s [server](./server). kubectl can now manage your K3s cluster.
 
-## Configuration
+## Node Configuration
 
-You can configure the k3s nodes using yaml file(s) located in: /etc/rancher/k3s/config.yaml
+You can configure the k3s nodes using yaml file(s) located in: `/etc/rancher/k3s/config.yaml`
 
 For more information see the [k3s configuration doco](https://docs.k3s.io/installation/configuration#configuration-file).
 
-## Certificates
+## k3s logs
 
-By default, certificates in K3s expire in 12 months.
-If the certificates are expired or have fewer than 90 days remaining before they expire, the certificates are rotated when K3s is restarted.
-
-    Note: If the certificates have expired you will not be able to access the cluster with `kubeclt`
-
-For more see [Certificate Rotation](https://docs.k3s.io/advanced#certificate-rotation).
+[Where are the k3s logs](https://docs.k3s.io/faq#where-are-the-k3s-logs):
+* When running under `systemd`, logs will be sent to Journald and can be viewed using `journalctl -u k3s`.
+* Pod logs can be found at `/var/log/pods`.
+* `containerd` logs can be found at `/var/lib/rancher/k3s/agent/containerd/containerd.log`
 
 ## Labeling Nodes
 
@@ -56,25 +63,6 @@ If you want to use NFS backed Persistent Volumes (PV) you will need to install `
 ```sh
 sudo apt-get update && sudo apt-get install -y nfs-common
 ```
-
-## Changing the k3s service
-
-When installed as a service, the service file is located in: `/etc/systemd/system/k3s.service`
-
-You can alter the `ExecStart=` entry if you need to change the startup arguments.
-
-Just remember to reload the systemctl daemon and restart the service so that the settings are applied:
-
-```shell
-sudo systemctl daemon-reload
-sudo systemctl restart k3s
-# Check the status
-sudo systemctl status k3s
-```
-
-## Changing IP address of the server
-
-On the worker nodes edit the `sudo nano /etc/systemd/system/k3s-agent.service.env` file to change the IP address of the server.
 
 ## List images on node
 
