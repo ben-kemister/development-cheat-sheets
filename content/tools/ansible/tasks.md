@@ -18,6 +18,19 @@ This page contains information about common/handy ansible tasks.
         state: directory
 ```
 
+## Copy (multi-line) string to file
+
+```yaml
+- name: Copy mytext to a file
+  vars:
+    mytext: |
+      Hello
+      World
+  ansible.builtin.copy:
+    content: "{{ mytext }}"
+    dest: /tmp/some_file.txt
+```
+
 ## Print contents of file
 
 You can do this using [Ansible's debug module](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html), 
