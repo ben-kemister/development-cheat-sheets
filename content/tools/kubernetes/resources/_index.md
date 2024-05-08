@@ -25,12 +25,6 @@ kube-public       Available publicly, for use for things like container reposito
 
 `nfs` is the only storage type that supports accessModes of `ReadWriteMany`.
 
-## Services (and access)
-
-`ClusterIP` only exposes the service(s) to the container.
-
-`NodePort` is accessible from both within and outside the Kuberentes cluster.
-
 ## Config maps
 
 Best practice is to inject your config map as a volume.
