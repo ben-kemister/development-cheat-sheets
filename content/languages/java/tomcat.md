@@ -49,3 +49,34 @@ For example:
 <user username="admin" password="admin" roles="manager-gui"/>
 ```
 
+## Windows Service
+
+Tomcat has some utilities to assist with the creation (and control) of a Windows service to run Tomcat.
+
+The main utilities are:
+
+* `service.bat` - script to manually create the service.
+* `tomcat10w.exe` - is a GUI application for monitoring and configuring Tomcat services.
+* `tomcat10.exe` - is a service application for running Tomcat 10 as a Windows service.
+
+For more information see the [Windows Service How-To](https://tomcat.apache.org/tomcat-10.1-doc/windows-service-howto.html).
+
+### Edit existing service
+
+The command `./tomcat10w.exe //ES[//ServiceName]` starts the GUI application which allows the service configuration 
+to be modified, started and stopped.
+
+For example:
+
+```powershell
+./tomcat10w.exe //ES[//ServiceName]
+```
+
+
+
+
+
+
+
+
+
