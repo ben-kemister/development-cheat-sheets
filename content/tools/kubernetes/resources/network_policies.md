@@ -40,7 +40,9 @@ NetworkPolicies operate at layer 3 or 4 of OSI model (IP and port level). They a
 * If a NetworkPolicies matches a pod but has a null rule, all traffic is blocked. Example of this is a "Deny all traffic policy".
 * NetworkPolicy are **additive**. If multiple NetworkPolicies are selecting a pod, their union is evaluated and applied to that pod.
 
-## Ingress Example
+## Simple Ingress Examples
+
+### Deny all traffic to a Pod
 
 Below is a simple example showing how the Ingress to a pod (with a label of `app: web`) is restricted:
 
@@ -56,8 +58,32 @@ spec:
     matchLabels:
       # Targets any pods (in the 'default' Namespace) which have this label
       app: web
-  # There are no ingress rules defined, so this NetworkPolicy does not allow any traffic into the pods (i.e. the selected pods are isolated by default)
+  # There are no ingress rules defined, so this NetworkPolicy does not allow any traffic into the pods (i.e. the pods are isolated)
   ingress: []
+```
+
+For more details on this use case see [DENY all traffic to an application](https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/01-deny-all-traffic-to-an-application.md).
+
+### Allow ingress from a namespace
+
+```yaml
+# Allow ingress from kube-system namespace, deny all others
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-kube-system-ingress
+  # This policy only applies to Pods within the 'default' Namespace
+  namespace: default
+spec:
+  # Targets ALL pods in the 'default' namespace
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              # Use the immutable label 'kubernetes.io/metadata.name' set on the namespace by the control plane
+              kubernetes.io/metadata.name: kube-system
 ```
 
 ## To and From selectors

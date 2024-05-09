@@ -22,12 +22,6 @@ The control pane components are started with the container runtime (i.e. Docker,
 
 `apply` is preferred as this uses a declarative approach, this means that if you run it twice you will NOT get an error.
 
-## Namespaces
-
-default
-kube-system       Used for the Kubernetes systems
-kube-public       Available publicly, for use for things like container repositories
-
 ## Services (and access)
 
 `ClusterIP` only exposes the service(s) to the container.
