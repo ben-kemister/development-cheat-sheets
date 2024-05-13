@@ -8,6 +8,20 @@ The HyperText Markup Language, or HTML is the standard markup language for docum
 <!--more-->
 It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as [JavaScript](../languages/javascript).
 
+## Basic HTML file
+
+```html
+<!doctype html>
+<html>
+<head>
+    <title>My Simple HTML page</title>
+</head>
+<body>
+    <h1>It works!</h1>
+</body>
+</html>
+```
+
 ## Adding text on hover
 
 ```html
