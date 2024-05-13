@@ -33,14 +33,18 @@ sudo systemctl restart k3s
 sudo systemctl status k3s
 ```
 
-## Secrets Encryption
+## Secrets Encryption (at rest)
 
-k3s can be [configured to encrypt Secrets](https://docs.k3s.io/security/secrets-encryption) at rest (i.e. within the etcd database).
+k3s can be [configured to encrypt Secrets](https://docs.k3s.io/security/secrets-encryption) at rest 
+(i.e. encrypted within the etcd database).
 
 When enabled server nodes will have an encryption config file: `/var/lib/rancher/k3s/server/cred/encryption-config.json`
 
 k3s has a [command tool](https://docs.k3s.io/cli/secrets-encrypt) for dealing with secrets-encryption, 
 on the main server node `sudo k3s secrets-encrypt --help`.
+
+> WARNING: Starting K3s without encryption and enabling it at a later time is currently not supported.
+> See [k3s secrets-encrypt documentation](https://docs.k3s.io/cli/secrets-encrypt).
 
 ## Certificates
 
