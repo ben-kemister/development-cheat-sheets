@@ -1,5 +1,5 @@
 ---
-title: "Shares & Mounts"
+title: "mount"
 tags:
 - sh
 - bash
@@ -7,7 +7,7 @@ tags:
 - mount
 ---
 
-Information about how to create or mount share (shared drives) in linux operating systems
+Information about how to mount a local or network (shared) drive in linux operating systems
 <!--more-->
 
 ## Mount an NFS share

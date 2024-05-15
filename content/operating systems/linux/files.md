@@ -12,6 +12,10 @@ File and file permissions are core to the security model used by Linux systems.
 <!--more-->
 They determine who can access files and directories on a system and how.
 
+## What is a file?
+
+On a UNIX system, everything is a file; if something is not a file, it is a process.
+
 ## Renaming a file
 
 Use the ``mv`` command to rename a file, for example:
