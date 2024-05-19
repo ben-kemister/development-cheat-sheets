@@ -35,5 +35,9 @@ metadata:
 
 A namespaces' immutable `kubernetes.io/metadata.name` label is useful when targeting pods with a [NetworkPolicy](./network_policies). 
 
+## Create a namespaces
 
+```shell
+kubectl create ns dev-ops
+```
 
