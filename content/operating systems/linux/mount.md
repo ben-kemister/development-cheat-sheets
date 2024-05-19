@@ -5,10 +5,63 @@ tags:
 - bash
 - linux
 - mount
+- filesystem
 ---
 
-Information about how to mount a local or network (shared) drive in linux operating systems
+Information about how to mount a local or network (shared) filesystem in linux operating systems
 <!--more-->
+
+## Syntax
+
+The general syntax is `sudo mount <filesystem path> <Mount point>`
+
+## Mount a local filesystem
+
+Create the directory on the local machine where the filesystem will be mounted, for example:
+`sudo mkdir -p /var/opt/longhorn`
+
+The use `mount` to mount the filesystem to the directory, for example to temporarily mount the Logical Volume available 
+at `/dev/ubuntu-vg-2/ubuntu-lv-2` use:
+```sh
+sudo mount /dev/ubuntu-vg-2/ubuntu-lv-2 /var/opt/longhorn
+```
+
+(Optional) You can see the filesystem mount using `df`:
+```shell
+$ df -h /var/opt/longhorn
+Filesystem                               Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg--2-ubuntu--lv--2  916G   28K  870G   1% /var/opt/longhorn
+```
+
+### Mount at startup
+
+First find the UUID of the filesystem using `blkid`
+```shell
+$ blkid
+/dev/sda1: UUID="JSkn68-aaQE-9ZTL-GR5D-xfxy-XPSR-stuEuG" TYPE="LVM2_member" PARTUUID="2b98721b-3c00-e24c-b504-530e1f6626c8"
+```
+
+To mount the filesystem at startup you need to add a line to the `/etc/fstab` file
+``` sh
+sudo nano /etc/fstab
+```
+Add the following line to the file, replacing `UUID="xxxxxx-xxxx"` with the UUID of the local filesystem:
+``` txt
+# <file system>    <dir>       <type>   <options>   <dump> <pass>
+
+UUID="xxxxxx-xxxx" /var/opt/longhorn  ext4      defaults    0       0
+```
+Mount the filesystem by running the following command: `sudo mount -a`
+
+
+/dev/mapper/ubuntu--vg--2-ubuntu--lv--2 on /var/opt/longhorn type ext4 (rw,relatime)
+
+sda    8:0    0 931.5G  0 disk
+└─sda1
+8:1    0 931.5G  0 part
+└─ubuntu--vg--2-ubuntu--lv--2
+253:0    0 931.5G  0 lvm  /var/opt/longhorn
+
 
 ## Mount an NFS share
 
@@ -20,7 +73,7 @@ Firstly make sure that you have installed `nfs-utils` for your OS, for debian:
 Create the directory on the local machine where the remote file system will be mounted
 `sudo mkdir /media/nfs`
 
-For a temporary mount you can just run the mount command:
+For a temporary mount you can just run:
 ```sh
 sudo mount <hostname_or_ip_address>:/volume1/Virtual_Machines/docker/volumes /mnt/docker-volumes
 ```
