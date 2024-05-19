@@ -6,33 +6,19 @@ tags:
  - yaml
 ---
 
-This page contains information about using (Helm chart) repositories and (Helm) charts.
+This page contains information about using Helm charts.
 <!--more-->
 
-## Add a Helm repository
+## Deploy to a namespace
 
-Add a helm repository with the command: `helm repo add [NAME] [URL] [flags]`, [more info](https://1helm.sh/docs/helm/helm_repo_add/).
+Add the `-n <namespace>` option to your command, for example
 
-Fetch the latest charts from the repository/ies with: `helm repo update`
-
-## Searching a repository
-
-To see the charts available within a repository use:
-
-```powershell
-PS> helm search repo wireguard
-NAME                    CHART VERSION   APP VERSION     DESCRIPTION                                       
-wireguard/wireguard     0.23.0          0.0.0           A Helm chart for managing a wireguard vpn in ku...
+```shell
+helm upgrade -i gogs -n dev-ops -f .\my-values.yaml ./gogs-helm-chart/gogs/
 ```
 
-To view all the versions available add the `--versions` flag:
+### Create a namespace
 
-```powershell
-PS> helm search repo wireguard --versions
-NAME                    CHART VERSION   APP VERSION     DESCRIPTION
-wireguard/wireguard     0.23.0          0.0.0           A Helm chart for managing a wireguard vpn in ku...
-wireguard/wireguard     0.22.0          0.0.0           A Helm chart for managing a wireguard vpn in ku...
-wireguard/wireguard     0.21.0          0.0.0           A Helm chart for managing a wireguard vpn in ku...
-...
-```
+Add the `--create-namespace` option to your command to create the release namespace if not present.
+This can be used with the `-n <namespace>` option so that the namespace is created when deploying.
 
