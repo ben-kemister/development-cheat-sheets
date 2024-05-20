@@ -34,6 +34,15 @@ You can add http headers to the requests with the `-h <header_value>` syntax. Fo
 curl http://<IP_ADDRESS_OR_HOSTNAME> -H 'Host: foo.bar.com'
 ```
 
+## Using a proxy
+
+To get curl to use a proxy use the `-x` or `--proxy` arguments using the syntax `--proxy <[protocol://][user:password@]proxyhost[:port]>`,
+for example:
+```shell
+curl --proxy "http://user:password@proxy:8080" https://example.com
+```
+> Remember to [Percent encode](https://developer.mozilla.org/en-US/docs/Glossary/Percent-encoding) any special characters in your password.
+
 ## Check http basic-auth
 
 You can use curl to check if basic-auth is working as expected for example:

@@ -17,6 +17,13 @@ one
 two
 ```
 
+## Remove all whitespaces
+
+```shell
+$ echo " one two three 4" | tr -d " \t\n\r"
+onetwothree4
+```
+
 ## Handy links
 
 * [Linux tr Command - Baeldung](https://www.baeldung.com/linux/tr-command)
