@@ -52,6 +52,34 @@ Or in Linux (sh/bash) with:
 kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | base64 --decode
 ```
 
+## Using a secret in an Environmental variable
+
+Create the secret, for example:
+```powershell
+kubectl create secret generic grafana-admin-credentials `
+--from-literal=password=<YOUR_PASSWORD>
+```
+
+Then you can reference the secret in the pod like so:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: grafana-867f566db4-7ppjt
+spec:
+  containers:
+  - env:
+    # The environmental name to be exposed in the Pod
+    - name: GF_SECURITY_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          # The name of the Secret within the same namespace as the pod
+          name: grafana-admin-credentials
+          # The key within the secret which contains the secret value
+          key: password
+...
+```
+
 ## Creating Secrets for use with http basic-auth
 
 There are two was you can create secrets for use as http basic-auth in Ingress objects:
