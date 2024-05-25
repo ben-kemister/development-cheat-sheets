@@ -86,6 +86,44 @@ spec:
               kubernetes.io/metadata.name: kube-system
 ```
 
+### Allow ingres from select pods in another namespace
+
+```yaml
+#
+# Description: Allow prometheus to scrape metrics from the longhorn-managers
+#
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-prometheus-longhorn-manager-ingress
+  namespace: longhorn-system
+spec:
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            # Allow from pods within the 'monitoring' namespace
+            kubernetes.io/metadata.name: monitoring
+        podSelector:
+          matchLabels:
+            # Only pods which have the label 'app.kubernetes.io/name=prometheus'
+            app.kubernetes.io/name: prometheus
+      ports:
+        # Only allow traffic on TCP port 9500 
+        - port: 9500
+          protocol: TCP
+  podSelector:
+    matchLabels:
+      # Allow ingress to the longhorn-manager pod
+      app: longhorn-manager
+  policyTypes:
+    - Ingress
+```
+
+For information checkout the [example in Network Policy recipes](https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/07-allow-traffic-from-some-pods-in-another-namespace.md).
+
+
 ## To and From selectors
 
 * **podSelector**: Selects particular **Pods in the same namespace** as the NetworkPolicy which should be allowed as ingress sources or egress destinations.
