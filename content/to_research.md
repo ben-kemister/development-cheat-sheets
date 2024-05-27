@@ -11,12 +11,10 @@ This page captures some the interesting tech that I have heard about, but have n
 
 ### Containerisation & Kubernetes
 
-* [Tekton](https://tekton.dev/) - A Kubernetes-native open-source framework for building continuous integration and delivery (CI/CD) pipelines to build, test, and deploy software.
 * [Skaffold](https://skaffold.dev/) - a command line tool that facilitates continuous development for Kubernetes applications.
 * [Buildpacks](https://buildpacks.io/) - create application images without the need for `Dockerfile`s
 * [Telepresence](https://www.telepresence.io/) - Fast, local development for Kubernetes and OpenShift Microservices
 * [Eclipse Che](https://www.eclipse.org/che/) - A fast and modern code editor built on top of Visual Studio Code Open Source. Configured to **run in Kubernetes Pods**.
-* [ExternalDNS](https://github.com/kubernetes-sigs/external-dns/tree/master?tab=readme-ov-file) - synchronizes exposed Kubernetes Services and Ingresses with DNS providers.
 
 ### Repository managers
 
