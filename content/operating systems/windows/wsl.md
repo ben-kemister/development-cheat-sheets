@@ -1,5 +1,5 @@
 ---
-title: WSL2
+title: WSL
 tags:
 - windows
 - linux
@@ -9,6 +9,14 @@ tags:
 
 This page contains information about the use of the Windows Subsystem for Linux (WSL).
 <!--more-->
+
+## Basic Commands
+
+| Command                                 | Description                                                                                                                         | 
+|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `wsl --version`                         | [Check WSL version](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#check-wsl-version)                                 |
+| `wsl -l`                                | [List the installed distributions](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#list-available-linux-distributions) |
+| `wsl --set-default <Distribution Name>` | [Set default Linux distribution](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution)       |
 
 ## Accessing host files
 
