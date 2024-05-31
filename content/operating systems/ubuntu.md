@@ -37,6 +37,16 @@ Based on the information [here](https://packetpushers.net/blog/ubuntu-extend-you
 
 ## Troubleshooting
 
+### Installation doesn't detect the M2 drive
+
+In order for the Ubuntu Installer to see an internal NVMe SSD on some machines you may need to make the following change 
+in the system BIOS.
+
+1. Boot into the BIOS Setup on your machine.
+2. Find the System Configuration in the BIOS Setup.
+3. Find SATA Operation and select AHCI.
+4. Restart the computer and the Ubuntu installer should now detect the NVMe SSD.
+
 ### DNS resolution fails
 
 This appeared as a failure to download (docker) images to the k3s node running on my Ubuntu machine with an error message:
