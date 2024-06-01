@@ -1,21 +1,15 @@
 ---
-title: "Argo CD"
-date: 2023-12-29T06:43:55+11:00
+title: "Application"
 tags:
-- kubernetes
-- development
 - ci_cd
 - argo_cd
+- application
 ---
 
-[Argo CD](https://argo-cd.readthedocs.io/en/stable/) is a declarative, GitOps continuous delivery tool for Kubernetes.
+An [Argo CD](https://argo-cd.readthedocs.io/en/stable/) Application is a Custom Resource Definition (CRD) which describes
+how and where an application should be deployed to Kubernetes.
 <!--more-->
-
-## Install
-
-```shell
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/<version>/manifests/install.yaml
-```
+All the fields available in this CRD can be found in the [Application Specification](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/).
 
 ## The Argo CD Application manifest
 
@@ -84,7 +78,7 @@ For example:
 
 ## Sync Waves
 
-You can use [sync waves](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves), 
+You can use [sync waves](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves),
 to ensure certain resources are healthy before subsequent resources are synced.
 
 This is handy if you need to apply/create CustomResourceDefinition (CRDs) prior to applying the resources that use them.
@@ -101,8 +95,8 @@ before all other resources.
 
 ## Replace instead of Apply
 
-By default, Argo CD executes `kubectl apply` operation to apply the configuration stored in Git. 
-In some cases `kubectl apply` is not suitable. For example, resource spec (such as a large CustomResourceDefinition) might be 
+By default, Argo CD executes `kubectl apply` operation to apply the configuration stored in Git.
+In some cases `kubectl apply` is not suitable. For example, resource spec (such as a large CustomResourceDefinition) might be
 too big and won't fit into `kubectl.kubernetes.io/last-applied-configuration` annotation that is added by `kubectl apply`.
 
 In such cases you might use `Replace=true` sync option.
@@ -141,37 +135,4 @@ metadata:
 
 For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
 
-## Managing Argo CD with Argo CD
-
-You can use [Kustomize](./kustomize) to apply any 'last mile' changes to the Argo CD manifests which will allow you to 
-[Manage Argo CD Using Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd).
-
-Below is an example `kustomization.yaml` file:
-
-```yaml
-#
-# Description: This is a Kustomise file for applying site specific changes to the default Argo CD manifests.
-#
-# To view the results use:
-#   kubectl kustomize ./
-#
-# To apply run:
-#   kubectl apply -k ./
-#
----
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-namespace: argocd
-
-resources:
-  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.10.1/manifests/install.yaml
-  # Additional resources like ingress rules, cluster and repository secrets.
-  - argocd-ingress.yaml
-  - argocd-ingressroute.yaml
-
-# Changes to config maps
-patches:
-  - path: overlays/argocd-cmd-params-cm.yaml
-```
 
