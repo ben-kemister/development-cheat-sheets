@@ -52,6 +52,20 @@ Or in Linux (sh/bash) with:
 kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | base64 --decode
 ```
 
+### Secrets with dots in keys
+
+If you have a secret where the value is held in a key that contains a dor `.` in the name, for example:
+```yaml
+kind: Secret
+data:
+  my.password: BASE64_ENCODED_PASSWORD_STRING
+```
+
+To decode ``my.password`` you can escape the dots with a backslash such as:
+```shell
+kubectl get secret my-generic-credentials -o "jsonpath='{.data['my\.password']}" | base64 --decode
+```
+
 ## Using a secret in an Environmental variable
 
 Create the secret, for example:
