@@ -87,6 +87,22 @@ _Be careful! Newlines are whitespace!_
 
 For more information see the [Helm whitespace docs](https://helm.sh/docs/chart_template_guide/control_structures/#controlling-whitespace).
 
+## Replacing characters
+
+If you're just trying to replace a fixed string, use [replace](https://docs.helm.sh/docs/chart_template_guide/function_list/#replace). 
+
+```yaml
+{{- "https://endpoint.index.up" | replace "." "\\." -}}
+```
+
+```yaml
+    {{- range .Values.dashyPages }}
+    - mountPath: /app/user-data/{{- .path }}
+      name: {{ .path | replace "." "-" }}
+      subPath: {{ .path }}
+    {{- end }}
+```
+
 ## Multiline Strings
 
 An easy way use multiline strings in helm templates is to use:
