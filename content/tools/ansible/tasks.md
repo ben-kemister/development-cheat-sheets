@@ -5,8 +5,9 @@ tags:
 - tasks
 ---
 
-This page contains information about common/handy ansible tasks.
+This page contains information about common/handy ansible [tasks](https://docs.ansible.com/ansible/latest/getting_started/basic_concepts.html#tasks).
 <!--more-->
+The definition of an ‘action’ to be applied to the managed host.
 
 ## Create a directory
 
@@ -46,19 +47,14 @@ for example:
         - "K3S_TOKEN: {{ token.stdout }}"
 ```
 
-## Using a template
+## Variable defaults
 
-> Note the template (*.j2) file must be in a `template` directory adjacent to the playbook.
+You can use Jinja's default:
 
 ```yaml
-    - name: Copy registries.yaml file
-      when: private_registry is defined
-      ansible.builtin.template:
-        src: "registries.j2"
-        dest: "/etc/rancher/k3s/registries.yaml"
-        owner: root
-        group: root
-        mode: 0644
+- name: Create user
+  user:
+    name: "{{ my_variable | default('default_value') }}"
 ```
 
 ## When tests
