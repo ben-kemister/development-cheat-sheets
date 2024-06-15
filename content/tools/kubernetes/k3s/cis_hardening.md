@@ -69,16 +69,17 @@ Active  Key Type  Name
 ## Pod Security Admission (PSA)
 
 As per the [k3s documentation](https://docs.k3s.io/security/hardening-guide#pod-security); you can use 
-Pod Security Admissions (PSAs) for controlling pod security.
+[Pod Security Admissions (PSAs)](../resources/admission_controller) for controlling pod security.
 
 The policy should be written to a file in `/var/lib/rancher/k3s/server/psa.yaml`.
 
 Add enabled by passing the following flag to the K3s server: `--kube-apiserver-arg="admission-control-config-file=/var/lib/rancher/k3s/server/psa.yaml"`
 
 For more information see:
-* [k3s CIS Hardening Guide](https://docs.k3s.io/security/hardening-guide#pod-security)
-# [Pod Security Levels - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-admission/#pod-security-levels)
-# [Pod Security Standards - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
+* [Admission Controller page](../resources/admission_controller)
+* [k3s CIS Hardening Guide - k3s](https://docs.k3s.io/security/hardening-guide#pod-security)
+* [Pod Security Levels - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-admission/#pod-security-levels)
+* [Pod Security Standards - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-standards/)
 
 ### Testing PodSecurityConfiguration
 

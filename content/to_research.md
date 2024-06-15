@@ -20,6 +20,11 @@ This page captures some the interesting tech that I have heard about, but have n
 
 * [Reposilite](https://reposilite.com/) - Lightweight and easy-to-use repository manager for Maven based artifacts in JVM ecosystem.
 
+### Monitoring
+
+* [Healthchecks](https://github.com/healthchecks/healthchecks?tab=readme-ov-file) - Healthchecks is a cron job monitoring service. It listens for HTTP requests and email messages ("pings") from your cron jobs and scheduled tasks ("checks").
+
+
 ## Gaming
 
 * [Steam on Raspberry Pi](https://help.steampowered.com/en/faqs/view/6424-467A-31D9-C6CB)
