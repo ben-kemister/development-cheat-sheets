@@ -15,6 +15,7 @@ This page captures some the interesting tech that I have heard about, but have n
 * [Buildpacks](https://buildpacks.io/) - create application images without the need for `Dockerfile`s
 * [Telepresence](https://www.telepresence.io/) - Fast, local development for Kubernetes and OpenShift Microservices
 * [Eclipse Che](https://www.eclipse.org/che/) - A fast and modern code editor built on top of Visual Studio Code Open Source. Configured to **run in Kubernetes Pods**.
+* [Kubeflow](https://www.kubeflow.org/) - Dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable.
 
 ### Repository managers
 
