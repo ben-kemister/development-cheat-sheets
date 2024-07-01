@@ -11,6 +11,7 @@ tags:
 - head
 - file
 - directory
+- checksum
 ---
 
 This page provides examples about the use of PowerShell **file utilities**.
@@ -51,6 +52,15 @@ Get-Content log.txt | Select-String -Pattern "match" -Context 2,3
 
 The [Get-FileHash](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash) can be used
 to calculate the hash value of a file (or string) using a specific hash algorithm.
+
+The acceptable values for the `-Algorithm` parameter are:
+* SHA1
+* SHA256
+* SHA384
+* SHA512
+* MD5
+
+* If no value is specified, or if the parameter is omitted, the default value is `SHA256`.
 
 For example:
 ```powershell
