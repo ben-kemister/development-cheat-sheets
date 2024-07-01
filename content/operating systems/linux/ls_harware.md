@@ -10,6 +10,12 @@ Linux commands to display your hardware information.
 <!--more-->
 Get the details on what's inside your computer from the command line.
 
+## Installation
+
+```shell
+sudo apt install lshw
+```
+
 ## Overview (`lshw`)
 
 [lshw](https://linux.die.net/man/1/lshw) is a small tool to extract detailed information on the hardware configuration of the machine. 
