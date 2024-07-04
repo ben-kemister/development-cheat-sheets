@@ -163,3 +163,16 @@ patches:
             - port: 3000
               protocol: TCP
 ```
+
+### Modify an entry in a list/array
+
+```yaml
+patches:
+  - target:
+      kind: Ingress
+    patch: |-
+      # Update the hostname in the Ingress
+      - op: replace
+        path: /spec/rules/0/host
+        value: my-app.example.com
+```

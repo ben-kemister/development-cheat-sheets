@@ -11,14 +11,39 @@ It provides a "pure Java" HTTP web server environment in which Java code can als
 <!--more-->
 It is a Java web application server, although not a full JEE application server.
 
-## Environmental Variables
+## The `setenv.[bat|sh]` script
 
 The `setenv.[bat|sh]` script can be used to set all environment variables apart from `CATALINA_HOME` and `CATALINA_BASE`.
+The `setenv` script (if it exists) is called from the `catalina` (startup) script.
 
 The script is placed either into `CATALINA_BASE/bin` or into `CATALINA_HOME/bin` directory and is named `setenv.bat` (on Windows) 
-or `setenv.sh` (on *nix). The file has to be readable and by default the setenv script file is absent.
+or `setenv.sh` (on *nix). The `setenv` script file has to be readable, executable and is by default absent on a fresh installation.
 
-You can use this script to configure the JRE_HOME variable (for example) by creating following script file:
+For more information see https://tomcat.apache.org/tomcat-10.0-doc/RUNNING.txt
+
+### Extra Classpath items
+
+You can use the `setenv` script to add extra folders/files to the classpath:
+```shell
+# setenv.sh
+export CLASSPATH="/usr/local/app/config:/user/local/app/creds
+```
+
+### CATALINA_OPTS (a.k.a JVM arguments)
+
+You can use the `setenv` script to configure JVM arguments that are called when Tomcat is stared:
+
+```shell
+# setenv.sh
+export CATALINA_OPTS="-javaagent:/user/local/app/otel/opentelemetry-javaagent-1.25.0.jar -Dotel.javaagent.configuration-file=/user/local/config/opentel.properties"
+```
+
+> Note you can also use variables such as:
+> `export CATALINA_OPTS="$VAR_1 VAR_2 "`
+
+### Environmental Variables
+
+You can use the `setenv` script to configure the JRE_HOME variable (for example) by creating following script file:
 
 ```cmd
 On Windows, %CATALINA_BASE%\bin\setenv.bat:
@@ -26,8 +51,6 @@ On Windows, %CATALINA_BASE%\bin\setenv.bat:
 set "JRE_HOME=%ProgramFiles%\Java\jre8"
 exit /b 0
 ```
-
-For more information see https://tomcat.apache.org/tomcat-10.0-doc/RUNNING.txt
 
 ## Manager Interface
 

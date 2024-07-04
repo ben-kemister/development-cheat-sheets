@@ -94,6 +94,41 @@ spec:
 ...
 ```
 
+## Using a secret as a file
+
+Create the file containing the secret(s):
+```powershell
+echo "database.password=change-me" > database.properties
+```
+
+Create the secret using the file as an input:
+```powershell
+kuebctl create secret generic database-creds `
+    --from-file=database.properties
+```
+
+You can then reference the secret as a volume and volumeMount in the pod:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  volumes:
+    - name: db-credentials
+      secret:
+        secretName: database-creds
+  containers:
+    - name: my-image
+      ...
+      volumeMounts: 
+        - mountPath: /usr/local/app/credentials/database.properties
+          name: database-creds
+          subPath: database.properties
+...
+```
+
 ## Creating Secrets for use with http basic-auth
 
 There are two was you can create secrets for use as http basic-auth in Ingress objects:
