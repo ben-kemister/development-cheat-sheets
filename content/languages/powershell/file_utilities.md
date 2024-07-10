@@ -17,6 +17,13 @@ tags:
 This page provides examples about the use of PowerShell **file utilities**.
 <!--more-->
 
+## Invoke-Item (Open a file)
+
+You can use the command `Invoke-Item` or the shortcut version of `ii` to open a file. For example:
+```powershell
+ii index.html
+```
+
 ## Get-Content
 
 You can use `Get-Content` (or the alias `gc`) to be able to view the contents of files in the console.

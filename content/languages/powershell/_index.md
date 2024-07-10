@@ -41,13 +41,6 @@ or
 "World!" | %{ Write-Host "Hello $_" }
 ```
 
-## Open a file
-
-You can use the command `Invoke-Item` or the shortcut version of `ii` to open a file. For example:
-```powershell
-ii index.html
-```
-
 ## Base64 encode/decode
 
 To encode a (UTF8) string use the following:
