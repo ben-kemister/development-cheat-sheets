@@ -64,6 +64,32 @@ spec:
 
 For more details on this use case see [DENY all traffic to an application](https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/master/01-deny-all-traffic-to-an-application.md).
 
+### Allow only traffic between the pods in a namespace
+
+```shell
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-intra-namespace
+  # This policy only applies to Pods within the 'platform' Namespace
+  namespace: platform
+spec:
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: platform
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: platform
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+```
+
 ### Allow ingress from a namespace
 
 ```yaml
