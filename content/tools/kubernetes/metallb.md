@@ -72,3 +72,23 @@ metadata:
 For more details see the [IP Address Sharing section](https://metallb.universe.tf/usage/#ip-address-sharing) of the 
 MetalLB documentation.
 
+## Troubleshooting
+
+### Which node is advertising the IP address
+
+You can look at the events of the **LoadBalancer** `service` of the cluster, as per the [MetalLB doco](https://metallb.universe.tf/troubleshooting/#troubleshooting-service-advertisements).
+
+```shell
+# Find the LoadBalancer service
+$ kubectl -n kube-system get svc | grep -E 'NAME|LoadBalancer'
+NAME                TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)       AGE
+traefik             LoadBalancer   10.43.78.121   192.168.10.60   <REDACTED>   68d
+```
+
+```shell
+# Look at the events for that service
+$ kubectl events -n kube-system --for Service/traefik
+LAST SEEN             TYPE     REASON         OBJECT            MESSAGE
+60m (x351 over 60d)   Normal   nodeAssigned   Service/traefik   announcing from node "node-2" with protocol "layer2"
+```
+
