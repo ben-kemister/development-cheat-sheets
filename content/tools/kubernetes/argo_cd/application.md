@@ -11,7 +11,7 @@ how and where an application should be deployed to Kubernetes.
 <!--more-->
 All the fields available in this CRD can be found in the [Application Specification](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/).
 
-## The Argo CD Application manifest
+## The 'Application' manifest
 
 Below is a **basic** Argo CD application manifest for the deployment of the _guestbook_ app.
 
@@ -48,6 +48,12 @@ to include/exclude.
 For example:
 
 ```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+spec:
   source:
     repoURL: 'https://<GIT_HOST>/monitoring.git'
     targetRevision: main
@@ -57,82 +63,31 @@ For example:
       # generation. If this field is set, only matching manifests will be included.
       # To match multiple patterns, wrap the patterns in {} and separate them with commas. For example: '{*.yml,*.yaml}'
       include: '{grafana-ingress.yaml,prometheus-ingress.yaml}'
+...
 ```
 
-## Sync Options
+## Ignore differences
 
-For more information see the [Argo CD Sync Options doco](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/).
-
-### Create Namespace
-
-You can get Argo CD to automatically create your namespace by adding the `CreateNamespace=true` to your `syncOptions` array.
+You can specify particular parts of a manifest to ignore when it comes to calculating the out-of-sync resources.
+This is handy if a resource is altered (by another operation) after being applied by ArgoCD.
 
 For example:
 
 ```yaml
-...
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true
-```
-
-## Sync Waves
-
-You can use [sync waves](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-waves/#how-do-i-configure-waves),
-to ensure certain resources are healthy before subsequent resources are synced.
-
-This is handy if you need to apply/create CustomResourceDefinition (CRDs) prior to applying the resources that use them.
-
-You specify the wave using the following annotation:
-```yaml
-metadata:
-    annotations:
-        argocd.argoproj.io/sync-wave: "5"
-```
-
-Hooks and resources are assigned to wave zero by default. The wave can be negative, so you can create a wave that runs
-before all other resources.
-
-## Replace instead of Apply
-
-By default, Argo CD executes `kubectl apply` operation to apply the configuration stored in Git.
-In some cases `kubectl apply` is not suitable. For example, resource spec (such as a large CustomResourceDefinition) might be
-too big and won't fit into `kubectl.kubernetes.io/last-applied-configuration` annotation that is added by `kubectl apply`.
-
-In such cases you might use `Replace=true` sync option.
-
-You can do this for the whole application:
-
-```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+metadata:
+  name: test
+  namespace: argocd
 spec:
-  syncPolicy:
-    syncOptions:
-    - Replace=true
+  ignoreDifferences:
+    # Ignore the differences in the CA bundle
+    - group: "apiextensions.k8s.io/v1"
+      kind: "CustomResourceDefinition"
+      name: "bgppeers.metallb.io"
+      jsonPointers:
+        - /spec/conversion/webhook/caBundle
+...
 ```
-
-Or to a specific resource using an annotation:
-
-```yaml
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: Replace=true
-```
-
-For more information on this see [Replace Resource Instead Of Applying Changes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes).
-
-## No Resource Deletion
-
-For certain resources you might want to retain them even after your application is deleted, for e.g. PVCs, Longhorn volumes.
-In such situations you can stop those resources from being cleaned up during app deletion by using the following annotation:
-
-```yaml
-metadata:
-  annotations:
-    argocd.argoproj.io/sync-options: Delete=false
-```
-
-For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
 
 
