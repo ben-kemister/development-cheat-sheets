@@ -14,11 +14,11 @@ This page contains information about how to debug pods/containers in Kubernetes.
 
 The images below can be used to assist with diagnosing network/connectivity issues within Kubernetes
 
-| Image               | Registry   | Notes                                                                                                                                   |
-|---------------------|------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| `curlimages/curl`   | Docker Hub | The official curl image, seems to be regularly maintained (and less than 5MB, too!)                                                     | 
-| `redhat/ubi8`       | Docker Hub | Red Hat’s Universal Base Image, basically a containerised version of Red Hat Enterprise Linux. (And helpfully, it contains curl.)       |
-| `nicolaka/netshoot` | Docker Hub | a Docker + Kubernetes network trouble-shooting swiss-army container ([github](https://github.com/nicolaka/netshoot?tab=readme-ov-file)) |
+| Image               | Registry                                           | Notes                                                                                                                                   |
+|---------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| `curlimages/curl`   | Docker Hub                                         | The official curl image, seems to be regularly maintained (and less than 5MB, too!)                                                     | 
+| `redhat/ubi8`       | [Docker Hub](https://hub.docker.com/r/redhat/ubi8) | Red Hat’s Universal Base Image, basically a containerised version of Red Hat Enterprise Linux. (And helpfully, it contains `curl`.)     |
+| `nicolaka/netshoot` | Docker Hub                                         | a Docker + Kubernetes network trouble-shooting swiss-army container ([github](https://github.com/nicolaka/netshoot?tab=readme-ov-file)) |
 
 ## Debugging with an ephemeral container
 
