@@ -1,5 +1,5 @@
 ---
-title: kubeclt
+title: kubectl
 tags:
  - container
  - kubernetes
