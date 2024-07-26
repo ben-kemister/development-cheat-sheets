@@ -66,7 +66,7 @@ For more details on this use case see [DENY all traffic to an application](https
 
 ### Allow only traffic between the pods in a namespace
 
-```shell
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:

@@ -10,12 +10,15 @@ This page contain information about Kubernetes [secrets](https://kubernetes.io/d
 
 ## Types
 
-Below is a non-exhaustive list of secret types:
+There is many [different types of secrets](https://kubernetes.io/docs/concepts/configuration/secret/#secret-types), 
+below is a non-exhaustive list of some common secret types:
 * `Opaque` - the default Secret type if you don't explicitly specify a type.
 * `kubernetes.io/basic-auth` - for storing credentials needed for basic authentication
+* `kubernetes.io/tls` - data for a TLS client or server
 
-## Creating Opaque Secrets
+## Creating secrets
 
+The command below will create a generic (a.k.a. Opaque) secret:
 ```powershell
 kubectl create secret generic my-generic-credentials `
     --from-literal=username=admin `
@@ -24,6 +27,19 @@ kubectl create secret generic my-generic-credentials `
 
 > Note the `--from-literal` flag specify a _key_ and literal _value_ to insert in secret (i.e. mykey=somevalue)
 > It will automatically **base64 encode** the **value** input.
+
+This will result in teh creation of the following secret:
+```yaml
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: my-generic-credentials
+  namespace: default
+data:
+  password: cGFzc3dvcmQ=
+  username: YWRtaW4=
+```
 
 ## Viewing and Decoding a secret
 
@@ -46,15 +62,14 @@ kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | %{ [S
 ```text
 password
 ```
-
 Or in Linux (sh/bash) with:
 ```shell
 kubectl get secret my-generic-credentials -o jsonpath='{.data.password}' | base64 --decode
 ```
 
-### Secrets with dots in keys
+## Secrets with dots in keys
 
-If you have a secret where the value is held in a key that contains a dor `.` in the name, for example:
+If you have a secret where the value is held in a key that contains a dot `.` in the name, for example:
 ```yaml
 kind: Secret
 data:
@@ -170,4 +185,42 @@ If you need to update the secret in the future you can use this trick:
 kubectl create secret generic my-basic-auth \
 --from-file=users --dry-run -o yaml | \
 kubectl apply -f -
+```
+
+## TLS Secrets
+
+The `kubernetes.io/tls` Secret type is for storing a certificate and its associated key that are typically used for TLS.
+
+One common use for TLS Secrets is to configure encryption in transit for an **Ingress**, 
+but you can also use it with other resources or directly in your workload. 
+
+When using this type of Secret, the `tls.key` and the `tls.crt` key must be provided in the data (or stringData) field 
+of the Secret configuration, although the API server doesn't actually validate the values for each key.
+
+### Creating TLS Secret
+
+You [create a TLS secret](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_tls/) 
+from the given public/private key pair.
+
+The public key certificate must be .PEM encoded and match the given private key.
+
+The syntax is ``kubectl create secret tls NAME --cert=path/to/cert/file --key=path/to/key/file [--dry-run=server|client|none]``
+
+Using this command will create a secret like:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-tls
+type: kubernetes.io/tls
+data:
+  # values are base64 encoded, which obscures them but does NOT provide
+  # any useful level of confidentiality
+  tls.crt: |
+    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNVakNDQWJzQ0FnMytNQTBHQ1NxR1NJYjNE
+    ...
+    RklDQVRFLS0tLS0K    
+  # In this example, the key data is not a real PEM-encoded private key
+  tls.key: |
+    RXhhbXBsZSBkYXRhIGZvciB0aGUgVExTIGNydCBmaWVsZA==    
 ```
