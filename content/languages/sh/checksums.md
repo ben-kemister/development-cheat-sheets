@@ -11,6 +11,13 @@ tags:
 Commands and examples for calculating file checksums (a.k.a. file hashes) in Linux.
 <!--more-->
 
+## Installing tools
+
+```shell
+# Ubuntu
+sudo apt install hashalot
+```
+
 ## Generate md5sum
 
 ```shell

@@ -17,6 +17,12 @@ This page contains information about the k3s server.
 | `systemd` service | `/etc/systemd/system/k3s.service` | |
 | Node configuration | `/etc/rancher/k3s/config.yaml` |                                                             |
 
+## Running k3s as a systemd service
+
+You can configure your cluster nodes to run k3s as a [systemd](../../operating_systems/linux/systemd) service,
+with service definition `/etc/systemd/system/k3s.service`.
+
+The service passes in a reference to the configuration file using the argument: `--config /etc/rancher/k3s/config.yaml`
 
 ## Changing the k3s service
 
