@@ -98,6 +98,32 @@ images:
     newTag: 7.0.11-alpine # originally 7.0.14-alpine
 ```
 
+## Kustomizing Helm charts
+
+Add the helm chart details to the `kustomization.yaml` file:
+
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: eclipse-che
+
+helmCharts:
+  - name: eclipse-che
+    repo: https://eclipse-che.github.io/che-operator/charts
+    releaseName: eclipse-che
+    namespace: eclipse-che
+    version: 7.89.0
+...
+```
+
+To use kustomizes' builtin HelmChartInflationGenerator you need to add the `--enable-helm` to any commands. 
+For example:
+
+You can preview the results with: `kubectl kustomize --enable-helm directory/with/kustomization.yaml/`
+
+And you can apply it to a cluster with: `kubectl kustomize --enable-helm directory/ | kubectl apply -f -`
+
 ## Patches
 
 ### Replace/update

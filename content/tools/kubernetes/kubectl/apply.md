@@ -25,6 +25,14 @@ For example:
 4_ingress.yaml
 ```
 
+## Applying from stdin
+
+You can apply manifest from the STDIN using `kubectl apply -f -`, for example:
+
+```shell
+cat my-manifests.yaml | kubectl apply -f -
+```
+
 ## Links & References
 
 * [kubectl apply - Kubernetes Documentation](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/)

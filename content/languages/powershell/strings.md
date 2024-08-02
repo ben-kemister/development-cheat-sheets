@@ -24,6 +24,8 @@ Select-String -Pattern "match" -Context 2,3
 Select-String -Path "Users\*.csv" -Pattern "Joe"
 ```
 
+> Note: Matches are not case-sensitive by default. Using the argument `CaseSensitive` looks for exact matches to the input pattern.
+
 ### -NotMatch
 
 You can also use the `-NotMatch` flag to return the strings that do not match the pattern.

@@ -21,6 +21,34 @@ tags:
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/<version>/manifests/install.yaml
 ```
 
+## Declarative setup
+
+Argo CD applications, projects and settings can be defined [declaratively](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/) 
+using Kubernetes manifests.
+
+The table below shows a commonly used subset of the [ArgoCD configuration resources](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#quick-reference). 
+
+| Resource Name                                                                         | Kind      | Description                    |
+|---------------------------------------------------------------------------------------|-----------|--------------------------------|
+| [argocd-cm](https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-cm-yaml/) | ConfigMap | 	General Argo CD configuration |
+
+### Kustomizing Helm charts
+
+It's possible to render [Helm charts with Kustomize in ArgoCD](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomizing-helm-charts).
+Doing so requires that you pass the `--enable-helm` flag to the kustomize build command.
+
+In ArgoCD this is done by setting a build option in the `argocd-cm` ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+data:
+  kustomize.buildOptions: --enable-helm
+```
+
 ## Managing Argo CD with Argo CD
 
 You can use [Kustomize](./kustomize) to apply any 'last mile' changes to the Argo CD manifests which will allow you to 

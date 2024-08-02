@@ -22,7 +22,7 @@ shows how this works:
 ## Prerequisites
 
 * A [k3s](../../tools/kubernetes/k3s) cluster
-* An OIDC provider (like [Keycloak](../tools/keycloak)) 
+* An OIDC provider (like [Keycloak](../../tools/keycloak)) 
 * [kubectl](../../tools/kubernetes/kubectl) installed
 
 ## Setup OIDC Provider (Keycloak)
