@@ -1,12 +1,21 @@
 ---
 title: Unreal Engine
 tags:
- - development
- - gaming
+- development
+- gaming
+- unreal_engine
 ---
 
-TODO
+[Unreal Engine](https://www.unrealengine.com/) (UE) is a 3D computer graphics game engine developed by Epic Games, 
+first showcased in the 1998 first-person shooter video game Unreal.
 <!--more-->
+Initially developed for PC first-person shooters, it has since been used in a variety of genres of games and has been adopted by other industries, 
+most notably the film and television industry. 
+Unreal Engine is written in C++ and features a high degree of portability, supporting a wide range of desktop, mobile, console, and virtual reality platforms.
+
+## Topic Specific pages
+
+{{% children sort="title" description="true" %}}
 
 ## Terms
 
