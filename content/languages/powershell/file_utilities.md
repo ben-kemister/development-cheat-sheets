@@ -55,6 +55,47 @@ By piping the results of `Get-Content` through `Select-String` you can get the e
 Get-Content log.txt | Select-String -Pattern "match" -Context 2,3
 ```
 
+## Write Multiple Lines to a file
+
+```powershell
+$multiLineText = @"
+This is line one
+This is line two
+This is line three
+"@
+
+$multiLineText | Out-File -FilePath C:\folder\output.txt
+```
+
+Or you can also use the redirect operator `>`
+```powershell
+@"
+This is line one
+This is line two
+This is line three
+"@ > C:\folder\output.txt
+```
+
+### Append to file
+
+If you need to append to an existing file you can use `Add-Content`:
+```powershell
+$extraLines = @"
+Appending first line
+Second line to append
+"@
+
+Add-Content -Path C:\folder\output.txt -Value $extraLines
+```
+
+Or you can use `>>` to append:
+```powershell
+@"
+Appending first line
+Second line to append
+"@ >> C:\folder\output.txt
+```
+
 ## Get-FileHash
 
 The [Get-FileHash](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash) can be used

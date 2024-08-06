@@ -8,6 +8,10 @@ tags:
 [Python](https://www.python.org/) is a high-level, interpreted, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation. Python is dynamically-typed and garbage-collected. It supports multiple programming paradigms, including structured, object-oriented and functional programming.
 <!--more-->
 
+## Topic Specific Sub Pages
+
+{{% children sort="title" description="true" %}}
+
 ## Python IDEs
 
 Two popular IDEs for python are Visual Studio and [PyCharm](https://www.jetbrains.com/pycharm/).
@@ -47,7 +51,3 @@ elif a == b:
 else:
   print("a is greater than b")
 ```
-
-## Sub Pages
-
-{{% children sort="title" description="true" %}}
