@@ -20,6 +20,14 @@ rsync has **heaps** of flags. Below are some of the ones that I have needed for 
 
 ## Examples
 
+### Single file with progress
+
+```shell
+rsync --progress /path/to/source-file /path/to/destination
+source-file
+    264,601,600  25%  126.22MB/s    0:00:06
+```
+
 ### Copy to mapped NFS drive
 
 ```shell

@@ -13,7 +13,10 @@ Information about how to mount a local or network (shared) filesystem in linux o
 
 ## Syntax
 
-The general syntax is `sudo mount <filesystem path> <Mount point>`
+The general syntax is `sudo mount <-t [TYPE]> <-o [OPTIONS]> <filesystem path> <Mount point>`
+
+Also see:
+* [A list of common mount options](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/storage_administration_guide/sect-using_the_mount_command-mounting-options#sect-Using_the_mount_Command-Mounting-Options)
 
 ## Mount a local filesystem
 
@@ -97,19 +100,27 @@ Mount the NFS share by running the following command: `sudo mount /media/nfs`
 
 ## Mount a CIFS share
 
+* Install cifs-utils: `sudo apt-get install cifs-utils`
+
+## Single Line
+
+```shell
+sudo mount -o username=USER_ID,rw,uid=1000,gid=500,vers=2.0 -t cifs //<REMOTE_HOST>/shared/directory /local/directory
+```
+> You will be asked to enter the password of the user
+
 ### Temporary Mount
 
-* Install cifs-utils: `sudo apt-get install cifs-utils`
 * Create the directory: `mkdir /mnt/cifs`
 * Run mount command: `sudo mount.cifs //<hostname>/shared/folder /mnt/cifs -o username=<user_id>,file_mode=0777,dir_mode=0777`
-  * You will be asked to enter the password for the `user_id`
+
+> You will be asked to enter the password for the user
 
 ### Mount at startup
 
-* Install cifs-utils: `sudo apt-get install cifs-utils`
 * Create the directory: `mkdir /mnt/cifs`
-* Create a file to contain the credenials: `nano ~/.smbcredentials`
-    * Insert the details of the credientials:
+* Create a file to contain the credentials: `nano ~/.smbcredentials`
+    * Insert the details of the credentials:
 ``` sh
 username=<your_username>
 password=<your_password>
