@@ -28,6 +28,10 @@ source-file
     264,601,600  25%  126.22MB/s    0:00:06
 ```
 
+### Ignore Existing
+
+You can use the `--ignore-existing` flag to skip updating files that exist on receiver.
+
 ### Copy to mapped NFS drive
 
 ```shell
