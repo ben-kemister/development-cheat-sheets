@@ -15,6 +15,14 @@ tags:
 
 {{% children sort="title" description="true" %}}
 
+## Shebang
+
+The preferred bash shebang for probability is:
+
+```shell
+#!/usr/bin/env bash
+```
+
 ## Process Substitution
 
 Process substitution allows a process's input or output to be referred to using a filename. It takes the form of:

@@ -5,13 +5,29 @@ tags:
 - terminal
 ---
 
-`find` search for files in a directory hierarchy
+[find]() search for files in a directory hierarchy
 <!--more-->
 GNU [find](https://man7.org/linux/man-pages/man1/find.1.html) searches the directory tree rooted at each given starting-point
 by evaluating the given expression from left to right, according to the rules of precedence (see section OPERATORS), 
 until the outcome is known (the left hand side is false for and operations, true for or), at which point find moves on to the next file name.
 If no starting-point is specified, `.` is assumed.
 
+## -maxdepth
+
+You can set the search depth of `find` using the `-maxdepth` argument. For example:
+
+```shell
+find /media/user/* -maxdepth 0
+```
+
+## -printf
+
+You can use the `-printf` argument to change how the output is return. 
+For example to only output the file name you can use `-printf "%f\n"`
+
+```shell
+find /media/user/* -printf "%f\n"
+```
 
 ## -newerXY <reference>
           Compares the timestamp of the current file with reference.   The

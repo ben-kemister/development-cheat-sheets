@@ -51,6 +51,7 @@ Example 1: Rescue a DVD in `/dev/sr0`.
 # First run, Skip the scraping phase. Avoids spending a lot of time trying to rescue the most difficult parts of the file.
 ddrescue -n -b2048 /dev/sr0 DVD.iso mapfile
 
+# Second run, 
 ddrescue -d -r1 -b2048 /dev/sr0 DVD.iso mapfile
 (if bad-sector size is zero, cdimage now contains a complete image of the CD-ROM and you can write it to a blank CD-ROM)
 ```
