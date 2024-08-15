@@ -22,6 +22,14 @@ helm upgrade -i gogs -n dev-ops -f .\my-values.yaml ./gogs-helm-chart/gogs/
 Add the `--create-namespace` option to your command to create the release namespace if not present.
 This can be used with the `-n <namespace>` option so that the namespace is created when deploying.
 
+## Show default values.yaml
+
+Use the syntax `helm show values <CHART_NAME>`, for example:
+
+```shell
+helm show values prometheus-community/kube-prometheus-stack > .\kube-prometheus\values.yaml
+```
+
 ## Using multiple values.yaml files
 
 To use multiple `values.yaml` files, simply use the `--values` flag (or `-f`) with each file. 
@@ -32,4 +40,5 @@ Example:
 ```shell
 helm upgrade -i prod-dashboard -f .\prod-values.yaml -f .\base-values.yaml .\dashy\
 ```
+
 
