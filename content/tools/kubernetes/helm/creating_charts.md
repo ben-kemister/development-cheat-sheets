@@ -9,6 +9,16 @@ tags:
 This page contains information about creating (Helm) charts and using templates.
 <!--more-->
 
+## Initialising a new Chart
+
+To create the basic template files and layout for a new chart use `helm create <NAME_OF_CHART>`, for example:
+
+```shell
+helm create my-awesom-chart
+```
+
+For more information see [helm create](https://helm.sh/docs/helm/helm_create/).
+
 ## Flow control
 
 See: https://helm.sh/docs/chart_template_guide/control_structures/

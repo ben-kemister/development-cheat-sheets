@@ -23,6 +23,6 @@ tags:
 | `helm create <chart_name>`                                                      | Create a helm chart                                                                                |
 | `helm install <deployment_name> --dry-run -f .\my-values.yaml .\<helm_folder>\` | Using `--dry-run` tests the generation/output created by an install/upgrade command                |
 | `helm upgrade -i <deployment_name> .\<folder>\`                                 | Upgrade, or install, the helm chart from *folder* into the cluster with the name *deployment_name* |
-| `helm get values <RELEASE_NAME> -a`                                             | Download all od the computed values for a given release                                            |
+| `helm get values <RELEASE_NAME> -a`                                             | Download all of the computed values for a given release                                            |
 | `helm uninstall <deployment_name>`                                              | Remove/uninstall the *deployment_name* from the cluster                                            |
  
