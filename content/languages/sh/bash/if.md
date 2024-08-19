@@ -1,5 +1,5 @@
 ---
-title: If (statement)
+title: IF (statement)
 tags:
 - bash
 - variables
@@ -12,13 +12,27 @@ This page contains examples about the use the bash `if` statement.
 
 ## Check Variables
 
-## Is not a blank String
+### Test for blank String
 
 ```shell
-if [ ! -z "$MY_VAR"]; then
-  echo "The variable 'MY_VAR' is not blank"
+MY_VAR="bar"
+if [ -n "$MY_VAR"]; then
+  echo "The variable 'MY_VAR' is not null"
 fi
 ```
+
+```shell
+foo=
+[ -z "$foo" ] && echo "foo is null"
+```
+```shell
+foo=""
+[ -z "$foo" ] && echo "foo is null"
+```
+
+> Note:    
+> `-n` - string has length greater than 0.    
+> `-z` - string has zero length (i.e. `""`)
 
 ### Is equal to a value
 
@@ -29,9 +43,9 @@ if [ "$depth" -eq "0" ]; then
 fi
 ```
 
-## Is not equal to a value
+### Is not equal to a value
 
-```yaml
+```shell
 ret=$?
 if [ "$ret" -ne 0 ]; then
         echo "In If"
@@ -39,8 +53,6 @@ else
         echo "In Else"
 fi
 ```
-
-
 
 ## Check Directories
 

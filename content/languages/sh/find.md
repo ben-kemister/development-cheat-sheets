@@ -20,6 +20,19 @@ You can set the search depth of `find` using the `-maxdepth` argument. For examp
 find /media/user/* -maxdepth 0
 ```
 
+## -type
+
+You can use `-type` to define the file types you are looking for.
+
+Common file types include:
+* `d` - directory
+* `p` - named pipe (FIFO)
+* `f` - regular file
+* `s` - socket
+* `l` - symbolic link; this is never true if the `-L` option or the `-follow` option is in effect. If you want to search for symbolic links when `-L` is in effect, use `-xtype`.
+
+> To search for more than one type at once, you can supply the combined list of type letters separated by a comma `,`
+
 ## -printf
 
 You can use the `-printf` argument to change how the output is return. 
