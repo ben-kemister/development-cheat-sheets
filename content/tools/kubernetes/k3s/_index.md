@@ -18,10 +18,10 @@ tags:
 
 ## Directories and paths
 
-| Name               | Path                           | Notes                                                       |
-|--------------------|--------------------------------|-------------------------------------------------------------|
-| Binary location    | `/usr/local/bin/`              | Contains the `k3s`, `ctr`, `crictl`, and `kubectl` binaries |
-| Node configuration | `/etc/rancher/k3s/config.yaml` |                                                             |
+| Name               | Path                           | Notes                                                            |
+|--------------------|--------------------------------|------------------------------------------------------------------|
+| Binary location    | `/usr/local/bin/`              | Contains the `k3s`, `ctr`, [crictl](../crictl), and `kubectl` binaries |
+| Node configuration | `/etc/rancher/k3s/config.yaml` |                                                                  |
 
 ## Cluster Access
 
@@ -64,16 +64,6 @@ If you want to use NFS backed Persistent Volumes (PV) you will need to install `
 sudo apt-get update && sudo apt-get install -y nfs-common
 ```
 
-## List images on node
-
-You can use the `crictl image ls` command to list the images which are present on a k3s node, for example:
-
-```shell
-$ sudo crictl image ls
-IMAGE                                                            TAG                               IMAGE ID            SIZE
-docker.io/container-tools/inotify-rsync                          latest                            c6bcd87db9379       4.23MB
-...
-```
 
 
 
