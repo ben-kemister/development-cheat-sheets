@@ -19,6 +19,18 @@ The Maven project is hosted by the Apache Software Foundation, where it was form
 | `mvn test-compile` | Compiles the test classes (but doesn't run them) |
 | `mvn archetype:generate` | Interactively generates/initialised a maven project | 
 
+## Scopes
+
+Maven has **six** default dependency scopes. It’s important to understand that each scope (except for import) has an impact on transitive dependencies.
+
+* compile - default scope when no other scope is provided. Dependencies with this scope are available on the classpath of the project in all build tasks.
+* provided - dependencies that should be provided at runtime by JDK or a container.
+* runtime - dependencies with this scope are required at runtime, but are not needed for compilation of the project. Dependencies marked with the runtime scope will be present in the runtime and test classpath, but they will be missing from the compile classpath.
+* test - indicates that the dependency isn’t required at standard runtime of the application but is used only for test purposes. Test dependencies aren’t transitive and are only present for test and execution classpaths.
+* system (deprecated) - similar to the provided scope, but requires a direct reference to a specific jar on the system.
+* import (pom) - indicates that this dependency should be replaced with all effective dependencies declared in its POM
+
+For more information see [this Baelding article](https://www.baeldung.com/maven-dependency-scopes).
 
 ## (Re) Download project dependencies
 
