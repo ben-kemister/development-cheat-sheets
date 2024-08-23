@@ -17,3 +17,9 @@ like VNC, RDP, and SSH.
 Guacamole can be run natively, from a Docker image and from Kubernetes.
 
 In all cases you need a database for user authentication and storage of configuration. 
+
+## Initial DB setup
+
+```sql
+CREATE DATABASE IF NOT EXISTS guacamole_db DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+```
