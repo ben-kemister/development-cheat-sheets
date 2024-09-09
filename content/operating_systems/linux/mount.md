@@ -102,17 +102,19 @@ Mount the NFS share by running the following command: `sudo mount /media/nfs`
 
 * Install cifs-utils: `sudo apt-get install cifs-utils`
 
-## Single Line
+The syntax is as follows: `sudo mount [-o <OPTIONS>] -t cifs //<REMOTE_HOST>/shared/directory /local/directory`
 
+For example:
 ```shell
 sudo mount -o username=USER_ID,rw,uid=1000,gid=500,vers=2.0 -t cifs //<REMOTE_HOST>/shared/directory /local/directory
 ```
-> You will be asked to enter the password of the user
 
 ### Temporary Mount
 
-* Create the directory: `mkdir /mnt/cifs`
-* Run mount command: `sudo mount.cifs //<hostname>/shared/folder /mnt/cifs -o username=<user_id>,file_mode=0777,dir_mode=0777`
+* Create a directory: `mkdir /mnt/cifs`
+* Run mount command with using either:
+  * `sudo mount -o username=USER_ID,rw,uid=1000,gid=500,vers=2.0 -t cifs //<REMOTE_HOST>/shared/directory /mnt/cifs`
+  * `sudo mount.cifs //<REMOTE_HOST>/shared/folder /mnt/cifs -o username=<user_id>,file_mode=0777,dir_mode=0777`
 
 > You will be asked to enter the password for the user
 
@@ -132,3 +134,8 @@ password=<your_password>
 Note the version `vers` may be different depending on the capabilities of the cifs server.
 
 These instructions were based on the information [here](https://marzorati.co/how-to-mount-cifs-share-permanently-on-ubuntu/).
+
+## Mount an ISO file
+
+1. Create the directory to mount to: `mkdir /mnt/iso-image`
+2. Mount the iso file with: `sudo mount -o loop IsoFile.iso /mnt/iso-image/`
