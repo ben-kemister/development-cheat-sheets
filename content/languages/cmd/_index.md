@@ -7,7 +7,12 @@ tags:
 
 **cmd.exe** is the default command-line interpreter for OS/2, eComStation, Windows, Windows CE, and the ReactOS operating systems. 
 <!--more-->
-The name refers to its executable filename. It is also commonly referred to as cmd or the Command Prompt, referring to the default window title on Windows.
+The name refers to its executable filename. It is also commonly referred to as cmd or the _Command Prompt_, 
+referring to the default window title on Windows.
+
+## Child Pages
+
+{{% children sort="title" description="true" %}}
 
 ## type
 
@@ -38,3 +43,22 @@ To print a particular environment variable:
 C:\> echo %JAVA_HOME%
 ```
 
+## Concatenate Variable
+
+```shell
+@ECHO OFF
+setlocal enabledelayedexpansion
+
+REM Set the directory to search for classpath JAR files
+set "CLASSPATH_JAR_DIR=..\libs"
+
+set "CLASSPATH="
+REM Loop through all JAR files in the directory and append them to the CLASSPATH variable
+for %%f in ("%CLASSPATH_JAR_DIR%\*.jar") do (
+    set "CLASSPATH=!CLASSPATH!;%%f"
+)
+
+echo.
+echo Using classpath=%CLASSPATH%
+echo.
+```
