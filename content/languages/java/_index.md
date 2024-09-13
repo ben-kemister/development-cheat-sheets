@@ -9,6 +9,21 @@ tags:
 Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers write once, run anywhere, meaning that compiled Java code can run on all platforms that support Java without the need for recompilation
 <!--more-->
 
+## Java distributions
+
+Below is an overview of some of the Java distributions that I have encountered.
+
+### Eclipse Adoptium (previously known as AdoptOpenJDK) 
+
+Free and open-source high-quality Java runtimes and associated technology for use across the Java ecosystem.
+
+### Eclipse Temurin
+
+This is the distribution (and brand name) fsor the binaries that the Eclipse Foundation produces.
+
+The Eclipse Temurin binaries are provided at no cost to use, forever,
+under the terms of the "GNU General Public License, version 2 with the Classpath Exception".
+
 ## Java Virtual Machine (JVM) options
 
 There is a bunch of options you can add to the command line when run Java which can be very handy.
