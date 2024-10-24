@@ -23,3 +23,27 @@ containers orchestrated and managed by Kubernetes on a foundation of Red Hat Ent
 | `OperatorGroup`            | The unit of multitenancy for OLM managed operators. It constrains the installation of operator in its namespace to a specified set of target namespaces. |
 | `Subscription`             | Keeps Operators up to date by tracking changes to `Catalogs`                                                                                             |
 
+
+## Project wide node selectors
+
+You can use an annotations on a Namespace to be able to set the default node selector for any Pods (including those 
+created by Deployments) which are created in that Namespace.
+
+For example:
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations: 
+    # Schedule Pods onto the Nodes that are assigned the 'app' node-role.
+    openshift.io/node-selector: "node-role.kubernetes.io/app="
+  name: demo-namespace
+```
+
+The namespace annotation will **add** to any `nodeSelector` specified in the Pod's manifest, which can cause Pods to enter 
+a _Pending_ status if a node with matching labels cannot be found.
+
+For more information on this feature see [Creating project-wide node selectors](https://docs.openshift.com/container-platform/4.17/nodes/scheduling/nodes-scheduler-node-selectors.html#nodes-scheduler-node-selectors-project_nodes-scheduler-node-selectors)
+
+
