@@ -72,7 +72,6 @@ echo $?
 To base64 encode data in Linux, you use the `base64 [FILE]` command. 
 
 For example:
-
 ```shell
 echo "password" | base64
 ```
@@ -80,13 +79,30 @@ echo "password" | base64
 cGFzc3dvcmQK
 ```
 
-To decode, you use `base64 -d [FILE]` 
-
+To decode, you use `base64 -d [FILE]`    
 For example:
-
 ```shell
 echo "cGFzc3dvcmQ=" | base64 --decode
 ```
 ```text
 password
+```
+
+### Prevent New Line/Wrapping
+
+If you need to encode/decode base64 strings without carriage returns or line wraps use:
+```shell
+echo -n "my-password" | base64 -w 0
+```
+```text
+bXktcGFzc3dvcmQ=me@host:/$ # <-- Note no line break
+```
+
+You can check/verify the actual characters with `od -c` which will display the carriage return (`\n`):
+```shell
+echo "my-password" | base64 | base64 -d | od -c
+```
+```text
+0000000   m   y   -   p   a   s   s   w   o   r   d  \n
+0000014
 ```
