@@ -12,18 +12,15 @@ File and file permissions are core to the security model used by Linux systems.
 <!--more-->
 They determine who can access files and directories on a system and how.
 
+If you are looking for commands/tools that can be used on files see [File Commands](../../languages/sh/file_commands) 
+
 ## What is a file?
 
 On a UNIX system, everything is a file; if something is not a file, it is a process.
 
-## Renaming a file
+## Links
 
-Use the ``mv`` command to rename a file, for example:
-```shell
-mv oldname.txt newname.txt
-```
-
-## Sym(bolic) link
+### Sym(bolic) link
 
 A symbolic (or soft) link is similar to a Shortcut in the Windows operating system. It is pointer to another file on
 the system (noting that it does not reference the actual data on disc like a hard link does).
@@ -34,7 +31,7 @@ To remove a symlink use `unlink <PATH_TO_SYMLINK`
 
 > You can also remove a symlink using the `rm` command. But be careful not to delete the actual file by accident!
 
-## Hard link
+### Hard link
 
 The syntax to create a hard link is `ln {source} {link}`.
 
@@ -47,15 +44,21 @@ ln target directory
 ```
 To verify soft or hard links on Linux, run: `ls -l source link`
 
+## File Permissions
 
-## Changing file permissions
+### Changing file permissions (chmod)
 
 To change the permissions for a file/folder use `chmod [permission] [file_name]`, for example:
 ```shell
 chmod 0777 public_file
 ```
 
-## Explaining file permissions
+To change the permission recursively add the `-R` or `--recursive` arguments, for example:
+```shell
+chmod -R 755 /path/to/directory
+```
+
+### Explaining file permissions
 
 Every file and folder contains 8-bit data that controls the permissions. In its basic binary form, 000 means that no permissions of any form are granted.
 
