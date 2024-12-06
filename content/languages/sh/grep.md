@@ -28,3 +28,16 @@ There are 2 ways that you can do OR operations with grep.
 1. You can use `\|` to separate multiple patterns for example: `grep 'pattern1\|pattern2' filename`
 2. Alternately you can use grep with the `-E` (extended regexp mode) for example: `grep -E 'pattern1|pattern2'`
 
+## List of patterns
+
+You can provide `grep` with a list of patterns with the `-f <FILENAME>` argument, using the syntax:
+
+```shell
+grep -f <LIST_OF_PATTERNS> <FILE_OR_FILES_TO_GREP>
+```
+
+You can also combine this with the `-v` argument to get entries that **do not match**, for example:
+
+```shell
+grep -v -f list_of_patterns_to_ignore.txt /tmp/sources.txt
+```

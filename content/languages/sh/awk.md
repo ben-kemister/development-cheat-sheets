@@ -26,4 +26,22 @@ By default, AWK uses a space as a separator. You can change the separator as fol
 ONE
 ```
 
+## Convert bytes to GB
+
+You can use ```awk '{ print $1/1024/1024/1024 " GB "}'```.    
+
+For example to convert kb to Gb:
+
+```shell
+# Check available space before continuing
+SPACE_REMAINING=$(df /watch | tail -n 1 | awk '{ print $3 }')
+SPACE_REMAINING_GB=$(echo "$SPACE_REMAINING" | awk '{ print $1/1024/1024 " GB "}' )
+echo "$SPACE_REMAINING_GB available space in /watch"
+if [ "$SPACE_REMAINING" -lt 10000000 ]; then
+  echo "Not enough available space in /watch, exiting..."
+  echo ""
+  exit 0;
+fi
+```
+
 

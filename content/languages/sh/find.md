@@ -63,3 +63,11 @@ Find all of xml files in that have a modification time newer than `2022-03-08`
 ```sh
 find -type f -name *.xml -newermt 2022-03-08
 ```
+
+## Find in date order (oldest first)
+
+The snippet below finds all the directories, retuning the results in date order (oldest first):
+
+```shell
+find /source/files/* -type d -exec ls -trd "{}" +
+```

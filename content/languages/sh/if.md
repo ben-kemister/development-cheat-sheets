@@ -2,12 +2,13 @@
 title: IF (statement)
 tags:
 - bash
+- sh
 - variables
 - files
 - script
 ---
 
-This page contains examples about the use the bash `if` statement.
+This page contains examples about the use the sh/bash `if` statement.
 <!--more-->
 
 ## Check Variables
@@ -31,8 +32,8 @@ foo=""
 ```
 
 > Note:    
-> `-n` - string has length greater than 0.    
-> `-z` - string has zero length (i.e. `""`)
+> `-n` - test that string has length greater than 0.    
+> `-z` - test that string has zero length (i.e. `""`)
 
 ### Is equal to a value
 

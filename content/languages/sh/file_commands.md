@@ -48,3 +48,14 @@ file.txt
 dir=/home/smith/Desktop/Test
 parentdir="$(dirname "$dir")"
 ```
+
+## Get the directory from a path (`basename`)
+
+```shell
+FULL_PATH=/tmp/my-dir
+LAST_DIR=$(basename $FULL_PATH)
+echo $LAST_DIR
+```
+```text
+my-dir
+```
