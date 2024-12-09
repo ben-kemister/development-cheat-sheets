@@ -17,7 +17,7 @@ The Maven project is hosted by the Apache Software Foundation, where it was form
 | ----  | ---- |
 | `mvn dependency:tree` | Print Dependency Tree |
 | `mvn test-compile` | Compiles the test classes (but doesn't run them) |
-| `mvn archetype:generate` | Interactively generates/initialised a maven project | 
+| `mvn archetype:generate` | Interactively generates/initialised a maven project |
 
 ## Scopes
 
@@ -31,6 +31,16 @@ Maven has **six** default dependency scopes. It’s important to understand that
 * import (pom) - indicates that this dependency should be replaced with all effective dependencies declared in its POM
 
 For more information see [this Baelding article](https://www.baeldung.com/maven-dependency-scopes).
+
+## Downloading an artifact to a specific directory
+
+You can use maven to download an artifact from Nexus/Maven Central even if you don't have a `pom.xml` file using:
+
+```shell
+mvn dependency:copy -Dartifact="io.opentelemetry.javaagent:opentelemetry-javaagent:1.33.6:jar" -DOutputDirectory="." -DuseBaseVersion=true "-Dmdep.stripVersion=true"
+```
+
+This will download version 1.33.6 of the opentelemetry-javaagent jar file as `opentelemetry-javaagent.jar`.
 
 ## (Re) Download project dependencies
 
