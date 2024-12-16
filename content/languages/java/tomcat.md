@@ -29,6 +29,25 @@ You can use the `setenv` script to add extra folders/files to the classpath:
 export CLASSPATH="/usr/local/app/config:/user/local/app/creds
 ```
 
+#### Adding classpath items when using Intellij (or another IDE)
+
+Below is a simple `setenv.bat` script which will allow you to use the `TOMCAT_CLASSPATH` environment variable to add things
+to Tomcat's classpath in a _relatively_ dynamic way.
+
+```shell
+@ECHO OFF
+REM
+REM A simle Tomcat/Catalina setenv.bat script which can be used to add things to the CLASSPATH
+REM
+
+echo ""
+echo "Running CATALINA setnev.bat"
+echo ""
+echo "Setting CLASSPATH=%TOMCAT_CLASSPATH%"
+set CLASSPATH=%TOMCAT_CLASSPATH%
+echo ""
+```
+
 ### CATALINA_OPTS (a.k.a JVM arguments)
 
 You can use the `setenv` script to configure JVM arguments that are called when Tomcat is stared:
