@@ -26,6 +26,17 @@ $ java -jar app.jar --spring.config.location=config/*/
 
 ### Importing additional files
 
+#### From the command line
+
+If you just want to **add** to the default property source you can use `spring.config.additional-location` instead.     
+For example the following will also load the properties from `./my-dir/more.properties`:
+
+```shell
+java -jar myproject.jar --spring.config.additional-location=./my-dir/more.properties
+```
+
+#### From other properties files
+
 You can also add **additional configuration files** using command line properties and form existing files.
 You can use the `spring.config.import` property within the `application.properties` or `application.yml` file to easily 
 include additional files, which as the following features:
@@ -106,6 +117,18 @@ private String defaultsToEmtpyString;
 // Defaults to null if not set by a property
 @Value("${another.property:#{null}}")
 private String defaultsToNull;
+```
+
+## Using Environmental Variables
+
+You can use the syntax `${MY_ENVIRONMENT_VARIABLE}` within SpringBoot properties files. 
+SpringBoot will source these values from the systems' environmental variables, for example: 
+
+```yaml
+app:
+  database:
+    # The password will be sourced from the 'DB_PASSWORD' environmental variable
+    password: ${DB_PASSWORD}
 ```
 
 ## Links

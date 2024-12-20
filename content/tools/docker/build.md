@@ -47,6 +47,18 @@ ENV MY_VARIABLE="defaultValue"
 ENV VAR_1="Value_1" VAR_2="Value-2"
 ```
 
+## Multiline
+
+If you have long commands or want to use multiple lines you can use a space and ` \ `, for example:
+
+```dockerfile
+ENTRYPOINT [ "java", \
+            "-javaagent:./otel/opentelemetry-javaagent.jar", \
+            "-Dotel.javaagent.configuration-file=./config/opentelemetry.properties", \
+            "-jar", "./my-springboot-app.jar" \
+            ]
+```
+
 ## Errors
 
 ### buildx build --push to private registry fails with 'tcp: lookup <registry_hostname> on <container_ip_address>: no such host' error
