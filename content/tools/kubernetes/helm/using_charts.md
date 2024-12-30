@@ -9,7 +9,18 @@ tags:
 This page contains information about using Helm charts.
 <!--more-->
 
-## Deploy to a namespace
+## Installing (a.k.a. deploying)
+
+Use either:
+```shell
+helm install <RELEASE_NAME> <HELM_CHART>
+```
+or `upgrade` with the `-i` option:
+```shell
+helm upgrade -i <RELEASE_NAME> <HELM_CHART>
+```
+
+### Deploy to a specific namespace
 
 Add the `-n <namespace>` option to your command, for example
 
@@ -17,10 +28,18 @@ Add the `-n <namespace>` option to your command, for example
 helm upgrade -i gogs -n dev-ops -f .\my-values.yaml ./gogs-helm-chart/gogs/
 ```
 
-### Create a namespace
+### Create the namespace (if it does not exist)
 
 Add the `--create-namespace` option to your command to create the release namespace if not present.
 This can be used with the `-n <namespace>` option so that the namespace is created when deploying.
+
+### Deploying a specific version
+
+Add the `--version <VERSION_NUMBER>` option to specify a particular version of a helm chart, for example:
+
+```shell
+helm install my-mongodb bitnami/mongodb --version 8.3.1
+```
 
 ## Show default values.yaml
 

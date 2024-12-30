@@ -65,10 +65,13 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metallb.universe.tf/allow-shared-ip: dns-svc # This needs to match the other SVC which needs to share the same IP address
-    metallb.universe.tf/loadBalancerIPs: 192.168.10.6 # 
+    metallb.io/allow-shared-ip: dns-svc # This needs to match the other SVC which needs to share the same IP address
+    metallb.io/loadBalancerIPs: 192.168.10.6 # 
 ...
 ```
+
+> Note the older `metallb.universe.tf/xxx` annotations have been deprecated and replaced with `metallb.io/xxx`
+
 For more details see the [IP Address Sharing section](https://metallb.universe.tf/usage/#ip-address-sharing) of the 
 MetalLB documentation.
 
