@@ -13,6 +13,23 @@ tags:
 This page provides examples about the use of PowerShell's **network utilities**.
 <!--more-->
 
+## Find IP/MAC address of remote machine
+
+To display a list of all active IP addresses on the network, including the physical address (MAC address) use `apr -a`.
+
+For example:
+```powershell
+arp -a
+```
+Returns:
+```text
+Interface: 192.168.0.108 --- 0x11
+    Internet Address      Physical Address      Type
+    192.168.0.1           93-7d-25-xx-xx-xx     dynamic
+    192.168.0.21          68-7d-9f-xx-xx-xx     dynamic
+    ...
+```
+
 ## Test-NetConnection
 
 The [Test-NetConnection](https://learn.microsoft.com/en-us/powershell/module/nettcpip/test-netconnection?view=windowsserver2022-ps) 
