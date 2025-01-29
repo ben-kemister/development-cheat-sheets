@@ -23,6 +23,16 @@ while($val -ne 3){$val++; Write-Host $val}
 
 For more information see: [about_While](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_while?view=powershell-7.4)
 
+### Simple linux `watch` alternative
+
+You can use a while loop as an analoge to the linux `watch` command.
+
+For example, to continually run `kubectl get nodes` use the following command:
+```powershell
+watch (1) { cls; date; kubectl get nodes; sleep 5}
+```
+
+
 ## foreach - file input
 
 You can you use combination of `Get-ChildItem` and the `foreach` loop to process a set of files:

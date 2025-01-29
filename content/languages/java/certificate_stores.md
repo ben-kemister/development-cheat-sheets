@@ -49,6 +49,14 @@ keytool -im portcert -alias another-cert -file <PATH_TO_FILE>\another-cert.crt -
 keytool -list -keystore keystore.p12 -storetype pkcs12 -storepass my_password
 ```
 
+## Extract a Certificate from a store
+
+The following command will export a certificate from a Keystore file in PEM format:
+
+```shell
+keytool -export -alias <CERTIFICATE_ALIAS> -keystore <PATH_TO_STORE_FILE> -rfc -file exported_cert.pem
+```
+
 ## References & Links
 
 * [Introduction to keytool - Baeldung](https://www.baeldung.com/keytool-intro)
