@@ -141,7 +141,9 @@ patches:
         value: 1
 ```
 
-### Add annotation
+### Add a single annotation to existing block
+
+You can add a single annotation to an existing block using:
 
 ```yaml
 ...
@@ -163,6 +165,24 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
   name: monitoring
+```
+
+### Add annotations block
+
+You can add annotations block (if it does not exist) by using the following:
+
+```yaml
+...
+patches:
+  - target:
+      kind: Deployment
+      name: argocd-redis
+    patch: |-
+      # Disable version-checker on the redis image
+      - op: add
+        path: /spec/template/metadata/annotations
+        value: 
+          enable.version-checker.io/redis: "false"
 ```
 
 ### Append to a list/array
