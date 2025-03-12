@@ -64,8 +64,23 @@ A non-zero (1-255 values) exit status means command was a failure.
 To return the last exit code use the command:
 
 ```shell
+some_function
 echo $?
 ```
+
+### List of exit codes
+
+Below is an _incomplete_ list of exit codes:
+
+* 0 = Success
+* 1 = General Error
+* 2 = Misuse of shell built-ins
+* 126 = Command cannot execute - The command was found, but it could not be executed, possibly due to permissions
+* 127 = Command not found
+* 128 = Invalid exit argument
+* 128 + N = Fatal error signal N - Indicates that the command or program was terminated by a fatal error Signal. For example, an exit code of 137 (128 + 9) means the command was terminated by a SIGKILL signal.
+* 130 = Script terminated by Control-C
+* 255 = Exit status out of range - Returned when the exit status is outside the valid range (0 - 254).
 
 ## base64
 
