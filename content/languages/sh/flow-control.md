@@ -16,11 +16,34 @@ The emphasis on explicit control flow distinguishes an **imperative** programmin
 
 ## Loops
 
-You can create a simple single line using `while true; do foo; sleep 2; done`
+### While loops
+
+You can create a simple single line while loop using `while true; do foo; sleep 2; done`
 
 ```shell
 # Loop to keep printing a console output
 while true; do echo "Still alive at: $(date)"; sleep 60; done
+```
+
+### For loops
+
+Increment by 1 each loop:
+
+```shell
+for i in {1..5}
+do
+    echo "Welcome $i times"
+done
+```
+
+Increment by another value:
+
+```shell
+# Use the {START..END..INCREMENT syntax}
+for i in {0..10..2}
+do
+    echo "Welcome $i times"
+done
 ```
 
 ## Ignoring the exit code of a command
