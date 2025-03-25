@@ -39,14 +39,6 @@ See [this post](https://github.blog/2020-12-21-get-up-to-speed-with-partial-clon
 
 `git clone --progress --verbose .....`
 
-## Add a remote
-
-To add a remote for the given git project use:
-
-```sh
-# git remote add [-t <branch>] [-m <master>] [-f] [--[no-]tags] [--mirror=(fetch|push)] <name> <url>
-git remote add gogs https://gogs.example.org/repoGroup/project.git
-```
 
 ## Changing upstream for a branch
 
