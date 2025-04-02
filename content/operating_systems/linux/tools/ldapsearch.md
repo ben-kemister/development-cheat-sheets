@@ -1,5 +1,5 @@
 ---
-title: ldapserch
+title: ldapsearch
 tags:
  - unix
  - linux
@@ -15,10 +15,23 @@ directory server.
 ## Basic Example
 
 ```shell
-ldapseach -x -H ldap://domaincontroller:389 -D bind-acount -b "DC=demo,DC=com" -W '(sAMAccountName=user1)'
+ldapsearch -x -H ldap://domaincontroller:389 -D bind-acount -b "DC=demo,DC=com" -W '(sAMAccountName=user1)'
 ```
 
 > Note that if using a secure connection the connection string is typically ``ldaps://domaincontroller:636``
+
+### Options
+
+Below is information about some of the common options for the `ldapsearch` command:
+
+| Option      | Description                               |
+|-------------|-------------------------------------------|
+| `-x`        | Simple authentication                     |
+| `-H URI`    | LDAP URI                                  |
+| `-D binddn` | Bind Distinguished Name (DN)              |
+| `-b basedn` | Base DN for the search                    |
+| `-W`        | Prompt for Bind password                  |
+| `-w passwd` | Bind password (for simple authentication) |
 
 ## Search Syntax
 
