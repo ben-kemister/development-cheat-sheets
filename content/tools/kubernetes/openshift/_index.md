@@ -1,8 +1,9 @@
 ---
 title: OpenShift
 tags:
-  - kubernetes
-  - red_hat
+- kubernetes
+- red_hat
+- openshift
 ---
 
 OpenShift is a family of containerization software products developed by Red Hat. 
@@ -46,16 +47,5 @@ a _Pending_ status if a node with matching labels cannot be found.
 
 For more information on this feature see [Creating project-wide node selectors](https://docs.openshift.com/container-platform/4.17/nodes/scheduling/nodes-scheduler-node-selectors.html#nodes-scheduler-node-selectors-project_nodes-scheduler-node-selectors)
 
-## Troubleshooting
 
-### oc long returns `net/http: TLS handshake timeout`
-
-This can be caused by the `oc` client/machine not trusting the TLS certificate/s presented by the server.
-You can get this messages if you yet to set up cert-manager on the cluster with your trusted certificates.
-
-You can bypass this by adding `--insecure-skip-tls-verify=true` to your login command, for example:
-
-```shell
-oc login -u <USER_ID> --insecure-skip-tls-verify=true
-```
 
