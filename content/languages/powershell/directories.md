@@ -48,9 +48,9 @@ Test-Path -Path 'C:\Demo\FileWithoutExtension' -PathType Leaf
 Test-Path -Path 'C:\Demo' -PathType Container
 ```
 
-## Get full path of executing script - $PSScriptRoot
+## Get directory of executing script - `$PSScriptRoot`
 
-`$PSScriptRoot` is an automatic variable in PowerShell which contains the current file's/module's directory.
+`$PSScriptRoot` is an automatic variable in PowerShell which contains the directory from which the script module is being executed.
 
 ## Current Directory Path
 

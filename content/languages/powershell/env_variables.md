@@ -19,9 +19,10 @@ Environment variables are global settings for your Linux, Mac, or Windows comput
 
 The table below lists some of the standard/common Windows environmental variables: 
 
-| Variable        | Description                             |
-|-----------------|-----------------------------------------|
-| `$Env:UserName` | Returns the current username in Windows |
+| Variable            | Description                             |
+|---------------------|-----------------------------------------|
+| `$Env:UserName`     | Returns the current username in Windows |
+| `$Env:ComputerName` | Returns the current computer name       |
 
 ### Print Environmental Variables
 

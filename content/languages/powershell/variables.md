@@ -11,6 +11,14 @@ tags:
 This page provides examples about the use of variables in PowerShell scripts.
 <!--more-->
 
+## Setting a Variable 
+
+```shell
+PS C:\> $My_Variable = "Some Value"
+PS C:\> $My_Variable
+Some Value
+```
+
 ## Testing a variable
 
 Test if it matches a given String.
