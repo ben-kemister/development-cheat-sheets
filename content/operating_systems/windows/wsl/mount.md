@@ -1,56 +1,14 @@
 ---
-title: WSL
+title: mount
 tags:
 - windows
-- linux
 - wsl
-- wsl2
 ---
 
-This page contains information about the use of the Windows Subsystem for Linux (WSL).
+This page contains information about how to mount Windows Drives in WSL.
 <!--more-->
 
-## Basic Commands
-
-| Command                                 | Description                                                                                                                         | 
-|-----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| `wsl --version`                         | [Check WSL version](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#check-wsl-version)                                 |
-| `wsl -l`                                | [List the installed distributions](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#list-available-linux-distributions) |
-| `wsl --set-default <Distribution Name>` | [Set default Linux distribution](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution)       |
-
-## Matching `wsl` output
-
-Inexplicably, `wsl --list` produces UTF-16LE-encoded ("Unicode"-encoded) output.
-
-v0.64 and above of `wsl.exe` (verify via the first line output by `wsl.exe --version`) now supports setting the `WSL_UTF8` 
-environment variable to 1 to make `wsl.exe` output UTF-8-encoded output, for example
-
-```powershell
-$env:WSL_UTF8 = 1
-wsl --list --running | Select-String -Pattern MyDistro
-```
-
-## Accessing host files
-
-The host (Windows) files can be access from the `/mnt/c/` mount.
-
-For Windows 11, the users' directory can be found at `/mnt/c/Users/<USERID>`
-
-### Symlinks can help with tools!
-
-You can use symlinks to share configuration between tools that are used in both Windows and (wsl) Linux.
-
-For example the configuration for the [kubectl](../../tools/kubernetes/kubectl) tool typically resides within the users' 
-`.kube` directory.
-
-To share the configuration so that it works the same on Windows and Linux you can create a symlink on the linux system 
-which points to the folder on the Windows (host).
-
-```shell
-ln -s /mnt/c/Users/<USERID>/.kube ~/.kube
-```
-
-## Mount Disc
+## Mount a Drive
 
 The instructions below walk you through how to [mount a disc in wsl](https://learn.microsoft.com/en-us/windows/wsl/wsl2-mount-disk).
 
