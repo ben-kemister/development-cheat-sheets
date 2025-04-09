@@ -26,7 +26,7 @@ The node's file system will be mapped to the `/host` directory in the pod.
 
 ## Troubleshooting
 
-### oc long returns `net/http: TLS handshake timeout`
+### oc login returns `net/http: TLS handshake timeout`
 
 This can be caused by the `oc` client/machine not trusting the TLS certificate/s presented by the server.
 You can get this messages if you yet to set up cert-manager on the cluster with your trusted certificates.
