@@ -19,7 +19,8 @@ wsl -e ./path/to/script.sh
 
 ## Scripts located in Windows
 
-If you have a bash script on the Windows file system you can run it in wsl.
+If you have a bash script on the Windows file system you can run it in a wsl distribution using:    
+`wsl [--distribution <DISTRIBUTION_NAME>] -e <path_to_script>`.
 
 For example for a file called `.\basic_script.sh`:
 ```text

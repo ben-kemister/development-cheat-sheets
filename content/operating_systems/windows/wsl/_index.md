@@ -23,6 +23,8 @@ This page contains information about the use of the [Windows Subsystem for Linux
 | `wsl --version`                         | [Check WSL version](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#check-wsl-version)                                 |
 | `wsl -l`                                | [List the installed distributions](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#list-available-linux-distributions) |
 | `wsl --set-default <Distribution Name>` | [Set default Linux distribution](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution)       |
+| `wsl bash -c "<bash command string>"`   | [Run a (bash) command](./commands)                                                                                                  |
+| `wsl -e <bash_script>`                  | [Execute a script](./script)                                                                                                        |
 
 ## Matching `wsl` output
 
@@ -36,33 +38,3 @@ $env:WSL_UTF8 = 1
 wsl --list --running | Select-String -Pattern MyDistro
 ```
 
-## Linux commands
-
-You can run a linux/bash command using WSL as follows:
-
-```shell
-wsl bash -c "ls -la"
-total 2344360
-drwxrwxrwx 1 user user       4096 Mar 19 08:23  .
-dr-xr-xr-x 1 user user       4096 Dec  8 09:03  ..
-```
-
-## Accessing host files
-
-The host (Windows) files can be access from the `/mnt/c/` mount.
-
-For Windows 11, the users' directory can be found at `/mnt/c/Users/<USERID>`
-
-### Symlinks can help with tools!
-
-You can use symlinks to share configuration between tools that are used in both Windows and (wsl) Linux.
-
-For example the configuration for the [kubectl](../../tools/kubernetes/kubectl) tool typically resides within the users'
-`.kube` directory.
-
-To share the configuration so that it works the same on Windows and Linux you can create a symlink on the linux system
-which points to the folder on the Windows (host).
-
-```shell
-ln -s /mnt/c/Users/<USERID>/.kube ~/.kube
-```
