@@ -4,6 +4,7 @@ tags:
  - unix
  - linux
  - dns
+ - network
 ---
 
 The [dig](https://linux.die.net/man/1/dig) command in Linux is used to gather DNS information. 

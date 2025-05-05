@@ -1,62 +1,33 @@
 ---
-title: Build
+title: build
 tags:
 - container
 - linux
 - development
 - cli
 - image
-- dockerfile
 ---
 
-This page contains examples about the use of the Docker `build` commands used when creating container image(s).
+This page contains examples about the use of the Docker `build` command used when creating container image(s).
 <!--more-->
 
 ## Building with `Dockerfile`
+
+You can specify the `Dockerfile` to use when build with the `-f <path_to_Dockerfile>` argument, for example:
 
 ```powershell
 docker build -f .\Dockerfile -t [PRIVATE_IMAGE_REGISTRY[:PORT]/]<IMAGE_NAME>[:<VERSION_TAG>] .
 ```
 
-## Labels
+## Build arguments
 
-The [OCI Containers Specification](https://github.com/opencontainers/image-spec/blob/main/annotations.md#pre-defined-annotation-keys) 
-defines several conventional labels that encapsulate common use cases for container images. These exist within the org.opencontainers.image namespace.
-
-org.opencontainers.image.created – Image creation time.
-org.opencontainers.image.url – URL to get information about the image.
-org.opencontainers.image.version – Version of the main software inside the container (not the image’s version).
-org.opencontainers.image.licenses – Container licensing information.
-org.opencontainers.image.title – A human-readable name for the container.
-
-To add these to your built image use the following syntax:
-```dockerfile
-LABEL org.opencontainers.image.authors="awesome.developer@email.com"
-```
-
-## Environmental Variables (ENV)
-
-You can create, set and provide default values for environmental variables in a `Dockerfile` using `ENV`.
+You can pass build argument to the Dockerfile with the `--build-arg=<KEY>=<VALUE>` argument.   
+You will need a `--build-arg=<KEY>=<VALUE>` argument for each key/value pair you are passing in.
 
 For example:
 
-```dockerfile
-ENV MY_VARIABLE="defaultValue"
-
-# You can also define multiple environmental variables on the same line like:
-ENV VAR_1="Value_1" VAR_2="Value-2"
-```
-
-## Multiline
-
-If you have long commands or want to use multiple lines you can use a space and ` \ `, for example:
-
-```dockerfile
-ENTRYPOINT [ "java", \
-            "-javaagent:./otel/opentelemetry-javaagent.jar", \
-            "-Dotel.javaagent.configuration-file=./config/opentelemetry.properties", \
-            "-jar", "./my-springboot-app.jar" \
-            ]
+```shell
+docker build --build-arg=<KEY>=<VALUE> -f .\Dockerfile -t <IMAGE_NAME>[:<VERSION_TAG>] .
 ```
 
 ## Errors

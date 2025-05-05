@@ -11,6 +11,7 @@ This page captures some the interesting tech that I have heard about, but have n
 
 ### Containerisation & Kubernetes
 
+* [ksniff](https://github.com/eldadru/ksniff) - A kubectl plugin that utilize tcpdump and Wireshark to start a remote capture on any pod in your Kubernetes cluster.
 * [Skaffold](https://skaffold.dev/) - a command line tool that facilitates continuous development for Kubernetes applications.
 * [Buildpacks](https://buildpacks.io/) - create application images without the need for `Dockerfile`s
 * [Telepresence](https://www.telepresence.io/) - Fast, local development for Kubernetes and OpenShift Microservices
