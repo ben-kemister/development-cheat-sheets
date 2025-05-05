@@ -1,5 +1,5 @@
 ---
-title: Docker (run) commands
+title: run
 tags:
 - container
 - linux
@@ -8,7 +8,7 @@ tags:
 - run
 ---
 
-This page contains examples about the use of Docker commands when _running_ containers.
+This page contains examples about the use of Docker's `run` command (i.e. when _running_ containers).
 <!--more-->
 
 ## Remove container on exit

@@ -4,6 +4,7 @@ tags:
  - unix
  - linux
  - dns
+ - network
 ---
 
 [host](https://linux.die.net/man/1/host) is a linux DNS lookup utility. 
