@@ -16,5 +16,10 @@ To flush the DNS cache in Windows (11), open Command Prompt as **Administrator**
 
 This will clear the cached DNS records, which can help resolve/diagnose network connectivity issues.
 
+## Renew a DHCP lease
+
+1. Release the IP address: `ipconfig /release`
+2. Renew the IP address: `ipconfig /renew`
+3. Verify the new IP address: `ipconfig` - see if your computer has received a new IP address from the DHCP server. 
 
 
