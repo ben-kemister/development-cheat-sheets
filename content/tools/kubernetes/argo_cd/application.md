@@ -81,12 +81,13 @@ metadata:
   namespace: argocd
 spec:
   ignoreDifferences:
-    # Ignore the differences in the CA bundle
-    - group: "apiextensions.k8s.io/v1"
+    # Do NOT include the version in the 'group'
+    - group: "apiextensions.k8s.io"
       kind: "CustomResourceDefinition"
       name: "bgppeers.metallb.io"
+      # Ignore the differences in the CA bundle
       jsonPointers:
-        - /spec/conversion/webhook/caBundle
+        - /spec/conversion/webhook/clientConfig/caBundle
 ...
 ```
 
