@@ -11,6 +11,9 @@ This page provides examples about the use of PowerShell (console) logging and ou
 
 ## Write-Host
 
+```powershell
+Write-Host "Starting somthing good..."
+```
 
 ## Write-Debug
 

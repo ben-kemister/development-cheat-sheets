@@ -2,9 +2,7 @@
 title: Loops
 tags:
  - scripting
- - windows
  - powershell
- - terminal
  - loops
 ---
 
@@ -25,12 +23,14 @@ For more information see: [about_While](https://learn.microsoft.com/en-us/powers
 
 ### Simple linux `watch` alternative
 
-You can use a while loop as an analoge to the linux `watch` command.
+You can use a while loop as an analog to the linux `watch` command.
 
 For example, to continually run `kubectl get nodes` use the following command:
 ```powershell
 watch (1) { cls; date; kubectl get nodes; sleep 5}
 ```
+
+> Note: `sleep 5` is an alias to the Powershell command: `Start-Sleep -Seconds 5`
 
 
 ## foreach - file input
