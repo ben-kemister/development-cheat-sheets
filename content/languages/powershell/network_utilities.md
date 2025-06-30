@@ -13,6 +13,36 @@ tags:
 This page provides examples about the use of PowerShell's **network utilities**.
 <!--more-->
 
+## DNS resolution
+
+To find the DNS server being used by the system use [`ipconfig`](../../operating_systems/windows/ipconfig):
+```powershell
+ipconfig /all
+```
+```text
+...
+Ethernet adapter Ethernet 2:
+
+   Connection-specific DNS Suffix  . : lan
+   ...
+   DNS Servers . . . . . . . . . . . : 192.168.0.27
+                                       192.168.0.22
+```
+
+To test what is being returned by the DNS server use `nslookup`:
+```powershell
+nslookup google.com.au 192.168.0.27
+```
+```text
+Server:  UnKnown
+Address:  192.168.0.27
+
+Non-authoritative answer:
+Name:    google.com.au
+Addresses:  2404:6800:4006:809::2003
+          142.251.221.67
+```
+
 ## Find IP/MAC address of remote machine
 
 To display a list of all active IP addresses on the network, including the physical address (MAC address) use `apr -a`.
