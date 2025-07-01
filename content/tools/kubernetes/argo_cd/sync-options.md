@@ -41,6 +41,8 @@ metadata:
 Hooks and resources are assigned to wave zero by default. The wave can be negative, so you can create a wave that runs
 before all other resources.
 
+## Sync Options (`sync-options`)
+
 ### Replace instead of Apply
 
 By default, Argo CD executes `kubectl apply` operation to apply the configuration stored in Git.
@@ -70,7 +72,7 @@ metadata:
 
 For more information on this see [Replace Resource Instead Of Applying Changes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes).
 
-## No Resource Deletion
+### No Resource Deletion
 
 For certain resources you might want to retain them even after your application is deleted, for e.g. PVCs, Longhorn volumes.
 In such situations you can stop those resources from being cleaned up during app deletion by using the following annotation:
@@ -82,3 +84,22 @@ metadata:
 ```
 
 For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
+
+### Using multiple sync-options
+
+Multiple Sync Options can be configured with the `argocd.argoproj.io/sync-options` annotation can be concatenated with a 
+`,` in the annotation value; white-space will be trimmed.
+
+For example:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: some-data
+  annotations:
+    # Prevent the PVC from being deleted by ArgoCD, and use 'Replace' instead of Apply
+    argocd.argoproj.io/sync-options: Delete=true,Replace=true
+spec:
+...
+```
