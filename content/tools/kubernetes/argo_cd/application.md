@@ -92,3 +92,25 @@ spec:
 ```
 
 
+## Extra information
+
+You can add extra information to be displayed in the ArgoCD Application details tab (such as useful text and links) 
+with the `info` block.
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dashy-test
+  namespace: argocd
+spec:
+  project: web-content
+
+  # Extra information to show in the Argo CD Application details tab
+  info:
+    - name: 'Description'
+      value: "For deploying the TEST instance of the Dashy application"
+...
+```
+
+
+
