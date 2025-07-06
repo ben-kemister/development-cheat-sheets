@@ -26,3 +26,47 @@ These instructions are based on the [Podman for Windows doco](https://github.com
 2. Open a new Terminal and run `podman machine init`
 3. Start the podman machine with `podman machine start`
 4. (Optional) Verify the installation by running a simple container with ``podman run ubi8-micro date``
+
+## Handy Commands
+
+### podman run
+
+```shell
+podman run --rm -it `
+     -p 6052:6052 `
+     --network=host `
+     -v ${PWD}/my-configs:/config `
+     <IMAGE_REGISTRY>/<IMAGE_NAME>:<IMAGE_TAG> [COMMANDS]
+```
+
+Options:
+* `--rm` - remove/delete the container when completed
+* `-it` - keep in terminal foreground and display STDOUT
+* `-p <HOST_PORT>:<CONTAINER_PORT>` - expose/map a port in the container to the host 
+* `-v <HOST_PATH>:<CONTAINER_PATH>` - map a directory (or file) to the container
+* `--network=host` - (Optional) Use the network of the host
+
+
+### podman ps
+
+`podman ps` lists the running containers on the system. Use the `--all` flag to view all the containers information.
+
+```shell
+podman ps               
+```
+```text
+CONTAINER ID  IMAGE                             COMMAND               CREATED         STATUS         PORTS                   NAMES
+562c109a4631  ghcr.io/esphome/esphome:2025.6.3  run everything-pr...  23 minutes ago  Up 23 minutes  0.0.0.0:6052->6052/tcp  elated_bhabha
+```
+
+### podman top <CONTAINER>
+
+`podman top <CONTAINER>` display the running processes of a container.
+
+```shell
+podman top elated_bhabha
+```
+```text
+USER        PID         PPID        %CPU        ELAPSED           TTY         TIME        COMMAND
+root        1           0           4.826       23m49.723240324s  pts/0       1m9s        /usr/local/bin/python /usr/local/bin/esphome run some-config-file-123.yaml
+```

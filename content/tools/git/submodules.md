@@ -15,6 +15,18 @@ of another Git repository. This lets you clone another repository into your proj
 git submodule add https://github.com/chaconinc/DbConnector
 ```
 
+### Add a submodule to a specific directory
+
+```shell
+git submodule add [--depth <depth>] <repository> <path>
+```
+
+For example:
+```shell
+git submodule add --depth 1 https://github.com/EverythingSmartHome/everything-presence-lite.git presence-sensors/everything-presence-lite
+```
+
+
 ## Cloning a Project with Submodules
 
 When you clone a project which has submodules, by default you get the directories that contain submodules, 
