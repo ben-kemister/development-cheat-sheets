@@ -64,3 +64,23 @@ curl https://<IP_ADDRESS_OR_HOST_FQDN>/ \
 ```text
 200
 ```
+
+## FTP Drives
+
+You can use curl to download and upload files to an FTP drive.
+
+> It should be noted that CURL works best when dealing with single files on a FTP drive.    
+> If you need to deal with multiple files take a look at ``wget``.
+
+### Uploading a file
+
+```shell
+curl -u <username:password> --upload-file <PATH_TO_FILE> ftp://<FTP_SERVER>/<DIRECTORY>/
+```
+> Make sure to end the folder name with a slash `/`, otherwise curl will create a file not a folder.
+
+You can also create a destination folder by using the `--ftp-create-dirs` argument, for example:
+
+```shell
+curl -u <username:password> --upload-file <PATH_TO_FILE> ftp://<FTP_SERVER>/<DIRECTORY>/<NEW_DIR_TO_CREATE>/ --ftp-create-dirs
+```
