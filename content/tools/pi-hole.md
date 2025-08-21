@@ -12,6 +12,8 @@ It is designed for low-power embedded devices with network capability, such as t
 
 ## Admin API
 
+> Note: The API (and security) have been changed in v6 for more information see: [Authentication | Pi-hole documentation](https://docs.pi-hole.net/api/auth/)
+
 There is an [admin api](https://discourse.pi-hole.net/t/pi-hole-api/1863) that can be used by script or their-party app to control Pi-hole.
 
 The admin api is available at: http://pi.hole/admin/api.php?<ADMIN_FUNTION>&auth=<TOKEN>

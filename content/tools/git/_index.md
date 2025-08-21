@@ -14,17 +14,6 @@ Its goals include speed, data integrity, and support for distributed, non-linear
 
 {{% children sort="title" description="true" %}}
 
-## Add a git configuration
-
-To add/alter a git configuration setting use the following command:
-
-```sh
-# git config [options] <configuration.item> <value>
-git config --global http.sslverify true
-```
-
-You can make the configuration change global by using the `--global` option.
-
 ## Shallow clone
 
 Use `git clone --depth=1 <url>` to do a shallow clone. 
@@ -70,7 +59,7 @@ To debug turn on verbose SSH logging by either using:
 1. Git config: `git config core.sshCommand "ssh -vvv"`, or 
 2. An environmental variable: `GIT_SSH_COMMAND="ssh -vvv" git pull`
 
-### git checkout/pull returns 'error: invalid path'
+### git checkout/pull returns error: invalid path'
 
 This is caused by git complaining about invalid paths, typically encountered on Windows.
 
@@ -82,3 +71,18 @@ The workaround is to set the git config flag: `git config core.protectNTFS false
     would cause problems with the NTFS filesystem, 
     e.g. conflict with 8.3 "short" names.
     Defaults to true on Windows, and false elsewhere.
+
+
+### git push returns 'error: RPC failed; curl 92 Invalid HTTP header field was received'
+
+Full error message:
+```text
+error: RPC failed; curl 92 Invalid HTTP header field was received: frame type: 1, stream: 5, name: [content-length], value: [0]
+send-pack: unexpected disconnect while reading sideband packet
+```
+
+This can be related to HTTP/2 compatibility with proxies or servers. In this case force Git to use HTTP/1.1 by using the
+command:
+```shell
+git config --global http.version HTTP/1.1
+```
