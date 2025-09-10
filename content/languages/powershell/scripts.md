@@ -48,3 +48,18 @@ For example:
     The Get-Function function displays the name and syntax of all functions in the session.
 #>
 ```
+
+## Script Parameters
+
+Script parameters follow a similar syntax to function params:
+
+```powershell
+param(
+    $DryRun=$False
+)
+```
+
+You would then pass/set this param for the script using the command line:
+```powershell
+./my-script.ps1 -DryRun $True
+```

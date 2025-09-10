@@ -25,6 +25,20 @@ path\childpath
 
 For more information see the [PowerShell doco](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/join-path.)
 
+## New-Item - Create Directory
+
+You can create a directory you can use:
+```shell
+New-Item -Path "C:\MyFolder" -ItemType Directory
+```
+If you are not sure if the directory already exists you can explicitly check with:
+```shell
+$folderPath = "C:\MyFolder"
+if ( -not (Test-Path $folderPath -PathType Container)){
+  New-Item -Path $folderPath -ItemType Directory
+}
+```
+
 ## Remove-Item - Delete File(s)
 
 You can use the `Remove-Item` function to delete files:

@@ -83,10 +83,28 @@ SourceAddress    : 192.168.0.XXX
 TcpTestSucceeded : True
 ```
 
-## Invoke-WebRequest (curl)
+## Invoke-WebRequest (Windows curl)
 
 The [Invoke-WebRequest](https://learn.microsoft.com/en-au/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7.3)
 utility can be used to perform functions similar to `curl`.
+
+### Downloading a file
+
+You can use the following to download a file with `Invoke-WebRequest`:
+```powershell
+Invoke-WebRequest -Uri "https://example.com/path/to/file.zip" -OutFile "C:\Downloads\file.zip"
+```
+> Note if you are dealing with larger files, you are better off using `Start-BitsTransfer`.
+
+#### Open the downloaded file
+
+You can use the command `Invoke-Item` or the shortcut version of `ii` to open the file after it has been downloaded.
+For example:
+```powershell
+Invoke-WebRequest -Uri http://example.com -Headers @{ Host = "example.com" } `
+| Select-Object -Expand Content > index.html; ii index.html
+```
+
 
 ### Request with Header
 
@@ -139,11 +157,9 @@ Invoke-WebRequest -Uri http://example.com -Method POST -ContentType "application
 | Select-Object -Expand Content
 ```
 
-### Open the downloaded file
+## Start-BitsTransfer - Background Intelligent Transfer (BITS)
 
-You can use the command `Invoke-Item` or the shortcut version of `ii` to open the file after it has been downloaded.
-For example:
+`Start-BitsTransfer` is similar to `Invoke-WebRequest` but is much **MUCH** faster when dealing with larger files:
 ```powershell
-Invoke-WebRequest -Uri http://example.com -Headers @{ Host = "example.com" } `
-| Select-Object -Expand Content > index.html; ii index.html
+Start-BitsTransfer -Source "https://example.com/path/to/largefile.iso" -Destination "C:\Downloads\largefile.iso"
 ```

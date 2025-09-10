@@ -25,10 +25,11 @@ This page contains information about the use of the [Windows Subsystem for Linux
 | `wsl --set-default <Distribution Name>` | [Set default Linux distribution](https://learn.microsoft.com/en-us/windows/wsl/basic-commands#set-default-linux-distribution)       |
 | `wsl bash -c "<bash command string>"`   | [Run a (bash) command](./commands)                                                                                                  |
 | `wsl -e <bash_script>`                  | [Execute a script](./script)                                                                                                        |
+| `wsl --terminate <Distribution Name>`   | To terminate a specific WSL distribution                                                                                            |
 
 ## Matching `wsl` output
 
-Inexplicably, `wsl --list` produces UTF-16LE-encoded ("Unicode"-encoded) output.
+Inexplicably, `wsl --list` produces `UTF-16LE`-encoded ("Unicode"-encoded) output.
 
 v0.64 and above of `wsl.exe` (verify via the first line output by `wsl.exe --version`) now supports setting the `WSL_UTF8`
 environment variable to 1 to make `wsl.exe` output UTF-8-encoded output, for example

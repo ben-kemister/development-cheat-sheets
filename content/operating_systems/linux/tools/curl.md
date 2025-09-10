@@ -18,7 +18,11 @@ curl -O http://example.com/path/my-file
 ```
 > Note: 
 > * You can omit the `-O` flag when dealing with text files
-> * You can use `-o <filename>` to change the download file name
+> * You can use `-o <filename>` to change the download file name or to specify the destination directory
+> 
+> ```shell
+> curl --output-dir /path/to/destintation -O http://example.com/path/my-file.zip
+> ```
 
 ## POST Request
 The general form of the curl command for making a POST request is as follows:
