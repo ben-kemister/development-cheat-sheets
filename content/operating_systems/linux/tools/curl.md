@@ -25,10 +25,16 @@ curl -O http://example.com/path/my-file
 > ```
 
 ## POST Request
-The general form of the curl command for making a POST request is as follows:
-`curl -X POST [options] [URL]`
+The general form of the curl command for making a POST request is: `curl -X POST [options] [URL]`
 
-    The -X option specifies which HTTP request method will be used when communicating with the remote server.
+The `-X` option specifies which HTTP request method will be used when communicating with the remote server.
+
+For example to POST a file you can use:
+```shell
+curl -X POST -H "Content-Type: application/json" \
+-d @./path/to/file.json \
+http://example.com/some/endpoint
+```
 
 ## Adding Header
 
