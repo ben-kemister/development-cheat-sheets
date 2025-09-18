@@ -30,9 +30,8 @@ optiplex-7040
     vendor: Dell Inc.
 ...
 ```
-or for a specific piece of hardware:
-```shell
-$ sudo lshw -class disc
+You can also filter for a specific class of hardware such as `disc` with `sudo lshw -class disc`:
+```text
   *-disk
        description: ATA Disk
        product: SanDisk X300 2.5
@@ -40,6 +39,36 @@ $ sudo lshw -class disc
        bus info: scsi@0:0.0.0
        logical name: /dev/sda
   ...
+```
+or `memory` with `sudo lshw -C memory`:
+```text
+  ...
+  *-memory
+       description: System Memory
+       physical id: 9
+       slot: System board or motherboard
+       size: 12GiB
+     *-bank:0
+          description: SODIMM DDR4 Synchronous Unbuffered (Unregistered) 2400 MHz (0.4 ns)
+          product: KMKYF9-MID
+          vendor: AMD
+          physical id: 0
+          serial: 223B197A
+          slot: DIMM1
+          size: 8GiB
+          width: 64 bits
+          clock: 2400MHz (0.4ns)
+     *-bank:1
+          description: SODIMM DDR4 Synchronous Unbuffered (Unregistered) 2667 MHz (0.4 ns)
+          product: HMA851S6CJR6N-VK
+          vendor: Hynix Semiconductor (Hyundai Electronics)
+          physical id: 1
+          serial: 2CBBD336
+          slot: DIMM2
+          size: 4GiB
+          width: 64 bits
+          clock: 2667MHz (0.4ns)
+...
 ```
 
 ## CPU Details (`lscpu`)
