@@ -42,6 +42,14 @@ Addresses:  2404:6800:4006:809::2003
           142.251.221.67
 ```
 
+### Flush DNS 
+
+You can use [Clear-DnsClientCache](https://learn.microsoft.com/en-us/powershell/module/dnsclient/clear-dnsclientcache?view=windowsserver2025-ps) to flush the DNS cache on a Windows client.    
+Open a PowerShell console (as an Administrator) and enter:
+```shell
+Clear-DnsClientCache
+```
+
 ## Find IP/MAC address of remote machine
 
 To display a list of all active IP addresses on the network, including the physical address (MAC address) use `apr -a`.
