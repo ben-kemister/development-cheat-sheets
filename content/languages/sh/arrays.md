@@ -34,3 +34,19 @@ printf '%s\n' "${arr[@]}"
 # 2
 # 3
 ```
+
+## Array Length
+
+To get the length of an array in Bash, you can use the `${#array[@]}` syntax. Here's an example:
+
+```shell
+arr=('Hello' 'World' '!');
+
+# Get the length of the array
+length=${#arr[@]};
+
+echo "The length of the array is: $length";
+```
+```text
+The length of the array is: 3
+```

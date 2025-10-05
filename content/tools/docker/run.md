@@ -1,11 +1,9 @@
 ---
 title: run
 tags:
+- docker
+- image
 - container
-- linux
-- development
-- cli
-- run
 ---
 
 This page contains examples about the use of Docker's `run` command (i.e. when _running_ containers).

@@ -1,11 +1,10 @@
 ---
 title: build
 tags:
-- container
-- linux
-- development
-- cli
+- docker
 - image
+- container
+- development
 ---
 
 This page contains examples about the use of the Docker `build` command used when creating container image(s).

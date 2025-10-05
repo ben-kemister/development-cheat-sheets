@@ -18,6 +18,16 @@ Two popular IDEs for python are Visual Studio and [PyCharm](https://www.jetbrain
 
 Personally I prefer PyCharm as it has a very similar layout and keybindings to [Intellij](https://www.jetbrains.com/idea/).
 
+## Version
+
+To determine the version of Python installed on your system, you can use the command:
+```shell
+python --version
+```
+```text
+Python 3.10.6
+```
+
 ## Python data types
 
 Python has the following data types built-in by default, in these categories:

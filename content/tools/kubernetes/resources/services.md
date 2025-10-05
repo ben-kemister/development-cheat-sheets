@@ -11,7 +11,7 @@ This page contain information about the use of the Kubernetes [Service](https://
 
 ## Types
 
-* `ClusterIP` - only exposes the service within the cluster.
+* `ClusterIP` - only exposes the service within the cluster
 * `NodePort` - is accessible from both within and outside the Kubernetes cluster. It exposes the listed port on each Node.
 
 ## DNS name
