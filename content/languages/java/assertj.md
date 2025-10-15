@@ -7,6 +7,7 @@ tags:
 ---
 
 This page contains information, syntax, and simple code examples, about the use of the [AssertJ](https://joel-costigliola.github.io/assertj/) test library.
+<!--more-->
 The [AssertJ](https://joel-costigliola.github.io/assertj/) library is a fluent API to help create readable assertions within you Java unit tests.
 
 ## Testing thrown exceptions - AssertThatThrownBy()

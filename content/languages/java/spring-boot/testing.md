@@ -33,6 +33,7 @@ public class EmployeeServiceTest {
 If you don't need the entire application context you can specify the classes within the annotation using;
 ```java
 @SpringBootTest(classes = {MyConfig.class})
+@ConfigurationPropertiesScan
 public class MyConfigTest {
 
     @Autowired
@@ -41,6 +42,9 @@ public class MyConfigTest {
     // test code ...
 }
 ```
+
+> Note: You will need to add the `@ConfigurationPropertiesScan` annotation to either the Test class or the Configuration 
+> class to load any external configuration properties (i.e. from an `application.properties` or `application.yaml` file)
 
 ## @TestConfiguration
 
