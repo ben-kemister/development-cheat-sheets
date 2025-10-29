@@ -1,14 +1,12 @@
 ---
 title: visudo
 tags:
-- operating_system
 - linux
-- ubuntu
 - sudo
 ---
 
 [visudo](https://linux.die.net/man/8/visudo) is a special tool in Unix/Linux for safely updating the /etc/sudoers file, 
-used by the sudo command for providing and managing privileged access.
+used by the `sudo` command for providing and managing privileged access.
 <!--more-->
 
 ## Opening a particular sudoers file
