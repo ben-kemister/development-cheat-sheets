@@ -51,9 +51,13 @@ git config --global user.email
 To add/alter a git configuration setting use the following command:
 
 ```sh
-# git config [options] <configuration.item> <value>
-git config --global http.sslverify true
+# Syntax: git config [options] <configuration.item> <value>
+git config http.sslverify false
 ```
 
 You can make the configuration change global by using the `--global` option.
+For example:
+```sh
+git config --global http.sslverify true
+```
 
