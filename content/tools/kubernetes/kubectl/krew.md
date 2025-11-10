@@ -1,5 +1,5 @@
 ---
-title: kubectl
+title: krew
 tags:
  - container
  - kubernetes

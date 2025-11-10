@@ -6,7 +6,7 @@ tags:
  - labels
 ---
 
-This page covers the use of labels with kubectl.
+This page covers the use of labels with `kubectl`.
 <!--more-->
 
 ## Viewing labels
