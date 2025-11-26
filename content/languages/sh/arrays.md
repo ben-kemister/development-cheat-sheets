@@ -50,3 +50,12 @@ echo "The length of the array is: $length";
 ```text
 The length of the array is: 3
 ```
+
+## Get an item from the array
+
+Bash shell array is zero-based, which means the indexing starts with 0 as the first element in the array.
+
+To get an item from an array use ``${ARRAY_NAME[INDEX]}``, for example to get the first element in the array:
+```shell
+echo "The first item in the array is: ${ARRAY_NAME[0]}"
+```
