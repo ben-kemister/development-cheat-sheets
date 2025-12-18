@@ -38,7 +38,7 @@ sudo yum install bind-utils
 
 ## Usage
 
-The `dig` command is used as follows: `dig [server] [name] [type]`
+The `dig` command is used as follows: `dig [OPTIONS] [NAME_SERVER] <QUERY> [type]`
 
 By default, `dig` will query the name servers listed in `/etc/resolv.conf` to perform a DNS lookup. 
 
@@ -51,6 +51,14 @@ For example:
 dig @10.42.1.215 google.com
 ```
 
+### Specify IPv4 or IPv6 query transport mode
+
+To use IPv4 use the `-4` option, for IPv6 use the `-6` option.
+For example to use IPv4 only:
+```shell
+dig -4 @1.1.1.1 google.com
+```
+ 
 ### Use a specific port
 
 If you need to target a specific port you can use the `-p <PORT>` argument. For example:
