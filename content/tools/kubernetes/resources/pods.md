@@ -143,3 +143,35 @@ You can also specifically set the Pod's DNS configuration, for example:
 ```
 
 For more information see [Pod's DNS Policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)
+
+## Adding entries to the Pod's `/etc/hosts` file
+
+You can add custom entries to the Pod's `/etc/hosts` file using the `hostAliases` section of the Pod's resource manifest.
+For example:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostaliases-pod
+spec:
+  restartPolicy: Never
+  hostAliases:
+  - ip: "127.0.0.1"
+    hostnames:
+    - "foo.local"
+    - "bar.local"
+  - ip: "10.1.2.3"
+    hostnames:
+    - "foo.remote"
+    - "bar.remote"
+  containers:
+  - name: cat-hosts
+    image: busybox:1.28
+    command:
+    - cat
+    args:
+    - "/etc/hosts"
+```
+
+For more information see: [Adding entries to Pod /etc/hosts with HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/)
