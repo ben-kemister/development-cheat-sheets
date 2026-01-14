@@ -21,8 +21,6 @@ containers orchestrated and managed by Kubernetes on a foundation of Red Hat Ent
 | Name                       | Description                                                                                                                                              |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `ImageContentSourcePolicy` | Holds cluster-wide information about how to handle registry mirror rules.                                                                                |
-| `OperatorGroup`            | The unit of multitenancy for OLM managed operators. It constrains the installation of operator in its namespace to a specified set of target namespaces. |
-| `Subscription`             | Keeps Operators up to date by tracking changes to `Catalogs`                                                                                             |
 
 
 ## Project wide node selectors

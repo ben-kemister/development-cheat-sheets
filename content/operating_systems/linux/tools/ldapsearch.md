@@ -12,6 +12,14 @@ The [ldapsearch](https://linux.die.net/man/1/ldapsearch) Command-Line Tool proce
 directory server.
 <!--more-->
 
+## Installation
+
+The `ldapsearch` tool resides within the `openldap-clients` package. 
+On Red Hat Linux this can be installed with:
+```shell
+sudo dnf install openldap-clients
+```
+
 ## Basic Example
 
 ```shell
