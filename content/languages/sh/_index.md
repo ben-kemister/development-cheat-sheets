@@ -39,10 +39,6 @@ You can search the command line history by using `Ctrl + R` then entering the se
 
 From this prompt `Ctrl + R` will cycle **backwards** and `Ctrl + S` (if supported) will cycle **forwards**.
 
-## History
-
-`history` will display the command line history.
-
 ## nohup
 
 The nohup command executes another program specified as its argument and ignores all SIGHUP (hangup) signals. 

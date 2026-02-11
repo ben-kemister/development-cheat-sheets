@@ -22,7 +22,7 @@ Verify that it’s installed by checking the software version. To do so, open a 
 dig -v
 ```
 
-If the system can’t find the command specified, install dig by entering the following:
+If the system can’t find the command specified, you can install dig with the command:
 
 ### Debian / Ubuntu:
 
@@ -49,6 +49,24 @@ For example:
 
 ```shell
 dig @10.42.1.215 google.com
+```
+
+### Reverse DNS lookup
+
+You can perform a reverse DNS lookup (i.e. IP address --> Hostname) by using the `-x` argument, for example:
+```shell
+dig -x 8.8.8.8
+```
+```text
+;; ANSWER SECTION:
+8.8.8.8.in-addr.arpa.    300    IN    PTR    dns.google.
+```
+
+#### ... for an IP range
+
+The command below can be used to do a reverse DNS lookup for an IP range:
+```shell
+for i in $(seq 0 255); do dig -x "129.168.15.$i" | grep -A 2 "ANSWER SECTION"; done
 ```
 
 ### Specify IPv4 or IPv6 query transport mode
