@@ -9,6 +9,10 @@ tags:
 Linux commands relating to the systems' network connection and configuration.
 <!--more-->
 
+## Command/Topic Specific Pages
+
+{{% children sort="title" description="true" %}}
+
 ## Change/Set IP address
 
 For Debian based distros:
@@ -31,20 +35,6 @@ sudo ifconfig eth0 192.168.0.5 netmask 255.255.255.0
 https://www.howtogeek.com/118337/stupid-geek-tricks-change-your-ip-address-from-the-command-line-in-linux/
 
 If the IP address revert, check the `/etc/dhcpcd.conf` file
-
-## DNS Server configuration
-
-On most linux systems you can get information about the systems' DNS configuration in the `/etc/resolv.conf` file.
-
-For example:
-```shell
-cat /etc/resolv.conf
-```
-```text
-search <REDACTED>
-nameserver 10.43.0.10
-options ndots:5
-```
 
 
 ## How to Verify the Speed of the NIC
