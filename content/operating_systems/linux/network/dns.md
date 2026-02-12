@@ -108,3 +108,9 @@ Link 2 (enp2sX)
         DNS Domain: lan
 ...
 ```
+
+## References
+
+* [Why is /etc/resolv.conf Configured to Use 127.0.0.53 on Linux](https://medium.com/@linuxrootroom/dd-721dc2b25d1c)
+* [How to Set DNS on Ubuntu 26.04](https://linuxconfig.org/how-to-set-dns-on-ubuntu-26-04)
+* 
