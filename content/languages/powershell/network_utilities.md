@@ -1,5 +1,5 @@
 ---
-title: PowerShell network utilities
+title: Network utilities
 tags:
 - scripting
 - windows
@@ -41,6 +41,12 @@ Name:    google.com.au
 Addresses:  2404:6800:4006:809::2003
           142.251.221.67
 ```
+
+## Windows `hosts` file
+
+The Windows hosts file is a plain text file located at `C:\Windows\System32\drivers\etc\hosts` that maps hostnames 
+(domain names) to IP addresses, acting as a local, higher-priority alternative to DNS servers.    
+It is primarily used for creating local development redirects, or testing site migrations before updating public DNS records.
 
 ### Flush DNS 
 
