@@ -284,4 +284,32 @@ configMapGenerator:
     disableNameSuffixHash: true
 ```
 
+## Overriding Namespace behavior
 
+When you set a value the `namespace` block of the `kustimization.yaml` file it will update the namespace values for all 
+the resources it references.
+
+Since kustomize 4.5.6 you can override this default behavior (so that some resources keep the namespace value they have 
+set) by configuring the `unsetOnly` field of the NamespaceTransformer.
+
+The example below should set the namespace to `dev` for all resources that **DO NOT** have a namespace set:
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+    - local-path-storage.yaml
+
+transformers:
+    - |-
+        apiVersion: builtin
+        kind: NamespaceTransformer
+        metadata:
+          name: notImportantHere
+          # Set the desired default namespace for resources without one
+          namespace: dev
+        # This is the key: only apply the namespace if it is not already set
+        unsetOnly: true
+```
+
+For more information see the link to the [Kustomize namespaceTransformer Spec](https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#_namespacetransformer_)
