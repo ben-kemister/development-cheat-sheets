@@ -63,3 +63,24 @@ You would then pass/set this param for the script using the command line:
 ```powershell
 ./my-script.ps1 -DryRun $True
 ```
+
+## Script Flags
+
+You can use flags (i.e. a parameter name without a value) in scripts as follows:
+
+```powershell
+# MyScript.ps1
+
+param(
+   [switch]$myFlag
+)
+
+if ($myFlag) {
+   Write-Host "'myFlag' was specified"
+}
+```
+
+You then run the script including the flag as follows:
+```powershell
+.\MyScript.ps1 -myFlag
+```
