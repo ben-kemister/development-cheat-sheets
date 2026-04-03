@@ -102,6 +102,48 @@ images:
     newTag: 7.0.11-alpine # originally 7.0.14-alpine
 ```
 
+## Labels
+
+Kustomize can add labels (and selectors) to the resources by using the `labels` block in you `kustomization.yaml` file.
+
+For example:
+```yaml
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: add-to-watch-
+
+# Labels to add to all objects but not selectors
+labels:
+    # Pairs contains the key-value pairs for labels to add
+  - pairs:
+      app.kubernetes.io/name: add-to-watch-queue
+    # IncludeSelectors indicates should transformer include the fieldSpecs for selectors
+    includeSelectors: true
+
+resources:
+  - deployment.yaml
+```
+
+Will result in the following: 
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: add-to-watch-queue # Added by Kustomize
+  name: add-to-watch-queue-processor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: add-to-watch-queue # Added by Kustomize
+  ...
+```
+
+For more information see [Setting cross-cutting fields](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/#setting-cross-cutting-fields)
+
+
 ## Patches
 
 ### Replace/update
