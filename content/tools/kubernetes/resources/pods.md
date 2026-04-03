@@ -7,7 +7,45 @@ tags:
 [Pods](https://kubernetes.io/docs/concepts/workloads/pods/) are the smallest deployable units of computing that you can create and manage in Kubernetes.
 <!--more-->
 
-## Overriding Command
+## Environmental Variables
+
+### Sourcing Environment Variables from ConfigMaps or Secrets
+
+Use `envFrom` to define all of a ConfigMap's data as container environment variables. 
+The key from the ConfigMap becomes the environment variable name in the Pod.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dapi-test-pod
+spec:
+  containers:
+    - name: test-container
+      image: registry.k8s.io/busybox:1.27.2
+      command: [ "/bin/sh", "-c", "env" ]
+      envFrom:
+      - configMapRef:
+          name: special-config
+      - secretRef:
+          name: my-secret
+  restartPolicy: Never
+```
+
+#### Environment Variable Precedence
+
+In a Kubernetes Pod, environment variables follow a specific order of precedence when the same key is defined in multiple 
+locations. The order of precedence from **highest** to _lowest_ is:
+1. `env` Field: Variables defined directly in the env list within the container specification have the highest priority. 
+   They override values from all other sources.
+2. `envFrom` Field: Variables sourced from ConfigMaps or Secrets via envFrom come next.
+  > Within `envFrom`: If multiple sources (e.g., two ConfigMaps) are listed, the last one defined in the list takes 
+  > precedence if there are duplicate keys.
+3. Container Image: Variables defined using the `ENV` instruction in the Dockerfile/Containerfile (i.e. the container image) 
+  have the lowest priority and are overridden by any values set in the Pod manifest.
+
+
+## Overriding a Pods' Command
 
 Set the `command` block to override the default command set in the image. This can be useful for fault-finding and diagnostics. 
 
