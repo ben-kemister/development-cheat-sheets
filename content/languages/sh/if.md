@@ -72,3 +72,12 @@ if [ ! -d "$DIRECTORY" ]; then
   echo "$DIRECTORY does not exist."
 fi
 ```
+
+## Single Line IF/ELSE
+
+The shorthand syntax (using `&&` and `||`) functions similarly to a ternary operator. It executes the first command if the condition is true and the second if it is false.
+Syntax: `[ condition ] && <true_cmd> || <false_cmd>`
+Example:
+```shell
+[ "$1" == "hello" ] && echo "Hi!" || echo "Goodbye"
+```
