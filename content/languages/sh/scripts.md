@@ -55,3 +55,24 @@ printf "'%s' " "$@"
 > Because `printf` doesn't automatically add a newline at the very end of its execution, your terminal prompt might appear immediately after the last argument.    
 > To fix this, add an empty `echo` or `printf '\n'` after the command: `printf '"%s" ' "$@"; echo`
 
+## Options
+
+The `getopts` built-in is the standard way to handle **short**, single-character flags (e.g., `-u username`). 
+It is reliable and POSIX-compliant, however it _does not support long options_.
+
+```shell
+#!/bin/bash
+while getopts "u:p:" flag; do
+    case "${flag}" in
+        u) username=${OPTARG} ;;
+        p) password=${OPTARG} ;;
+        *) echo "Usage: $0 -u username -p password"; exit 1 ;;
+    esac
+done
+echo "User: $username, Pass: $password"
+```
+
+Note:
+* Colon (`:`) - A colon after a letter (e.g., u:) means that option requires an argument.
+* `$OPTARG` - This special variable holds the value passed with the flag.
+

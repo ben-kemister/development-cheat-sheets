@@ -1,5 +1,5 @@
 ---
-title: User Prompts
+title: User Interaction
 tags:
  - scripting
  - scripts

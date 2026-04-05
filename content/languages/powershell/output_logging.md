@@ -15,6 +15,17 @@ This page provides examples about the use of PowerShell (console) logging and ou
 Write-Host "Starting somthing good..."
 ```
 
+To output text without a newline in PowerShell using `Write-Host`, use the `-NoNewline` parameter.
+For example:
+```powershell
+Write-Host "This text " -NoNewline
+Write-Host "is on the same line."
+```
+Will output:
+```text
+This text is on the same line.
+```
+
 ## Write-Debug
 
 You can use `Write-Debug` to write a debug message to the console.
