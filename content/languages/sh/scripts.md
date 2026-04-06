@@ -4,10 +4,9 @@ tags:
 - sh
 - script
 - linux
-- terminal
 ---
 
-This page contains information and example for writing sh scripts.
+This page contains information and examples for writing sh/bash scripts.
 <!--more-->
 
 ## Script Arguments
