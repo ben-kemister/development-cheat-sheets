@@ -1,5 +1,5 @@
 ---
-title: oc (command line tool)
+title: oc - Command Line Interface
 tags:
 - openshift
 ---

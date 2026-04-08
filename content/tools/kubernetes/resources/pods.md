@@ -106,7 +106,9 @@ spec:
   restartPolicy: Never
 ```
 
-## Node affinity
+## Affinity and Anti-affinity
+
+### Node Affinity
 
 There are two types of [node affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#node-affinity):
 
@@ -127,6 +129,76 @@ spec:
           - key: node-role.kubernetes.io/master
             operator: DoesNotExist
         weight: 1
+```
+
+### Node Anti-affinity
+
+To ensure two Kubernetes Pods are scheduled on different nodes, you must use Pod Anti-Affinity with the `kubernetes.io/hostname` 
+topology key. 
+This configuration tells the scheduler not to place a pod on a node that is already running a pod with specific labels.
+
+The key fields for creating anti-affinity rules are:
+* `labelSelector` - Identifies which pods to avoid. Typically, you use the pod's own label to prevent multiple replicas of the same application from sharing a node.
+* `topologyKey: "kubernetes.io/hostname"` - This is the standard label used to represent individual nodes. It ensures that the "repulsion" rule applies at the node level.
+* `requiredDuringSchedulingIgnoredDuringExecution` - A "hard" rule. Use this if you absolutely require separate nodes for High Availability.
+* `preferredDuringSchedulingIgnoredDuringExecution` - A "soft" rule. Use this if you prefer different nodes but allow co-location if the cluster is full.
+
+#### Hard Constraint
+
+The following manifest uses a Hard Constraint (`requiredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
+will only place the pod on a different node. If no such node is available, the pod will remain in a `Pending` state.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod
+  labels:
+    app: my-app  # Label used for anti-affinity matching
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name # This key can be any label on the Pod
+            operator: In
+            values:
+            - my-app
+        topologyKey: "kubernetes.io/hostname"
+  containers:
+  - name: my-container
+    image: nginx
+```
+
+#### Soft Constraint
+
+The following manifest uses a Hard Constraint (`preferredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
+_tries_ to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod
+  labels:
+    app: my-app  # Label used for anti-affinity matching
+spec:
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - my-app
+          topologyKey: "kubernetes.io/hostname"
+  containers:
+  - name: my-container
+    image: nginx
 ```
 
 ## Accessing the Host's Network
