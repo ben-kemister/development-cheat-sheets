@@ -9,6 +9,10 @@ tags:
 This page contains information about using (Helm chart) repositories.
 <!--more-->
 
+## Listing all Helm repositories
+
+You list the repositories configured with: `helm repo list`, [more info](https://helm.sh/docs/helm/helm_repo_list/)
+
 ## Add a Helm repository
 
 Add a helm repository with the command: `helm repo add [NAME] [URL] [flags]`, [more info](https://1helm.sh/docs/helm/helm_repo_add/).

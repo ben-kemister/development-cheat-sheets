@@ -5,7 +5,6 @@ tags:
 - git
 - repository
 - gogs
-- development
 ---
 
 [Gogs](https://gogs.io/) is a lightweight git server which is easy to in a self-hosted environment.
