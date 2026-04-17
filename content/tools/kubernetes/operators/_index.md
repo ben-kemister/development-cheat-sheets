@@ -6,7 +6,7 @@ tags:
 - olm
 ---
 
-The [Operator Lifecycle Manager (OLM)]([https://olm.operatorframework.io/](https://olm.operatorframework.io/)) extends 
+The [Operator Lifecycle Manager (OLM)](https://olm.operatorframework.io/) extends 
 Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster.
 <!--more-->
 
