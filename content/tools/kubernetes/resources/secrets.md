@@ -41,6 +41,33 @@ data:
   username: YWRtaW4=
 ```
 
+### Secret without base64 encoding
+
+You can create a Kubernetes Secret without manually performing Base64 encoding by using the `stringData` field in a YAML manifest.
+
+The `stringData` field allows you to provide plain-text values directly in your manifest. 
+Kubernetes will automatically encode these values to Base64 when you apply the file.
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-plain-text-secret
+type: Opaque
+stringData:
+  username: admin
+  password: mysecretpassword
+```
+
+### `data` vs `stringData`
+
+| Feature      | `data` field                    | `stringData` field                |
+|--------------|---------------------------------|-----------------------------------|
+| Input Format | Must be Base64 encoded          | Plain-text strings                | 
+| Storage      | Base64 encoded                  | Automatically converted to Base64 |
+| Use Case     | Binary data or automated tools  | Manual editing and clarity        |
+
+
 ## Viewing and Decoding a secret
 
 > The data values in a secret are **base64 encoded**!
