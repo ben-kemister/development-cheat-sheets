@@ -45,10 +45,11 @@ This will expose:
 
 Below are some of the common/handy ones I have come across:
 
-| Argument           | Explanation                                                    | 
-|--------------------|----------------------------------------------------------------|
-| `-c, --ctx-size N` | size of the prompt context (default: 0, 0 = loaded from model) |
-
+| Argument           | Explanation                                                                                         | 
+|--------------------|-----------------------------------------------------------------------------------------------------|
+| `-c, --ctx-size N` | size of the prompt context (default: 0, 0 = loaded from model)                                      |
+| `--host HOST`      | ip address to listen, or bind to an UNIX socket if the address ends with .sock (default: 127.0.0.1) |
+| `--port PORT`      | port to listen (default: 8080)                                                                      | 
 
 ### Test that model is working
 
@@ -57,7 +58,7 @@ You can test if the `llama-server` and the model is working correctly with:
 curl --request POST \
     --url http://localhost:8080/completion \
     --header "Content-Type: application/json" \
-    --data '{"prompt": "Building a website can be done in 10 simple steps:","n_predict": 128}'
+    --data '{"prompt": "Write a short bedtime story about a unicorn."}'
 ```
 
 Or using PowerShell:
@@ -71,11 +72,14 @@ Invoke-RestMethod -Uri "http://localhost:8080/completion" `
                   -Body $body
 ```
 
+> Note the OpenAI compatible endpoint is at http://localhost:8080/v1/completions
+
 ## Exposed URLs
 
 Below is a list of some handy URLs exposed by `llama-server`:
-* Web () interface at: http://127.0.0.1:8080/
+* Web interface at: http://127.0.0.1:8080/
 * A health endpoint at: http://127.0.0.1:8080/v1/health
+* List of models at: http://127.0.0.1:8080/v1/models
 * Completions endpoint at:
   * (not OAI-compatible) http://127.0.0.1:8080/completions
   * (OAI-compatible) http://127.0.0.1:8080/v1/v1/completions
