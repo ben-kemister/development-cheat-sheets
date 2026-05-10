@@ -1,7 +1,6 @@
 ---
 title: systemd
 tags:
-- operating_system
 - linux
 - services
 ---
@@ -26,10 +25,52 @@ sudo journalctl -u k3s -f
 
 For more examples see: [How to Use the Journalctl Command to Tail Service Logs in Linux](https://linuxier.com/how-to-use-journalctl-command-to-tail-service-logs/)
 
+## Show failed units
+
+To show all failed units using `systemctl`, the most direct command is: `systemctl --failed`.
+
+This is a built-in shortcut for `systemctl list-units --state=failed`. 
+It provides a summary of all units (services, sockets, timers, etc.) that have entered a failed state.
+
+```shell
+$ sudo systemctl --failed
+  UNIT                        LOAD   ACTIVE SUB    DESCRIPTION
+● irqbalance.service          loaded failed failed irqbalance daemon
+● iscsid.service              loaded failed failed iSCSI initiator daemon (iscsid)
+● networkd-dispatcher.service loaded failed failed Dispatcher daemon for systemd-networkd
+● packagekit.service          loaded failed failed PackageKit Daemon
+● rpc-statd.service           loaded failed failed NFS status monitor for NFSv2/3 locking.
+● unattended-upgrades.service loaded failed failed Unattended Upgrades Shutdown
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+```
+
+### Tracing failed dependencies
+
+The tree view printed out by `systemctl list-dependencies <SERVICE_NAME>` to help trace any failed dependencies. 
+
+```shell
+$ sudo systemctl list-dependencies networkd-dispatcher.service
+networkd-dispatcher.service
+● ├─system.slice
+● └─sysinit.target
+●   ├─apparmor.service
+●   ├─blk-availability.service
+●   ├─dev-hugepages.mount
+●   ├─dev-mqueue.mount
+●   ├─finalrd.service
+×   ├─iscsid.service     <-- FAILED DEPENDENCY!
+●   ├─keyboard-setup.service
+...
+```
+
 ## Handy Commands
 
 | Command                               | Description                                          |
 |---------------------------------------|------------------------------------------------------|
+| `systemctl list-units --type=service` | List all available (service) units                   |
 | `systemctl list-units --type=service` | List all available (service) units                   |
 | `systemctl status <SERVICE_NAME>`     | Displays the status of the service                   | 
 | `systemctl start <SERVICE_NAME>`      | Starts the service                                   | 
