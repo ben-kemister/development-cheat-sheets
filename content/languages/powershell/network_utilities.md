@@ -14,7 +14,7 @@ This page provides examples about the use of PowerShell's **network utilities**.
 
 ## DNS resolution
 
-To find the DNS server being used by the system use [`ipconfig`](../../operating_systems/windows/ipconfig):
+To find the DNS server being used by the system use [ipconfig](../../operating_systems/windows/ipconfig):
 ```powershell
 ipconfig /all
 ```

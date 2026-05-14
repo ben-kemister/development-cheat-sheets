@@ -82,4 +82,4 @@ Below is a list of some handy URLs exposed by `llama-server`:
 * List of models at: http://127.0.0.1:8080/v1/models
 * Completions endpoint at:
   * (not OAI-compatible) http://127.0.0.1:8080/completions
-  * (OAI-compatible) http://127.0.0.1:8080/v1/v1/completions
+  * (OAI-compatible) http://127.0.0.1:8080/v1/completions
