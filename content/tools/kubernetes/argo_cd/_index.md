@@ -83,3 +83,30 @@ patches:
   - path: overlays/argocd-cmd-params-cm.yaml
 ```
 
+## Troubleshooting
+
+### `invalid memory address or nil pointer dereference` Error
+
+I encountered this issue in v3.4.2 and noticed that my Argo app had just a single kustomize source with a configured 
+`ref` attribute which was not consumed by any other source. Removing it resolved the issue for me:
+
+```yaml
+project: default
+destination:
+  server: https://kubernetes.default.svc
+  namespace: my-app
+syncPolicy:
+  automated:
+    prune: false
+    selfHeal: false
+    enabled: false
+sources:
+  - repoURL: git@github.com:sample-org/sample-repo.git
+    path: my-app/manifests
+    targetRevision: HEAD
+    ref: values # <---- this was causing the issue for me
+    kustomize:
+      ...
+```
+
+I found this solution here: runtime error: [invalid memory address or nil pointer dereference #14098](https://github.com/argoproj/argo-cd/issues/14098#issuecomment-4415132991)

@@ -1,6 +1,5 @@
 ---
-title: "Sufmind.ai Browser Plugin"
-date: 2026-05-16T07:30:00+11:00
+title: "Surfmind.ai Browser Plugin"
 tags:
 - productivity
 - ai

@@ -201,6 +201,34 @@ spec:
     image: nginx
 ```
 
+## Priority Class
+
+You can assign a `priorityClassName` to a Pod to influence its scheduling behavior and potential for preemption.
+
+*   **Scheduling:** The scheduler uses this class to understand the Pod's relative importance compared to other workloads.
+*   **Preemption:** If a critical resource is needed in the cluster, Pods with higher priority classes are more likely 
+    to preempt (evict) lower-priority Pods to ensure the higher-priority workload gets the necessary resources.
+
+Example:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: high-priority-pod
+spec:
+  priorityClassName: system-cluster-critical
+  containers:
+  - name: my-container
+    image: nginx
+```
+
+## Accessing the Host's Network
+
+There are some situations where the Container/Pod needs to be able to access the same network as the Node/Host.
+
+In this case you can use `hostNetwork` and `dnsPolicy: ClusterFirstWithHostNet`, for example:
+```yaml
+
 ## Accessing the Host's Network
 
 There are some situations where the Container/Pod needs to be able to access the same network as the Node/Host.
