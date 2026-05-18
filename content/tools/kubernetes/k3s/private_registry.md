@@ -14,7 +14,11 @@ This page contains information about how to configure k3s to use a [private imag
 
 If you want to pull the images from a private image registry (rather than their defaults) you can create a configuration
 file `/etc/rancher/k3s/registries.yaml` on each of the k3s nodes.
-You can then configure which image registries are redirected to your private (mirrored) registry. For example:
+
+When the k3s service starts it will use `registries.yaml` to create the containerd (toml) configuration files located in 
+`/var/lib/rancher/k3s/agent/etc/containerd/certs.d/<MIRROR_NAME>/hosts.toml`
+
+You can configure which image registries are redirected to your private (mirrored) registry. For example:
 
 ```yaml
 mirrors:
@@ -54,19 +58,46 @@ For example:
 mirrors:
   docker.io:
     endpoint:
-      - "https://<PRIVATE_REGISTRY_HOST>:<PORT>"
+      - "https://<PRIVATE_REGISTRY_HOST>[:<PORT>][/<OPTIONAL_PATH>]"
       - "https://registry-1.docker.io"
   quay.io:
     endpoint:
-      - "https://<PRIVATE_REGISTRY_HOST>:<PORT>"
+      - "https://<PRIVATE_REGISTRY_HOST>[:<PORT>][/<OPTIONAL_PATH>]"
       - "https://quay.io"
   gcr.io:
     endpoint:
-      - "https://<PRIVATE_REGISTRY_HOST>:<PORT>"
+      - "https://<PRIVATE_REGISTRY_HOST>[:<PORT>][/<OPTIONAL_PATH>]"
       - "https://gcr.io"
   # Replaces the deprecated k8s.gcr.io registry
   registry.k8s.io:
     endpoint:
-      - "https://<PRIVATE_REGISTRY_HOST>:<PORT>"
+      - "https://<PRIVATE_REGISTRY_HOST>[:<PORT>][/<OPTIONAL_PATH>]"
       - "https://registry.k8s.io"
 ```
+
+## Troubleshooting
+
+### Containerd logs
+
+Check the containerd logs in: `/var/lib/rancher/k3s/agent/containerd/containerd.log`
+
+### Containerd configuration files
+
+Check that containerd toml configuration files are being created:
+```shell
+$ sudo tree /var/lib/rancher/k3s/agent/etc/containerd/certs.d
+/var/lib/rancher/k3s/agent/etc/containerd/certs.d
+├── container-registry.oracle.com
+│   └── hosts.toml
+├── gcr.io
+│   └── hosts.toml
+├── ghcr.io
+│   └── hosts.toml
+├── quay.io
+│   └── hosts.toml
+├── registry.access.redhat.com
+│   └── hosts.toml
+└── registry.k8s.io
+    └── hosts.toml
+```
+
