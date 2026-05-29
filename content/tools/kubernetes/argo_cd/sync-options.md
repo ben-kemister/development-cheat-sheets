@@ -43,6 +43,20 @@ before all other resources.
 
 ## Sync Options (`sync-options`)
 
+### No Resource Deletion
+
+For certain resources you might want to retain them even after your application is deleted, for e.g. PVCs, Longhorn volumes.
+In such situations you can stop those resources from being cleaned up during app deletion by using the following annotation:
+
+```yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Delete=false
+```
+
+For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
+
+
 ### Replace instead of Apply
 
 By default, Argo CD executes `kubectl apply` operation to apply the configuration stored in Git.
@@ -72,18 +86,38 @@ metadata:
 
 For more information on this see [Replace Resource Instead Of Applying Changes](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#replace-resource-instead-of-applying-changes).
 
-### No Resource Deletion
 
-For certain resources you might want to retain them even after your application is deleted, for e.g. PVCs, Longhorn volumes.
-In such situations you can stop those resources from being cleaned up during app deletion by using the following annotation:
+### ServerSideApply
 
+By default, Argo CD executes the `kubectl apply` operation to apply the configuration stored in Git. 
+This is a client side operation that relies on the `kubectl.kubernetes.io/last-applied-configuration` annotation to store 
+the previous resource state.
+
+However, there are some cases where you want to use `kubectl apply --server-side` over `kubectl apply`:
+
+Resource is too big to fit in 262144 bytes allowed annotation size. In this case server-side apply can be used to avoid this issue as the annotation is not used in this case.
+Patching of existing resources on the cluster that are not fully managed by Argo CD.
+Use a more declarative approach, which tracks a user's field management, rather than a user's last applied state.
+
+It can be enabled at the application level like in the example below:
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+spec:
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+```
+
+To enable ServerSideApply just for an individual resource, the sync-option annotation can be used:
 ```yaml
 metadata:
   annotations:
-    argocd.argoproj.io/sync-options: Delete=false
+    argocd.argoproj.io/sync-options: ServerSideApply=true
 ```
 
-For more information see: [Sync Options](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/#no-resource-deletion)
+For more information on this see [Server-Side Apply - ArgoCD Docs](https://argo-cd.readthedocs.io/en/latest/user-guide/sync-options/#server-side-apply).
+
 
 ### Using multiple sync-options
 
