@@ -22,7 +22,7 @@ This is useful for debugging, testing, or accessing services during development,
 kubectl port-forward TYPE/NAME [options] [LOCAL_PORT:]REMOTE_PORT [...[LOCAL_PORT_N:]REMOTE_PORT_N]
 ```
 
-## Connect to a specific Pod in a namespace
+## Connect to a Pod
 
 To connect to a Pod called `my-pod-0` on port `8080` in `my-namespace` Namespace use the command:
 
@@ -40,6 +40,12 @@ PS> Invoke-WebRequest -Uri http://localhost:19001
 StatusCode        : 200
 StatusDescription : OK
 Content           : ...
+```
+
+## Connect to a Service
+
+```shell
+kubectl port-forward service/<service-name> <local-port>:<service-port>
 ```
 
 
