@@ -11,9 +11,12 @@ tags:
 
 ## Handy Commands
 
-| Command  | Description             | 
-|----------|-------------------------| 
-| `Ctrl+K` | Delete the currnet line |
+| Command    | Description          | 
+|------------|----------------------| 
+| `Ctrl + K` | Cut the current line |
+| `Alt + 6`  | Copy the line        |
+| `Ctrl + U` | Paste the line       |
+
 
 
 
