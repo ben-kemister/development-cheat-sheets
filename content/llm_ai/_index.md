@@ -9,6 +9,6 @@ This page contain the Large Language Models (LLM) and Artificial Intelligence (A
 and used.
 <!--more-->
 
-## Pages
+## Topic Specific Pages
 
 {{% children sort="title" description="true" %}}
