@@ -16,10 +16,19 @@ making a side-by-side comparison of their components.
 
 | Model               | CPU                                           | Max RAM                           | Integrated GPU                    | 
 |---------------------|-----------------------------------------------|-----------------------------------|-----------------------------------|
-| Optiplex 7040 Micro | Core i5-6500T (2.5 GHz base, up to 3.1 GHz)   | 32GB DDR4 (2133 MHz)              | Intel HD Graphics 530             |
-| Optiplex 7050 Micro | Core i5-6500T (2.5 GHz base, up to 3.1 GHz)   | 32GB or 64GB DDR4 (2133/2400 MHz) | HD Graphics 530 (6th Gen)         |
-| Optiplex 3050 Micro | Core i5-6500T (2.50 GHz base, up to 3.10 GHz) | 32GB DDR4 (2133 MHz)              | HD Graphics 530 (6th Gen)         |
 | Optiplex 9020 Micro | Core i5-4590T (2.00 GHz base, up to 3.0 GHz)  | 16GB DDR3 (2133 MHz)              | Integrated Intel HD Graphics 4600 |
+| Optiplex 7040 Micro | Core i5-6500T (2.5 GHz base, up to 3.1 GHz)   | 32GB DDR4 (2133 MHz)              | Intel HD Graphics 530             |
+| Optiplex 3050 Micro | Core i5-6500T (2.50 GHz base, up to 3.10 GHz) | 32GB DDR4 (2133 MHz)              | HD Graphics 530 (6th Gen)         |
+| Optiplex 7050 Micro | Core i5-6500T (2.5 GHz base, up to 3.1 GHz)   | 32GB or 64GB DDR4 (2133/2400 MHz) | HD Graphics 530 (6th Gen)         |
+| Optiplex 7090 Micro | Core i5-11500T (1.5 GHz base, up to 3.9 GHz)  | 64GB DDR4 (2666/3200 MHz)         | HD Graphics 750 (11th Gen)        |
+
+
+# Boot Menu
+
+* `F2` - Enter BIOS
+* `F12` - One time boot (i.e. boot from USB drive)
+
+
 
 
 

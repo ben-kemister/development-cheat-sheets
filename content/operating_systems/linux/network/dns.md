@@ -109,8 +109,66 @@ Link 2 (enp2sX)
 ...
 ```
 
+### Ubuntu 26.04 LTS (Resolute Raccoon)
+
+It is likely this Operating System is using `cloud-init` to configure `netplan` to (at least in part) configure the DNS.
+
+You can find the configuration files for this the `/etc/netplan/` directory.
+
+Common filenames include `00-installer-config.yaml` (Ubuntu Server default), `01-netcfg.yaml`, or `50-cloud-init.yaml` 
+(cloud deployments) depending on your installation method.
+
+#### Manually setting DNS servers
+
+Firstly, iIdentify your Netplan configuration file: List the files in the Netplan directory:
+```shell
+ls /etc/netplan/
+```
+For example:
+```text
+total 12
+drwxr-xr-x   2 root root 4096 Jun 20 05:57 .
+drwxr-xr-x 110 root root 4096 Jun 19 21:03 ..
+-rw-------   1 root root  301 Jun 20 05:57 00-installer-config.yaml
+```
+In the example above the netplan configuration file is: `00-installer-config.yaml`
+
+Then, edit the configuration file, for example: `sudo nano /etc/netplan/00-installer-config.yaml` and add/update the set 
+the `nameservers.addresses` array with the values you are after.
+
+The example below shows that the device `enp2sX` will use the DNS servers `8.8.8.8` and `8.8.4.4`
+```yaml
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp2sX:
+      dhcp4: true
+      dhcp6: true
+      match:
+        macaddress: a4:bb:6d:94:88:4f
+      set-name: enp0s31f6
+      # Add this section listing the DNS Servers you want to use
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+  version: 2
+```
+
+To apply the changes use the command `sudo netplan apply`.
+
+You should then see the changes reflected for the `enp2sX` device in `resolvectl status`:
+```test
+...
+Link 2 (enp2sX)
+    Current Scopes: DNS
+        Protocols: +DefaultRoute -LLMNR -mDNS -DNSOverTLS DNSSEC=no/unsupported
+        DNS Servers: 8.8.8.8 8.8.4.4
+        DNS Domain: lan
+...
+```
+
 ## References
 
 * [Why is /etc/resolv.conf Configured to Use 127.0.0.53 on Linux](https://medium.com/@linuxrootroom/dd-721dc2b25d1c)
 * [How to Set DNS on Ubuntu 26.04](https://linuxconfig.org/how-to-set-dns-on-ubuntu-26-04)
-* 

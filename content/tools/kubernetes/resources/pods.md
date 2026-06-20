@@ -131,6 +131,10 @@ spec:
         weight: 1
 ```
 
+> The `weight` value used within a preferred rule (such as node or pod affinity) dictates the relative importance of 
+> that specific matching condition, with a higher weight indicating a stronger preference for the scheduler to select an 
+> object that meets that criteria.
+
 ### Node Anti-affinity
 
 To ensure two Kubernetes Pods are scheduled on different nodes, you must use Pod Anti-Affinity with the `kubernetes.io/hostname` 
@@ -145,7 +149,7 @@ The key fields for creating anti-affinity rules are:
 
 #### Hard Constraint
 
-The following manifest uses a Hard Constraint (`requiredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
+The following manifest uses a **Hard** Constraint (`requiredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
 will only place the pod on a different node. If no such node is available, the pod will remain in a `Pending` state.
 
 ```yaml
@@ -173,7 +177,7 @@ spec:
 
 #### Soft Constraint
 
-The following manifest uses a Hard Constraint (`preferredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
+The following manifest uses a **Soft** Constraint (`preferredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
 _tries_ to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.
 
 ```yaml

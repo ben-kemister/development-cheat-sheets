@@ -11,11 +11,11 @@ This page contains information about the k3s server.
 
 ## Important Directories and paths
 
-| Name        | Path                           | Notes                             |
-|-------------|--------------------------------|-----------------------------------|
-| Server root | `/var/lib/rancher/k3s/server/` | Root for all server related files |
-| `systemd` service | `/etc/systemd/system/k3s.service` | |
-| Node configuration | `/etc/rancher/k3s/config.yaml` |                                                             |
+| Name               | Path                              | Notes                             |
+|--------------------|-----------------------------------|-----------------------------------|
+| Server root        | `/var/lib/rancher/k3s/server/`    | Root for all server related files |
+| `systemd` service  | `/etc/systemd/system/k3s.service` |                                   |
+| Node configuration | `/etc/rancher/k3s/config.yaml`    |                                   |
 
 ## Running k3s as a systemd service
 
