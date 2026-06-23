@@ -1,0 +1,25 @@
+---
+title: image
+tags:
+- podman
+- image
+---
+
+This page contains examples about the use of Podman's `image` commands.
+<!--more-->
+
+## Prune unused images
+
+To safely delete only dangling and unreferenced images without deleting active one use:
+```shell
+podman image prune -a
+```
+
+## Force remove all images 
+
+This will remove **all** images, including those currently attached to running or stopped containers.
+```power
+podman rmi --all --force
+```
+
+

@@ -6,16 +6,24 @@ tags:
 - files
 ---
 
-This page contains information about how to accessing files in WSL.
+This page contains information about how to access files in WSL.
 <!--more-->
 
 ## Accessing WSL files
 
+### Windows --> WSL Distribution
+
 You can access the files of the (WSL) distribution at `\\wsl$\<DISTRIBUTION_NAME>\<path>`.
 
-For example, you can copy a file into the `podman-machine-default` distribution with:
+So you can copy a file from Windows into the `podman-machine-default` distribution with:
 ```shell
 cp "local.file" \\wsl$\podman-machine-default\tmp\local.file
+```
+
+If you need to copy a file into the WSL as `root` you can use `wsl -u root -d <WSL_DISTRO_NAME> cp "/mnt/c/path/to/windows/file.txt" "/root/destination/file.txt"`
+For example: 
+```powershell
+wsl -u root -d podman-machine-default cp "/mnt/c/some/path/local.file" "/etc/some/root/folder/local.file"
 ```
 
 ## Accessing Windows files
@@ -38,3 +46,17 @@ which points to the folder on the Windows (host).
 ln -s /mnt/c/Users/<USERID>/.kube ~/.kube
 ```
 
+## Echo multiline --> WSL file
+
+To echo multiple lines onto a file on the WSL system use:
+```powershell
+$text = @"
+Line 1 of your text
+Line 2 of your text
+Line 3 of your text
+"@
+
+$text | wsl -e bash -c "cat > filename/txt"
+```
+
+> Note the `-e` in this context stands for **Execute**.

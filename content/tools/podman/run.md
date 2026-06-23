@@ -9,6 +9,25 @@ tags:
 This page contains examples about the use of Podman's `run` command (i.e. to run a container).
 <!--more-->
 
+## podman run
+
+```powershell
+podman run --rm -it `
+     -p 6052:6052 `
+     --network=host `
+     -v ${PWD}/my-configs:/config `
+     <IMAGE_REGISTRY>/<IMAGE_NAME>:<IMAGE_TAG> [COMMANDS]
+```
+
+> Note: Windows/PowerShell `${PWD}` is the current working directory.
+
+Options:
+* `--rm` - remove/delete the container when completed
+* `-it` - keep in terminal foreground and display STDOUT
+* `-p <HOST_PORT>:<CONTAINER_PORT>` - expose/map a port in the container to the host
+* `-v <HOST_PATH>:<CONTAINER_PATH>` - map a directory (or file) to the container
+* `--network=host` - (Optional) Use the network of the host
+
 ## Environmental variables
 
 You can set environmental variables in your container by using the syntax: `-e "VARIABLE_NAME=value"`.

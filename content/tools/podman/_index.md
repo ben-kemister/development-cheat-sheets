@@ -27,33 +27,25 @@ These instructions are based on the [Podman for Windows doco](https://github.com
 3. Start the podman machine with `podman machine start`
 4. (Optional) Verify the installation by running a simple container with ``podman run ubi8-micro date``
 
+## Configuration files
+
+The table below shows some of the common podman configuration files.
+
+| File                                            | Description                                            |
+|-------------------------------------------------|--------------------------------------------------------|
+| `/home/user/.config/containers/containers.conf` | Configures podman (i.e. default network type etc)      |
+| `/home/user/.config/containers/registries.conf` | User (rootless) container image registry configuration |
+| `/etc/containers/registries.conf`               | System wide container image registry configuration     |
+
 
 ## Topic Specific Pages
 
 {{% children sort="title" description="true" %}}
 
 
-## Handy Commands
+## Other Handy Commands
 
-### podman run
-
-```shell
-podman run --rm -it `
-     -p 6052:6052 `
-     --network=host `
-     -v ${PWD}/my-configs:/config `
-     <IMAGE_REGISTRY>/<IMAGE_NAME>:<IMAGE_TAG> [COMMANDS]
-```
-
-Options:
-* `--rm` - remove/delete the container when completed
-* `-it` - keep in terminal foreground and display STDOUT
-* `-p <HOST_PORT>:<CONTAINER_PORT>` - expose/map a port in the container to the host 
-* `-v <HOST_PATH>:<CONTAINER_PATH>` - map a directory (or file) to the container
-* `--network=host` - (Optional) Use the network of the host
-
-
-### podman ps
+### ps
 
 `podman ps` lists the running containers on the system. Use the `--all` flag to view all the containers information.
 
@@ -65,7 +57,7 @@ CONTAINER ID  IMAGE                             COMMAND               CREATED   
 562c109a4631  ghcr.io/esphome/esphome:2025.6.3  run everything-pr...  23 minutes ago  Up 23 minutes  0.0.0.0:6052->6052/tcp  elated_bhabha
 ```
 
-### podman top <CONTAINER>
+### top <CONTAINER>
 
 `podman top <CONTAINER>` display the running processes of a container.
 
@@ -76,3 +68,15 @@ podman top elated_bhabha
 USER        PID         PPID        %CPU        ELAPSED           TTY         TIME        COMMAND
 root        1           0           4.826       23m49.723240324s  pts/0       1m9s        /usr/local/bin/python /usr/local/bin/esphome run some-config-file-123.yaml
 ```
+
+### machine ssh
+
+When running podman on Windows you can use the `podman machine ssh` command to interact with the underlying podman WSL 
+distribution (the default name of the wsl distribution is `podman-machine-default`).
+
+You can:
+* Get an interactive shell with: `podman machine ssh`
+* Run a command in the wsl distribution with: `podman machine ssh <COMMAND_TO_RUN>`, for example:
+    ```powershell
+    podman machine ssh mkdir -p /home/user/.config/containers
+    ```

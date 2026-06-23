@@ -131,9 +131,8 @@ spec:
         weight: 1
 ```
 
-> The `weight` value used within a preferred rule (such as node or pod affinity) dictates the relative importance of 
-> that specific matching condition, with a higher weight indicating a stronger preference for the scheduler to select an 
-> object that meets that criteria.
+> The scheduler uses the `weight`s (1-100) on preferred rules to calculate a score for each node, 
+> and the node with the highest combined score is chosen to run the Pod.
 
 ### Node Anti-affinity
 
