@@ -68,6 +68,14 @@ If you are using [Longhorn](../longhorn/_index) on your cluster you will need to
     ```
 4. Done!
 
+### Mounting NFS drives
+
+If you want to mount NFS drives the machine will need the `nfs-common` packages installed:
+
+```shell
+sudo apt update && sudo apt install -y nfs-common
+```
+
 
 ## Adding a machine as a Node
 
