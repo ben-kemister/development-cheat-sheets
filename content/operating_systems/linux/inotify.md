@@ -14,7 +14,7 @@ You can query the current values of the system with `sysctl fs.inotify.<PROPERTY
 
 ```shell
 # Check max_user_instances value
-$sysctl fs.inotify.max_user_instances
+$ sysctl fs.inotify.max_user_instances
 fs.inotify.max_user_instances = 128
 
 # Check max_user_watches value
