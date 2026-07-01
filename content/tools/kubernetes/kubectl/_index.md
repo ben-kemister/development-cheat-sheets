@@ -40,30 +40,6 @@ kubectl top node
 kubectl top pod
 ```
 
-### logs
-
-To view the logs for a pod use the commands below:
-
-```sh
-kubectl logs <pod_name>
-
-# For example
-kubectl logs traefik-ingress-7f4f6cd549-jkdjl -n kube-system
-```
-
-#### Logs for a specific container
-
-To access logs from a specific container (such as Init Containers)
-Pass the Init Container name along with the Pod name to access its logs.
-
-```sh
-kubectl logs <pod-name> -c <init-container-2>
-
-# For example
-kubectl logs <pod-name> -c <init-container-2>
-
-kubectl logs $(kubectl get po | grep magicmirror | awk '{ print $1}') -c install-modules
-```
 
 ## Forcefully delete Resources
 
