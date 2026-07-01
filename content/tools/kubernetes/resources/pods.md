@@ -116,7 +116,7 @@ There are two types of [node affinity](https://kubernetes.io/docs/concepts/sched
 2. `preferredDuringSchedulingIgnoredDuringExecution` - The scheduler **tries to find a node that meets the rule**. 
    If a matching node is not available, the scheduler still schedules the Pod.
 
-### preferredDuringSchedulingIgnoredDuringExecution
+#### `preferredDuringSchedulingIgnoredDuringExecution` - Soft Affinity
 
 ```yaml
 spec:
@@ -134,6 +134,22 @@ spec:
 > The scheduler uses the `weight`s (1-100) on preferred rules to calculate a score for each node, 
 > and the node with the highest combined score is chosen to run the Pod.
 
+#### `requiredDuringSchedulingIgnoredDuringExecution` - Hard Affinity
+
+```yaml
+spec:
+  affinity:
+    nodeAffinity:
+      # Must run this on a Node with a high CPU capacity
+      requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: cpu-capacity
+                  operator: In
+                  values:
+                    - high
+```
+
 ### Node Anti-affinity
 
 To ensure two Kubernetes Pods are scheduled on different nodes, you must use Pod Anti-Affinity with the `kubernetes.io/hostname` 
@@ -146,7 +162,7 @@ The key fields for creating anti-affinity rules are:
 * `requiredDuringSchedulingIgnoredDuringExecution` - A "hard" rule. Use this if you absolutely require separate nodes for High Availability.
 * `preferredDuringSchedulingIgnoredDuringExecution` - A "soft" rule. Use this if you prefer different nodes but allow co-location if the cluster is full.
 
-#### Hard Constraint
+#### `requiredDuringSchedulingIgnoredDuringExecution` - Hard Constraint
 
 The following manifest uses a **Hard** Constraint (`requiredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
 will only place the pod on a different node. If no such node is available, the pod will remain in a `Pending` state.
@@ -174,7 +190,7 @@ spec:
     image: nginx
 ```
 
-#### Soft Constraint
+#### `preferredDuringSchedulingIgnoredDuringExecution` - Soft Constraint
 
 The following manifest uses a **Soft** Constraint (`preferredDuringSchedulingIgnoredDuringExecution`), meaning the scheduler 
 _tries_ to find a node that meets the rule. If a matching node is not available, the scheduler still schedules the Pod.
