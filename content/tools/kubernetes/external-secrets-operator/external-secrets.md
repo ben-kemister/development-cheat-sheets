@@ -65,6 +65,89 @@ as well as dedicated tools like HashiCorp Vault, CyberArk Conjur, and various th
 Generators offer various ways to create secrets, such as using AWS STS Session Tokens, passwords, SSH keys, GitHub credentials, 
 or even generating "fake" secrets for development and testing.
 
+
+## Examples
+
+### Basic ExternalSecret Mapping
+
+This example shows a simple mapping where a single value from a remote provider is fetched and placed into a specific 
+key within the resulting Kubernetes Secret using a template.
+
+```yaml
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: example-basic-secret
+spec:
+  # The secret is created once and will not be updated even if the source changes
+  refreshPolicy: CreatedOnce
+
+  target:
+    name: my-app-secret
+      
+    creationPolicy: Owner
+        
+    template:
+      type: Opaque
+      data:
+        # Mapping the fetched 'client_secret' to the 'CLIENT_SECRET' key in K8s
+        CLIENT_SECRET: "{{ .client_secret }}"
+    
+  data:
+    - secretKey: client_secret # This name is referenced in the template above
+      sourceRef:
+        storeRef:
+          name: my-vault-store
+          kind: ClusterSecretStore
+      remoteRef:
+        key: "REDACTED_ID" # The unique identifier in your external provider
+        property: password
+```
+### Advanced Templating with `templateFrom`
+
+This example demonstrates how to use `templateFrom` and Go templating logic to transform data (e.g. performing a hash) 
+before it is stored in Kubernetes.
+
+```yaml
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: example-template-secret
+spec:
+  refreshPolicy: CreatedOnce
+    
+  target:
+    name: my-complex-secret
+    creationPolicy: Owner
+        
+    template:
+      type: Opaque
+      templateFrom:
+        - target: Data
+          # Using Go templating to generate a hashed password from the raw values
+          literal: |-
+            USER_NAME: {{ .user }}
+            USER_PASS_HASH: {{ index (slice (htpasswd .user .pass "bcrypt" | splitList ":" ) 1) 0 }}
+    
+  data:
+    - secretKey: user
+      sourceRef:
+        storeRef:
+          name: my-vault-store
+          kind: ClusterSecretStore
+      remoteRef:
+        key: "REDACTED_ID"
+        property: username
+    - secretKey: pass
+      sourceRef:
+        storeRef:
+          name: my-vault-store
+          kind: ClusterSecretStore
+      remoteRef:
+        key: "REDACTED_ID"
+        property: password
+```
+
 ## Further Information and Resources
 
 For more in-depth knowledge on managing these secrets and the operator's functionality, the following resources are available.
