@@ -22,7 +22,7 @@ shows how this works:
 ## Prerequisites
 
 * A [k3s](../../tools/kubernetes/k3s) cluster
-* An OIDC provider (like [Keycloak](../../tools/keycloak)) 
+* An OIDC provider (like [Keycloak](../../tools/keycloak) or dex) 
 * [kubectl](../../tools/kubernetes/kubectl) installed
 
 ## Setup OIDC Provider (Keycloak)
@@ -48,8 +48,9 @@ kube-apiserver-arg:
 - oidc-username-claim=email
 - oidc-client-id=<YOUR_OPENID_CONNECT_CLIENT_ID>
 ```
+> If you are using dex the url is `oidc-issuer-url=https://<YOUR_DEX_URL>`
 
-You will need to reboot k3s for these changes to be applied.
+You will need to restart the k3s for these changes to be applied `sudo systemctl restart k3s`
 
 > Note: If you have multiple server nodes this configuration needs to be the same on each.
 

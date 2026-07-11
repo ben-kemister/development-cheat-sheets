@@ -25,7 +25,7 @@ It specifies how the external secret data should be transformed and formatted be
 The primary mechanisms for fetching external data are `spec.data`, which explicitly lists individual keys to sync, 
 and `spec.dataFrom`, which instructs the operator to retrieve all values from the external API. 
 The operator then uses a `spec.target.template` as a blueprint to construct the new `Secret`, allowing for 
-transformation of values using Go templating syntax or by referencing ConfigMaps via `templateFrom`.
+transformation of values using [Go templating](../../../languages/go/templating) syntax or by referencing ConfigMaps via `templateFrom`.
 
 ## Update Behavior and Refresh Policies
 

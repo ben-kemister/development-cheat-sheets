@@ -13,7 +13,7 @@ This page covers the use of `get` with `kubectl` to display one or many resource
 
 Display one or many resources.
 
-By specifying the output as ‘template’ and providing a Go template as the value of the `–template` flag, you can filter the attributes of the fetched resource(s).
+By specifying the output as ‘template’ and providing a [Go template](../../../languages/go/templating) as the value of the `–template` flag, you can filter the attributes of the fetched resource(s).
 
 ```shell
 kubectl get [(-o|--output=)json|yaml|wide|go-template=...|go-template-file=...|jsonpath=...|jsonpath-file=...] (TYPE [NAME | -l label] | TYPE/NAME ...) [flags]

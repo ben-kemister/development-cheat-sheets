@@ -9,6 +9,10 @@ tags:
 <!--more-->
 It is syntactically similar to C, but also has memory safety, garbage collection, structural typing, and CSP-style concurrency.
 
+## Sub Pages & Topics
+
+{{% children sort="title" %}}
+
 ## Installation (Windows)
 
 There are a number of [installation methods for windows](https://gohugo.io/installation/windows/).
