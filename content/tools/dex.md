@@ -1,6 +1,6 @@
 ---
 title: "Dex"
-date: :
+date: "2026-07-17"
 tags: ["OIDC", "OAuth2", "Identity", "Kubernetes", "Security"]
 ---
 
