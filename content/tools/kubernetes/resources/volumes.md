@@ -10,6 +10,61 @@ tags:
 This page contain information about the use of Kubernetes volumes (i.e. PVC & PV).
 <!--more-->
 
+## EmptyDir
+
+`emptyDir` provides temporary storage for a Pod. It is created when a Pod is assigned to a node and exists as long as that Pod is running on that node. 
+When the Pod is removed from the node (e.g., the Pod is deleted), the data in the `emptyDir` is permanently deleted.
+
+### Use Cases
+`emptyDir` is best suited for ephemeral data that does not need to persist beyond the lifecycle of the Pod:
+
+* **Temporary Caching**: Ideal for applications requiring scratch space, such as NGINX cache or local download buffers.
+* **Shared Memory**: Used to share a filesystem between multiple containers within the same Pod (e.g., for inter-process communication/IPC).
+* **Ephemeral Logs**: For transient log files that do not require long-term retention.
+
+### Limitations and Risks
+
+While useful, `emptyDir` carries significant risks if not managed properly:
+
+* **No Data Persistence** - Data is lost if the Pod is restarted or crashes. It is not suitable for any data that must survive a Pod lifecycle.
+* **Uncontrolled Disk Usage** - By default, emptyDir volumes do not have a specified limit. A container writing excessively to an emptyDir can fill up the host node's disk, potentially leading to NoDiskPressure errors and affecting other workloads on the node.
+* **Security Risks** - Storing sensitive or unencrypted data in an emptyDir can pose security risks if the underlying node storage is not properly secured.
+
+### Implementing Size Limits
+
+To prevent a Pod from consuming all available disk space on a node, you should always enforce a sizeLimit. 
+If the storage used by the `emptyDir` exceeds the specified sizeLimit, Kubernetes will evict the Pod to protect the node's health.
+
+The following example demonstrates how to implement a 100Mi limit on an `emptyDir` volume.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: safe-empty-dir-pod
+spec:
+   containers:
+   - name: app-container
+     image: alpine
+     command: ["sh", "-c", "while true; do echo 'Writing temporary data...' >> /tmp/data.log; sleep 1; done"]
+     volumeMounts:
+      - name: tmp-volume
+        mountPath: /tmp
+        volumes:
+   - name: tmp-volume
+     emptyDir:
+        sizeLimit: 100Mi
+```
+
+### Best Practices Summary
+  
+| Scenario                                  | Recommended Volume Type                                           |
+|-------------------------------------------|-------------------------------------------------------------------|
+| Persistent Data (Databases, user uploads) | 	PersistentVolume (PV) & PersistentVolumeClaim (PVC)              |
+| Temporary Scratch Space                   | 	`emptyDir` with `sizeLimit` set                                  | 
+| Inter-container Communication             | 	`emptyDir` (often using `medium: Memory` for RAM-backed storage) |
+
+
 ## Local (host) volume
 
 ```yaml
