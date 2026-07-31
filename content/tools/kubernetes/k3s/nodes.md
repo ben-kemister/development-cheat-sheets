@@ -76,6 +76,22 @@ If you want to mount NFS drives the machine will need the `nfs-common` packages 
 sudo apt update && sudo apt install -y nfs-common
 ```
 
+### Remove password prompt for `sudo`
+
+If you intend on using automated operating system updates you will need to remove the password prompt for ``sudo``:
+
+Launch `visudo`:
+```shell
+sudo visudo
+```
+
+Add a line using the following syntax `<USERNAME> ALL=(ALL) NOPASSWD: ALL`, for example for the username 'smith':
+```text
+smith   ALL=(ALL) NOPASSWD: ALL
+```
+
+For more information see: [visudo](../../../operating_systems/linux/sudo/visudo)
+
 
 ## Adding a machine as a Node
 
