@@ -9,17 +9,37 @@ tags:
 and ad blocking for homes and small businesses. 
 <!--more-->
 
+## Sub Pages
+
+{{% children sort="title" description="true" %}}
+
 ## Status lights
 
 ### Gold SE
 
-| Light	             | Firewalla Box Status                                   |
+| Light	              | Firewalla Box Status                                   |
 |--------------------|--------------------------------------------------------|
-| Blinking Blue	     | Booting Up                                             | 
+| Blinking Blue	      | Booting Up                                             | 
 | Fast Blinking Blue | Underlying App Communication                           |
 | Blinking Red       | Network Down                                           |
-| Solid Red	         | System Error / Power On, Firewalla Software Not Active |
-| Light Off	         | System Active, Internet Connected                      |
+| Solid Red	          | System Error / Power On, Firewalla Software Not Active |
+| Light Off	          | System Active, Internet Connected                      |
+
+## Web Interfaces
+
+Firewalla has the following web interfaces for debugging and managing your Firewalla boxes.
+
+* LAN Speedtest
+  * This will test the speed between your device and Firewalla device.
+  * URL: http://fire.walla:8833/ss/
+* Diagnostics
+  * This will give you quick access to the following information without having to access the paired mobile device.
+  * URL: https://diag.firewalla.com/
+* MSP (Lite) Web Interface:
+  * A complementary (internet hosted) management interface to the mobile app.
+  * URL: https://firewalla.net/
+
+For more information see: [Web Interfaces for Firewalla](https://help.firewalla.com/hc/en-us/articles/4408013495059-Web-Interfaces-for-Firewalla)
 
 
 ## Wireguard clients accessing local devices
@@ -61,10 +81,6 @@ To make this change persistent you will need to create an executable script in `
 4. Save and Quit vi: `CTRL` then `:wq`
 5. Make the script executable: `sudo chmod +x iptables-wireguard.sh`
 
-
-## Sub Pages
-
-{{% children sort="title" description="true" %}}
 
 ## Handy Links
 
