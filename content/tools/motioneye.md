@@ -25,14 +25,37 @@ It is designed to transform devices like a Raspberry Pi into a centralized home 
 *   **Live Streaming:** Real-time video passthrough from IP cameras or local webcams.
 *   **Extensibility:** Support for custom scripts and database logging for activity.
 
-## Core Components
+## Installing motionEye
 
-The system relies on the `motion` daemon to handle the heavy lifting of video processing and signal monitoring.
+> TODO...
 
-```bash
-# Typical execution flow
-motion          # The backend daemon processing video
-motioneye       # The web server providing the UI
+## Configuration
+
+### motion
+
+`/etc/motioneye/motion.conf`
+
+### motionEyee
+
+`/etc/motioneye/motioneye.conf`
+
+## Running motionEye
+
+### systemd service
+
+```shell
+$ cat /etc/systemd/system/motioneye.service
+```
+```text
+[Unit]
+Description=motionEye Server
+
+[Service]
+ExecStart=/usr/local/bin/meyectl startserver -c /etc/motioneye/motioneye.conf
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 ### Handy Links
