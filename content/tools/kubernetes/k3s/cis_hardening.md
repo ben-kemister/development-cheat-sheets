@@ -100,6 +100,26 @@ non-default capabilities (containers "speaker", "frr" must not include "NET_ADMI
 host namespaces (hostNetwork=true), hostPort (containers "speaker", "frr-metrics" use hostPorts 7472, 7473, 7946)
 ```
 
+## Ensure `protect-kernel-defaults` is set
+
+This is a kubelet flag that will cause the kubelet to exit if the required kernel parameters are unset or are set to 
+values that are different from the kubelet's defaults.
+
+Create a file called `/etc/sysctl.d/90-kubelet.conf` and add the snippet below:
+```shell
+sudo nano /etc/sysctl.d/90-kubelet.conf
+```
+```text
+vm.panic_on_oom=0
+vm.overcommit_memory=1
+kernel.panic=10
+kernel.panic_on_oops=1
+```
+
+Then run `sysctl -p /etc/sysctl.d/90-kubelet.conf`
+
+For more information see [Ensure protect-kernel-defaults is set](https://docs.k3s.io/security/hardening-guide#ensure-protect-kernel-defaults-is-set)
+
 
 ## Links & References
 

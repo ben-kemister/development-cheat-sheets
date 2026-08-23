@@ -1,14 +1,15 @@
 ---
-title: Camera Module (Raspberry Pi)
+title: Camera Modules
 tags:
 - raspberry_pi
 - camera
 - timelapse
 ---
 
-Adding a camera to a Raspberry Pi opens up a  new category of potential Raspberry Pi projects.
-Popular projects include time-lapse photography, face recognition, DIY CCTV, pet and 3D printer monitors, car cams and more.
+Adding a [camera module](https://www.raspberrypi.com/documentation/accessories/camera.html) to a Raspberry Pi opens up a 
+new category of potential Raspberry Pi projects.
 <!--more-->
+Popular projects include time-lapse photography, face recognition, DIY CCTV, pet and 3D printer monitors, car cams and more.
 
 ## Using or accessing the Camera
 

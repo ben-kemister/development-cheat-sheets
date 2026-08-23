@@ -94,6 +94,8 @@ Start the `systemd` service:
 sudo systemctl daemon-reload
 sudo systemctl start go2rtc_server
 sudo systemctl status go2rtc_server
+# To enable startup on system boot run:
+sudo systemctl enable go2rtc_server
 ```
 
 This will make:
