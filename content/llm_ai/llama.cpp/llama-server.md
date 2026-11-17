@@ -45,18 +45,23 @@ This will expose:
 
 Below are some of the common/handy ones I have come across:
 
-| CLI Argument                | Environment Variable         | Explanation                                                                                                                | 
-|-----------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| `-c, --ctx-size N`          | `LLAMA_ARG_CTX_SIZE`         | Size of the prompt context (default: 0, 0 = loaded from model)                                                             |
-| `--host HOST`               | `LLAMA_ARG_HOST`             | IP address to listen, or bind to an UNIX socket if the address ends with .sock (default: 127.0.0.1)                        |
-| `--port PORT`               | `LLAMA_ARG_PORT`             | Port to listen (default: 8080)                                                                                             |
-| `--parallel N`              | `LLAMA_ARG_N_PARALLEL`       | Number of server slots (default: -1, -1 = auto)                                                                            |
-| `--offline`                 | `LLAMA_ARG_OFFLINE`          | Offline mode: forces use of cache, prevents network access                                                                 |
-| `--mmap, --no-mmap`         | `LLAMA_ARG_MMAP`             | Whether to memory-map model. (if mmap disabled, slower load but may reduce pageouts if not using mlock) (default: enabled) |
-| `--temp, --temperature N`   | `LLAMA_ARG_TEMPERATURE`      | Temperature (default: 0.80)                                                                                                |
-| `--top-k N`                 | `LLAMA_ARG_TOP_K`            | Top-k sampling (default: 40, 0 = disabled)                                                                                 |
-| `--embedding, --embeddings` | `LLAMA_ARG_EMBEDDINGS`       | Restrict to only support embedding use case; use only with dedicated embedding models (default: disabled)                  |
-| `--metrics`                 | `LLAMA_ARG_ENDPOINT_METRICS` | Enable prometheus compatible metrics endpoint (default: disabled)                                                          |
+| CLI Argument                           | Environment Variable         | Explanation                                                                                                                | 
+|----------------------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| `--api-key KEY`                        | `LLAMA_API_KEY`              | API key to use for authentication, multiple keys can be provided as a comma-separated list (default: none)                 |
+| `-c, --ctx-size N`                     | `LLAMA_ARG_CTX_SIZE`         | Size of the prompt context (default: 0, 0 = loaded from model)                                                             |
+| `--host HOST`                          | `LLAMA_ARG_HOST`             | IP address to listen, or bind to an UNIX socket if the address ends with .sock (default: 127.0.0.1)                        |
+| `--port PORT`                          | `LLAMA_ARG_PORT`             | Port to listen (default: 8080)                                                                                             |
+| `--parallel N`                         | `LLAMA_ARG_N_PARALLEL`       | Number of server slots (default: -1, -1 = auto)                                                                            |
+| `--offline`                            | `LLAMA_ARG_OFFLINE`          | Offline mode: forces use of cache, prevents network access                                                                 |
+| `--mmap, --no-mmap`                    | `LLAMA_ARG_MMAP`             | Whether to memory-map model. (if mmap disabled, slower load but may reduce pageouts if not using mlock) (default: enabled) |
+| `--temp, --temperature N`              | `LLAMA_ARG_TEMPERATURE`      | Temperature (default: 0.80)                                                                                                |
+| `--top-k N`                            | `LLAMA_ARG_TOP_K`            | Top-k sampling (default: 40, 0 = disabled)                                                                                 |
+| `--embedding, --embeddings`            | `LLAMA_ARG_EMBEDDINGS`       | Restrict to only support embedding use case; use only with dedicated embedding models (default: disabled)                  |
+| `--metrics`                            | `LLAMA_ARG_ENDPOINT_METRICS` | Enable prometheus compatible metrics endpoint (default: disabled)                                                          |
+| `--sleep-idle-seconds SECONDS`         | N/A                          | Number of seconds of idleness after which the server will sleep (default: -1; -1 = disabled)                               |
+| `--models-max N`                       | `LLAMA_ARG_MODELS_MAX`       | For router server, maximum number of models to load simultaneously (default: 4, 0 = unlimited)                             |
+| `--ui, --webui, --no-ui, --no-webui`   | `LLAMA_ARG_UI`               | Whether to enable Llama Chat, the built-in chat app (default: enabled)                                                     |
+| `-ngl, --gpu-layers, --n-gpu-layers N` | `LLAMA_ARG_N_GPU_LAYERS`     | Max. number of layers to store in VRAM, either an exact number, 'auto', or 'all' (default: auto)                           | 
 
 
 ### Test that model is working
